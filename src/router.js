@@ -1,12 +1,15 @@
 import { hot } from 'react-hot-loader';
 import React from 'react';
-import { Button } from 'antd';
+import { HashRouter as Router, Switch, Route } from 'react-router-dom';
+import { BasicLayout } from 'layouts';
 
 const App = () => {
   return (
-    <div>React CNode
-      <Button type="primary">Confirm</Button>
-    </div>
+    <Router>
+      <Switch>
+        <Route path="/" component={BasicLayout} />
+      </Switch>
+    </Router>
   );
 };
 
