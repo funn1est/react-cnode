@@ -1,10 +1,12 @@
 import React from 'react';
 import { Layout, Menu } from 'antd';
-import Home from 'routes/home';
+import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
+import { Home, Topic } from 'routes';
 import styles from './BasicLayout.scss';
 
 const { Header, Content } = Layout;
 
+@withRouter
 class BasicLayout extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -14,6 +16,11 @@ class BasicLayout extends React.PureComponent {
   }
 
   onMenuClicked = (e) => {
+    const { location: { pathname }, match } = this.props;
+    if (pathname !== '/') {
+      this.props.history.push('/');
+    }
+
     this.setState({
       tab: e.key,
     });
@@ -40,7 +47,8 @@ class BasicLayout extends React.PureComponent {
           </Menu>
         </Header>
         <Content style={{ margin: '24px 24px 0' }}>
-          <Home tab={tab} />
+          <Route path="/" exact render={() => <Home tab={tab} />} />
+          <Route path="/topic/:id" component={Topic} />
         </Content>
       </Layout>
     );
