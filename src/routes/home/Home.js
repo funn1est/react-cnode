@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { List, Avatar, Card, Divider, Tag } from 'antd';
 import { TopicsService } from 'services';
 
@@ -7,6 +8,7 @@ class Home extends React.PureComponent {
     super(props);
     this.state = {
       topicsData: [],
+      loading: false,
     };
   }
 
@@ -22,6 +24,9 @@ class Home extends React.PureComponent {
 
   getTopicsData = () => {
     const { tab } = this.props;
+    this.setState({
+      loading: true,
+    });
     TopicsService.getTopics({
       tab,
       page: 1,
@@ -32,9 +37,14 @@ class Home extends React.PureComponent {
         const d = data.data;
         this.setState({
           topicsData: d,
+          loading: false,
         });
       })
-      .catch(() => {});
+      .catch(() => {
+        this.setState({
+          loading: false,
+        });
+      });
   };
 
   renderTag = (item) => {
@@ -48,13 +58,14 @@ class Home extends React.PureComponent {
   };
 
   render() {
-    const { topicsData } = this.state;
+    const { topicsData, loading } = this.state;
     return (
       <List
         size="large"
         grid={{ gutter: 16, column: 1 }}
         dataSource={topicsData}
         style={{ width: '1000px' }}
+        loading={loading}
         renderItem={item => (
           <List.Item
             key={item.id}
@@ -71,7 +82,14 @@ class Home extends React.PureComponent {
                       />
                       {item.author.loginname}
                     </div>
-                    <div>{this.renderTag(item.tab)}{item.title}</div>
+                    <div>
+                      {this.renderTag(item.tab)}
+                      <Link
+                        to={{ pathname: `/topic/${item.id}` }}
+                      >
+                        {item.title}
+                      </Link>
+                    </div>
                   </div>
                 }
                 description={
