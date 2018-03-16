@@ -9,7 +9,6 @@ module.exports = {
       path.resolve('node_modules'),
     ],
   },
-
   module: {
     rules: [
       {
@@ -36,9 +35,10 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
+              camelCase: true,
               modules: true,
               importLoaders: 1,
-              localIdentName: '[path][name]__[local]--[hash:base64:5]',
+              localIdentName: '[name]__[local]--[hash:base64:5]',
             },
           },
           { loader: 'postcss-loader' },
@@ -53,9 +53,10 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
+              camelCase: true,
               modules: true,
               importLoaders: 1,
-              localIdentName: '[path][name]__[local]--[hash:base64:5]',
+              localIdentName: '[name]__[local]--[hash:base64:5]',
             },
           },
           { loader: 'postcss-loader' },
