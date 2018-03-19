@@ -15,3 +15,11 @@ export const getTopics = ({
   };
   return get(TopicsApi.topics, params);
 };
+
+export const getTopic = (
+  id,
+  { mdrender = 'false', accesstoken = '' } = {},
+) => {
+  const params = { mdrender, accesstoken };
+  return get(TopicsApi.topic.replace(/:id/, id), params);
+};

@@ -33,10 +33,9 @@ class Home extends React.PureComponent {
       limit: 20,
       mdrender: 'true',
     })
-      .then(({ data }) => {
-        const d = data.data;
+      .then(({ data: { data } }) => {
         this.setState({
-          topicsData: d,
+          topicsData: data,
           loading: false,
         });
       })
