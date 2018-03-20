@@ -1,3 +1,10 @@
 .content {
   overflow-x: auto;
 }
+
+.reply {
+  img {
+    display: inline;
+    max-width: 100%;
+  }
+}

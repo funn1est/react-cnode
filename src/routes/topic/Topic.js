@@ -55,6 +55,7 @@ class Topic extends React.PureComponent {
                 title={item.author.loginname}
                 description={
                   <div
+                    className={styles.reply}
                     dangerouslySetInnerHTML={{ __html: item.content }}
                   />
                 }
