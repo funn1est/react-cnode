@@ -6,10 +6,10 @@ import styles from './BasicLayout.scss';
 
 const { Header, Content } = Layout;
 const Home = asyncRender(
-  () => import(/* webpackChunkName: "home" */'../routes/home/Home')
+  () => import(/* webpackChunkName: "Home" */'../routes/Home')
 );
 const Topic = asyncRender(
-  () => import(/* webpackChunkName: "topic" */'../routes/topic/Topic')
+  () => import(/* webpackChunkName: "Topic" */'../routes/Topic')
 );
 
 @withRouter

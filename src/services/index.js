@@ -1,4 +1,4 @@
-import * as TopicsService from './topics';
+import * as TopicsService from './TopicsService';
 
 export {
   TopicsService,

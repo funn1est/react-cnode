@@ -1,7 +1,7 @@
 import React from 'react';
 import { List, Card, Avatar } from 'antd';
 import { TopicsService } from 'services';
-import styles from './Topic.scss';
+import styles from './index.scss';
 
 class Topic extends React.PureComponent {
   constructor(props) {
