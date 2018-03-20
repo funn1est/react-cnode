@@ -35,6 +35,7 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
+              minimize: true,
               camelCase: true,
               modules: true,
               importLoaders: 1,
@@ -53,6 +54,7 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
+              minimize: true,
               camelCase: true,
               modules: true,
               importLoaders: 1,
@@ -74,7 +76,12 @@ module.exports = {
         include: /node_modules/,
         use: [
           { loader: 'style-loader' },
-          { loader: 'css-loader' },
+          {
+            loader: 'css-loader',
+            options: {
+              minimize: true,
+            },
+          },
           { loader: 'postcss-loader' },
           {
             loader: 'less-loader',

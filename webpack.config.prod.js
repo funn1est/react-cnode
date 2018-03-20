@@ -24,7 +24,14 @@ const prod = {
   },
   optimization: {
     splitChunks: {
-      minChunks: 2,
+      cacheGroups: {
+        vendor: {
+          chunks: 'initial',
+          name: 'vendor',
+          test: 'vendor',
+          enforce: true,
+        },
+      },
     },
     runtimeChunk: {
       name: 'manifest',
