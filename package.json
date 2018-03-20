@@ -6,8 +6,8 @@
   "author": "FuNn1esT <admin@funn1est.cn>",
   "license": "MIT",
   "scripts": {
-    "dev": "webpack-dev-server --config webpack.dev.config.js --progress",
-    "prod": "webpack --config webpack.prod.config.js --progress"
+    "dev": "webpack-dev-server --config webpack.config.dev.js --progress",
+    "prod": "webpack --config webpack.config.prod.js --progress"
   },
   "dependencies": {
     "antd": "^3.3.0",
