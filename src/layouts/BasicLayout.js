@@ -1,10 +1,16 @@
 import React from 'react';
 import { Layout, Menu } from 'antd';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
-import { Home, Topic } from 'routes';
+import { asyncRender } from 'utils';
 import styles from './BasicLayout.scss';
 
 const { Header, Content } = Layout;
+const Home = asyncRender(
+  () => import(/* webpackChunkName: "home" */'../routes/home/Home')
+);
+const Topic = asyncRender(
+  () => import(/* webpackChunkName: "topic" */'../routes/topic/Topic')
+);
 
 @withRouter
 class BasicLayout extends React.PureComponent {
