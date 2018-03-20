@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const merge = require('webpack-merge');
 const base = require('./webpack.config');
 
@@ -46,6 +47,7 @@ const prod = {
       verbose: true,
       dry: false,
     }),
+    new BundleAnalyzerPlugin(),
   ],
 };
 
