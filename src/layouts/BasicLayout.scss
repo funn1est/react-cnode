@@ -1,7 +1,12 @@
+.container {
+  min-height: 100vh;
+}
+
 .header {
   background: aquamarine;
 }
 
 .content {
+  height: 100%;
   margin: 24px 24px 0;
 }

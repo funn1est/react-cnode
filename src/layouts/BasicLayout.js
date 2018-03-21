@@ -35,7 +35,7 @@ class BasicLayout extends React.PureComponent {
   render() {
     const { tab } = this.state;
     return (
-      <Layout>
+      <Layout className={styles.container}>
         <Header className={styles.header}>
           <div className="logo" />
           <Menu
