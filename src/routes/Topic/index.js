@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { TopicComponent } from 'components';
 import { TopicsService } from 'services';
 import styles from './index.scss';
@@ -6,6 +7,14 @@ import styles from './index.scss';
 const { TopicContent, TopicReply } = TopicComponent;
 
 class Topic extends React.PureComponent {
+  static propTypes = {
+    match: PropTypes.shape({
+      params: PropTypes.shape({
+        id: PropTypes.string,
+      }),
+    }).isRequired,
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -46,7 +55,7 @@ class Topic extends React.PureComponent {
           title={topicData.title}
           content={topicData.content}
         />
-        <TopicReply data={topicData.replies} />
+        <TopicReply loading={loading} data={topicData.replies} />
       </div>
     );
   }
