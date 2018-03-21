@@ -6,10 +6,10 @@ import styles from './BasicLayout.scss';
 
 const { Header, Content } = Layout;
 const Home = asyncRender(
-  () => import(/* webpackChunkName: "Home" */'../routes/Home')
+  () => import(/* webpackChunkName: "Home" */'../routes/Home'),
 );
 const Topic = asyncRender(
-  () => import(/* webpackChunkName: "Topic" */'../routes/Topic')
+  () => import(/* webpackChunkName: "Topic" */'../routes/Topic'),
 );
 
 @withRouter
@@ -52,7 +52,7 @@ class BasicLayout extends React.PureComponent {
             <Menu.Item key="dev">客户端测试</Menu.Item>
           </Menu>
         </Header>
-        <Content style={{ margin: '24px 24px 0' }}>
+        <Content className={styles.content}>
           <Route path="/" exact render={() => <Home tab={tab} />} />
           <Route path="/topic/:id" component={Topic} />
         </Content>

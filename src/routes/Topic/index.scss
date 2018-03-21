@@ -1,10 +1,5 @@
-.content {
-  overflow-x: auto;
-}
-
-.reply {
-  img {
-    display: inline;
-    max-width: 100%;
-  }
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }

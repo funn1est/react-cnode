@@ -1,7 +1,9 @@
 import React from 'react';
-import { List, Card, Avatar } from 'antd';
+import { TopicComponent } from 'components';
 import { TopicsService } from 'services';
 import styles from './index.scss';
+
+const { TopicContent, TopicReply } = TopicComponent;
 
 class Topic extends React.PureComponent {
   constructor(props) {
@@ -38,31 +40,13 @@ class Topic extends React.PureComponent {
   render() {
     const { topicData, loading } = this.state;
     return (
-      <div style={{ width: '900px' }}>
-        <Card loading={loading} title={topicData.title}>
-          <div
-            className={styles.content}
-            dangerouslySetInnerHTML={{ __html: topicData.content }}
-          />
-        </Card>
-        <List
-          dataSource={topicData.replies}
-          style={{ background: 'white' }}
-          renderItem={item => (
-            <List.Item>
-              <List.Item.Meta
-                avatar={<Avatar src={item.author.avatar_url} />}
-                title={item.author.loginname}
-                description={
-                  <div
-                    className={styles.reply}
-                    dangerouslySetInnerHTML={{ __html: item.content }}
-                  />
-                }
-              />
-            </List.Item>
-          )}
+      <div className={styles.container}>
+        <TopicContent
+          loading={loading}
+          title={topicData.title}
+          content={topicData.content}
         />
+        <TopicReply data={topicData.replies} />
       </div>
     );
   }
