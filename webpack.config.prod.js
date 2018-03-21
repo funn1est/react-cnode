@@ -13,7 +13,7 @@ const prod = {
       path.resolve('src', 'index.js'),
     ],
     vendor: [
-      'react', 'react-dom', 'react-router-dom',
+      'react', 'react-dom', 'react-router-dom', 'axios',
     ],
   },
   output: {
