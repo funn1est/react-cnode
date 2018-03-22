@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { List, Avatar, Card, Divider, Tag } from 'antd';
 import { TopicsService } from 'services';
+import styles from './index.scss';
 
 class Home extends React.PureComponent {
   constructor(props) {
@@ -60,10 +61,10 @@ class Home extends React.PureComponent {
     const { topicsData, loading } = this.state;
     return (
       <List
+        className={styles.container}
         size="large"
         grid={{ gutter: 16, column: 1 }}
         dataSource={topicsData}
-        style={{ width: '1000px' }}
         loading={loading}
         renderItem={item => (
           <List.Item
@@ -72,7 +73,7 @@ class Home extends React.PureComponent {
             <Card>
               <Card.Meta
                 title={
-                  <div>
+                  <div className={styles.item}>
                     <div>
                       <Avatar
                         size="small"
