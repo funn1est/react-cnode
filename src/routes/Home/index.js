@@ -1,51 +1,32 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { List, Avatar, Card, Divider, Tag } from 'antd';
-import { TopicsService } from 'services';
+import { getTopicsData } from './redux';
 import styles from './index.scss';
 
+@connect(
+  state => ({
+    loading: state.home.loading,
+    topicsData: state.home.topicsData,
+  }),
+  dispatch => ({
+    getTopicsData: bindActionCreators(getTopicsData, dispatch),
+  }),
+)
 class Home extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      topicsData: [],
-      loading: false,
-    };
-  }
-
   componentDidMount() {
-    this.getTopicsData();
+    const { tab } = this.props;
+    this.props.getTopicsData(tab);
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.tab !== this.props.tab) {
-      this.getTopicsData();
+      const { tab } = this.props;
+      this.props.getTopicsData(tab);
     }
   }
-
-  getTopicsData = () => {
-    const { tab } = this.props;
-    this.setState({
-      loading: true,
-    });
-    TopicsService.getTopics({
-      tab,
-      page: 1,
-      limit: 20,
-      mdrender: 'true',
-    })
-      .then(({ data: { data } }) => {
-        this.setState({
-          topicsData: data,
-          loading: false,
-        });
-      })
-      .catch(() => {
-        this.setState({
-          loading: false,
-        });
-      });
-  };
 
   renderTag = (item) => {
     const Tabs = {
@@ -58,7 +39,7 @@ class Home extends React.PureComponent {
   };
 
   render() {
-    const { topicsData, loading } = this.state;
+    const { topicsData, loading } = this.props;
     return (
       <List
         className={styles.container}
