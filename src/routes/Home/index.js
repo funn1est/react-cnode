@@ -94,6 +94,9 @@ class Home extends React.PureComponent {
                 }
                 description={
                   <div>
+                    <div className={styles.content}>
+                      {item.content.replace(/<[^>]*>/g, '')}
+                    </div>
                     <div>
                       {`阅读数:${item.visit_count}`}
                       <Divider type="vertical" />
