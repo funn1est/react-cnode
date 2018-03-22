@@ -1,4 +1,4 @@
-import { hot } from 'react-hot-loader';
+// import { hot } from 'react-hot-loader';
 import React from 'react';
 import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
@@ -16,6 +16,7 @@ const store = configureStore();
 const App = () => {
   return (
     <Provider store={store}>
+      {/* <Provider store={store} key={Math.random()}> */}
       <LocaleProvider locale={zhCN}>
         <Router>
           <Switch>
@@ -27,4 +28,5 @@ const App = () => {
   );
 };
 
-export default hot(module)(App);
+// export default hot(module)(App);
+export default App;
