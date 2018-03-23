@@ -1,14 +1,20 @@
 import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 import { AppContainer } from 'react-hot-loader';
+import configureStore from 'redux/configureStore';
 import App from './router';
 import './index.scss';
+
+const store = configureStore();
 
 const render = (Component) => {
   ReactDOM.render(
     <AppContainer>
-      <Component />
+      <Provider store={store}>
+        <Component />
+      </Provider>
     </AppContainer>,
     document.getElementById('root'),
   );
@@ -23,8 +29,3 @@ if (module.hot) {
     render(newApp);
   });
 }
-
-// ReactDOM.render(
-//   <App />,
-//   document.getElementById('root'),
-// );
