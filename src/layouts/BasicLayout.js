@@ -1,7 +1,10 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { Layout, Menu } from 'antd';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { asyncRender } from 'utils';
+import { changeTab } from './BasicLayoutRedux';
 import styles from './BasicLayout.scss';
 
 const { Header, Content } = Layout;
@@ -13,27 +16,25 @@ const Topic = asyncRender(
 );
 
 @withRouter
+@connect(
+  state => ({
+    tab: state.basic.tab,
+  }),
+  dispatch => ({
+    changeTab: bindActionCreators(changeTab, dispatch),
+  }),
+)
 class BasicLayout extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      tab: 'all',
-    };
-  }
-
   onMenuClicked = (e) => {
     const { location: { pathname }, match } = this.props;
     if (pathname !== '/') {
       this.props.history.push('/');
     }
 
-    this.setState({
-      tab: e.key,
-    });
+    this.props.changeTab(e.key);
   };
 
   render() {
-    const { tab } = this.state;
     return (
       <Layout className={styles.container}>
         <Header className={styles.header}>
@@ -53,7 +54,7 @@ class BasicLayout extends React.PureComponent {
           </Menu>
         </Header>
         <Content className={styles.content}>
-          <Route path="/" exact render={() => <Home tab={tab} />} />
+          <Route path="/" exact component={Home} />
           <Route path="/topic/:id" component={Topic} />
         </Content>
       </Layout>

@@ -1,9 +1,9 @@
 import { createAction, handleActions } from 'redux-actions';
 import { TopicsService } from 'services';
 
-const LOAD_TOPICS = 'routes/home/LOAD_TOPICS';
-const LOAD_TOPICS_SUCCESS = 'routes/home/LOAD_TOPICS_SUCCESS';
-const LOAD_TOPICS_ERROR = 'routes/home/LOAD_TOPICS_ERROR';
+const LOAD_TOPICS = 'routes/Home/LOAD_TOPICS';
+const LOAD_TOPICS_SUCCESS = 'routes/Home/LOAD_TOPICS_SUCCESS';
+const LOAD_TOPICS_ERROR = 'routes/Home/LOAD_TOPICS_ERROR';
 
 const initialState = {
   loading: false,

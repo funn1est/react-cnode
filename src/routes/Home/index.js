@@ -3,11 +3,12 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { List, Avatar, Card, Divider, Tag } from 'antd';
-import { getTopicsData } from './redux';
+import { getTopicsData } from './HomeRedux';
 import styles from './index.scss';
 
 @connect(
   state => ({
+    tab: state.basic.tab,
     loading: state.home.loading,
     topicsData: state.home.topicsData,
   }),
