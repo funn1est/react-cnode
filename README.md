@@ -6,9 +6,15 @@
 
 使用React、Webpack实现的CNode社区克隆项目
 
+## 技术栈
+
+- webpack
+- Redux
+- ant design
+
 ## 路线图
 
-- [ ] 首页
+- [x] 首页
 
 ## 开源协议
 [MIT](LICENSE)
