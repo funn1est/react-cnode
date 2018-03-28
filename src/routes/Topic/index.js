@@ -1,11 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { TopicComponent } from 'components';
-import { TopicsService } from 'services';
+import { getTopicData } from './TopicRedux';
 import styles from './index.scss';
 
 const { TopicContent, TopicReply } = TopicComponent;
 
+@connect(
+  state => ({
+    loading: state.topic.loading,
+    topicData: state.topic.topicData,
+  }),
+  dispatch => ({
+    getTopicData: bindActionCreators(getTopicData, dispatch),
+  }),
+)
 class Topic extends React.PureComponent {
   static propTypes = {
     match: PropTypes.shape({
@@ -15,39 +26,13 @@ class Topic extends React.PureComponent {
     }).isRequired,
   };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      topicData: [],
-      loading: false,
-    };
-  }
-
   componentDidMount() {
-    this.getTopicData();
-  }
-
-  getTopicData = async () => {
     const { match: { params: { id } } } = this.props;
-    this.setState({
-      loading: true,
-    });
-    try {
-      const { data: { data } } =
-        await TopicsService.getTopic(id, { mdrender: 'true' });
-      this.setState({
-        topicData: data,
-        loading: false,
-      });
-    } catch (e) {
-      this.setState({
-        loading: false,
-      });
-    }
-  };
+    this.props.getTopicData(id);
+  }
 
   render() {
-    const { topicData, loading } = this.state;
+    const { topicData, loading } = this.props;
     return (
       <div className={styles.container}>
         <TopicContent
