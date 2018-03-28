@@ -18,20 +18,20 @@ const loadTopicsSuccess = createAction(
 );
 const loadTopicsError = createAction(LOAD_TOPICS_ERROR);
 
-export const getTopicsData = tab => (dispatch) => {
+export const getTopicsData = tab => async (dispatch) => {
   dispatch(loadTopics());
-  TopicsService.getTopics({
-    tab,
-    page: 1,
-    limit: 20,
-    mdrender: 'true',
-  })
-    .then(({ data: { data } }) => {
-      dispatch(loadTopicsSuccess(data));
-    })
-    .catch(() => {
-      dispatch(loadTopicsError());
-    });
+  try {
+    const { data: { data } } =
+      await TopicsService.getTopics({
+        tab,
+        page: 1,
+        limit: 20,
+        mdrender: 'true',
+      });
+    dispatch(loadTopicsSuccess(data));
+  } catch (e) {
+    dispatch(loadTopicsError());
+  }
 };
 
 const reducer = handleActions({

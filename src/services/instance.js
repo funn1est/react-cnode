@@ -22,9 +22,7 @@ const checkStatus = (response) => {
   throw error;
 };
 
-export const get = (url, params) => new Promise(((resolve, reject) => {
-  instance.get(url, { params })
-    .then(checkStatus)
-    .then(resolve)
-    .catch(reject);
-}));
+export const get = async (url, params) => {
+  const res = await instance.get(url, { params });
+  return checkStatus(res);
+};

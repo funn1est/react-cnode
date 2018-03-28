@@ -27,23 +27,23 @@ class Topic extends React.PureComponent {
     this.getTopicData();
   }
 
-  getTopicData = () => {
+  getTopicData = async () => {
     const { match: { params: { id } } } = this.props;
     this.setState({
       loading: true,
     });
-    TopicsService.getTopic(id, { mdrender: true })
-      .then(({ data: { data } }) => {
-        this.setState({
-          topicData: data,
-          loading: false,
-        });
-      })
-      .catch(() => {
-        this.setState({
-          loading: false,
-        });
+    try {
+      const { data: { data } } =
+        await TopicsService.getTopic(id, { mdrender: 'true' });
+      this.setState({
+        topicData: data,
+        loading: false,
       });
+    } catch (e) {
+      this.setState({
+        loading: false,
+      });
+    }
   };
 
   render() {
