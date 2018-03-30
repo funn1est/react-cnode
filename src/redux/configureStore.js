@@ -10,7 +10,13 @@ import rootReducer from './reducers';
 const reducer = combineReducers({
   ...rootReducer,
 });
-const middleware = composeWithDevTools(applyMiddleware(thunk));
+
+let middleware;
+if (process.env.NODE_ENV === 'production') {
+  middleware = applyMiddleware(thunk);
+} else {
+  middleware = composeWithDevTools(applyMiddleware(thunk));
+}
 
 const configureStore = (initialState) => {
   const store = createStore(
