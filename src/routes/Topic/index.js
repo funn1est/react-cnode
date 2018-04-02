@@ -24,6 +24,13 @@ class Topic extends React.PureComponent {
         id: PropTypes.string,
       }),
     }).isRequired,
+    getTopicData: PropTypes.func,
+    topicData: PropTypes.shape({
+      title: PropTypes.string,
+      content: PropTypes.string,
+      replies: PropTypes.array,
+    }),
+    loading: PropTypes.bool,
   };
 
   componentDidMount() {

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { HomeComponent } from 'components';
@@ -17,6 +18,13 @@ const { HomeContent } = HomeComponent;
   }),
 )
 class Home extends React.PureComponent {
+  static propTypes = {
+    tab: PropTypes.string,
+    getTopicsData: PropTypes.func,
+    topicsData: PropTypes.array,
+    loading: PropTypes.bool,
+  };
+
   componentDidMount() {
     const { tab } = this.props;
     this.props.getTopicsData(tab);
