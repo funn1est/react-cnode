@@ -1,9 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { List, Avatar, Card, Divider, Tag } from 'antd';
 import styles from './HomeContent.scss';
 
+@connect(
+  state => ({
+    loading: state.home.loading,
+    topicsData: state.home.topicsData,
+  }),
+)
 class HomeContent extends React.Component {
   static propTypes = {
     loading: PropTypes.bool.isRequired,

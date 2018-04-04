@@ -10,8 +10,6 @@ const { HomeContent } = HomeComponent;
 @connect(
   state => ({
     tab: state.basic.tab,
-    loading: state.home.loading,
-    topicsData: state.home.topicsData,
   }),
   dispatch => ({
     getTopicsData: bindActionCreators(getTopicsData, dispatch),
@@ -21,8 +19,6 @@ class Home extends React.PureComponent {
   static propTypes = {
     tab: PropTypes.string,
     getTopicsData: PropTypes.func,
-    topicsData: PropTypes.array,
-    loading: PropTypes.bool,
   };
 
   componentDidMount() {
@@ -38,9 +34,8 @@ class Home extends React.PureComponent {
   }
 
   render() {
-    const { topicsData, loading } = this.props;
     return (
-      <HomeContent topicsData={topicsData} loading={loading} />
+      <HomeContent />
     );
   }
 }
