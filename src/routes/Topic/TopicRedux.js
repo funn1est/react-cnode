@@ -22,7 +22,7 @@ export const getTopicData = id => async (dispatch) => {
   dispatch(loadTopic());
   try {
     const { data: { data } } =
-      await TopicsService.getTopic(id, { mdrender: 'true' });
+      await TopicsService.getTopic(id, { mdrender: 'false' });
     dispatch(loadTopicSuccess(data));
   } catch (e) {
     dispatch(loadTopicError());
