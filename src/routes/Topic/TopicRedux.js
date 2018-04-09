@@ -7,7 +7,7 @@ const LOAD_TOPIC_ERROR = 'routes/Topic/LOAD_TOPIC_ERROR';
 
 const initialState = {
   loading: false,
-  topicData: [],
+  topicData: {},
   error: false,
 };
 
