@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { List, Avatar } from 'antd';
+import Markdown from 'react-markdown';
 import styles from './TopicReply.scss';
 
 class TopicReply extends React.PureComponent {
@@ -30,10 +31,7 @@ class TopicReply extends React.PureComponent {
               avatar={<Avatar src={item.author.avatar_url} />}
               title={item.author.loginname}
               description={
-                <div
-                  className={styles.content}
-                  dangerouslySetInnerHTML={{ __html: item.content }}
-                />
+                <Markdown className={styles.content} source={item.content} />
               }
             />
           </List.Item>
