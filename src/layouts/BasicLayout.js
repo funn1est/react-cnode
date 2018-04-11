@@ -2,18 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Layout, Menu } from 'antd';
-import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
-import { asyncRender } from 'utils';
+import { withRouter } from 'react-router-dom';
+import { renderRoutes } from 'react-router-config';
 import { changeTab } from './BasicLayoutRedux';
 import styles from './BasicLayout.scss';
 
 const { Header, Content } = Layout;
-const Home = asyncRender(
-  () => import(/* webpackChunkName: "Home" */'../routes/Home'),
-);
-const Topic = asyncRender(
-  () => import(/* webpackChunkName: "Topic" */'../routes/Topic'),
-);
 
 @withRouter
 @connect(
@@ -35,6 +29,7 @@ class BasicLayout extends React.PureComponent {
   };
 
   render() {
+    const { route: { routes } } = this.props;
     return (
       <Layout className={styles.container}>
         <Header className={styles.header}>
@@ -54,8 +49,7 @@ class BasicLayout extends React.PureComponent {
           </Menu>
         </Header>
         <Content className={styles.content}>
-          <Route path="/" exact component={Home} />
-          <Route path="/topic/:id" component={Topic} />
+          {renderRoutes(routes)}
         </Content>
       </Layout>
     );
