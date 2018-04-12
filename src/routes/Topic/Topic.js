@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as TopicComponent from './components';
 import { getTopicData } from './TopicRedux';
-import styles from './Topic.scss';
 
 const { TopicContent, TopicReply } = TopicComponent;
 
@@ -40,16 +39,19 @@ class Topic extends React.PureComponent {
 
   render() {
     const { topicData, loading } = this.props;
-    return (
-      <div className={styles.container}>
-        <TopicContent
-          loading={loading}
-          title={topicData.title}
-          content={topicData.content}
-        />
-        <TopicReply loading={loading} data={topicData.replies} />
-      </div>
-    );
+    return [
+      <TopicContent
+        key="TopicContent"
+        loading={loading}
+        title={topicData.title}
+        content={topicData.content}
+      />,
+      <TopicReply
+        key="TopicReply"
+        loading={loading}
+        data={topicData.replies}
+      />,
+    ];
   }
 }
 
