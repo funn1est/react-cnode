@@ -1,5 +1,5 @@
 import React from 'react';
-import { HashRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
 import { LocaleProvider } from 'antd';
 import zhCN from 'antd/lib/locale-provider/zh_CN';
@@ -14,6 +14,9 @@ const Home = asyncRender(
 const Topic = asyncRender(
   () => import(/* webpackChunkName: "Topic" */'./routes/Topic'),
 );
+const User = asyncRender(
+  () => import(/* webpackChunkName: "User" */'./routes/User'),
+);
 
 const routerConfig = [
   {
@@ -27,6 +30,10 @@ const routerConfig = [
       {
         path: '/topic/:id',
         component: Topic,
+      },
+      {
+        path: '/user/:name',
+        component: User,
       },
     ],
   },
