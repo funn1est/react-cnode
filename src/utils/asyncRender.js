@@ -1,5 +1,5 @@
 import React from 'react';
-import { Loading } from 'components';
+import Loading from 'components/Loading';
 
 const asyncRender = getComponent => (
   class AsyncComponent extends React.Component {
