@@ -18,7 +18,7 @@ const prod = {
   },
   output: {
     path: path.resolve('dist'),
-    publicPath: 'js/',
+    publicPath: '/',
     filename: '[name].[chunkhash:8].js',
     chunkFilename: '[name].[chunkhash:8].min.js',
   },
