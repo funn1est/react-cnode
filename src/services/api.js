@@ -4,3 +4,7 @@ export const TopicsApi = {
   topics: '/topics',
   topic: '/topic/:id',
 };
+
+export const UserApi = {
+  user: '/user/:name',
+};
