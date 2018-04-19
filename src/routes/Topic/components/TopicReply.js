@@ -26,12 +26,12 @@ class TopicReply extends React.PureComponent {
         loading={loading}
         dataSource={data}
         renderItem={item => (
-          <List.Item>
+          <List.Item className={styles.content}>
             <List.Item.Meta
               avatar={<Avatar src={item.author.avatar_url} />}
               title={item.author.loginname}
               description={
-                <Markdown className={styles.content} source={item.content} />
+                <Markdown source={item.content} />
               }
             />
           </List.Item>
