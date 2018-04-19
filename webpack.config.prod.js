@@ -13,7 +13,14 @@ const prod = {
       path.resolve('src', 'index.js'),
     ],
     vendor: [
-      'react', 'react-dom', 'react-router-dom', 'axios',
+      'react',
+      'react-dom',
+      'react-router-dom',
+      'axios',
+      'moment',
+      'react-redux',
+      'redux',
+      'redux-actions',
     ],
   },
   output: {
@@ -40,6 +47,10 @@ const prod = {
   plugins: [
     new webpack.HashedModuleIdsPlugin(),
     new webpack.optimize.ModuleConcatenationPlugin(),
+    new webpack.ContextReplacementPlugin(
+      /moment[/\\]locale$/,
+      /zh-cn/,
+    ),
     new HtmlWebpackPlugin({
       template: 'src/index.html',
       inject: true,
