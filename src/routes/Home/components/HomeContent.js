@@ -3,10 +3,12 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { List, Avatar, Card, Divider, Tag } from 'antd';
+import { timeUtils } from 'utils';
 import styles from './HomeContent.scss';
 
 @connect(
   state => ({
+    tab: state.basic.tab,
     loading: state.home.loading,
     topicsData: state.home.topicsData,
   }),
@@ -17,14 +19,24 @@ class HomeContent extends React.Component {
     topicsData: PropTypes.array,
   };
 
-  renderTag = (item) => {
+  renderTag = (key, isTop, isGood) => {
+    const { tab } = this.props;
     const Tabs = {
-      good: <Tag color="blue">精华</Tag>,
+      top: <Tag color="red">置顶</Tag>,
+      good: <Tag color="green">精华</Tag>,
       share: <Tag color="blue">分享</Tag>,
-      ask: <Tag color="blue">问答</Tag>,
-      job: <Tag color="blue">招聘</Tag>,
+      ask: <Tag color="orange">问答</Tag>,
+      job: <Tag color="geekblue">招聘</Tag>,
     };
-    return Tabs[item];
+    if (isTop) {
+      return Tabs.top;
+    } else if (isGood && !Object.is(tab, 'good')) {
+      return Tabs.good;
+    } else if (Object.is(tab, 'all')) {
+      return Tabs[key];
+    } else {
+      return null;
+    }
   };
 
   render() {
@@ -53,7 +65,7 @@ class HomeContent extends React.Component {
                       {item.author.loginname}
                     </div>
                     <div>
-                      {this.renderTag(item.tab)}
+                      {this.renderTag(item.tab, item.top, item.good)}
                       <Link
                         to={{ pathname: `/topic/${item.id}` }}
                       >
@@ -71,6 +83,8 @@ class HomeContent extends React.Component {
                       {`阅读数:${item.visit_count}`}
                       <Divider type="vertical" />
                       {`${item.reply_count}条评论`}
+                      <Divider type="vertical" />
+                      {timeUtils.fromNow(item.last_reply_at)}
                     </div>
                   </div>
                 }
