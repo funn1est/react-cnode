@@ -7,7 +7,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "webpack-dev-server --config webpack.config.dev.js --progress",
-    "prod": "webpack --config webpack.config.prod.js --progress"
+    "prod": "webpack --config webpack.config.prod.js --progress",
+    "test": "jest --config jest.config.js"
   },
   "dependencies": {
     "antd": "3.4.0",
@@ -45,6 +46,7 @@
     "eslint-plugin-react": "^7.7.0",
     "file-loader": "^1.1.11",
     "html-webpack-plugin": "^3.0.6",
+    "jest": "^22.4.3",
     "less": "^3.0.1",
     "less-loader": "^4.1.0",
     "node-sass": "^4.7.2",
