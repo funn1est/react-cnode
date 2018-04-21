@@ -7,6 +7,9 @@
 # Production
 /dist
 
+# Coverge
+/coverage
+
 # Misc
 .DS_Store
 npm-debug.log*
