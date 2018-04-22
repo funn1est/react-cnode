@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Card, List, Avatar } from 'antd';
 
 const tabList = [
@@ -11,7 +12,35 @@ const tabList = [
   },
 ];
 
+export const UserMainContent = ({ data }) => {
+  if (data.length === 0) {
+    return <div>无话题</div>;
+  } else {
+    return (
+      <List
+        dataSource={data}
+        renderItem={item => (
+          <List.Item>
+            <List.Item.Meta
+              avatar={<Avatar src={item.author.avatar_url} />}
+              title={<a href={`/topic/${item.id}`}>{item.title}</a>}
+            />
+          </List.Item>
+        )}
+      />
+    );
+  }
+};
+
 class UserMain extends React.Component {
+  static propTypes = {
+    loading: PropTypes.bool.isRequired,
+    dataList: PropTypes.shape({
+      topics: PropTypes.array.isRequired,
+      replies: PropTypes.array.isRequired,
+    }).isRequired,
+  };
+
   state = {
     key: 'topics',
   };
@@ -20,38 +49,17 @@ class UserMain extends React.Component {
     this.setState({ key });
   };
 
-  renderContent = () => {
-    const { contentList } = this.props;
-    const { key } = this.state;
-    if (contentList[key].length === 0) {
-      return <div>无话题</div>;
-    } else {
-      return (
-        <List
-          dataSource={contentList[key]}
-          renderItem={item => (
-            <List.Item>
-              <List.Item.Meta
-                avatar={<Avatar src={item.author.avatar_url} />}
-                title={<a href={`/topic/${item.id}`}>{item.title}</a>}
-              />
-            </List.Item>
-          )}
-        />
-      );
-    }
-  };
-
   render() {
-    const { loading, contentList } = this.props;
-    console.log(contentList);
+    const { loading, dataList } = this.props;
+    const { key } = this.state;
+
     return (
       <Card
         loading={loading}
         tabList={tabList}
-        onTabChange={key => this.onTabChange(key)}
+        onTabChange={this.onTabChange}
       >
-        {this.renderContent()}
+        <UserMainContent data={dataList[key]} />
       </Card>
     );
   }
