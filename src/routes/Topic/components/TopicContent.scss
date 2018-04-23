@@ -5,4 +5,10 @@
   img {
     max-width: 100%;
   }
+
+  :global {
+    .ant-card-head-title {
+      white-space: normal;
+    }
+  }
 }
