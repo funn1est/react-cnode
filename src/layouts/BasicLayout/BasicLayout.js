@@ -35,7 +35,9 @@ class BasicLayout extends React.PureComponent {
     return (
       <Layout className={styles.container}>
         <Header className={styles.header}>
-          <div className="logo" />
+          <a href="/">
+            <div className={styles.logo} />
+          </a>
           <Menu
             mode="horizontal"
             style={{ lineHeight: '64px' }}
