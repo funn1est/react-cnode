@@ -20,12 +20,14 @@ const { Header, Content } = Layout;
 )
 class BasicLayout extends React.PureComponent {
   onMenuClicked = (e) => {
-    const { location: { pathname }, match } = this.props;
+    const { key } = e;
+    const { tab, location: { pathname } } = this.props;
     if (pathname !== '/') {
       this.props.history.push('/');
     }
-
-    this.props.changeTab(e.key);
+    if (key !== tab) {
+      this.props.changeTab(key);
+    }
   };
 
   render() {
