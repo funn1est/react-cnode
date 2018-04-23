@@ -77,7 +77,7 @@ class HomeContent extends React.Component {
                 description={
                   <div>
                     <div className={styles.content}>
-                      {item.content.replace(/<[^>]*>/g, '').slice(0, 300)}
+                      {item.content.replace(/<[^>]*>/g, '')}
                     </div>
                     <div>
                       {`阅读数:${item.visit_count}`}
