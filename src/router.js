@@ -9,13 +9,19 @@ const BasicLayout = asyncRender(
   () => import(/* webpackChunkName: "basic-layout" */'./layouts/BasicLayout'),
 );
 const Home = asyncRender(
-  () => import(/* webpackChunkName: "Home" */'./routes/Home'),
+  () => import(/* webpackChunkName: "home" */'./routes/Home'),
 );
 const Topic = asyncRender(
-  () => import(/* webpackChunkName: "Topic" */'./routes/Topic'),
+  () => import(/* webpackChunkName: "topic" */'./routes/Topic'),
 );
 const User = asyncRender(
-  () => import(/* webpackChunkName: "User" */'./routes/User'),
+  () => import(/* webpackChunkName: "user" */'./routes/User'),
+);
+const LoginLayout = asyncRender(
+  () => import(/* webpackChunkName: "login-layout" */'./layouts/LoginLayout'),
+);
+const Login = asyncRender(
+  () => import(/* webpackChunkName: "login" */'./routes/Login'),
 );
 
 const routerConfig = [
@@ -34,6 +40,15 @@ const routerConfig = [
       {
         path: '/user/:name',
         component: User,
+      },
+      {
+        component: LoginLayout,
+        routes: [
+          {
+            path: '/login',
+            component: Login,
+          },
+        ],
       },
     ],
   },
