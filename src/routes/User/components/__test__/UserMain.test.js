@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, List } from 'antd';
+import { Card } from 'antd';
 import { shallow, render } from 'enzyme';
 import UserMain, { UserMainContent } from '../UserMain';
 
@@ -69,12 +69,11 @@ describe('<UserMainContent />', () => {
   });
 
   it('should render List when have data', () => {
-    wrapper = shallow(<UserMainContent data={data} />);
-    expect(wrapper.find(List)).toHaveLength(1);
+    wrapper = render(<UserMainContent data={data} />);
+    expect(wrapper.filter('.ant-list')).toHaveLength(1);
   });
 
   it('should render List Item when have data', () => {
-    wrapper = render(<UserMainContent data={data} />);
     expect(wrapper.find('.ant-list-item')).toHaveLength(2);
   });
 });
