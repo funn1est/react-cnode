@@ -7,4 +7,5 @@ export const TopicsApi = {
 
 export const UserApi = {
   user: '/user/:name',
+  accessToken: '/accesstoken',
 };
