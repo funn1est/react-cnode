@@ -1,10 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Layout } from 'antd';
+import { Layout, Modal } from 'antd';
 import { withRouter } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
 import Header from 'components/Header';
+import { logout } from 'routes/Login/LoginRedux';
 import { changeTab } from './BasicLayoutRedux';
 import styles from './BasicLayout.scss';
 
@@ -13,21 +14,39 @@ const { Content } = Layout;
 @withRouter
 @connect(
   state => ({
+    user: state.login.userData,
     tab: state.basic.tab,
   }),
   dispatch => ({
     changeTab: bindActionCreators(changeTab, dispatch),
+    logout: bindActionCreators(logout, dispatch),
   }),
 )
 class BasicLayout extends React.PureComponent {
-  onClickMenu = (e) => {
-    const { key } = e;
+  onClickMenu = ({ key }) => {
     const { tab, location: { pathname } } = this.props;
-    if (pathname !== '/') {
-      this.props.history.push('/');
-    }
-    if (key !== tab) {
-      this.props.changeTab(key);
+    if (key === 'login') {
+      this.props.history.push('/login');
+    } else if (key === 'logout') {
+      const self = this;
+      Modal.confirm({
+        title: '退出登录',
+        content: '是否确认退出登录？',
+        maskClosable: true,
+        onOk() {
+          return new Promise((resolve) => {
+            self.props.logout();
+            resolve();
+          });
+        },
+      });
+    } else {
+      if (key !== tab) {
+        this.props.changeTab(key);
+      }
+      if (pathname !== '/') {
+        this.props.history.push('/');
+      }
     }
   };
 

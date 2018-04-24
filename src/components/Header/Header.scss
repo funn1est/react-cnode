@@ -14,5 +14,22 @@
 }
 
 .menu {
+  float: left;
   line-height: 64px;
+}
+
+.dropDown {
+  :global(.anticon) {
+    margin-right: 8px;
+  }
+}
+
+.account {
+  float: right;
+  line-height: 64px;
+  .avatar {
+    margin: 20px 8px 20px 0;
+    background: rgba(255, 255, 255, .85);
+    vertical-align: middle;
+  }
 }
