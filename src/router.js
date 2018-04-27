@@ -23,6 +23,9 @@ const LoginLayout = asyncRender(
 const Login = asyncRender(
   () => import(/* webpackChunkName: "login" */'./routes/Login'),
 );
+const Post = asyncRender(
+  () => import(/* webpackChunkName: "post" */'./routes/Post'),
+);
 
 const routerConfig = [
   {
@@ -32,6 +35,11 @@ const routerConfig = [
         path: '/',
         exact: true,
         component: Home,
+      },
+      {
+        path: '/topic/create',
+        exact: true,
+        component: Post,
       },
       {
         path: '/topic/:id',
