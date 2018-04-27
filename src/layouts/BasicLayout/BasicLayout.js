@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Layout, Modal } from 'antd';
 import { withRouter } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
-import Header from 'components/Header';
 import { logout } from 'routes/Login/LoginRedux';
-import { FloatingMenu } from './components';
+import { Layout, Modal } from 'antd';
+import Header from 'components/Header';
 import { changeTab } from './BasicLayoutRedux';
 import { userUtils } from '../../utils';
+import { FloatingMenu } from './components';
 import styles from './BasicLayout.scss';
 
 const { Content } = Layout;
@@ -104,7 +104,7 @@ BasicLayout.propTypes = {
     pathname: PropTypes.string,
   }),
   route: PropTypes.shape({
-    routes: PropTypes.object,
+    routes: PropTypes.array,
   }),
   tab: PropTypes.string,
   changeTab: PropTypes.func,
