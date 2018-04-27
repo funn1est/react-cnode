@@ -8,7 +8,8 @@
   "scripts": {
     "dev": "webpack-dev-server --config webpack.config.dev.js --progress",
     "prod": "webpack --config webpack.config.prod.js --progress",
-    "test": "jest --config .jest.config.js"
+    "test": "jest --config .jest.config.js",
+    "coverage": "jest --config .jest.config.js --coverage"
   },
   "dependencies": {
     "antd": "3.4.0",
@@ -23,6 +24,7 @@
     "react-redux": "^5.0.7",
     "react-router-config": "^1.0.0-beta.4",
     "react-router-dom": "^4.2.2",
+    "react-simplemde-editor": "^3.6.14",
     "redux": "^3.7.2",
     "redux-actions": "^2.3.0",
     "redux-thunk": "^2.2.0"
