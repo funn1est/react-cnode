@@ -2,10 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as TopicComponent from './components';
+import { TopicContent, TopicReply } from './components';
 import { getTopicData } from './TopicRedux';
-
-const { TopicContent, TopicReply } = TopicComponent;
 
 @connect(
   state => ({

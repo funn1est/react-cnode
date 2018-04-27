@@ -2,10 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as HomeComponent from './components';
+import { HomeContent } from './components';
 import { getTopicsData } from './HomeRedux';
-
-const { HomeContent } = HomeComponent;
 
 @connect(
   state => ({
