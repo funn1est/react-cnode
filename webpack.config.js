@@ -29,7 +29,10 @@ module.exports = {
       },
       {
         test: /\.(scss|sass)$/,
-        exclude: /node_modules/,
+        exclude: [
+          path.resolve('src', 'styles'),
+          /node_modules/,
+        ],
         use: [
           { loader: 'style-loader' },
           {
@@ -42,6 +45,16 @@ module.exports = {
               localIdentName: '[name]__[local]--[hash:base64:5]',
             },
           },
+          { loader: 'postcss-loader' },
+          { loader: 'sass-loader' },
+        ],
+      },
+      {
+        test: /\.(scss|sass)$/,
+        include: path.resolve('src', 'styles'),
+        use: [
+          { loader: 'style-loader' },
+          { loader: 'css-loader' },
           { loader: 'postcss-loader' },
           { loader: 'sass-loader' },
         ],
