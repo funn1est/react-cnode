@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 10;
+}
+
+.post {
+  margin-bottom: 8px;
+}
