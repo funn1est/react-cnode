@@ -26,8 +26,8 @@ const prod = {
   output: {
     path: path.resolve('dist'),
     publicPath: '/',
-    filename: '[name].[chunkhash:8].js',
-    chunkFilename: '[name].[chunkhash:8].min.js',
+    filename: 'static/js/[name].[chunkhash:8].js',
+    chunkFilename: 'static/js/[name].[chunkhash:8].min.js',
   },
   optimization: {
     splitChunks: {

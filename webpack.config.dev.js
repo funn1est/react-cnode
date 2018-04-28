@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const merge = require('webpack-merge');
 const base = require('./webpack.config');
 
@@ -11,8 +12,8 @@ const dev = {
   output: {
     path: path.resolve('dist'),
     publicPath: '/',
-    filename: '[name].js',
-    chunkFilename: '[name].min.js',
+    filename: 'static/js/[name].js',
+    chunkFilename: 'static/js/[name].min.js',
   },
   devtool: 'cheap-module-eval-source-map',
   devServer: {
@@ -26,6 +27,10 @@ const dev = {
     port: 3000,
   },
   plugins: [
+    new HtmlWebpackPlugin({
+      template: 'src/index.html',
+      inject: true,
+    }),
     new webpack.HotModuleReplacementPlugin(),
   ],
 };
