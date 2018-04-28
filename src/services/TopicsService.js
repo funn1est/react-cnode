@@ -21,9 +21,9 @@ export const postTopics = ({ title, tab, content } = {}) => {
 
   let accesstoken;
   const user = userUtils.getUser();
-  const isLogin = user.length > 0;
+  const isLogin = user !== null;
   if (isLogin) {
-    accesstoken = JSON.parse(user).token;
+    accesstoken = user.token;
   } else {
     notificationUtils.error('请登录后再发表话题');
     return;

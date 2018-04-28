@@ -32,11 +32,8 @@ const menuConfig = [
 ];
 
 const Header = ({ onClickMenu }) => {
-  const isLogin = userUtils.getUser().length > 0;
-  let user;
-  if (isLogin) {
-    user = JSON.parse(userUtils.getUser());
-  }
+  const user = userUtils.getUser();
+  const isLogin = user !== null;
   const userMenu = (
     <Menu className={styles.dropDown} onClick={onClickMenu}>
       <Menu.Item key="logout"><Icon type="logout" />退出登录</Menu.Item>

@@ -9,5 +9,11 @@ export const removeUser = () => {
   sessionStorage.removeItem('user');
 };
 
-export const getUser = () =>
-  localStorage.getItem('user') || sessionStorage.getItem('user') || {};
+export const getUser = () => {
+  const user = localStorage.getItem('user') || sessionStorage.getItem('user');
+  if (user !== undefined) {
+    return JSON.parse(user);
+  } else {
+    return null;
+  }
+};
