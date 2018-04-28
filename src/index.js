@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import { AppContainer } from 'react-hot-loader';
 import configureStore from 'store/configureStore';
 import App from './router';
+import registerServiceWorker from './registerServiceWorker';
 import './index.scss';
 
 const store = configureStore();
@@ -21,6 +22,7 @@ const render = (Component) => {
 };
 
 render(App);
+registerServiceWorker();
 
 if (module.hot) {
   module.hot.accept('./router', () => {
