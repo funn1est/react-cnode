@@ -29,6 +29,7 @@ export const login = (token, remember, callback) => async (dispatch) => {
       name: data.loginname,
       avatar: data.avatar_url,
       id: data.id,
+      token,
     };
     if (remember) {
       userUtils.saveUserLocal(user);
