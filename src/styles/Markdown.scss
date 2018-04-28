@@ -1,0 +1,99 @@
+//colors
+$white: #fff;
+$color_rangoon_green_approx: #191818;
+$black_40: rgba(0, 0, 0, 0.4);
+$color_tundora_approx: #444;
+$color_log_cabin_50_approx: rgba(39, 40, 34, 0.5);
+$color_celeste_approx: #ccc;
+$color_storm_dust_approx: #666;
+$color_gallery_approx: #eee;
+$color_ghost_approx: #c6cbd1;
+$color_mercury_approx: #dfe2e5;
+$color_white_lilac_approx: #f6f8fa;
+
+//fonts
+$font_0: Georgia;
+$font_1: Palatino;
+$font_2: Palatino Linotype;
+$font_3: Times;
+$font_4: Times New Roman;
+$font_5: serif;
+
+.page-header {
+  color: $white;
+  background: $color_rangoon_green_approx;
+  margin: 0;
+  padding: 10px 20px;
+}
+.editor-pane {
+  position: fixed;
+  top: 57px;
+  left: 0;
+  bottom: 0;
+  width: 50%;
+  height: auto;
+  overflow: auto;
+  //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+  box-shadow: -10px 2px 6px 10px $black_40;
+  textarea {
+    min-height: 500px;
+  }
+}
+.markdown-controls {
+  position: relative;
+  z-index: 5;
+  text-align: right;
+  color: $white;
+  float: right;
+  form {
+    background-color: $color_log_cabin_50_approx;
+    margin-right: 20px;
+  }
+  legend {
+    border-bottom: 0;
+    color: $white;
+    font-size: 1.25em;
+    margin: 0;
+    padding: 10px 0 0;
+  }
+}
+pre {
+  border: 1px solid $color_celeste_approx;
+}
+blockquote {
+  color: $color_storm_dust_approx;
+  margin: 0;
+  padding-left: 3em;
+  border-left: 0.5em $color_gallery_approx solid;
+}
+tr {
+  border-top: 1px solid $color_ghost_approx;
+  background: $white;
+}
+th {
+  padding: 6px 13px;
+  border: 1px solid $color_mercury_approx;
+}
+td {
+  padding: 6px 13px;
+  border: 1px solid $color_mercury_approx;
+}
+.result-pane > div {
+  position: fixed;
+  top: 57px;
+  right: 0;
+  left: 50%;
+  bottom: 0;
+  overflow: auto;
+  padding: 10px 10px 10px 20px;
+  color: $color_tundora_approx;
+  font-family: $font_0, $font_1, $font_2, $font_3, $font_4, $font_5;
+  font-size: 16px;
+  line-height: 1.5em;
+}
+.editor textarea {
+  padding: 20px;
+}
+table tr:nth-child(2n) {
+  background: $color_white_lilac_approx;
+}
