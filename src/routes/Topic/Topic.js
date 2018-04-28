@@ -52,7 +52,7 @@ class Topic extends React.PureComponent {
 
   onClickEdit() {
     const { topicData: { id, tab, title, content } } = this.props;
-    this.props.editTopic({ tab, title, content });
+    this.props.editTopic({ id, tab, title, content });
     this.props.history.push(`/topic/${id}/edit`);
   }
 

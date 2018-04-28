@@ -12,6 +12,7 @@ import styles from './Post.scss';
 @withRouter
 @connect(
   state => ({
+    id: state.edit.id,
     tab: state.edit.tab,
     title: state.edit.title,
     content: state.edit.content,
@@ -21,6 +22,7 @@ class Post extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      isPost: true,
       loading: false,
       tab: 'dev',
       titleValue: '',
@@ -55,7 +57,9 @@ class Post extends React.Component {
   }
 
   async onSubmitClick() {
-    const { titleValue: title, tab, contentValue: content } = this.state;
+    const {
+      isPost, titleValue: title, tab, contentValue: content,
+    } = this.state;
     if (title.length === 0) {
       notificationUtils.error('请输入文章标题');
       return;
@@ -69,8 +73,14 @@ class Post extends React.Component {
       loading: true,
     });
     try {
-      const { data: { success, topic_id } } =
-        await TopicsService.postTopics({ title, tab, content });
+      let data;
+      if (isPost) {
+        data = await TopicsService.postTopics({ title, tab, content });
+      } else {
+        const { id } = this.props;
+        data = await TopicsService.postTopics({ id, title, tab, content });
+      }
+      const { data: { success, topic_id } } = data;
       this.setState({
         loading: false,
       });
@@ -96,6 +106,7 @@ class Post extends React.Component {
     if (regexUtils.editRouteRegex.test(pathname)) {
       const { tab, title, content } = this.props;
       this.setState({
+        isPost: false,
         tab,
         titleValue: title,
         contentValue: content,
@@ -133,6 +144,14 @@ Post.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func,
   }),
+  location: PropTypes.shape({
+    pathname: PropTypes.string,
+  }),
+
+  id: PropTypes.string,
+  tab: PropTypes.string,
+  title: PropTypes.string,
+  content: PropTypes.string,
 };
 
 export default Post;

@@ -14,7 +14,8 @@ export const getTopics = (
   return get(TopicsApi.topics, params);
 };
 
-export const postTopics = ({ title, tab, content } = {}) => {
+export const postTopics = ({ id, title, tab, content } = {}) => {
+  const isPost = id === undefined;
   if (title === undefined || tab === undefined || content === undefined) {
     throw new TypeError('missing params');
   }
@@ -34,7 +35,12 @@ export const postTopics = ({ title, tab, content } = {}) => {
     tab,
     content,
   };
-  return post(TopicsApi.topics, params);
+  if (isPost) {
+    return post(TopicsApi.topics, params);
+  } else {
+    params.topic_id = id;
+    return post(TopicsApi.topicsUpdate, params);
+  }
 };
 
 export const getTopic = (
