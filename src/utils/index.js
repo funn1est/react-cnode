@@ -1,14 +1,13 @@
-import * as notificationUtils from './notification';
 import * as regexUtils from './regex';
 import * as timeUtils from './time';
-import * as toastUtils from './toast';
 import * as userUtils from './user';
 
 export { default as asyncRender } from './asyncRender';
+export { default as notificationUtils } from './notification';
+export { default as toastUtils } from './toast';
+
 export {
-  notificationUtils,
   regexUtils,
   timeUtils,
-  toastUtils,
   userUtils,
 };
