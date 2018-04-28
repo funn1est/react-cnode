@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Card } from 'antd';
+import { Card, Button } from 'antd';
 import Markdown from 'react-markdown';
 import styles from './TopicContent.scss';
 
@@ -9,12 +9,25 @@ class TopicContent extends React.PureComponent {
     loading: PropTypes.bool.isRequired,
     title: PropTypes.string,
     content: PropTypes.string,
+    onClickEdit: PropTypes.func.isRequired,
   };
 
   render() {
-    const { loading, title, content } = this.props;
+    const { loading, title, content, onClickEdit } = this.props;
     return (
-      <Card className={styles.container} loading={loading} title={title}>
+      <Card
+        loading={loading}
+        title={title}
+        extra={(
+          <Button
+            type="primary"
+            icon="edit"
+            shape="circle"
+            onClick={onClickEdit}
+          />
+        )}
+        className={styles.container}
+      >
         <Markdown source={content} />
       </Card>
     );

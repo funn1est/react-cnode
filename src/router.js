@@ -43,7 +43,15 @@ const routerConfig = [
       },
       {
         path: '/topic/:id',
+        exact: true,
+        strict: false,
         component: Topic,
+      },
+      {
+        path: '/topic/:id/edit',
+        exact: true,
+        strict: true,
+        component: Post,
       },
       {
         path: '/user/:name',

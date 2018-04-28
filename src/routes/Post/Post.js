@@ -1,14 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Button } from 'antd';
 import { TopicsService } from 'services';
-import { notificationUtils, toastUtils } from 'utils';
+import { notificationUtils, toastUtils, regexUtils } from 'utils';
 import MarkdownEditor from 'components/MarkdownEditor';
 import { PostTab, PostTitle } from './components';
 import styles from './Post.scss';
 
 @withRouter
+@connect(
+  state => ({
+    tab: state.edit.tab,
+    title: state.edit.title,
+    content: state.edit.content,
+  }),
+)
 class Post extends React.Component {
   constructor(props) {
     super(props);
@@ -22,6 +30,10 @@ class Post extends React.Component {
     this.onTitleChange = this.onTitleChange.bind(this);
     this.onEditorChange = this.onEditorChange.bind(this);
     this.onSubmitClick = this.onSubmitClick.bind(this);
+  }
+
+  componentDidMount() {
+    this.getEditPostValue();
   }
 
   onTabChange({ target: { value } }) {
@@ -78,6 +90,18 @@ class Post extends React.Component {
       });
     }
   }
+
+  getEditPostValue = () => {
+    const { location: { pathname } } = this.props;
+    if (regexUtils.editRouteRegex.test(pathname)) {
+      const { tab, title, content } = this.props;
+      this.setState({
+        tab,
+        titleValue: title,
+        contentValue: content,
+      });
+    }
+  };
 
   render() {
     const { loading, titleValue, contentValue } = this.state;
