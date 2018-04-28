@@ -1,13 +1,19 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 import { Button } from 'antd';
+import { TopicsService } from 'services';
+import { notificationUtils, toastUtils } from 'utils';
 import MarkdownEditor from 'components/MarkdownEditor';
-import styles from './Post.scss';
 import { PostTab, PostTitle } from './components';
+import styles from './Post.scss';
 
+@withRouter
 class Post extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      loading: false,
       tab: 'dev',
       titleValue: '',
       contentValue: '',
@@ -36,15 +42,42 @@ class Post extends React.Component {
     });
   }
 
-  onSubmitClick() {
+  async onSubmitClick() {
     const { titleValue: title, tab, contentValue: content } = this.state;
-    console.log(title);
-    console.log(tab);
-    console.log(content);
+    if (title.length === 0) {
+      notificationUtils.error('请输入文章标题');
+      return;
+    }
+    if (content.length === 0) {
+      notificationUtils.error('请输入文章内容');
+      return;
+    }
+
+    this.setState({
+      loading: true,
+    });
+    try {
+      const { data: { success, topic_id } } =
+        await TopicsService.postTopics({ title, tab, content });
+      this.setState({
+        loading: false,
+      });
+      if (success) {
+        toastUtils.success('发布成功');
+        this.props.history.push(`/topic/${topic_id}`);
+      } else {
+        toastUtils.warning('服务器出小差了，请稍后再试');
+      }
+    } catch (e) {
+      toastUtils.warning('网络出小差了，请稍后再试');
+      this.setState({
+        loading: false,
+      });
+    }
   }
 
   render() {
-    const { titleValue, contentValue } = this.state;
+    const { loading, titleValue, contentValue } = this.state;
     return (
       <div className={styles.container}>
         <PostTab onTabChange={this.onTabChange} />
@@ -59,6 +92,7 @@ class Post extends React.Component {
         <Button
           type="primary"
           icon="share-alt"
+          loading={loading}
           onClick={this.onSubmitClick}
         >
           发布主题
@@ -67,5 +101,11 @@ class Post extends React.Component {
     );
   }
 }
+
+Post.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }),
+};
 
 export default Post;
