@@ -134,13 +134,12 @@ class Topic extends React.PureComponent {
         <TopicContent
           key="TopicContent"
           loading={loading}
-          title={topicData.title}
-          content={topicData.content}
+          topicData={topicData}
           renderEdit={user.id === topicData.author_id}
           onClickEdit={this.onClickEdit}
         />
         {
-          topicData.replies.length > 0 && (
+          topicData.replies && topicData.replies.length > 0 && (
             <TopicReply
               key="TopicReply"
               loading={loading}

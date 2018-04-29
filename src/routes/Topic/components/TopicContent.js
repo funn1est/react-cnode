@@ -1,40 +1,44 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Card, Button } from 'antd';
+import { Card, Button, Avatar } from 'antd';
 import Markdown from 'react-markdown';
 import styles from './TopicContent.scss';
 
-class TopicContent extends React.Component {
-  static propTypes = {
-    loading: PropTypes.bool.isRequired,
-    renderEdit: PropTypes.bool.isRequired,
-    title: PropTypes.string,
-    content: PropTypes.string,
-    onClickEdit: PropTypes.func.isRequired,
-  };
+const TopicContent = ({
+  loading, topicData, renderEdit, onClickEdit,
+}) => (
+  <Card
+    className={styles.container}
+    loading={loading}
+    title={(
+      <Card.Meta
+        avatar={<Avatar
+          src={(topicData.author || {}).avatar_url}
+          size="large"
+        />}
+        title={topicData.title}
+      />
+    )}
+    actions={renderEdit && [
+      (
+        <Button
+          icon="edit"
+          onClick={onClickEdit}
+        >
+          编辑话题
+        </Button>
+      ),
+    ]}
+  >
+    <Markdown source={topicData.content} />
+  </Card>
+);
 
-  render() {
-    const { loading, title, content, renderEdit, onClickEdit } = this.props;
-    return (
-      <Card
-        className={styles.container}
-        loading={loading}
-        title={title}
-        actions={renderEdit && [
-          (
-            <Button
-              icon="edit"
-              onClick={onClickEdit}
-            >
-              编辑话题
-            </Button>
-          ),
-        ]}
-      >
-        <Markdown source={content} />
-      </Card>
-    );
-  }
-}
+TopicContent.propTypes = {
+  loading: PropTypes.bool.isRequired,
+  topicData: PropTypes.object.isRequired,
+  renderEdit: PropTypes.bool.isRequired,
+  onClickEdit: PropTypes.func.isRequired,
+};
 
 export default TopicContent;
