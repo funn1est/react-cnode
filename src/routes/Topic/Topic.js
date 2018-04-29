@@ -62,6 +62,7 @@ class Topic extends React.PureComponent {
       <TopicContent
         key="TopicContent"
         loading={loading}
+        authorId={topicData.author_id}
         title={topicData.title}
         content={topicData.content}
         onClickEdit={this.onClickEdit}

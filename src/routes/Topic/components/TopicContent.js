@@ -2,23 +2,27 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Card, Button } from 'antd';
 import Markdown from 'react-markdown';
+import { userUtils } from 'utils';
 import styles from './TopicContent.scss';
 
-class TopicContent extends React.PureComponent {
+class TopicContent extends React.Component {
   static propTypes = {
     loading: PropTypes.bool.isRequired,
+    authorId: PropTypes.string.isRequired,
     title: PropTypes.string,
     content: PropTypes.string,
     onClickEdit: PropTypes.func.isRequired,
   };
 
   render() {
-    const { loading, title, content, onClickEdit } = this.props;
+    const { loading, authorId, title, content, onClickEdit } = this.props;
+    const user = userUtils.getUser() || {};
     return (
       <Card
+        className={styles.container}
         loading={loading}
         title={title}
-        extra={(
+        extra={authorId === user.id && (
           <Button
             type="primary"
             icon="edit"
@@ -26,7 +30,6 @@ class TopicContent extends React.PureComponent {
             onClick={onClickEdit}
           />
         )}
-        className={styles.container}
       >
         <Markdown source={content} />
       </Card>
