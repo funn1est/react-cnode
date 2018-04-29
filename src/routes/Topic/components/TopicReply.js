@@ -25,11 +25,16 @@ class TopicReply extends React.PureComponent {
         className={styles.container}
         loading={loading}
         dataSource={data}
-        renderItem={item => (
+        renderItem={(item, key) => (
           <List.Item className={styles.content}>
             <List.Item.Meta
               avatar={<Avatar src={item.author.avatar_url} />}
-              title={item.author.loginname}
+              title={(
+                <div id={item.id}>
+                  {item.author.loginname}
+                  <a href={`#${item.id}`}>{`${key + 1} 楼`}</a>
+                </div>
+              )}
               description={
                 <Markdown source={item.content} />
               }

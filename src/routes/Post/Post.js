@@ -31,7 +31,7 @@ class Post extends React.Component {
     this.onTabChange = this.onTabChange.bind(this);
     this.onTitleChange = this.onTitleChange.bind(this);
     this.onEditorChange = this.onEditorChange.bind(this);
-    this.onSubmitClick = this.onSubmitClick.bind(this);
+    this.onClickSubmit = this.onClickSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -56,7 +56,7 @@ class Post extends React.Component {
     });
   }
 
-  async onSubmitClick() {
+  async onClickSubmit() {
     const {
       isPost, titleValue: title, tab, contentValue: content,
     } = this.state;
@@ -88,12 +88,14 @@ class Post extends React.Component {
         toastUtils.success('发布成功');
         this.props.history.push(`/topic/${topic_id}`);
       } else {
-        toastUtils.warning('服务器出小差了，请稍后再试');
+        notificationUtils.warning('服务器出小差了，请稍后再试');
       }
     } catch (e) {
       // TopicsService.postTopics() interrupt
       if (!(e instanceof TypeError)) {
-        toastUtils.warning('网络出小差了，请稍后再试');
+        notificationUtils.warning('网络出小差了，请稍后再试');
+      } else {
+        console.log(e);
       }
       this.setState({
         loading: false,
@@ -131,7 +133,7 @@ class Post extends React.Component {
           type="primary"
           icon="share-alt"
           loading={loading}
-          onClick={this.onSubmitClick}
+          onClick={this.onClickSubmit}
         >
           发布主题
         </Button>

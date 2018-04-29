@@ -10,3 +10,8 @@ export const UserApi = {
   user: '/user/:name',
   accessToken: '/accesstoken',
 };
+
+export const ReplyApi = {
+  reply: '/topic/:topic_id/replies',
+  upReply: '/reply/:reply_id/ups',
+};
