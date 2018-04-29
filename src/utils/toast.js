@@ -1,26 +1,28 @@
 import { message } from 'antd';
 
 /**
- * 生成全局提示工厂函数
- * @param {string} type 提示类型
+ * global toast generator
+ * @param {string} type - toast type
  * @returns {function(string): void}
  */
 const generator = type =>
   /**
-   * @param {string} msg
+   * @param {string} msg - toast msg
    */
   msg => message[type](msg);
 
 const typeMaps = ['success', 'info', 'warning', 'error'];
 
 /**
- * 全局提示 有四种类型 success, info, warning, error
- * 提示可选参数 (msg: string)
+ * global toast
+ * Four types: success, info, warning, error
+ * @example
+ * toastUtils.success(msg)
  * @type {{object}}
- * @property success 成功提示
- * @property info 信息提示
- * @property warning 警告提示
- * @property error 错误提示
+ * @property success - success toast
+ * @property info - info toast
+ * @property warning - warning toast
+ * @property error - error toast
  */
 const toastUtils = {};
 typeMaps.forEach((item) => {

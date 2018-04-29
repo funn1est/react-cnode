@@ -1,14 +1,14 @@
 import { notification } from 'antd';
 
 /**
- * 生成提醒框工厂函数
- * @param {string} type 提醒框类型
+ * notification generator
+ * @param {string} type - notification type
  * @returns {function(string, string): void}
  */
 const generator = type =>
   /**
-   * @param {string} message 提醒标题
-   * @param {string} description 提醒内容
+   * @param {string} message - notification message
+   * @param {string} description - notification description
    */
   (message, description) => (
     notification[type]({
@@ -20,13 +20,15 @@ const generator = type =>
 const typeMaps = ['success', 'info', 'warning', 'error'];
 
 /**
- * 通知提醒框 有四种类型 success, info, warning, error
- * 提醒框可选参数 (message: string, description: string)
+ * notification
+ * Four types: success, info, warning, error
+ * @example
+ * notification.success(message, description)
  * @type {{object}}
- * @property success 成功提醒框
- * @property info 信息提醒框
- * @property warning 警告提醒框
- * @property error 错误提醒框
+ * @property success - success notification
+ * @property info - info notification
+ * @property warning - warning notification
+ * @property error - error notification
  */
 const notificationUtils = {};
 typeMaps.forEach((item) => {

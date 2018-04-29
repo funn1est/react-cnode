@@ -91,7 +91,7 @@ class Post extends React.Component {
         toastUtils.warning('服务器出小差了，请稍后再试');
       }
     } catch (e) {
-      // 判断 postTopics 中断
+      // TopicsService.postTopics() interrupt
       if (!(e instanceof TypeError)) {
         toastUtils.warning('网络出小差了，请稍后再试');
       }
