@@ -8,7 +8,7 @@ import styles from './TopicContent.scss';
 class TopicContent extends React.Component {
   static propTypes = {
     loading: PropTypes.bool.isRequired,
-    authorId: PropTypes.string.isRequired,
+    authorId: PropTypes.string,
     title: PropTypes.string,
     content: PropTypes.string,
     onClickEdit: PropTypes.func.isRequired,

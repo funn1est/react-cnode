@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { TopicContent, TopicReply } from './components';
+import { TopicContent, TopicReply, TopicEditor } from './components';
 import { getTopicData } from './TopicRedux';
 import { editTopic } from '../Post/PostRedux';
 import '../../styles/Markdown.scss';
@@ -42,7 +42,12 @@ class Topic extends React.PureComponent {
 
   constructor(props) {
     super(props);
+    this.state = {
+      contentValue: '',
+    };
     this.onClickEdit = this.onClickEdit.bind(this);
+    this.onEditorChange = this.onEditorChange.bind(this);
+    this.onClickReply = this.onClickReply.bind(this);
   }
 
   componentDidMount() {
@@ -56,8 +61,19 @@ class Topic extends React.PureComponent {
     this.props.history.push(`/topic/${id}/edit`);
   }
 
+  onEditorChange(value) {
+    this.setState({
+      contentValue: value,
+    });
+  }
+
+  onClickReply() {
+    console.log(this.state.contentValue);
+  }
+
   render() {
     const { topicData, loading } = this.props;
+    const { contentValue } = this.state;
     return [
       <TopicContent
         key="TopicContent"
@@ -71,6 +87,12 @@ class Topic extends React.PureComponent {
         key="TopicReply"
         loading={loading}
         data={topicData.replies}
+      />,
+      <TopicEditor
+        key="TopicEditor"
+        value={contentValue}
+        onEditorChange={this.onEditorChange}
+        onClickReply={this.onClickReply}
       />,
     ];
   }
