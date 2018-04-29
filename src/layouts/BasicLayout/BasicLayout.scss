@@ -5,9 +5,27 @@
 
 .content {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
-  height: 100%;
   justify-content: center;
-  margin: 24px 24px 0;
+  align-items: center;
+  height: 100%;
   max-width: 100%;
+  margin: 24px 24px 0;
+
+  :global {
+    .ant-card {
+      border-radius: 8px;
+    }
+    .ant-card-head {
+      background: transparent;
+    }
+    .ant-card-actions {
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+    }
+    .ant-list {
+      border-radius: 8px;
+    }
+  }
 }
