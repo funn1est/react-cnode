@@ -6,6 +6,7 @@ const POST_ACCESS_TOKEN = 'routes/Login/POST_ACCESS_TOKEN';
 const POST_ACCESS_TOKEN_SUCCESS = 'routes/Login/POST_ACCESS_TOKEN_SUCCESS';
 const POST_ACCESS_TOKEN_ERROR = 'routes/Login/POST_ACCESS_TOKEN_ERROR';
 const POST_LOGOUT = 'routes/Login/POST_LOGOUT';
+const GET_USER = 'routes/Login/GET_USER';
 
 const initialState = {
   loading: false,
@@ -20,6 +21,7 @@ const postAccessTokenSuccess = createAction(
 );
 const postAccessTokenError = createAction(POST_ACCESS_TOKEN_ERROR);
 const postLogout = createAction(POST_LOGOUT);
+const getUser = createAction(GET_USER, payload => payload);
 
 export const login = (token, remember, callback) => async (dispatch) => {
   dispatch(postAccessToken());
@@ -37,8 +39,8 @@ export const login = (token, remember, callback) => async (dispatch) => {
       userUtils.saveUserSession(user);
     }
     toastUtils.success('登录成功');
-    callback();
     dispatch(postAccessTokenSuccess(user));
+    callback();
   } catch (e) {
     dispatch(postAccessTokenError());
   }
@@ -47,6 +49,11 @@ export const login = (token, remember, callback) => async (dispatch) => {
 export const logout = () => (dispatch) => {
   userUtils.removeUser();
   dispatch(postLogout());
+};
+
+export const getCurrentUser = () => (dispatch) => {
+  const user = userUtils.getUser() || {};
+  dispatch(getUser(user));
 };
 
 const reducer = handleActions({
@@ -71,6 +78,11 @@ const reducer = handleActions({
   [POST_LOGOUT]: state => ({
     ...state,
     userData: {},
+  }),
+
+  [GET_USER]: (state, action) => ({
+    ...state,
+    userData: action.payload,
   }),
 }, initialState);
 

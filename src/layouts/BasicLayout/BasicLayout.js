@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { withRouter } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
-import { logout } from 'routes/Login/LoginRedux';
+import { getCurrentUser, logout } from 'routes/Login/LoginRedux';
 import { Layout, Modal } from 'antd';
 import Header from 'components/Header';
 import { changeTab } from './BasicLayoutRedux';
@@ -28,10 +28,15 @@ const routesMap = {
   }),
   dispatch => ({
     changeTab: bindActionCreators(changeTab, dispatch),
+    getCurrentUser: bindActionCreators(getCurrentUser, dispatch),
     logout: bindActionCreators(logout, dispatch),
   }),
 )
 class BasicLayout extends React.PureComponent {
+  componentDidMount() {
+    this.props.getCurrentUser();
+  }
+
   onClickMenu = ({ key }) => {
     const { tab, location: { pathname } } = this.props;
     if (key === 'login') {
@@ -108,6 +113,7 @@ BasicLayout.propTypes = {
   }),
   tab: PropTypes.string,
   changeTab: PropTypes.func,
+  getCurrentUser: PropTypes.func,
 };
 
 export default BasicLayout;
