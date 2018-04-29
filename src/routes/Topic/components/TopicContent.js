@@ -20,14 +20,16 @@ class TopicContent extends React.Component {
         className={styles.container}
         loading={loading}
         title={title}
-        extra={renderEdit && (
-          <Button
-            type="primary"
-            icon="edit"
-            shape="circle"
-            onClick={onClickEdit}
-          />
-        )}
+        actions={renderEdit && [
+          (
+            <Button
+              icon="edit"
+              onClick={onClickEdit}
+            >
+              编辑话题
+            </Button>
+          ),
+        ]}
       >
         <Markdown source={content} />
       </Card>

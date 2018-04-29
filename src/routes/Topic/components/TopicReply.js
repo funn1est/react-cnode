@@ -28,7 +28,7 @@ class TopicReply extends React.PureComponent {
         renderItem={(item, key) => (
           <List.Item className={styles.content}>
             <List.Item.Meta
-              avatar={<Avatar src={item.author.avatar_url} />}
+              avatar={<Avatar src={item.author.avatar_url} size="large" />}
               title={(
                 <div id={item.id}>
                   {item.author.loginname}
