@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Layout, Menu, Dropdown, Avatar, Icon } from 'antd';
-import { userUtils } from 'utils';
 import styles from './Header.scss';
 
 const menuConfig = [
@@ -31,9 +30,8 @@ const menuConfig = [
   },
 ];
 
-const Header = ({ onClickMenu }) => {
-  const user = userUtils.getUser();
-  const isLogin = user !== null;
+const Header = ({ user, onClickMenu }) => {
+  const isLogin = user.id !== undefined;
   const userMenu = (
     <Menu className={styles.dropDown} onClick={onClickMenu}>
       <Menu.Item key="logout"><Icon type="logout" />退出登录</Menu.Item>
@@ -82,6 +80,7 @@ const Header = ({ onClickMenu }) => {
   );
 };
 Header.propTypes = {
+  user: PropTypes.object.isRequired,
   onClickMenu: PropTypes.func.isRequired,
 };
 

@@ -83,11 +83,14 @@ class BasicLayout extends React.PureComponent {
   };
 
   render() {
-    const { route: { routes }, location: { pathname } } = this.props;
+    const {
+      route: { routes }, location: { pathname },
+      user,
+    } = this.props;
     const isHome = Object.is(pathname, '/');
     return (
       <Layout className={styles.container}>
-        <Header onClickMenu={this.onClickMenu} />
+        <Header user={user} onClickMenu={this.onClickMenu} />
         <Content className={styles.content}>
           {renderRoutes(routes)}
         </Content>
@@ -112,6 +115,7 @@ BasicLayout.propTypes = {
     routes: PropTypes.array,
   }),
   tab: PropTypes.string,
+  user: PropTypes.object,
   changeTab: PropTypes.func,
   getCurrentUser: PropTypes.func,
 };
