@@ -142,14 +142,27 @@ class Topic extends React.PureComponent {
 
   getTopicData = () => {
     const { match: { params: { id } } } = this.props;
-    const { replySize, replyId } = this.state;
+    const { replyPage, replySize, replyId } = this.state;
     this.props.getTopicData(id, (data) => {
-      this.setState({
-        replyData: arrayUtils.splitArray(data.replies, replySize),
-      });
-      if (replyId.length > 0) {
+      if (replyId.length === 0) {
+        this.setState({
+          replyData: arrayUtils.splitArray(data.replies, replySize),
+        });
+      } else if (replyPage * replySize < data.replies.length) {
         // jump to the reply just submitted
-        this.jumpToAnchor(replyId);
+        this.setState({
+          replyData: arrayUtils.splitArray(data.replies, replySize),
+          replyPage: Math.ceil(data.replies.length / replySize),
+        }, () => {
+          this.jumpToAnchor(replyId);
+        });
+      } else {
+        // jump to the reply just submitted
+        this.setState({
+          replyData: arrayUtils.splitArray(data.replies, replySize),
+        }, () => {
+          this.jumpToAnchor(replyId);
+        });
       }
     });
   };
