@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ReplyService } from 'services';
-import { toastUtils, notificationUtils } from 'utils';
+import { arrayUtils, toastUtils, notificationUtils } from 'utils';
 import { TopicContent, TopicReply, TopicEditor } from './components';
 import { getTopicData } from './TopicRedux';
 import { editTopic } from '../Post/PostRedux';
@@ -50,13 +50,19 @@ class Topic extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
+      replyData: [],
+      replyPage: 1,
+      replySize: 10,
+
       replyLoading: false,
       contentValue: '',
       replyId: '',
     };
     this.onClickEdit = this.onClickEdit.bind(this);
+    this.onReplyPageChange = this.onReplyPageChange.bind(this);
+    this.onReplySizeChange = this.onReplySizeChange.bind(this);
     this.onEditorChange = this.onEditorChange.bind(this);
-    this.onClickReply = this.onClickReply.bind(this);
+    this.onClickAddReply = this.onClickAddReply.bind(this);
   }
 
   componentDidMount() {
@@ -75,7 +81,26 @@ class Topic extends React.PureComponent {
     });
   }
 
-  async onClickReply() {
+  onReplyPageChange = (replyPage) => {
+    this.setState({
+      replyPage,
+    }, () => {
+      this.jumpToAnchor('Topic__reply');
+    });
+  };
+
+  onReplySizeChange = (replyPage, replySize) => {
+    const { topicData: { replies } } = this.props;
+    this.setState({
+      replyData: arrayUtils.splitArray(replies, replySize),
+      replyPage,
+      replySize,
+    }, () => {
+      this.jumpToAnchor('Topic__reply');
+    });
+  };
+
+  async onClickAddReply() {
     const { user: { token }, topicData: { id: topicId } } = this.props;
     const { contentValue: content } = this.state;
 
@@ -117,22 +142,31 @@ class Topic extends React.PureComponent {
 
   getTopicData = () => {
     const { match: { params: { id } } } = this.props;
-    const { replyId } = this.state;
-    this.props.getTopicData(id, () => {
+    const { replySize, replyId } = this.state;
+    this.props.getTopicData(id, (data) => {
+      this.setState({
+        replyData: arrayUtils.splitArray(data.replies, replySize),
+      });
       if (replyId.length > 0) {
         // jump to the reply just submitted
-        window.location.hash = replyId;
+        this.jumpToAnchor(replyId);
       }
     });
   };
 
+  jumpToAnchor = (href) => {
+    location.href = `#${href}`;
+  };
+
   render() {
     const { user, topicData, loading } = this.props;
-    const { contentValue, replyLoading } = this.state;
+    const {
+      replyData, replyPage, replySize,
+      contentValue, replyLoading,
+    } = this.state;
     return (
       <React.Fragment>
         <TopicContent
-          key="TopicContent"
           loading={loading}
           topicData={topicData}
           renderEdit={user.id === topicData.author_id}
@@ -141,20 +175,22 @@ class Topic extends React.PureComponent {
         {
           topicData.replies && topicData.replies.length > 0 && (
             <TopicReply
-              key="TopicReply"
-              loading={loading}
-              data={topicData.replies}
+              dataSource={replyData[replyPage - 1] || []}
+              total={topicData.replies.length}
+              current={replyPage}
+              pageSize={replySize}
+              onReplyPageChange={this.onReplyPageChange}
+              onReplySizeChange={this.onReplySizeChange}
             />
           )
         }
         {
           user.id !== undefined && (
             <TopicEditor
-              key="TopicEditor"
               value={contentValue}
               loading={replyLoading}
               onEditorChange={this.onEditorChange}
-              onClickReply={this.onClickReply}
+              onClickReply={this.onClickAddReply}
             />
           )
         }

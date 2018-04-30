@@ -20,14 +20,12 @@ const TopicContent = ({
       />
     )}
     actions={renderEdit && [
-      (
-        <Button
-          icon="edit"
-          onClick={onClickEdit}
-        >
-          编辑话题
-        </Button>
-      ),
+      <Button
+        icon="edit"
+        onClick={onClickEdit}
+      >
+        编辑话题
+      </Button>,
     ]}
   >
     <Markdown source={topicData.content} />

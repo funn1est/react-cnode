@@ -24,7 +24,7 @@ export const getTopicData = (id, callback) => async (dispatch) => {
     const { data: { data } } =
       await TopicsService.getTopic(id, { mdrender: 'false' });
     dispatch(loadTopicSuccess(data));
-    callback();
+    callback(data);
   } catch (e) {
     dispatch(loadTopicError());
   }
