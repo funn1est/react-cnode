@@ -1,8 +1,18 @@
-.header {
+.container {
+  width: 100%;
+  background: #fff;
   padding: 0 12px 0 0;
   height: auto;
-  background: #fff;
   box-shadow: 0 1px 4px rgba(0, 21, 41, .08);
+}
+
+.header {
+  max-width: 100%;
+  width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .logo {

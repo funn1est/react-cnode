@@ -39,23 +39,26 @@ const Header = ({ user, onClickMenu }) => {
   );
 
   return (
-    <Layout.Header className={styles.header}>
-      <a href="/">
-        <div className={styles.logo} />
-      </a>
-      <Menu
-        className={styles.menu}
-        mode="horizontal"
-        defaultSelectedKeys={['all']}
-        onClick={onClickMenu}
-      >
-        {menuConfig.map(item => (
-          <Menu.Item key={item.key}>{item.name}</Menu.Item>
-        ))}
-      </Menu>
-      {isLogin ?
-        (
-          <Dropdown overlay={userMenu}>
+    <Layout.Header className={styles.container}>
+      <div className={styles.header}>
+        <div>
+          <a href="/">
+            <div className={styles.logo} />
+          </a>
+          <Menu
+            className={styles.menu}
+            mode="horizontal"
+            defaultSelectedKeys={['all']}
+            onClick={onClickMenu}
+          >
+            {menuConfig.map(item => (
+              <Menu.Item key={item.key}>{item.name}</Menu.Item>
+            ))}
+          </Menu>
+        </div>
+        {isLogin ?
+          (
+            <Dropdown overlay={userMenu}>
             <span className={styles.account}>
               <Avatar
                 className={styles.avatar}
@@ -64,18 +67,19 @@ const Header = ({ user, onClickMenu }) => {
               />
               <span>{user.name}</span>
             </span>
-          </Dropdown>
-        ) :
-        (
-          <Menu
-            className={styles.account}
-            mode="horizontal"
-            selectable={false}
-            onClick={onClickMenu}
-          >
-            <Menu.Item key="login">登录</Menu.Item>
-          </Menu>
-        )}
+            </Dropdown>
+          ) :
+          (
+            <Menu
+              className={styles.account}
+              mode="horizontal"
+              selectable={false}
+              onClick={onClickMenu}
+            >
+              <Menu.Item key="login">登录</Menu.Item>
+            </Menu>
+          )}
+      </div>
     </Layout.Header>
   );
 };

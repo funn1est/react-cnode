@@ -42,57 +42,59 @@ class HomeContent extends React.Component {
   render() {
     const { loading, topicsData } = this.props;
     return (
-      <List
-        className={styles.container}
-        size="large"
-        grid={{ gutter: 16, column: 1 }}
-        dataSource={topicsData}
-        loading={loading}
-        renderItem={item => (
-          <List.Item
-            key={item.id}
-          >
-            <Card>
-              <Card.Meta
-                title={
-                  <div className={styles.item}>
+      <div className={styles.container}>
+        <List
+          className={styles.list}
+          size="large"
+          grid={{ gutter: 16, column: 1 }}
+          dataSource={topicsData}
+          loading={loading}
+          renderItem={item => (
+            <List.Item
+              key={item.id}
+            >
+              <Card>
+                <Card.Meta
+                  title={
+                    <div className={styles.item}>
+                      <div>
+                        <Avatar
+                          size="small"
+                          shape="square"
+                          src={item.author.avatar_url}
+                        />
+                        {item.author.loginname}
+                      </div>
+                      <div>
+                        {this.renderTag(item.tab, item.top, item.good)}
+                        <Link
+                          to={{ pathname: `/topic/${item.id}` }}
+                        >
+                          {item.title}
+                        </Link>
+                      </div>
+                    </div>
+                  }
+                  description={
                     <div>
-                      <Avatar
-                        size="small"
-                        shape="square"
-                        src={item.author.avatar_url}
-                      />
-                      {item.author.loginname}
+                      <div className={styles.content}>
+                        {item.content.replace(/<[^>]*>/g, '')}
+                      </div>
+                      <div>
+                        {`阅读数:${item.visit_count}`}
+                        <Divider type="vertical" />
+                        {`${item.reply_count}条评论`}
+                        <Divider type="vertical" />
+                        {timeUtils.fromNow(item.last_reply_at)}
+                      </div>
                     </div>
-                    <div>
-                      {this.renderTag(item.tab, item.top, item.good)}
-                      <Link
-                        to={{ pathname: `/topic/${item.id}` }}
-                      >
-                        {item.title}
-                      </Link>
-                    </div>
-                  </div>
-                }
-                description={
-                  <div>
-                    <div className={styles.content}>
-                      {item.content.replace(/<[^>]*>/g, '')}
-                    </div>
-                    <div>
-                      {`阅读数:${item.visit_count}`}
-                      <Divider type="vertical" />
-                      {`${item.reply_count}条评论`}
-                      <Divider type="vertical" />
-                      {timeUtils.fromNow(item.last_reply_at)}
-                    </div>
-                  </div>
-                }
-              />
-            </Card>
-          </List.Item>
-        )}
-      />
+                  }
+                />
+              </Card>
+            </List.Item>
+          )}
+        />
+      </div>
     );
   }
 }

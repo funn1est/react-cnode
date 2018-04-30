@@ -1,6 +1,17 @@
 .container {
+  display: flex;
+  justify-content: center;
   word-break: break-all;
   max-width: 100%;
+  :global {
+    .ant-form-item {
+      margin-right: 0;
+    }
+  }
+}
+
+.list {
+  max-width: 90%;
 }
 
 .item {
