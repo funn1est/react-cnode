@@ -3,6 +3,11 @@
   align-items: center;
   min-height: 100vh;
   max-width: 100%;
+  :global {
+    .ant-layout-header {
+      padding: 0 8px;
+    }
+  }
 }
 
 .content {

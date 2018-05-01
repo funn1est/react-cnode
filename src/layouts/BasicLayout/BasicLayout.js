@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { withRouter } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
+import { enquireScreen, unenquireScreen } from 'enquire-js';
 import { getCurrentUser, logout } from 'routes/Login/LoginRedux';
 import { Layout, Modal } from 'antd';
 import Header from 'components/Header';
@@ -13,6 +14,12 @@ import { FloatingMenu } from './components';
 import styles from './BasicLayout.scss';
 
 const { Content } = Layout;
+
+// register enquire-js
+let isMobileGlobal;
+enquireScreen((mobile) => {
+  isMobileGlobal = mobile;
+});
 
 const routesMap = {
   home: '/',
@@ -33,8 +40,17 @@ const routesMap = {
   }),
 )
 class BasicLayout extends React.PureComponent {
+  state = {
+    isMobile: isMobileGlobal || false,
+  };
+
   componentDidMount() {
     this.props.getCurrentUser();
+    this.getIsMobile();
+  }
+
+  componentWillUnmount() {
+    unenquireScreen(this.enquireHandler);
   }
 
   onClickMenu = ({ key }) => {
@@ -78,6 +94,14 @@ class BasicLayout extends React.PureComponent {
     document.documentElement.scrollTop = 0; // IE, Firefox
   };
 
+  getIsMobile = () => {
+    this.enquireHandler = enquireScreen((mobile) => {
+      this.setState({
+        isMobile: mobile || false,
+      });
+    });
+  };
+
   navigate = (route) => {
     this.props.history.push(route);
   };
@@ -87,10 +111,15 @@ class BasicLayout extends React.PureComponent {
       route: { routes }, location: { pathname },
       user,
     } = this.props;
+    const { isMobile } = this.state;
     const isHome = Object.is(pathname, '/');
     return (
       <Layout className={styles.container}>
-        <Header user={user} onClickMenu={this.onClickMenu} />
+        <Header
+          isMobile={isMobile}
+          user={user}
+          onClickMenu={this.onClickMenu}
+        />
         <Content className={styles.content}>
           {renderRoutes(routes)}
         </Content>

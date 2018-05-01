@@ -1,45 +1,48 @@
+@import "../../styles/Base";
+
 .container {
   width: 100%;
-  background: #fff;
-  padding: 0 12px 0 0;
+  background: white;
   height: auto;
+  display: flex;
+  justify-content: center;
   box-shadow: 0 1px 4px rgba(0, 21, 41, .08);
 }
 
 .header {
   max-width: 100%;
-  width: 1000px;
-  margin: 0 auto;
+  height: 100%;
+  width: $screen-lg;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  @media screen and(max-width: $screen-md) {
+    flex-direction: column;
+  }
 }
 
 .logo {
   width: 128px;
-  height: 30px;
+  height: 32px;
   float: left;
   margin: 16px 24px 16px 0;
   background: url("../../assets/logo.svg");
 }
 
 .menu {
-  float: left;
+  width: 100%;
   line-height: 64px;
 }
 
-.dropDown {
-  :global(.anticon) {
-    margin-right: 8px;
-  }
+.right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .account {
-  float: right;
   line-height: 64px;
-  .avatar {
-    margin: 20px 8px 20px 0;
-    background: rgba(255, 255, 255, .85);
-    vertical-align: middle;
-  }
+}
+
+.avatar {
+  margin-right: 8px;
 }

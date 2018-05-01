@@ -30,60 +30,67 @@ const menuConfig = [
   },
 ];
 
-const Header = ({ user, onClickMenu }) => {
+const Header = ({ isMobile, user, onClickMenu }) => {
   const isLogin = user.id !== undefined;
-  const userMenu = (
-    <Menu className={styles.dropDown} onClick={onClickMenu}>
-      <Menu.Item key="logout"><Icon type="logout" />退出登录</Menu.Item>
-    </Menu>
+  const User = (
+    <span>
+      <Avatar
+        className={styles.avatar}
+        size="small"
+        src={user.avatar}
+      />
+      {user.name}
+    </span>
+  );
+  const Account = (
+    <div className={styles.right}>
+      {isLogin ?
+        (
+          <Menu
+            mode="horizontal"
+            onClick={onClickMenu}
+          >
+            <Menu.SubMenu title={User} className={styles.account}>
+              <Menu.Item key="logout"><Icon type="logout" />退出登录</Menu.Item>
+            </Menu.SubMenu>
+          </Menu>
+        ) :
+        (
+          <Menu
+            className={styles.account}
+            mode="horizontal"
+            selectable={false}
+            onClick={onClickMenu}
+          >
+            <Menu.Item key="login">登录</Menu.Item>
+          </Menu>
+        )}
+    </div>
   );
 
   return (
     <Layout.Header className={styles.container}>
       <div className={styles.header}>
-        <div>
-          <a href="/">
-            <div className={styles.logo} />
-          </a>
-          <Menu
-            className={styles.menu}
-            mode="horizontal"
-            defaultSelectedKeys={['all']}
-            onClick={onClickMenu}
-          >
-            {menuConfig.map(item => (
-              <Menu.Item key={item.key}>{item.name}</Menu.Item>
-            ))}
-          </Menu>
-        </div>
-        {isLogin ?
-          (
-            <Dropdown overlay={userMenu}>
-            <span className={styles.account}>
-              <Avatar
-                className={styles.avatar}
-                size="small"
-                src={user.avatar}
-              />
-              <span>{user.name}</span>
-            </span>
-            </Dropdown>
-          ) :
-          (
-            <Menu
-              className={styles.account}
-              mode="horizontal"
-              selectable={false}
-              onClick={onClickMenu}
-            >
-              <Menu.Item key="login">登录</Menu.Item>
-            </Menu>
-          )}
+        <a href="/">
+          <div className={styles.logo} />
+        </a>
+        <Menu
+          className={styles.menu}
+          mode="horizontal"
+          defaultSelectedKeys={['all']}
+          onClick={onClickMenu}
+        >
+          {menuConfig.map(item => (
+            <Menu.Item key={item.key}>{item.name}</Menu.Item>
+          ))}
+        </Menu>
+        {!isMobile && Account}
       </div>
     </Layout.Header>
   );
 };
 Header.propTypes = {
+  isMobile: PropTypes.bool.isRequired,
   user: PropTypes.object.isRequired,
   onClickMenu: PropTypes.func.isRequired,
 };
