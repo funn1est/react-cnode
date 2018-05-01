@@ -1,12 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button } from 'antd';
+import { Avatar, Button } from 'antd';
 import styles from './FloatingMenu.scss';
 
-const FloatingMenu = ({ isHome, onClickPost, onClickTop }) => (
+const FloatingMenu = ({ renderUser, renderPost, avatar, onClickUser, onClickPost, onClickTop }) => (
   <div className={styles.container}>
     {
-      isHome && (
+      renderUser && (
+        <Avatar
+          className={styles.user}
+          size="large"
+          src={avatar}
+          onClick={onClickUser}
+        />
+      )
+    }
+    {
+      renderPost && (
         <Button
           className={styles.post}
           type="primary"
@@ -28,7 +38,10 @@ const FloatingMenu = ({ isHome, onClickPost, onClickTop }) => (
 );
 
 FloatingMenu.propTypes = {
-  isHome: PropTypes.bool.isRequired,
+  renderUser: PropTypes.bool.isRequired,
+  renderPost: PropTypes.bool.isRequired,
+  avatar: PropTypes.string,
+  onClickUser: PropTypes.func.isRequired,
   onClickPost: PropTypes.func.isRequired,
   onClickTop: PropTypes.func.isRequired,
 };

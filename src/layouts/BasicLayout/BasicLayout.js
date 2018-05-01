@@ -6,10 +6,10 @@ import { withRouter } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
 import { enquireScreen, unenquireScreen } from 'enquire-js';
 import { getCurrentUser, logout } from 'routes/Login/LoginRedux';
+import { userUtils, regexUtils } from 'utils';
 import { Layout, Modal } from 'antd';
 import Header from 'components/Header';
 import { changeTab } from './BasicLayoutRedux';
-import { userUtils } from '../../utils';
 import { FloatingMenu } from './components';
 import styles from './BasicLayout.scss';
 
@@ -23,6 +23,7 @@ enquireScreen((mobile) => {
 
 const routesMap = {
   home: '/',
+  user: '/user/',
   login: '/login',
   post: '/topic/create',
 };
@@ -80,6 +81,15 @@ class BasicLayout extends React.PureComponent {
     }
   };
 
+  onClickUser = () => {
+    const { user: { name } } = this.props;
+    if (name !== undefined) {
+      this.navigate(routesMap.user + name);
+    } else {
+      this.navigate(routesMap.login);
+    }
+  };
+
   onClickPost = () => {
     const isLogin = userUtils.getUser() !== null;
     if (isLogin) {
@@ -112,7 +122,8 @@ class BasicLayout extends React.PureComponent {
       user,
     } = this.props;
     const { isMobile } = this.state;
-    const isHome = Object.is(pathname, '/');
+    const renderPost = Object.is(pathname, '/');
+    const renderUser = isMobile && !regexUtils.userRouteRegex.test(pathname);
     return (
       <Layout className={styles.container}>
         <Header
@@ -124,7 +135,10 @@ class BasicLayout extends React.PureComponent {
           {renderRoutes(routes)}
         </Content>
         <FloatingMenu
-          isHome={isHome}
+          renderUser={renderUser}
+          renderPost={renderPost}
+          avatar={user.avatar}
+          onClickUser={this.onClickUser}
           onClickPost={this.onClickPost}
           onClickTop={this.onClickTop}
         />
