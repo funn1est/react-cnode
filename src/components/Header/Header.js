@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Layout, Menu, Dropdown, Avatar, Icon } from 'antd';
+import { Layout, Menu, Avatar, Icon } from 'antd';
 import styles from './Header.scss';
 
 const menuConfig = [
@@ -48,9 +48,12 @@ const Header = ({ isMobile, user, onClickMenu }) => {
         (
           <Menu
             mode="horizontal"
+            selectable={false}
             onClick={onClickMenu}
           >
             <Menu.SubMenu title={User} className={styles.account}>
+              <Menu.Item key="user"><Icon type="user" />用户中心</Menu.Item>
+              <Menu.Divider />
               <Menu.Item key="logout"><Icon type="logout" />退出登录</Menu.Item>
             </Menu.SubMenu>
           </Menu>

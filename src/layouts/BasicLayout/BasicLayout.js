@@ -55,23 +55,15 @@ class BasicLayout extends React.PureComponent {
   }
 
   onClickMenu = ({ key }) => {
-    const { tab, location: { pathname } } = this.props;
+    const { tab, user, location: { pathname } } = this.props;
     if (key === 'login') {
       this.navigate(routesMap.login);
     } else if (key === 'logout') {
-      const self = this;
-      Modal.confirm({
-        title: '退出登录',
-        content: '是否确认退出登录？',
-        maskClosable: true,
-        onOk() {
-          return new Promise((resolve) => {
-            self.props.logout();
-            resolve();
-          });
-        },
-      });
+      this.renderLogoutModal();
+    } else if (key === 'user') {
+      this.navigate(routesMap.user + user.name);
     } else {
+      // change tab when click a new tab
       if (key !== tab) {
         this.props.changeTab(key);
       }
@@ -81,13 +73,17 @@ class BasicLayout extends React.PureComponent {
     }
   };
 
-  onClickUser = () => {
-    const { user: { name } } = this.props;
-    if (name !== undefined) {
+  onClickUser = ({ key }) => {
+    if (key === 'user') {
+      const { user: { name } } = this.props;
       this.navigate(routesMap.user + name);
-    } else {
-      this.navigate(routesMap.login);
+    } else if (key === 'logout') {
+      this.renderLogoutModal();
     }
+  };
+
+  onClickUserLogin = () => {
+    this.navigate(routesMap.login);
   };
 
   onClickPost = () => {
@@ -116,6 +112,21 @@ class BasicLayout extends React.PureComponent {
     this.props.history.push(route);
   };
 
+  renderLogoutModal = () => {
+    const self = this;
+    Modal.confirm({
+      title: '退出登录',
+      content: '是否确认退出登录？',
+      maskClosable: true,
+      onOk() {
+        return new Promise((resolve) => {
+          self.props.logout();
+          resolve();
+        });
+      },
+    });
+  };
+
   render() {
     const {
       route: { routes }, location: { pathname },
@@ -123,7 +134,8 @@ class BasicLayout extends React.PureComponent {
     } = this.props;
     const { isMobile } = this.state;
     const renderPost = Object.is(pathname, '/');
-    const renderUser = isMobile && !regexUtils.userRouteRegex.test(pathname);
+    const renderUser = isMobile && !regexUtils.userRouteRegex.test(pathname) &&
+      !regexUtils.loginRouteRegex.test(pathname);
     return (
       <Layout className={styles.container}>
         <Header
@@ -137,8 +149,9 @@ class BasicLayout extends React.PureComponent {
         <FloatingMenu
           renderUser={renderUser}
           renderPost={renderPost}
-          avatar={user.avatar}
+          user={user}
           onClickUser={this.onClickUser}
+          onClickUserLogin={this.onClickUserLogin}
           onClickPost={this.onClickPost}
           onClickTop={this.onClickTop}
         />
