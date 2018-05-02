@@ -54,7 +54,7 @@ const prod = {
       /zh-cn/,
     ),
     new HtmlWebpackPlugin({
-      template: 'src/index.html',
+      template: 'public/index.html',
       inject: true,
       minify: {
         removeComments: true,
