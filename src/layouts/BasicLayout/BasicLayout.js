@@ -15,11 +15,12 @@ import styles from './BasicLayout.scss';
 
 const { Content } = Layout;
 
+const quireString = 'only screen and (max-width: 767.98px)';
 // register enquire-js
 let isMobileGlobal;
 enquireScreen((mobile) => {
   isMobileGlobal = mobile;
-});
+}, quireString);
 
 const routesMap = {
   home: '/',
@@ -105,7 +106,7 @@ class BasicLayout extends React.PureComponent {
       this.setState({
         isMobile: mobile || false,
       });
-    });
+    }, quireString);
   };
 
   navigate = (route) => {

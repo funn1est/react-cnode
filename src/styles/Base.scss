@@ -1,5 +1,8 @@
 // Media queries breakpoints
 
+// Extra small screen / phone
+$screen-xs: 479.98px;
+
 // Small screen / tablet
 $screen-sm: 575.98px;
 
@@ -11,3 +14,6 @@ $screen-lg: 991.98px;
 
 // Extra large screen / full hd
 $screen-xl: 1199.98px;
+
+// Extra extra large screen / large desktop
+$screen-xxl: 1599.98px;
