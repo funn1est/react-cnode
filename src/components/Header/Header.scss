@@ -31,6 +31,10 @@
 .menu {
   width: 100%;
   line-height: 64px;
+  @media screen and(max-width: $screen-md) {
+    display: flex;
+    justify-content: center;
+  }
 }
 
 .right {
