@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { Avatar, Tag } from 'antd';
 import styles from './HomeTopicTitle.scss';
 
@@ -31,11 +32,13 @@ const HomeTopicTitle = ({ topic, tab }) => {
           shape="square"
           src={topic.author.avatar_url}
         />
-        <a href={`/user/${topic.author.loginname}`}>{topic.author.loginname}</a>
+        <Link to={`/user/${topic.author.loginname}`}>
+          {topic.author.loginname}
+        </Link>
       </div>
       <div className={styles.title}>
         {renderTag(topic.tab, topic.top, topic.good)}
-        <a href={`/topic/${topic.id}`}>{topic.title}</a>
+        <Link to={`/topic/${topic.id}`}>{topic.title}</Link>
       </div>
     </div>
   );

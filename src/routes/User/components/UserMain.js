@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { Card, List, Avatar } from 'antd';
 
 const tabList = [
@@ -23,7 +24,7 @@ export const UserMainContent = ({ data }) => {
           <List.Item>
             <List.Item.Meta
               avatar={<Avatar src={item.author.avatar_url} />}
-              title={<a href={`/topic/${item.id}`}>{item.title}</a>}
+              title={<Link to={`/topic/${item.id}`}>{item.title}</Link>}
             />
           </List.Item>
         )}

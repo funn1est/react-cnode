@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { Layout, Menu, Avatar, Icon } from 'antd';
 import styles from './Header.scss';
 
@@ -74,9 +75,9 @@ const Header = ({ isMobile, user, onClickMenu }) => {
   return (
     <Layout.Header className={styles.container}>
       <div className={styles.header}>
-        <a href="/">
+        <Link to="/">
           <div className={styles.logo} />
-        </a>
+        </Link>
         <Menu
           className={styles.menu}
           mode="horizontal"
