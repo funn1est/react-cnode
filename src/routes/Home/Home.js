@@ -38,7 +38,7 @@ class Home extends React.PureComponent {
 
   componentDidMount() {
     const { tab } = this.props;
-    this.props.getTopicsData(tab, 1);
+    this.props.getTopicsData(tab, 1, () => {});
   }
 
   componentDidUpdate(prevProps) {
