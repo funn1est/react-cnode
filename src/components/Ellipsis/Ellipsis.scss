@@ -1,0 +1,19 @@
+.ellipsis {
+  overflow: hidden;
+  display: inline-block;
+  word-break: break-all;
+  width: 100%;
+}
+
+.lines {
+  line-height: 22px;
+  max-height: 88px;
+  text-overflow: ellipsis;
+}
+
+.lineClamp {
+  position: relative;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
