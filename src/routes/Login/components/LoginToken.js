@@ -12,7 +12,7 @@ class LoginToken extends React.Component {
   render() {
     const { form: { getFieldDecorator } } = this.context;
     return (
-      <Form.Item>
+      <Form.Item className={styles.container}>
         {getFieldDecorator('token', {
           rules: [
             {

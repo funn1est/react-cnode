@@ -4,20 +4,14 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Form } from 'antd';
-import { LoginToken, LoginSubmit } from './components';
+import { LoginToken, LoginSetting, LoginSubmit } from './components';
 import { login } from './LoginRedux';
+import styles from './Login.scss';
 
-@withRouter
-@Form.create()
-@connect(
-  () => ({}),
-  dispatch => ({
-    userLogin: bindActionCreators(login, dispatch),
-  }),
-)
-class Login extends React.Component {
+export class LoginComponent extends React.Component {
   static propTypes = {
     form: PropTypes.object,
+    loading: PropTypes.bool,
     userLogin: PropTypes.func,
     history: PropTypes.shape({
       push: PropTypes.func,
@@ -28,18 +22,32 @@ class Login extends React.Component {
     form: PropTypes.object,
   };
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      remember: false,
+    };
+  }
+
   getChildContext() {
     return {
       form: this.props.form,
     };
   }
 
+  onRememberChange = ({ target: { checked } }) => {
+    this.setState({
+      remember: checked,
+    });
+  };
+
   onClickSubmit = (e) => {
     e.preventDefault();
     const { form: { validateFields }, userLogin, history } = this.props;
     validateFields((err, values) => {
       if (!err) {
-        const { token, remember } = values;
+        const { token } = values;
+        const { remember } = this.state;
         userLogin(token, remember, () => {
           history.push('/');
         });
@@ -48,13 +56,27 @@ class Login extends React.Component {
   };
 
   render() {
+    const { loading } = this.props;
+    const { remember } = this.state;
     return (
-      <Form onSubmit={this.onClickSubmit}>
+      <Form className={styles.container} onSubmit={this.onClickSubmit}>
         <LoginToken />
-        <LoginSubmit />
+        <LoginSetting remember={remember} onChange={this.onRememberChange} />
+        <LoginSubmit loading={loading} />
       </Form>
     );
   }
 }
 
-export default Login;
+export default withRouter(
+  Form.create()(
+    connect(
+      state => ({
+        loading: state.login.loading,
+      }),
+      dispatch => ({
+        userLogin: bindActionCreators(login, dispatch),
+      }),
+    )(LoginComponent)
+  )
+);
