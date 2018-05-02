@@ -2,12 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { HomeContent } from './components';
+import { HomeTopics } from './components';
 import { getTopicsData } from './HomeRedux';
 
 @connect(
   state => ({
     tab: state.basic.tab,
+    loading: state.home.loading,
+    topicsData: state.home.topicsData,
   }),
   dispatch => ({
     getTopicsData: bindActionCreators(getTopicsData, dispatch),
@@ -16,6 +18,8 @@ import { getTopicsData } from './HomeRedux';
 class Home extends React.PureComponent {
   static propTypes = {
     tab: PropTypes.string,
+    loading: PropTypes.bool.isRequired,
+    topicsData: PropTypes.array.isRequired,
     getTopicsData: PropTypes.func,
   };
 
@@ -32,8 +36,9 @@ class Home extends React.PureComponent {
   }
 
   render() {
+    const { tab, loading, topicsData } = this.props;
     return (
-      <HomeContent />
+      <HomeTopics tab={tab} loading={loading} topicsData={topicsData} />
     );
   }
 }

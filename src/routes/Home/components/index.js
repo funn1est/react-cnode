@@ -1,1 +1,1 @@
-export { default as HomeContent } from './HomeContent';
+export { default as HomeTopics } from './HomeTopics';
