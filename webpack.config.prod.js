@@ -23,6 +23,7 @@ const prod = {
       'react-redux',
       'redux',
       'redux-actions',
+      'react-simplemde-editor',
     ],
   },
   output: {
