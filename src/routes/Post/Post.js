@@ -80,13 +80,13 @@ class Post extends React.Component {
         const { id } = this.props;
         data = await TopicsService.postTopics({ id, title, tab, content });
       }
-      const { data: { success, topic_id } } = data;
+      const { data: { success, topic_id: topicId } } = data;
       this.setState({
         loading: false,
       });
       if (success) {
         toastUtils.success('发布成功');
-        this.props.history.push(`/topic/${topic_id}`);
+        this.props.history.push(`/topic/${topicId}`);
       } else {
         notificationUtils.warning('服务器出小差了，请稍后再试');
       }
@@ -120,7 +120,10 @@ class Post extends React.Component {
     const { loading, titleValue, contentValue } = this.state;
     return (
       <Card className={styles.container}>
-        <PostTab onTabChange={this.onTabChange} />
+        <div className={styles.tab}>
+          板块：
+          <PostTab onTabChange={this.onTabChange} />
+        </div>
         <PostTitle
           value={titleValue}
           onTitleChange={this.onTitleChange}
@@ -129,14 +132,16 @@ class Post extends React.Component {
           value={contentValue}
           onEditorChange={this.onEditorChange}
         />
-        <Button
-          type="primary"
-          icon="share-alt"
-          loading={loading}
-          onClick={this.onClickSubmit}
-        >
-          发布主题
-        </Button>
+        <div className={styles.button}>
+          <Button
+            type="primary"
+            icon="share-alt"
+            loading={loading}
+            onClick={this.onClickSubmit}
+          >
+            发布主题
+          </Button>
+        </div>
       </Card>
     );
   }

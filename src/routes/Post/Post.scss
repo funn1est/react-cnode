@@ -1,4 +1,16 @@
 .container {
   width: 100%;
   background: white;
+  margin-bottom: 24px;
+}
+
+.tab {
+  margin-bottom: 16px;
+  font-weight: bold;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
