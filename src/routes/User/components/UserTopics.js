@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { timeUtils } from 'utils';
-import { Card, List, Avatar } from 'antd';
+import { Card, List, Avatar, Tag } from 'antd';
 import styles from './UserTopics.scss';
 
 const tabList = [
@@ -29,7 +29,9 @@ export const UserMainContent = ({ data }) => (
         <List.Item.Meta
           avatar={<Avatar src={item.author.avatar_url} />}
           title={<Link to={`/topic/${item.id}`}>{item.title}</Link>}
-          description={<div>来自：{item.author.loginname}</div>}
+          description={
+            <div>来自：<Tag color="purple">{item.author.loginname}</Tag></div>
+          }
         />
         {timeUtils.fromNow(item.last_reply_at)}
       </List.Item>

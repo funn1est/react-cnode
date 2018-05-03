@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { timeUtils } from 'utils';
-import { Card, Avatar } from 'antd';
+import { Card, Avatar, Tag } from 'antd';
 import styles from './UserInfo.scss';
 
 const UserInfo = ({ loading, user }) => (
   <Card className={styles.container} loading={loading}>
     <Card.Meta
       avatar={<Avatar src={user.avatar_url} />}
-      title={user.loginname}
+      title={<Tag color="purple">{user.loginname}</Tag>}
       description={
         <React.Fragment>
           <div>

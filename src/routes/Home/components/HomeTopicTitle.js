@@ -33,7 +33,7 @@ const HomeTopicTitle = ({ topic, tab }) => {
           src={topic.author.avatar_url}
         />
         <Link to={`/user/${topic.author.loginname}`}>
-          {topic.author.loginname}
+          <Tag color="purple">{topic.author.loginname}</Tag>
         </Link>
       </div>
       <div className={styles.title}>

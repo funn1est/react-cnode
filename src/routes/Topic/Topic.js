@@ -47,6 +47,7 @@ class Topic extends React.PureComponent {
       token: PropTypes.string,
     }),
     loading: PropTypes.bool,
+    error: PropTypes.bool,
   };
 
   constructor(props) {
