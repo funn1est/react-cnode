@@ -43,10 +43,10 @@ export const postTopics = ({ id, title, tab, content } = {}) => {
   }
 };
 
-export const getTopic = (
-  id,
-  { mdrender = 'false', accesstoken = '' } = {},
-) => {
+export const getTopic = ({ id, accesstoken = '', mdrender = 'false' } = {}) => {
+  if (id === undefined) {
+    throw new TypeError('missing params');
+  }
   const params = { mdrender, accesstoken };
   return get(TopicsApi.topic.replace(/:id/, id), params);
 };

@@ -18,11 +18,11 @@ const loadTopicSuccess = createAction(
 );
 const loadTopicError = createAction(LOAD_TOPIC_ERROR);
 
-export const getTopicData = (id, callback) => async (dispatch) => {
+export const getTopicData = (id, token, callback) => async (dispatch) => {
   dispatch(loadTopic());
   try {
     const { data: { data } } =
-      await TopicsService.getTopic(id, { mdrender: 'false' });
+      await TopicsService.getTopic({ id, accesstoken: token });
     dispatch(loadTopicSuccess(data));
     callback(data);
   } catch (e) {

@@ -143,9 +143,9 @@ class Topic extends React.PureComponent {
   }
 
   getTopicData = () => {
-    const { match: { params: { id } } } = this.props;
+    const { match: { params: { id } }, user: { token } } = this.props;
     const { replyPage, replySize, replyId } = this.state;
-    this.props.getTopicData(id, (data) => {
+    this.props.getTopicData(id, token, (data) => {
       if (replyId.length === 0) {
         this.setState({
           replyData: arrayUtils.splitArray(data.replies, replySize),
