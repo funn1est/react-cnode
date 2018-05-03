@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Divider } from 'antd';
-import { timeUtils } from 'utils';
+import { timeUtils, regexUtils } from 'utils';
 import Ellipsis from 'components/Ellipsis';
 import styles from './HomeTopicContent.scss';
 
 const HomeTopicContent = ({ topic }) => (
   <div>
-    <Ellipsis text={topic.content.replace(/<[^>]*>/g, '')} />
+    <Ellipsis text={topic.content.replace(regexUtils.htmlElementRegex, '')} />
     <div className={styles.info}>
       {`阅读数:${topic.visit_count}`}
       <Divider type="vertical" />
