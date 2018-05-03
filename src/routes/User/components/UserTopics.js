@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { timeUtils } from 'utils';
 import { Card, List, Avatar } from 'antd';
 import styles from './UserTopics.scss';
 
@@ -8,35 +9,36 @@ const tabList = [
   {
     key: 'topics',
     tab: '最近创建的话题',
-  }, {
+  },
+  {
     key: 'replies',
     tab: '最近参与的话题',
   },
+  {
+    key: 'collect',
+    tab: '收藏的话题',
+  },
 ];
 
-export const UserMainContent = ({ data }) => {
-  if (data.length === 0) {
-    return <div>无话题</div>;
-  } else {
-    return (
-      <List
-        dataSource={data}
-        renderItem={item => (
-          <List.Item>
-            <List.Item.Meta
-              avatar={<Avatar src={item.author.avatar_url} />}
-              title={<Link to={`/topic/${item.id}`}>{item.title}</Link>}
-            />
-          </List.Item>
-        )}
-      />
-    );
-  }
-};
+export const UserMainContent = ({ data }) => (
+  <List
+    locale={{ emptyText: '无话题' }}
+    dataSource={data}
+    renderItem={item => (
+      <List.Item>
+        <List.Item.Meta
+          avatar={<Avatar src={item.author.avatar_url} />}
+          title={<Link to={`/topic/${item.id}`}>{item.title}</Link>}
+          description={<div>来自：{item.author.loginname}</div>}
+        />
+        {timeUtils.fromNow(item.last_reply_at)}
+      </List.Item>
+    )}
+  />
+);
 
 class UserTopics extends React.Component {
   static propTypes = {
-    loading: PropTypes.bool.isRequired,
     dataList: PropTypes.shape({
       topics: PropTypes.array.isRequired,
       replies: PropTypes.array.isRequired,
@@ -52,14 +54,14 @@ class UserTopics extends React.Component {
   };
 
   render() {
-    const { loading, dataList } = this.props;
+    const { dataList } = this.props;
     const { key } = this.state;
 
     return (
       <Card
         className={styles.container}
-        loading={loading}
         tabList={tabList}
+        defaultActiveTabKey="topics"
         onTabChange={this.onTabChange}
       >
         <UserMainContent data={dataList[key]} />
@@ -67,5 +69,9 @@ class UserTopics extends React.Component {
     );
   }
 }
+
+UserMainContent.propTypes = {
+  data: PropTypes.array,
+};
 
 export default UserTopics;

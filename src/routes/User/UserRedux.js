@@ -1,4 +1,4 @@
-import { UserService } from 'services';
+import { UserService, TopicCollectService } from 'services';
 import { createAction, handleActions } from 'redux-actions';
 
 const LOAD_USER = 'routes/User/LOAD_USER';
@@ -23,6 +23,9 @@ export const getUserData = name => async (dispatch) => {
   try {
     const { data: { data } } =
       await UserService.getUser(name);
+    const { data: { data: collectData } } =
+      await TopicCollectService.getUserCollect(name);
+    data.collect = collectData;
     dispatch(loadUserSuccess(data));
   } catch (e) {
     dispatch(loadUserError());
