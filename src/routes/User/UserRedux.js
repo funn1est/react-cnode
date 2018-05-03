@@ -33,6 +33,8 @@ const reducer = handleActions({
   [LOAD_USER]: state => ({
     ...state,
     loading: true,
+    userData: {},
+    error: false,
   }),
 
   [LOAD_USER_SUCCESS]: (state, action) => ({

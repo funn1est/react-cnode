@@ -102,6 +102,7 @@ const reducer = handleActions({
   [LOAD_MORE_TOPICS]: state => ({
     ...state,
     loadingMore: true,
+    error: false,
   }),
 
   [LOAD_MORE_TOPICS_SUCCESS]: (state, action) => ({

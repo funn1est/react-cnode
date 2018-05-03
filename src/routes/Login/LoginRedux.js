@@ -60,6 +60,8 @@ const reducer = handleActions({
   [POST_ACCESS_TOKEN]: state => ({
     ...state,
     loading: true,
+    userData: {},
+    error: false,
   }),
 
   [POST_ACCESS_TOKEN_SUCCESS]: (state, action) => ({
