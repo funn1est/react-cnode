@@ -7,7 +7,7 @@ import { ReplyService } from 'services';
 import { arrayUtils, toastUtils, notificationUtils } from 'utils';
 import Exception from 'components/Exception';
 import { TopicContent, TopicReply, TopicEditor } from './components';
-import { getTopicData } from './TopicRedux';
+import { getTopicData, collectTopic } from './TopicRedux';
 import { editTopic } from '../Post/PostRedux';
 import '../../styles/Markdown.scss';
 
@@ -18,9 +18,12 @@ import '../../styles/Markdown.scss';
     loading: state.topic.loading,
     topicData: state.topic.topicData,
     error: state.topic.error,
+
+    loadingCollect: state.topic.loadingCollect,
   }),
   dispatch => ({
     getTopicData: bindActionCreators(getTopicData, dispatch),
+    collectTopic: bindActionCreators(collectTopic, dispatch),
     editTopic: bindActionCreators(editTopic, dispatch),
   }),
 )
@@ -36,6 +39,7 @@ class Topic extends React.PureComponent {
     }).isRequired,
 
     getTopicData: PropTypes.func,
+    collectTopic: PropTypes.func,
     editTopic: PropTypes.func,
     topicData: PropTypes.shape({
       title: PropTypes.string,
@@ -47,6 +51,7 @@ class Topic extends React.PureComponent {
       token: PropTypes.string,
     }),
     loading: PropTypes.bool,
+    loadingCollect: PropTypes.bool,
     error: PropTypes.bool,
   };
 
@@ -71,6 +76,11 @@ class Topic extends React.PureComponent {
   componentDidMount() {
     this.getTopicData();
   }
+
+  onClickCollect = (isCollect) => {
+    const { user: { token }, match: { params: { id } } } = this.props;
+    this.props.collectTopic(isCollect, token, id);
+  };
 
   onClickEdit() {
     const { topicData: { id, tab, title, content } } = this.props;
@@ -175,7 +185,7 @@ class Topic extends React.PureComponent {
   };
 
   render() {
-    const { user, topicData, loading, error } = this.props;
+    const { user, topicData, loading, error, loadingCollect } = this.props;
     const {
       replyData, replyPage, replySize,
       contentValue, replyLoading,
@@ -187,9 +197,11 @@ class Topic extends React.PureComponent {
             <React.Fragment>
               <TopicContent
                 loading={loading}
+                loadingCollect={loadingCollect}
                 topicData={topicData}
                 renderCollect={user.id !== undefined}
                 renderEdit={user.id === topicData.author_id}
+                onClickCollect={this.onClickCollect}
                 onClickEdit={this.onClickEdit}
               />
               {

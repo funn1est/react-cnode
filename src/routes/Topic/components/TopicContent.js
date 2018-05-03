@@ -7,7 +7,9 @@ import Markdown from 'react-markdown';
 import styles from './TopicContent.scss';
 
 const TopicContent = ({
-  loading, topicData, renderCollect, renderEdit, onClickEdit,
+  loading, loadingCollect, topicData,
+  renderCollect, renderEdit,
+  onClickCollect, onClickEdit,
 }) => {
   const author = topicData.author || {};
   const renderTag = (key, isTop, isGood) => {
@@ -34,6 +36,9 @@ const TopicContent = ({
         <div>
           收藏：
           <Switch
+            loading={loadingCollect}
+            checked={topicData.is_collect}
+            onChange={onClickCollect}
             checkedChildren={<Icon type="check" />}
             unCheckedChildren={<Icon type="cross" />}
           />
@@ -84,8 +89,11 @@ const TopicContent = ({
 
 TopicContent.propTypes = {
   loading: PropTypes.bool.isRequired,
+  loadingCollect: PropTypes.bool.isRequired,
   topicData: PropTypes.object.isRequired,
+  renderCollect: PropTypes.bool.isRequired,
   renderEdit: PropTypes.bool.isRequired,
+  onClickCollect: PropTypes.func.isRequired,
   onClickEdit: PropTypes.func.isRequired,
 };
 
