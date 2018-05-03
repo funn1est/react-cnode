@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { timeUtils } from 'utils';
-import { Card, List, Avatar, Tag } from 'antd';
+import { Card, List, Avatar, Tag, Divider } from 'antd';
 import Markdown from 'react-markdown';
 import styles from './TopicReply.scss';
 
@@ -34,10 +34,12 @@ const TopicReply = ({
                 <Link to={`/user/${item.author.loginname}`}>
                   <Tag color="purple">{item.author.loginname}</Tag>
                 </Link>
-                <a href={`#${item.id}`} className={styles.floor}>
+                <Divider type="vertical" />
+                <a href={`#${item.id}`}>
                   {`${key + 1 + ((current - 1) * pageSize)} 楼`}
                 </a>
-                <span className={styles.time}>
+                <Divider type="vertical" />
+                <span>
                   {timeUtils.fromNow(item.create_at)}
                 </span>
               </div>
