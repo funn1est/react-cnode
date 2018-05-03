@@ -15,3 +15,9 @@ export const ReplyApi = {
   reply: '/topic/:topic_id/replies',
   upReply: '/reply/:reply_id/ups',
 };
+
+export const TopicCollectApi = {
+  userCollect: '/topic_collect/:name',
+  collectTopic: '/topic_collect/collect',
+  cancelCollect: '/topic_collect/de_collect',
+};
