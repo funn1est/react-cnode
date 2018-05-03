@@ -34,6 +34,7 @@
   @media screen and(max-width: $screen-md) {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
   }
 }
 
