@@ -1,6 +1,5 @@
 .container {
-  width: 1000px;
-  max-width: 100%;
+  width: 100%;
   word-break: break-all;
   margin-bottom: 24px;
   img {
@@ -8,7 +7,7 @@
   }
 
   :global {
-    .ant-card-head-title {
+    .ant-card-meta-title {
       white-space: normal;
     }
   }

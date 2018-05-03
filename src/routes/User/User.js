@@ -1,10 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Card, Avatar } from 'antd';
-import { timeUtils } from 'utils';
+import classNames from 'classnames';
 import { getUserData } from './UserRedux';
-import { UserMain } from './components';
+import { UserInfo, UserTopics } from './components';
+import styles from './User.scss';
+
+const cls = classNames(styles.mdContainer);
 
 @connect(
   state => ({
@@ -24,34 +26,19 @@ class User extends React.Component {
   render() {
     const {
       loading,
-      userData: {
-        avatar_url,
-        loginname,
-        githubUsername,
-        create_at,
-        recent_topics,
-        recent_replies,
-      },
+      userData,
     } = this.props;
     return (
-      <div>
-        <Card loading={loading}>
-          <Card.Meta
-            avatar={<Avatar src={avatar_url} />}
-            title={loginname}
-            description={
-              <div>
-                <div>{`Github: ${githubUsername}`}</div>
-                <div>{`注册时间: ${timeUtils.fromNow(create_at)}`}</div>
-              </div>
-            }
-          />
-        </Card>
-        <UserMain
+      <div className={cls}>
+        <UserInfo
+          loading={loading}
+          user={userData}
+        />
+        <UserTopics
           loading={loading}
           dataList={{
-            topics: recent_topics || [],
-            replies: recent_replies || [],
+            topics: userData.recent_topics || [],
+            replies: userData.recent_replies || [],
           }}
         />
       </div>

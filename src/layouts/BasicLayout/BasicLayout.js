@@ -8,12 +8,15 @@ import { enquireScreen, unenquireScreen } from 'enquire-js';
 import { getCurrentUser, logout } from 'routes/Login/LoginRedux';
 import { userUtils, regexUtils } from 'utils';
 import { Layout, Modal } from 'antd';
+import classNames from 'classnames';
 import Header from 'components/Header';
 import { changeTab } from './BasicLayoutRedux';
 import { FloatingMenu } from './components';
 import styles from './BasicLayout.scss';
 
 const { Content } = Layout;
+
+const contentCls = classNames(styles.content, styles.lgContainer);
 
 const quireString = 'only screen and (max-width: 767.98px)';
 
@@ -139,7 +142,7 @@ class BasicLayout extends React.PureComponent {
           user={user}
           onClickMenu={this.onClickMenu}
         />
-        <Content className={styles.content}>
+        <Content className={contentCls}>
           {renderRoutes(routes)}
         </Content>
         <FloatingMenu

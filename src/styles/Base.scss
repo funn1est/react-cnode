@@ -17,3 +17,18 @@ $screen-xl: 1199.98px;
 
 // Extra extra large screen / large desktop
 $screen-xxl: 1599.98px;
+
+.xsContainer {
+  width: $screen-xs;
+  max-width: 100%;
+}
+
+.mdContainer {
+  width: $screen-md;
+  max-width: 100%;
+}
+
+.lgContainer {
+  width: $screen-lg;
+  max-width: 100%;
+}

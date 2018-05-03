@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { Button } from 'antd';
+import { Card, Button } from 'antd';
 import { TopicsService } from 'services';
 import { notificationUtils, toastUtils, regexUtils } from 'utils';
 import MarkdownEditor from 'components/MarkdownEditor';
@@ -119,7 +119,7 @@ class Post extends React.Component {
   render() {
     const { loading, titleValue, contentValue } = this.state;
     return (
-      <div className={styles.container}>
+      <Card className={styles.container}>
         <PostTab onTabChange={this.onTabChange} />
         <PostTitle
           value={titleValue}
@@ -137,7 +137,7 @@ class Post extends React.Component {
         >
           发布主题
         </Button>
-      </div>
+      </Card>
     );
   }
 }

@@ -1,1 +1,2 @@
-export { default as UserMain } from './UserMain';
+export { default as UserInfo } from './UserInfo';
+export { default as UserTopics } from './UserTopics';

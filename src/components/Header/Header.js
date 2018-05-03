@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Layout, Menu, Avatar, Icon } from 'antd';
+import classNames from 'classnames';
 import styles from './Header.scss';
 
 const menuConfig = [
@@ -30,6 +31,8 @@ const menuConfig = [
     name: '测试',
   },
 ];
+
+const headerCls = classNames(styles.header, styles.lgContainer);
 
 const Header = ({ isMobile, user, onClickMenu }) => {
   const isLogin = user.id !== undefined;
@@ -74,7 +77,7 @@ const Header = ({ isMobile, user, onClickMenu }) => {
 
   return (
     <Layout.Header className={styles.container}>
-      <div className={styles.header}>
+      <div className={headerCls}>
         <Link to="/">
           <div className={styles.logo} />
         </Link>

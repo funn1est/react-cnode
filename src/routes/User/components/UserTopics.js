@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Card, List, Avatar } from 'antd';
+import styles from './UserTopics.scss';
 
 const tabList = [
   {
@@ -33,7 +34,7 @@ export const UserMainContent = ({ data }) => {
   }
 };
 
-class UserMain extends React.Component {
+class UserTopics extends React.Component {
   static propTypes = {
     loading: PropTypes.bool.isRequired,
     dataList: PropTypes.shape({
@@ -56,6 +57,7 @@ class UserMain extends React.Component {
 
     return (
       <Card
+        className={styles.container}
         loading={loading}
         tabList={tabList}
         onTabChange={this.onTabChange}
@@ -66,4 +68,4 @@ class UserMain extends React.Component {
   }
 }
 
-export default UserMain;
+export default UserTopics;

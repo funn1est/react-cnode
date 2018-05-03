@@ -1,3 +1,5 @@
+@import "../../styles/Base";
+
 .container {
   display: flex;
   align-items: center;
@@ -11,13 +13,11 @@
 }
 
 .content {
-  width: 1000px;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
   height: 100%;
-  max-width: 100%;
   margin: 24px 24px 0;
 
   :global {

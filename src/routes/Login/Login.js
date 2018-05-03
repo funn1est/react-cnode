@@ -4,9 +4,12 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Form } from 'antd';
+import classNames from 'classnames';
 import { LoginToken, LoginSetting, LoginSubmit } from './components';
 import { login } from './LoginRedux';
 import styles from './Login.scss';
+
+const cls = classNames(styles.container, styles.xsContainer);
 
 export class LoginComponent extends React.Component {
   static propTypes = {
@@ -59,7 +62,7 @@ export class LoginComponent extends React.Component {
     const { loading } = this.props;
     const { remember } = this.state;
     return (
-      <Form className={styles.container} onSubmit={this.onClickSubmit}>
+      <Form className={cls} onSubmit={this.onClickSubmit}>
         <LoginToken />
         <LoginSetting remember={remember} onChange={this.onRememberChange} />
         <LoginSubmit loading={loading} />
@@ -77,6 +80,6 @@ export default withRouter(
       dispatch => ({
         userLogin: bindActionCreators(login, dispatch),
       }),
-    )(LoginComponent)
-  )
+    )(LoginComponent),
+  ),
 );
