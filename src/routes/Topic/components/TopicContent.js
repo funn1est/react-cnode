@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { timeUtils } from 'utils';
-import { Card, Button, Avatar, Tag, Divider } from 'antd';
+import { Card, Button, Avatar, Switch, Icon, Tag, Divider } from 'antd';
 import Markdown from 'react-markdown';
 import styles from './TopicContent.scss';
 
 const TopicContent = ({
-  loading, topicData, renderEdit, onClickEdit,
+  loading, topicData, renderCollect, renderEdit, onClickEdit,
 }) => {
   const author = topicData.author || {};
   const renderTag = (key, isTop, isGood) => {
@@ -30,6 +30,15 @@ const TopicContent = ({
     <Card
       className={styles.container}
       loading={loading}
+      extra={renderCollect && (
+        <div>
+          收藏：
+          <Switch
+            checkedChildren={<Icon type="check" />}
+            unCheckedChildren={<Icon type="cross" />}
+          />
+        </div>
+      )}
       title={(
         <Card.Meta
           avatar={<Avatar
@@ -43,19 +52,19 @@ const TopicContent = ({
             </div>
           }
           description={
-            <React.Fragment>
+            <div className={styles.description}>
               <Link to={`/user/${author.loginname}`}>
                 <Tag color="purple">{author.loginname}</Tag>
               </Link>
-              <Divider type="vertical" />
+              <Divider className={styles.divider} type="vertical" />
               <span className={styles.createTime}>
                 发布于：{timeUtils.fromNow(topicData.create_at)}
               </span>
-              <Divider type="vertical" />
+              <Divider className={styles.divider} type="vertical" />
               <span className={styles.visitCount}>
                 浏览数：{topicData.visit_count}
               </span>
-            </React.Fragment>
+            </div>
           }
         />
       )}

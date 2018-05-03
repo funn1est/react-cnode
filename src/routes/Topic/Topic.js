@@ -188,6 +188,7 @@ class Topic extends React.PureComponent {
               <TopicContent
                 loading={loading}
                 topicData={topicData}
+                renderCollect={user.id !== undefined}
                 renderEdit={user.id === topicData.author_id}
                 onClickEdit={this.onClickEdit}
               />
