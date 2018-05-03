@@ -33,7 +33,9 @@ export const getTopicData = (id, callback) => async (dispatch) => {
 const reducer = handleActions({
   [LOAD_TOPIC]: state => ({
     ...state,
+    topicData: {},
     loading: true,
+    error: false,
   }),
 
   [LOAD_TOPIC_SUCCESS]: (state, action) => ({
@@ -45,6 +47,7 @@ const reducer = handleActions({
 
   [LOAD_TOPIC_ERROR]: state => ({
     ...state,
+    topicData: {},
     loading: false,
     error: true,
   }),

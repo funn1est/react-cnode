@@ -80,7 +80,10 @@ export const getMoreTopicsData = (tab, page, callback) => async (dispatch) => {
 const reducer = handleActions({
   [LOAD_TOPICS]: state => ({
     ...state,
+    topicsData: [],
     loading: true,
+    hasMore: true,
+    error: false,
   }),
 
   [LOAD_TOPICS_SUCCESS]: (state, action) => ({

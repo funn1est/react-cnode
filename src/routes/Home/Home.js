@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import Exception from 'components/Exception';
 import { HomeTopics } from './components';
 import { getTopicsData, getMoreTopicsData } from './HomeRedux';
 
@@ -12,6 +13,7 @@ import { getTopicsData, getMoreTopicsData } from './HomeRedux';
     loadingMore: state.home.loadingMore,
     hasMore: state.home.hasMore,
     topicsData: state.home.topicsData,
+    error: state.home.error,
   }),
   dispatch => ({
     getTopicsData: bindActionCreators(getTopicsData, dispatch),
@@ -27,6 +29,7 @@ class Home extends React.PureComponent {
     topicsData: PropTypes.array.isRequired,
     getTopicsData: PropTypes.func,
     getMoreTopicsData: PropTypes.func,
+    error: PropTypes.bool.isRequired,
   };
 
   constructor(props) {
@@ -65,16 +68,24 @@ class Home extends React.PureComponent {
   };
 
   render() {
-    const { tab, loading, loadingMore, hasMore, topicsData } = this.props;
+    const { tab, loading, loadingMore, hasMore, topicsData, error } = this.props;
     return (
-      <HomeTopics
-        tab={tab}
-        loading={loading}
-        loadingMore={loadingMore}
-        topicsData={topicsData}
-        hasMore={hasMore}
-        handleInfiniteOnLoad={this.handleInfiniteOnLoad}
-      />
+      <React.Fragment>
+        {
+          (!error) ? (
+            <HomeTopics
+              tab={tab}
+              loading={loading}
+              loadingMore={loadingMore}
+              topicsData={topicsData}
+              hasMore={hasMore}
+              handleInfiniteOnLoad={this.handleInfiniteOnLoad}
+            />
+          ) : (
+            <Exception />
+          )
+        }
+      </React.Fragment>
     );
   }
 }

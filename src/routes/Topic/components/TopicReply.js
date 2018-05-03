@@ -8,7 +8,7 @@ const TopicReply = ({
   dataSource, total, current, pageSize, onReplyPageChange, onReplySizeChange,
 }) => (
   <Card
-    id="Topic__reply"
+    id="topic__reply"
     className={styles.container}
     title="回复"
   >

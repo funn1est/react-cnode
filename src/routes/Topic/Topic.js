@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ReplyService } from 'services';
 import { arrayUtils, toastUtils, notificationUtils } from 'utils';
+import Exception from 'components/Exception';
 import { TopicContent, TopicReply, TopicEditor } from './components';
 import { getTopicData } from './TopicRedux';
 import { editTopic } from '../Post/PostRedux';
@@ -16,6 +17,7 @@ import '../../styles/Markdown.scss';
     user: state.login.userData,
     loading: state.topic.loading,
     topicData: state.topic.topicData,
+    error: state.topic.error,
   }),
   dispatch => ({
     getTopicData: bindActionCreators(getTopicData, dispatch),
@@ -85,7 +87,7 @@ class Topic extends React.PureComponent {
     this.setState({
       replyPage,
     }, () => {
-      this.jumpToAnchor('Topic__reply');
+      this.jumpToAnchor('topic__reply');
     });
   };
 
@@ -96,7 +98,7 @@ class Topic extends React.PureComponent {
       replyPage,
       replySize,
     }, () => {
-      this.jumpToAnchor('Topic__reply');
+      this.jumpToAnchor('topic__reply');
     });
   };
 
@@ -172,39 +174,47 @@ class Topic extends React.PureComponent {
   };
 
   render() {
-    const { user, topicData, loading } = this.props;
+    const { user, topicData, loading, error } = this.props;
     const {
       replyData, replyPage, replySize,
       contentValue, replyLoading,
     } = this.state;
     return (
       <React.Fragment>
-        <TopicContent
-          loading={loading}
-          topicData={topicData}
-          renderEdit={user.id === topicData.author_id}
-          onClickEdit={this.onClickEdit}
-        />
         {
-          topicData.replies && topicData.replies.length > 0 && (
-            <TopicReply
-              dataSource={replyData[replyPage - 1] || []}
-              total={topicData.replies.length}
-              current={replyPage}
-              pageSize={replySize}
-              onReplyPageChange={this.onReplyPageChange}
-              onReplySizeChange={this.onReplySizeChange}
-            />
-          )
-        }
-        {
-          user.id !== undefined && (
-            <TopicEditor
-              value={contentValue}
-              loading={replyLoading}
-              onEditorChange={this.onEditorChange}
-              onClickReply={this.onClickAddReply}
-            />
+          (!error) ? (
+            <React.Fragment>
+              <TopicContent
+                loading={loading}
+                topicData={topicData}
+                renderEdit={user.id === topicData.author_id}
+                onClickEdit={this.onClickEdit}
+              />
+              {
+                topicData.replies && topicData.replies.length > 0 && (
+                  <TopicReply
+                    dataSource={replyData[replyPage - 1] || []}
+                    total={topicData.replies.length}
+                    current={replyPage}
+                    pageSize={replySize}
+                    onReplyPageChange={this.onReplyPageChange}
+                    onReplySizeChange={this.onReplySizeChange}
+                  />
+                )
+              }
+              {
+                user.id !== undefined && (
+                  <TopicEditor
+                    value={contentValue}
+                    loading={replyLoading}
+                    onEditorChange={this.onEditorChange}
+                    onClickReply={this.onClickAddReply}
+                  />
+                )
+              }
+            </React.Fragment>
+          ) : (
+            <Exception />
           )
         }
       </React.Fragment>
