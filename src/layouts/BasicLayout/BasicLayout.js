@@ -30,8 +30,8 @@ const routesMap = {
 @withRouter
 @connect(
   state => ({
-    user: state.login.userData,
-    tab: state.basic.tab,
+    user: state.getIn(['login', 'userData']),
+    tab: state.getIn(['basic', 'tab']),
   }),
   dispatch => ({
     changeTab: bindActionCreators(changeTab, dispatch),

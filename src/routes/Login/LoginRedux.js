@@ -1,3 +1,4 @@
+import { Map } from 'immutable';
 import { createAction, handleActions } from 'redux-actions';
 import { UserService } from 'services';
 import { toastUtils, userUtils } from 'utils';
@@ -8,20 +9,17 @@ const POST_ACCESS_TOKEN_ERROR = 'routes/Login/POST_ACCESS_TOKEN_ERROR';
 const POST_LOGOUT = 'routes/Login/POST_LOGOUT';
 const GET_USER = 'routes/Login/GET_USER';
 
-const initialState = {
+const initialState = Map({
   loading: false,
   userData: {},
   error: false,
-};
+});
 
 const postAccessToken = createAction(POST_ACCESS_TOKEN);
-const postAccessTokenSuccess = createAction(
-  POST_ACCESS_TOKEN_SUCCESS,
-  response => response,
-);
+const postAccessTokenSuccess = createAction(POST_ACCESS_TOKEN_SUCCESS);
 const postAccessTokenError = createAction(POST_ACCESS_TOKEN_ERROR);
 const postLogout = createAction(POST_LOGOUT);
-const getUser = createAction(GET_USER, payload => payload);
+const getUser = createAction(GET_USER);
 
 export const login = (token, remember, callback) => async (dispatch) => {
   dispatch(postAccessToken());
@@ -57,35 +55,28 @@ export const getCurrentUser = () => (dispatch) => {
 };
 
 const reducer = handleActions({
-  [POST_ACCESS_TOKEN]: state => ({
-    ...state,
-    loading: true,
-    userData: {},
-    error: false,
-  }),
+  [POST_ACCESS_TOKEN]: state => (
+    state
+      .set('loading', true)
+      .set('error', false)
+      .set('userData', {})
+  ),
 
-  [POST_ACCESS_TOKEN_SUCCESS]: (state, action) => ({
-    ...state,
-    loading: false,
-    error: false,
-    userData: action.payload,
-  }),
+  [POST_ACCESS_TOKEN_SUCCESS]: (state, { payload }) => (
+    state
+      .set('loading', false)
+      .set('userData', payload)
+  ),
 
-  [POST_ACCESS_TOKEN_ERROR]: state => ({
-    ...state,
-    loading: false,
-    error: true,
-  }),
+  [POST_ACCESS_TOKEN_ERROR]: state => (
+    state
+      .set('loading', false)
+      .error('error', true)
+  ),
 
-  [POST_LOGOUT]: state => ({
-    ...state,
-    userData: {},
-  }),
+  [POST_LOGOUT]: state => state.set('userData', {}),
 
-  [GET_USER]: (state, action) => ({
-    ...state,
-    userData: action.payload,
-  }),
+  [GET_USER]: (state, { payload }) => state.set('userData', payload),
 }, initialState);
 
 export default reducer;

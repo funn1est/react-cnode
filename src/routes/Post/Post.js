@@ -12,10 +12,10 @@ import styles from './Post.scss';
 @withRouter
 @connect(
   state => ({
-    id: state.edit.id,
-    tab: state.edit.tab,
-    title: state.edit.title,
-    content: state.edit.content,
+    id: state.getIn(['edit', 'id']),
+    tab: state.getIn(['edit', 'tab']),
+    title: state.getIn(['edit', 'title']),
+    content: state.getIn(['edit', 'content']),
   }),
 )
 class Post extends React.Component {

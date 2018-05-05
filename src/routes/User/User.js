@@ -12,9 +12,9 @@ const cls = classNames(styles.mdContainer);
 
 @connect(
   state => ({
-    loading: state.user.loading,
-    userData: state.user.userData,
-    error: state.user.error,
+    loading: state.getIn(['user', 'loading']),
+    userData: state.getIn(['user', 'userData']),
+    error: state.getIn(['user', 'error']),
   }),
   dispatch => ({
     getUserData: bindActionCreators(getUserData, dispatch),

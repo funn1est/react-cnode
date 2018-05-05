@@ -8,12 +8,12 @@ import { getTopicsData, getMoreTopicsData } from './HomeRedux';
 
 @connect(
   state => ({
-    tab: state.basic.tab,
-    loading: state.home.loading,
-    loadingMore: state.home.loadingMore,
-    hasMore: state.home.hasMore,
-    topicsData: state.home.topicsData,
-    error: state.home.error,
+    tab: state.getIn(['basic', 'tab']),
+    loading: state.getIn(['home', 'loading']),
+    loadingMore: state.getIn(['home', 'loadingMore']),
+    hasMore: state.getIn(['home', 'hasMore']),
+    topicsData: state.getIn(['home', 'topicsData']),
+    error: state.getIn(['home', 'error']),
   }),
   dispatch => ({
     getTopicsData: bindActionCreators(getTopicsData, dispatch),

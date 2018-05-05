@@ -14,12 +14,12 @@ import '../../styles/Markdown.scss';
 @withRouter
 @connect(
   state => ({
-    user: state.login.userData,
-    loading: state.topic.loading,
-    topicData: state.topic.topicData,
-    error: state.topic.error,
+    loading: state.getIn(['topic', 'loading']),
+    loadingCollect: state.getIn(['topic', 'loadingCollect']),
+    error: state.getIn(['topic', 'error']),
 
-    loadingCollect: state.topic.loadingCollect,
+    topicData: state.getIn(['topic', 'topicData']),
+    user: state.getIn(['login', 'userData']),
   }),
   dispatch => ({
     getTopicData: bindActionCreators(getTopicData, dispatch),

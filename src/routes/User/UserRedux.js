@@ -1,3 +1,4 @@
+import { Map } from 'immutable';
 import { UserService, TopicCollectService } from 'services';
 import { createAction, handleActions } from 'redux-actions';
 
@@ -5,17 +6,14 @@ const LOAD_USER = 'routes/User/LOAD_USER';
 const LOAD_USER_SUCCESS = 'routes/User/LOAD_USER_SUCCESS';
 const LOAD_USER_ERROR = 'routes/User/LOAD_USER_ERROR';
 
-const initialState = {
+const initialState = Map({
   loading: false,
   userData: {},
   error: false,
-};
+});
 
 const loadUser = createAction(LOAD_USER);
-const loadUserSuccess = createAction(
-  LOAD_USER_SUCCESS,
-  response => response,
-);
+const loadUserSuccess = createAction(LOAD_USER_SUCCESS);
 const loadUserError = createAction(LOAD_USER_ERROR);
 
 export const getUserData = name => async (dispatch) => {
@@ -33,25 +31,24 @@ export const getUserData = name => async (dispatch) => {
 };
 
 const reducer = handleActions({
-  [LOAD_USER]: state => ({
-    ...state,
-    loading: true,
-    userData: {},
-    error: false,
-  }),
+  [LOAD_USER]: state => (
+    state
+      .set('loading', true)
+      .set('error', false)
+      .set('userData', {})
+  ),
 
-  [LOAD_USER_SUCCESS]: (state, action) => ({
-    ...state,
-    loading: false,
-    error: false,
-    userData: action.payload,
-  }),
+  [LOAD_USER_SUCCESS]: (state, { payload }) => (
+    state
+      .set('loading', false)
+      .set('userData', payload)
+  ),
 
-  [LOAD_USER_ERROR]: state => ({
-    ...state,
-    loading: false,
-    error: true,
-  }),
+  [LOAD_USER_ERROR]: state => (
+    state
+      .set('loading', false)
+      .set('error', true)
+  ),
 }, initialState);
 
 export default reducer;

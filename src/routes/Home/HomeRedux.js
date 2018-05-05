@@ -1,3 +1,4 @@
+import { Map } from 'immutable';
 import { createAction, handleActions } from 'redux-actions';
 import { TopicsService } from 'services';
 
@@ -13,26 +14,20 @@ const LOAD_TOPICS_FINISH = 'routes/Home/LOAD_TOPICS_FINISH';
 
 const PAGE_SIZE = 10;
 
-const initialState = {
+const initialState = Map({
   loading: false,
   loadingMore: false,
   hasMore: true,
-  topicsData: [],
   error: false,
-};
+  topicsData: [],
+});
 
 const loadTopics = createAction(LOAD_TOPICS);
-const loadTopicsSuccess = createAction(
-  LOAD_TOPICS_SUCCESS,
-  payload => payload,
-);
+const loadTopicsSuccess = createAction(LOAD_TOPICS_SUCCESS);
 const loadTopicsError = createAction(LOAD_TOPICS_ERROR);
 
 const loadMoreTopics = createAction(LOAD_MORE_TOPICS);
-const loadMoreTopicsSuccess = createAction(
-  LOAD_MORE_TOPICS_SUCCESS,
-  payload => payload,
-);
+const loadMoreTopicsSuccess = createAction(LOAD_MORE_TOPICS_SUCCESS);
 const loadMoreTopicsError = createAction(LOAD_MORE_TOPICS_ERROR);
 
 const loadTopicsFinish = createAction(LOAD_TOPICS_FINISH);
@@ -78,49 +73,46 @@ export const getMoreTopicsData = (tab, page, callback) => async (dispatch) => {
 };
 
 const reducer = handleActions({
-  [LOAD_TOPICS]: state => ({
-    ...state,
-    loading: true,
-    hasMore: true,
-    error: false,
-  }),
+  [LOAD_TOPICS]: state => (
+    state
+      .set('loading', true)
+      .set('hasMore', true)
+      .set('error', false)
+  ),
 
-  [LOAD_TOPICS_SUCCESS]: (state, action) => ({
-    ...state,
-    loading: false,
-    error: false,
-    topicsData: action.payload,
-  }),
+  [LOAD_TOPICS_SUCCESS]: (state, { payload }) => (
+    state
+      .set('loading', false)
+      .set('topicsData', payload)
+  ),
 
-  [LOAD_TOPICS_ERROR]: state => ({
-    ...state,
-    loading: false,
-    error: true,
-  }),
+  [LOAD_TOPICS_ERROR]: state => (
+    state
+      .set('loading', false)
+      .set('error', true)
+  ),
 
-  [LOAD_MORE_TOPICS]: state => ({
-    ...state,
-    loadingMore: true,
-    error: false,
-  }),
+  [LOAD_MORE_TOPICS]: state => (
+    state
+      .set('loadingMore', true)
+      .set('error', false)
+  ),
 
-  [LOAD_MORE_TOPICS_SUCCESS]: (state, action) => ({
-    ...state,
-    loadingMore: false,
-    error: false,
-    topicsData: [...state.topicsData, ...action.payload],
-  }),
+  [LOAD_MORE_TOPICS_SUCCESS]: (state, { payload }) => {
+    return (
+      state
+        .set('loadingMore', false)
+        .update('topicsData', list => list.concat(payload))
+    );
+  },
 
-  [LOAD_MORE_TOPICS_ERROR]: state => ({
-    ...state,
-    loadingMore: false,
-    error: true,
-  }),
+  [LOAD_MORE_TOPICS_ERROR]: state => (
+    state
+      .set('loadingMore', false)
+      .set('error', true)
+  ),
 
-  [LOAD_TOPICS_FINISH]: state => ({
-    ...state,
-    hasMore: false,
-  }),
+  [LOAD_TOPICS_FINISH]: state => state.set('hasMore', false),
 }, initialState);
 
 export default reducer;

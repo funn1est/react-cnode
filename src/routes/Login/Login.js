@@ -75,7 +75,7 @@ export default withRouter(
   Form.create()(
     connect(
       state => ({
-        loading: state.login.loading,
+        loading: state.getIn(['login', 'loading']),
       }),
       dispatch => ({
         userLogin: bindActionCreators(login, dispatch),
