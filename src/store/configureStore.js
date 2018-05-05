@@ -1,5 +1,5 @@
-import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
+import { createStore, applyMiddleware } from 'redux';
 import { combineReducers } from 'redux-immutable';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import rootReducer from './reducers';
@@ -23,8 +23,7 @@ const configureStore = (initialState) => {
   );
   if (module.hot) {
     module.hot.accept('./reducers', () => {
-      // eslint-disable-next-line global-require
-      const nextRootReducer = require('./reducers').default;
+      const nextRootReducer = import('./reducers').default;
       store.replaceReducer(combineReducers({ ...nextRootReducer }));
     });
   }
