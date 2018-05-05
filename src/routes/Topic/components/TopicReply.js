@@ -4,10 +4,12 @@ import { Link } from 'react-router-dom';
 import { timeUtils } from 'utils';
 import { Card, List, Avatar, Tag, Divider } from 'antd';
 import Markdown from 'react-markdown';
+import TopicUp from './TopicUp';
 import styles from './TopicReply.scss';
 
 const TopicReply = ({
-  dataSource, total, current, pageSize, onReplyPageChange, onReplySizeChange,
+  dataSource, total, current, pageSize,
+  onClickUp, onReplyPageChange, onReplySizeChange,
 }) => (
   <Card
     id="topic__reply"
@@ -48,6 +50,13 @@ const TopicReply = ({
               <Markdown source={item.content} />
             }
           />
+          <TopicUp
+            itemKey={key + ((current - 1) * pageSize)}
+            id={item.id}
+            ups={item.ups}
+            isUp={item.is_uped}
+            onClickUp={onClickUp}
+          />
         </List.Item>
       )}
     />
@@ -59,6 +68,7 @@ TopicReply.propTypes = {
   total: PropTypes.number.isRequired,
   current: PropTypes.number.isRequired,
   pageSize: PropTypes.number.isRequired,
+  onClickUp: PropTypes.func.isRequired,
   onReplyPageChange: PropTypes.func.isRequired,
   onReplySizeChange: PropTypes.func.isRequired,
 };

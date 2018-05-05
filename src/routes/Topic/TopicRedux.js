@@ -1,5 +1,5 @@
 import { createAction, handleActions } from 'redux-actions';
-import { TopicsService, TopicCollectService } from 'services';
+import { TopicsService, TopicCollectService, ReplyService } from 'services';
 
 const LOAD_TOPIC = 'routes/Topic/LOAD_TOPIC';
 const LOAD_TOPIC_SUCCESS = 'routes/Topic/LOAD_TOPIC_SUCCESS';
@@ -9,6 +9,10 @@ const POST_COLLECT_TOPIC = 'routes/Topic/POST_COLLECT_TOPIC';
 const POST_COLLECT_TOPIC_SUCCESS = 'routes/Topic/POST_COLLECT_TOPIC_SUCCESS';
 const POST_COLLECT_TOPIC_ERROR = 'routes/Topic/POST_COLLECT_TOPIC_ERROR';
 
+const UP_TOPIC_REPLY = 'routes/Topic/UP_TOPIC_REPLY';
+const UP_TOPIC_REPLY_SUCCESS = 'routes/Topic/UP_TOPIC_REPLY_SUCCESS';
+const UP_TOPIC_REPLY_ERROR = 'routes/Topic/UP_TOPIC_REPLY_ERROR';
+
 const initialState = {
   loading: false,
   topicData: {},
@@ -16,6 +20,9 @@ const initialState = {
 
   loadingCollect: false,
   collectError: false,
+
+  loadingUp: false,
+  upError: false,
 };
 
 const loadTopic = createAction(LOAD_TOPIC);
@@ -29,13 +36,27 @@ const postCollectTopic = createAction(POST_COLLECT_TOPIC);
 const postCollectTopicSuccess = createAction(POST_COLLECT_TOPIC_SUCCESS);
 const postCollectTopicError = createAction(POST_COLLECT_TOPIC_ERROR);
 
+const upTopicReply = createAction(UP_TOPIC_REPLY);
+const upTopicReplySuccess = createAction(
+  UP_TOPIC_REPLY_SUCCESS,
+  payload => payload,
+);
+const upTopicReplyError = createAction(UP_TOPIC_REPLY_ERROR);
+
 export const getTopicData = (id, token, callback) => async (dispatch) => {
   dispatch(loadTopic());
   try {
     const { data: { data } } =
       await TopicsService.getTopic({ id, accesstoken: token });
-    dispatch(loadTopicSuccess(data));
-    callback(data);
+    const formatData = {
+      ...data,
+      replies: data.replies.map(item => ({
+        ...item,
+        ups: item.ups.length,
+      })),
+    };
+    dispatch(loadTopicSuccess(formatData));
+    callback(formatData);
   } catch (e) {
     dispatch(loadTopicError());
   }
@@ -66,6 +87,19 @@ export const collectTopic = (isCollect, token, id) => async (dispatch) => {
   } catch (e) {
     console.log(e);
     dispatch(postCollectTopicError());
+  }
+};
+
+export const upReply = (token, replyId, itemKey) => async (dispatch) => {
+  dispatch(upTopicReply());
+  try {
+    const { data: { success, action } } =
+      await ReplyService.upReply({ token, replyId });
+    if (success) {
+      dispatch(upTopicReplySuccess({ key: itemKey, isUp: action === 'up' }));
+    }
+  } catch (e) {
+    dispatch(upTopicReplyError());
   }
 };
 
@@ -110,6 +144,37 @@ const reducer = handleActions({
     ...state,
     loadingCollect: false,
     collectError: true,
+  }),
+
+  [UP_TOPIC_REPLY]: state => ({
+    ...state,
+    loadingUp: true,
+    upError: false,
+  }),
+
+  [UP_TOPIC_REPLY_SUCCESS]: (state, action) => {
+    const { key, isUp } = action.payload;
+    const { topicData: { replies } } = state;
+    const { is_uped, ups } = replies[key];
+    replies.splice(key, 1, {
+      ...replies[key],
+      ups: isUp ? ups + 1 : ups - 1,
+      is_uped: !is_uped,
+    });
+    return {
+      ...state,
+      loadingUp: false,
+      topicData: {
+        ...state.topicData,
+        replies,
+      },
+    };
+  },
+
+  [UP_TOPIC_REPLY_ERROR]: state => ({
+    ...state,
+    loadingUp: false,
+    upError: true,
   }),
 }, initialState);
 

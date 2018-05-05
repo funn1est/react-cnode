@@ -39,8 +39,8 @@ const TopicContent = ({
             loading={loadingCollect}
             checked={topicData.is_collect}
             onChange={onClickCollect}
-            checkedChildren={<Icon type="check" />}
-            unCheckedChildren={<Icon type="cross" />}
+            checkedChildren={<Icon type="star" />}
+            unCheckedChildren={<Icon type="star-o" />}
           />
         </div>
       )}

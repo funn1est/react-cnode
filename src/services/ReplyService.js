@@ -17,4 +17,13 @@ export const addReply = ({ token, topicId, content, replyId } = {}) => {
   return post(ReplyApi.reply.replace(/:topic_id/, topicId), params);
 };
 
-export const upReply = () => {};
+export const upReply = ({ token, replyId } = {}) => {
+  if (token === undefined || replyId === undefined) {
+    throw new TypeError('missing params');
+  }
+
+  const params = {
+    accesstoken: token,
+  };
+  return post(ReplyApi.upReply.replace(/:reply_id/, replyId), params);
+};

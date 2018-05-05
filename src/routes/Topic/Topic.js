@@ -7,7 +7,7 @@ import { ReplyService } from 'services';
 import { arrayUtils, toastUtils, notificationUtils } from 'utils';
 import Exception from 'components/Exception';
 import { TopicContent, TopicReply, TopicEditor } from './components';
-import { getTopicData, collectTopic } from './TopicRedux';
+import { getTopicData, collectTopic, upReply } from './TopicRedux';
 import { editTopic } from '../Post/PostRedux';
 import '../../styles/Markdown.scss';
 
@@ -24,6 +24,7 @@ import '../../styles/Markdown.scss';
   dispatch => ({
     getTopicData: bindActionCreators(getTopicData, dispatch),
     collectTopic: bindActionCreators(collectTopic, dispatch),
+    upReply: bindActionCreators(upReply, dispatch),
     editTopic: bindActionCreators(editTopic, dispatch),
   }),
 )
@@ -40,6 +41,7 @@ class Topic extends React.PureComponent {
 
     getTopicData: PropTypes.func,
     collectTopic: PropTypes.func,
+    upReply: PropTypes.func,
     editTopic: PropTypes.func,
     topicData: PropTypes.shape({
       title: PropTypes.string,
@@ -58,7 +60,6 @@ class Topic extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      replyData: [],
       replyPage: 1,
       replySize: 10,
 
@@ -88,6 +89,11 @@ class Topic extends React.PureComponent {
     this.props.history.push(`/topic/${id}/edit`);
   }
 
+  onClickUp = (id, key) => {
+    const { user: { token } } = this.props;
+    this.props.upReply(token, id, key);
+  };
+
   onEditorChange(value) {
     this.setState({
       contentValue: value,
@@ -103,9 +109,7 @@ class Topic extends React.PureComponent {
   };
 
   onReplySizeChange = (replyPage, replySize) => {
-    const { topicData: { replies } } = this.props;
     this.setState({
-      replyData: arrayUtils.splitArray(replies, replySize),
       replyPage,
       replySize,
     }, () => {
@@ -157,25 +161,18 @@ class Topic extends React.PureComponent {
     const { match: { params: { id } }, user: { token } } = this.props;
     const { replyPage, replySize, replyId } = this.state;
     this.props.getTopicData(id, token, (data) => {
-      if (replyId.length === 0) {
-        this.setState({
-          replyData: arrayUtils.splitArray(data.replies, replySize),
-        });
-      } else if (replyPage * replySize < data.replies.length) {
-        // jump to the reply just submitted
-        this.setState({
-          replyData: arrayUtils.splitArray(data.replies, replySize),
-          replyPage: Math.ceil(data.replies.length / replySize),
-        }, () => {
+      if (replyId.length !== 0) {
+        if (replyPage * replySize < data.replies.length) {
+          // jump to the reply just submitted
+          this.setState({
+            replyPage: Math.ceil(data.replies.length / replySize),
+          }, () => {
+            this.jumpToAnchor(replyId);
+          });
+        } else {
+          // jump to the reply just submitted
           this.jumpToAnchor(replyId);
-        });
-      } else {
-        // jump to the reply just submitted
-        this.setState({
-          replyData: arrayUtils.splitArray(data.replies, replySize),
-        }, () => {
-          this.jumpToAnchor(replyId);
-        });
+        }
       }
     });
   };
@@ -187,9 +184,10 @@ class Topic extends React.PureComponent {
   render() {
     const { user, topicData, loading, error, loadingCollect } = this.props;
     const {
-      replyData, replyPage, replySize,
+      replyPage, replySize,
       contentValue, replyLoading,
     } = this.state;
+    const d = arrayUtils.splitArray(topicData.replies || [], replySize);
     return (
       <React.Fragment>
         {
@@ -207,10 +205,11 @@ class Topic extends React.PureComponent {
               {
                 topicData.replies && topicData.replies.length > 0 && (
                   <TopicReply
-                    dataSource={replyData[replyPage - 1] || []}
+                    dataSource={d[replyPage - 1] || []}
                     total={topicData.replies.length}
                     current={replyPage}
                     pageSize={replySize}
+                    onClickUp={this.onClickUp}
                     onReplyPageChange={this.onReplyPageChange}
                     onReplySizeChange={this.onReplySizeChange}
                   />
