@@ -26,76 +26,112 @@ const menuConfig = [
     key: 'job',
     name: '招聘',
   },
-  {
-    key: 'dev',
-    name: '测试',
-  },
+  // {
+  //   key: 'dev',
+  //   name: '测试',
+  // },
 ];
 
 const headerCls = classNames(styles.header, styles.lgContainer);
 
-const Header = ({ isMobile, user, onClickMenu }) => {
-  const isLogin = user.id !== undefined;
-  const User = (
-    <span>
-      <Avatar
-        className={styles.avatar}
-        size="small"
-        src={user.avatar}
-      />
-      {user.name}
-    </span>
-  );
-  const Account = (
-    <div className={styles.right}>
-      {isLogin ?
-        (
-          <Menu
-            mode="horizontal"
-            selectable={false}
-            onClick={onClickMenu}
-          >
-            <Menu.SubMenu title={User} className={styles.account}>
-              <Menu.Item key="user"><Icon type="user" />用户中心</Menu.Item>
-              <Menu.Divider />
-              <Menu.Item key="logout"><Icon type="logout" />退出登录</Menu.Item>
-            </Menu.SubMenu>
-          </Menu>
-        ) :
-        (
-          <Menu
-            className={styles.account}
-            mode="horizontal"
-            selectable={false}
-            onClick={onClickMenu}
-          >
-            <Menu.Item key="login">登录</Menu.Item>
-          </Menu>
-        )}
-    </div>
-  );
+const User = ({ name, avatar }) => (
+  <span>
+    <Avatar
+      className={styles.avatar}
+      size="small"
+      src={avatar}
+    />
+    {name}
+  </span>
+);
 
-  return (
-    <Layout.Header className={styles.container}>
-      <div className={headerCls}>
-        <Link to="/">
-          <div className={styles.logo} />
-        </Link>
+const Account = ({ isLogin, name, avatar, onClickMenu }) => {
+  if (isLogin) {
+    return (
+      <div className={styles.right}>
         <Menu
-          className={styles.menu}
           mode="horizontal"
-          defaultSelectedKeys={['all']}
+          selectable={false}
           onClick={onClickMenu}
         >
-          {menuConfig.map(item => (
-            <Menu.Item key={item.key}>{item.name}</Menu.Item>
-          ))}
+          <Menu.SubMenu
+            className={styles.account}
+            title={<User name={name} avatar={avatar} />}
+          >
+            <Menu.Item key="user"><Icon type="user" />用户中心</Menu.Item>
+            <Menu.Divider />
+            <Menu.Item key="logout"><Icon type="logout" />退出登录</Menu.Item>
+          </Menu.SubMenu>
         </Menu>
-        {!isMobile && Account}
       </div>
-    </Layout.Header>
+    );
+  }
+  return (
+    <div className={styles.right}>
+      <Menu
+        className={styles.account}
+        mode="horizontal"
+        selectable={false}
+        onClick={onClickMenu}
+      >
+        <Menu.Item key="login">登录</Menu.Item>
+      </Menu>
+    </div>
   );
 };
+
+class Header extends React.Component {
+  shouldComponentUpdate(nextProps) {
+    return nextProps.isMobile !== this.props.isMobile ||
+      nextProps.user !== this.props.user;
+  }
+
+  render() {
+    const { isMobile, user, onClickMenu } = this.props;
+    return (
+      <Layout.Header className={styles.container}>
+        <div className={headerCls}>
+          <Link to="/">
+            <div className={styles.logo} />
+          </Link>
+          <Menu
+            className={styles.menu}
+            mode="horizontal"
+            defaultSelectedKeys={['all']}
+            onClick={onClickMenu}
+          >
+            {menuConfig.map(item => (
+              <Menu.Item key={item.key}>{item.name}</Menu.Item>
+            ))}
+          </Menu>
+          {
+            !isMobile && (
+              <Account
+                isLogin={user.id !== undefined}
+                name={user.name}
+                avatar={user.avatar}
+                onClickMenu={onClickMenu}
+              />
+            )
+          }
+        </div>
+      </Layout.Header>
+    );
+  }
+}
+
+User.propTypes = {
+  name: PropTypes.string,
+  avatar: PropTypes.string,
+};
+
+Account.propTypes = {
+  isLogin: PropTypes.bool.isRequired,
+  name: PropTypes.string,
+  avatar: PropTypes.string,
+  onClickMenu: PropTypes.func.isRequired,
+};
+
 Header.propTypes = {
   isMobile: PropTypes.bool.isRequired,
   user: PropTypes.object.isRequired,
