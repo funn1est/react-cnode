@@ -9,7 +9,7 @@ import Exception from 'components/Exception';
 import { TopicContent, TopicReply, TopicEditor } from './components';
 import { getTopicData, collectTopic, upReply } from './TopicRedux';
 import { editTopic } from '../Post/PostRedux';
-import '../../styles/Markdown.scss';
+import '../../styles/GithubMarkdown.scss';
 
 @withRouter
 @connect(

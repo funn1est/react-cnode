@@ -47,7 +47,7 @@ const TopicReply = ({
               </div>
             )}
             description={
-              <Markdown source={item.content} />
+              <Markdown className="markdown-body" source={item.content} />
             }
           />
           <TopicUp

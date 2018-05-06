@@ -82,7 +82,7 @@ const TopicContent = ({
         </Button>,
       ]}
     >
-      <Markdown source={topicData.content} />
+      <Markdown className="markdown-body" source={topicData.content} />
     </Card>
   );
 };
