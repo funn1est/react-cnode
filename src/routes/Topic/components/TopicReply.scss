@@ -3,11 +3,6 @@
   background: white;
   margin-bottom: 24px;
   word-break: break-all;
-  :global {
-    .ant-list-item-content {
-      flex: none;
-    }
-  }
 }
 
 .content {
@@ -15,4 +10,9 @@
   img {
     max-width: 100%;
   }
+}
+
+.header {
+  display: flex;
+  align-items: center;
 }

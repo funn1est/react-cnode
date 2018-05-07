@@ -32,7 +32,7 @@ const TopicReply = ({
           <List.Item.Meta
             avatar={<Avatar src={item.author.avatar_url} size="large" />}
             title={(
-              <div>
+              <div className={styles.header}>
                 <Link to={`/user/${item.author.loginname}`}>
                   <Tag color="purple">{item.author.loginname}</Tag>
                 </Link>
@@ -44,18 +44,19 @@ const TopicReply = ({
                 <span>
                   {timeUtils.fromNow(item.create_at)}
                 </span>
+                <Divider type="vertical" />
+                <TopicUp
+                  itemKey={key + ((current - 1) * pageSize)}
+                  id={item.id}
+                  ups={item.ups}
+                  isUp={item.is_uped}
+                  onClickUp={onClickUp}
+                />
               </div>
             )}
             description={
               <Markdown className="markdown-body" source={item.content} />
             }
-          />
-          <TopicUp
-            itemKey={key + ((current - 1) * pageSize)}
-            id={item.id}
-            ups={item.ups}
-            isUp={item.is_uped}
-            onClickUp={onClickUp}
           />
         </List.Item>
       )}
