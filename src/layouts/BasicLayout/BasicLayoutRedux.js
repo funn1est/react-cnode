@@ -9,8 +9,11 @@ const initialState = Map({
 
 export const changeTab = createAction(CHANGE_TAB);
 
-const reducer = handleActions({
-  [CHANGE_TAB]: (state, { payload }) => state.set('tab', payload),
-}, initialState);
+const reducer = handleActions(
+  {
+    [CHANGE_TAB]: (state, { payload }) => state.set('tab', payload),
+  },
+  initialState,
+);
 
 export default reducer;

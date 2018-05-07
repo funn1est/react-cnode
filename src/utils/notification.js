@@ -10,12 +10,11 @@ const generator = type =>
    * @param {string} message - notification message
    * @param {string} description - notification description
    */
-  (message, description) => (
+  (message, description) =>
     notification[type]({
       message,
       description,
-    })
-  );
+    });
 
 const typeMaps = ['success', 'info', 'warning', 'error'];
 
@@ -31,7 +30,7 @@ const typeMaps = ['success', 'info', 'warning', 'error'];
  * @property error - error notification
  */
 const notificationUtils = {};
-typeMaps.forEach((item) => {
+typeMaps.forEach(item => {
   notificationUtils[item] = generator(item);
 });
 

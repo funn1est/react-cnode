@@ -12,14 +12,16 @@ const initialState = Map({
 
 export const editTopic = createAction(EDIT_TOPIC);
 
-const reducer = handleActions({
-  [EDIT_TOPIC]: (state, { payload: { id, tab, title, content } }) => (
-    state
-      .set('id', id)
-      .set('tab', tab)
-      .set('title', title)
-      .set('content', content)
-  ),
-}, initialState);
+const reducer = handleActions(
+  {
+    [EDIT_TOPIC]: (state, { payload: { id, tab, title, content } }) =>
+      state
+        .set('id', id)
+        .set('tab', tab)
+        .set('title', title)
+        .set('content', content),
+  },
+  initialState,
+);
 
 export default reducer;

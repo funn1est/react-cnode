@@ -24,7 +24,9 @@ const tabs = [
 const PostTab = ({ onTabChange }) => (
   <Radio.Group onChange={onTabChange} defaultValue="dev">
     {tabs.map(item => (
-      <Radio.Button key={item.key} value={item.key}>{item.name}</Radio.Button>
+      <Radio.Button key={item.key} value={item.key}>
+        {item.name}
+      </Radio.Button>
     ))}
   </Radio.Group>
 );

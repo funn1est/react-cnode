@@ -11,8 +11,9 @@ const Ellipsis = ({ text, className, ...restProps }) => {
     [styles.lineClamp]: isSupportLineClamp,
   });
 
-  const id =
-    `ellipsis-${`${new Date().getTime()}${Math.floor(Math.random() * 100)}`}`;
+  const id = `ellipsis-${`${new Date().getTime()}${Math.floor(
+    Math.random() * 100,
+  )}`}`;
 
   // support document.body.style.webkitLineClamp
   if (isSupportLineClamp) {
@@ -27,7 +28,7 @@ const Ellipsis = ({ text, className, ...restProps }) => {
   }
 
   return (
-    <div className={cls} {...restProps} >
+    <div className={cls} {...restProps}>
       {text}
     </div>
   );
@@ -37,6 +38,5 @@ Ellipsis.propTypes = {
   text: PropTypes.string.isRequired,
   className: PropTypes.string,
 };
-
 
 export default Ellipsis;

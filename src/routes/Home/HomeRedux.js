@@ -32,16 +32,17 @@ const loadMoreTopicsError = createAction(LOAD_MORE_TOPICS_ERROR);
 
 const loadTopicsFinish = createAction(LOAD_TOPICS_FINISH);
 
-export const getTopicsData = (tab, page, callback) => async (dispatch) => {
+export const getTopicsData = (tab, page, callback) => async dispatch => {
   dispatch(loadTopics());
   try {
-    const { data: { data } } =
-      await TopicsService.getTopics({
-        tab,
-        page,
-        limit: PAGE_SIZE,
-        mdrender: 'true',
-      });
+    const {
+      data: { data },
+    } = await TopicsService.getTopics({
+      tab,
+      page,
+      limit: PAGE_SIZE,
+      mdrender: 'true',
+    });
     dispatch(loadTopicsSuccess(data));
     if (data.length < PAGE_SIZE) {
       dispatch(loadTopicsFinish());
@@ -52,16 +53,17 @@ export const getTopicsData = (tab, page, callback) => async (dispatch) => {
   }
 };
 
-export const getMoreTopicsData = (tab, page, callback) => async (dispatch) => {
+export const getMoreTopicsData = (tab, page, callback) => async dispatch => {
   dispatch(loadMoreTopics());
   try {
-    const { data: { data } } =
-      await TopicsService.getTopics({
-        tab,
-        page,
-        limit: PAGE_SIZE,
-        mdrender: 'true',
-      });
+    const {
+      data: { data },
+    } = await TopicsService.getTopics({
+      tab,
+      page,
+      limit: PAGE_SIZE,
+      mdrender: 'true',
+    });
     dispatch(loadMoreTopicsSuccess(data));
     if (data.length < PAGE_SIZE) {
       dispatch(loadTopicsFinish());
@@ -72,45 +74,34 @@ export const getMoreTopicsData = (tab, page, callback) => async (dispatch) => {
   }
 };
 
-const reducer = handleActions({
-  [LOAD_TOPICS]: state => (
-    state
-      .set('loading', true)
-      .set('hasMore', true)
-      .set('error', false)
-  ),
+const reducer = handleActions(
+  {
+    [LOAD_TOPICS]: state =>
+      state
+        .set('loading', true)
+        .set('hasMore', true)
+        .set('error', false),
 
-  [LOAD_TOPICS_SUCCESS]: (state, { payload }) => (
-    state
-      .set('loading', false)
-      .set('topicsData', payload)
-  ),
+    [LOAD_TOPICS_SUCCESS]: (state, { payload }) =>
+      state.set('loading', false).set('topicsData', payload),
 
-  [LOAD_TOPICS_ERROR]: state => (
-    state
-      .set('loading', false)
-      .set('error', true)
-  ),
+    [LOAD_TOPICS_ERROR]: state =>
+      state.set('loading', false).set('error', true),
 
-  [LOAD_MORE_TOPICS]: state => (
-    state
-      .set('loadingMore', true)
-      .set('error', false)
-  ),
+    [LOAD_MORE_TOPICS]: state =>
+      state.set('loadingMore', true).set('error', false),
 
-  [LOAD_MORE_TOPICS_SUCCESS]: (state, { payload }) => (
-    state
-      .set('loadingMore', false)
-      .update('topicsData', list => list.concat(payload))
-  ),
+    [LOAD_MORE_TOPICS_SUCCESS]: (state, { payload }) =>
+      state
+        .set('loadingMore', false)
+        .update('topicsData', list => list.concat(payload)),
 
-  [LOAD_MORE_TOPICS_ERROR]: state => (
-    state
-      .set('loadingMore', false)
-      .set('error', true)
-  ),
+    [LOAD_MORE_TOPICS_ERROR]: state =>
+      state.set('loadingMore', false).set('error', true),
 
-  [LOAD_TOPICS_FINISH]: state => state.set('hasMore', false),
-}, initialState);
+    [LOAD_TOPICS_FINISH]: state => state.set('hasMore', false),
+  },
+  initialState,
+);
 
 export default reducer;

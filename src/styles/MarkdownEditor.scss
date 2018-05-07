@@ -26,11 +26,11 @@ $color_dark_blue_approx: #00c;
 $red: red;
 $green: #0f0;
 $color_torch_red_approx: #f22;
-$color_pizazz_30_approx: rgba(255, 150, 0, .3);
+$color_pizazz_30_approx: rgba(255, 150, 0, 0.3);
 $color_solitude_approx: #e8f2ff;
 $color_moon_raker_approx: #d7d4f0;
 $color_milan_approx: #ffa;
-$yellow_40: rgba(255, 255, 0, .4);
+$yellow_40: rgba(255, 255, 0, 0.4);
 $color_pink_swan_approx: #bbb;
 $white_100: rgba(255, 255, 255, 1);
 $color_pickled_bluewood_approx: #2c3e50;
@@ -41,10 +41,10 @@ $color_gallery_approx: #eee;
 $color_fruit_salad_approx: #63a35c;
 $color_deluge_approx: #795da3;
 $color_torea_bay_approx: #183691;
-$black_5: rgba(0, 0, 0, .05);
+$black_5: rgba(0, 0, 0, 0.05);
 $color_oslo_gray_approx: #7f8c8d;
 $color_aluminium_approx: #aab2b3;
-$red_15: rgba(255, 0, 0, .15);
+$red_15: rgba(255, 0, 0, 0.15);
 
 //fonts
 $font_0: Arial;
@@ -130,7 +130,7 @@ $font_3: sans-serif;
     background: $color_alto_approx;
   }
   .CodeMirror-placeholder {
-    opacity: .5;
+    opacity: 0.5;
   }
   div.CodeMirror-secondarycursor {
     border-left: 1px solid $silver;
@@ -523,7 +523,7 @@ div {
 }
 
 .cm-force-border {
-  padding-right: .1px;
+  padding-right: 0.1px;
 }
 
 @media print {
@@ -549,7 +549,7 @@ div {
 
 .editor-toolbar {
   position: relative;
-  opacity: .6;
+  opacity: 0.6;
   //Instead of the line below you could use @include user-select($select)
   user-select: none;
   padding: 0 10px;
@@ -573,7 +573,7 @@ div {
     margin-bottom: 8px;
   }
   &:hover {
-    opacity: .8;
+    opacity: 0.8;
   }
   &.fullscreen {
     width: 100%;
@@ -596,7 +596,11 @@ div {
   &.fullscreen::before {
     width: 20px;
     height: 50px;
-    background: linear-gradient(to right, $white_100 0, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(
+      to right,
+      $white_100 0,
+      rgba(255, 255, 255, 0) 100%
+    );
     position: fixed;
     top: 0;
     left: 0;
@@ -606,7 +610,11 @@ div {
   &.fullscreen::after {
     width: 20px;
     height: 50px;
-    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0, $white_100 100%);
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0) 0,
+      $white_100 100%
+    );
     position: fixed;
     top: 0;
     right: 0;
@@ -645,19 +653,19 @@ div {
       top: 2px;
     }
     &.fa-header-1:after {
-      content: "1";
+      content: '1';
     }
     &.fa-header-2:after {
-      content: "2";
+      content: '2';
     }
     &.fa-header-3:after {
-      content: "3";
+      content: '3';
     }
     &.fa-header-bigger:after {
-      content: "▲";
+      content: '▲';
     }
     &.fa-header-smaller:after {
-      content: "▼";
+      content: '▼';
     }
   }
   i.separator {
@@ -795,9 +803,9 @@ span.CodeMirror-selectedtext {
 
 .editor-wrapper input.title {
   &:focus {
-    opacity: .8;
+    opacity: 0.8;
   }
   &:hover {
-    opacity: .8;
+    opacity: 0.8;
   }
 }

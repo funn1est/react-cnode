@@ -2,9 +2,12 @@ import { userUtils, notificationUtils } from 'utils';
 import { get, post } from './instance';
 import { TopicsApi } from './api';
 
-export const getTopics = (
-  { page = 1, tab = 'all', limit = 20, mdrender = 'false' } = {},
-) => {
+export const getTopics = ({
+  page = 1,
+  tab = 'all',
+  limit = 20,
+  mdrender = 'false',
+} = {}) => {
   const params = {
     page,
     tab,

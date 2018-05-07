@@ -21,7 +21,7 @@ const postAccessTokenError = createAction(POST_ACCESS_TOKEN_ERROR);
 const postLogout = createAction(POST_LOGOUT);
 const getUser = createAction(GET_USER);
 
-export const login = (token, remember, callback) => async (dispatch) => {
+export const login = (token, remember, callback) => async dispatch => {
   dispatch(postAccessToken());
   try {
     const { data } = await UserService.verifyAccessToken(token);
@@ -44,39 +44,35 @@ export const login = (token, remember, callback) => async (dispatch) => {
   }
 };
 
-export const logout = () => (dispatch) => {
+export const logout = () => dispatch => {
   userUtils.removeUser();
   dispatch(postLogout());
 };
 
-export const getCurrentUser = () => (dispatch) => {
+export const getCurrentUser = () => dispatch => {
   const user = userUtils.getUser() || {};
   dispatch(getUser(user));
 };
 
-const reducer = handleActions({
-  [POST_ACCESS_TOKEN]: state => (
-    state
-      .set('loading', true)
-      .set('error', false)
-      .set('userData', {})
-  ),
+const reducer = handleActions(
+  {
+    [POST_ACCESS_TOKEN]: state =>
+      state
+        .set('loading', true)
+        .set('error', false)
+        .set('userData', {}),
 
-  [POST_ACCESS_TOKEN_SUCCESS]: (state, { payload }) => (
-    state
-      .set('loading', false)
-      .set('userData', payload)
-  ),
+    [POST_ACCESS_TOKEN_SUCCESS]: (state, { payload }) =>
+      state.set('loading', false).set('userData', payload),
 
-  [POST_ACCESS_TOKEN_ERROR]: state => (
-    state
-      .set('loading', false)
-      .error('error', true)
-  ),
+    [POST_ACCESS_TOKEN_ERROR]: state =>
+      state.set('loading', false).error('error', true),
 
-  [POST_LOGOUT]: state => state.set('userData', {}),
+    [POST_LOGOUT]: state => state.set('userData', {}),
 
-  [GET_USER]: (state, { payload }) => state.set('userData', payload),
-}, initialState);
+    [GET_USER]: (state, { payload }) => state.set('userData', payload),
+  },
+  initialState,
+);
 
 export default reducer;

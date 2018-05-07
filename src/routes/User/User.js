@@ -22,7 +22,11 @@ const cls = classNames(styles.mdContainer);
 )
 class User extends React.Component {
   componentDidMount() {
-    const { match: { params: { name } } } = this.props;
+    const {
+      match: {
+        params: { name },
+      },
+    } = this.props;
     this.props.getUserData(name);
   }
 
@@ -30,29 +34,22 @@ class User extends React.Component {
     const { loading, userData, error } = this.props;
     return (
       <React.Fragment>
-        {
-          (!error) ? (
-            <div className={cls}>
-              <UserInfo
-                loading={loading}
-                user={userData}
+        {!error ? (
+          <div className={cls}>
+            <UserInfo loading={loading} user={userData} />
+            {!loading && (
+              <UserTopics
+                dataList={{
+                  topics: userData.recent_topics || [],
+                  replies: userData.recent_replies || [],
+                  collect: userData.collect || [],
+                }}
               />
-              {
-                !loading && (
-                  <UserTopics
-                    dataList={{
-                      topics: userData.recent_topics || [],
-                      replies: userData.recent_replies || [],
-                      collect: userData.collect || [],
-                    }}
-                  />
-                )
-              }
-            </div>
-          ) : (
-            <Exception />
-          )
-        }
+            )}
+          </div>
+        ) : (
+          <Exception />
+        )}
       </React.Fragment>
     );
   }

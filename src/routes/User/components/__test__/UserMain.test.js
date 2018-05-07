@@ -22,15 +22,15 @@ describe('<UserMain />', () => {
   });
 
   it('should contain UserMainContent with data topics', () => {
-    expect(wrapper.contains(
-      <UserMainContent data={props.dataList.topics} />),
+    expect(
+      wrapper.contains(<UserMainContent data={props.dataList.topics} />),
     ).toBe(true);
   });
 
   it('should contain UserMainContent with data replies', () => {
     wrapper.setState({ key: 'replies' });
-    expect(wrapper.contains(
-      <UserMainContent data={props.dataList.replies} />),
+    expect(
+      wrapper.contains(<UserMainContent data={props.dataList.replies} />),
     ).toBe(true);
   });
 

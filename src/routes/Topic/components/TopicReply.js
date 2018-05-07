@@ -8,14 +8,15 @@ import TopicUp from './TopicUp';
 import styles from './TopicReply.scss';
 
 const TopicReply = ({
-  dataSource, total, current, pageSize,
-  onClickUp, onReplyPageChange, onReplySizeChange,
+  dataSource,
+  total,
+  current,
+  pageSize,
+  onClickUp,
+  onReplyPageChange,
+  onReplySizeChange,
 }) => (
-  <Card
-    id="topic__reply"
-    className={styles.container}
-    title="回复"
-  >
+  <Card id="topic__reply" className={styles.container} title="回复">
     <List
       dataSource={dataSource}
       pagination={{
@@ -31,29 +32,27 @@ const TopicReply = ({
         <List.Item className={styles.content} id={item.id}>
           <List.Item.Meta
             avatar={<Avatar src={item.author.avatar_url} size="large" />}
-            title={(
+            title={
               <div className={styles.header}>
                 <Link to={`/user/${item.author.loginname}`}>
                   <Tag color="purple">{item.author.loginname}</Tag>
                 </Link>
                 <Divider type="vertical" />
                 <a href={`#${item.id}`}>
-                  {`${key + 1 + ((current - 1) * pageSize)} 楼`}
+                  {`${key + 1 + (current - 1) * pageSize} 楼`}
                 </a>
                 <Divider type="vertical" />
-                <span>
-                  {timeUtils.fromNow(item.create_at)}
-                </span>
+                <span>{timeUtils.fromNow(item.create_at)}</span>
                 <Divider type="vertical" />
                 <TopicUp
-                  itemKey={key + ((current - 1) * pageSize)}
+                  itemKey={key + (current - 1) * pageSize}
                   id={item.id}
                   ups={item.ups}
                   isUp={item.is_uped}
                   onClickUp={onClickUp}
                 />
               </div>
-            )}
+            }
             description={
               <Markdown className="markdown-body" source={item.content} />
             }

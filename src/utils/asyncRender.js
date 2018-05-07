@@ -1,7 +1,7 @@
 import React from 'react';
 import Loading from 'components/Loading';
 
-const asyncRender = getComponent => (
+const asyncRender = getComponent =>
   class AsyncComponent extends React.Component {
     constructor(props) {
       super(props);
@@ -24,11 +24,8 @@ const asyncRender = getComponent => (
 
     render() {
       const { Component: C } = this.state;
-      return C ?
-        <C {...this.props} /> :
-        <Loading />;
+      return C ? <C {...this.props} /> : <Loading />;
     }
-  }
-);
+  };
 
 export default asyncRender;

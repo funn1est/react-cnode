@@ -5,23 +5,23 @@ import { LocaleProvider } from 'antd';
 import zhCN from 'antd/lib/locale-provider/zh_CN';
 import { asyncRender } from 'utils';
 
-const BasicLayout = asyncRender(
-  () => import(/* webpackChunkName: "basic-layout" */'./layouts/BasicLayout'),
+const BasicLayout = asyncRender(() =>
+  import(/* webpackChunkName: "basic-layout" */ './layouts/BasicLayout'),
 );
-const Home = asyncRender(
-  () => import(/* webpackChunkName: "home" */'./routes/Home'),
+const Home = asyncRender(() =>
+  import(/* webpackChunkName: "home" */ './routes/Home'),
 );
-const Post = asyncRender(
-  () => import(/* webpackChunkName: "post" */'./routes/Post'),
+const Post = asyncRender(() =>
+  import(/* webpackChunkName: "post" */ './routes/Post'),
 );
-const Topic = asyncRender(
-  () => import(/* webpackChunkName: "topic" */'./routes/Topic'),
+const Topic = asyncRender(() =>
+  import(/* webpackChunkName: "topic" */ './routes/Topic'),
 );
-const User = asyncRender(
-  () => import(/* webpackChunkName: "user" */'./routes/User'),
+const User = asyncRender(() =>
+  import(/* webpackChunkName: "user" */ './routes/User'),
 );
-const Login = asyncRender(
-  () => import(/* webpackChunkName: "login" */'./routes/Login'),
+const Login = asyncRender(() =>
+  import(/* webpackChunkName: "login" */ './routes/Login'),
 );
 
 const routerConfig = [
@@ -65,9 +65,7 @@ const routerConfig = [
 const App = () => {
   return (
     <LocaleProvider locale={zhCN}>
-      <Router>
-        {renderRoutes(routerConfig)}
-      </Router>
+      <Router>{renderRoutes(routerConfig)}</Router>
     </LocaleProvider>
   );
 };

@@ -16,13 +16,15 @@ const loadUser = createAction(LOAD_USER);
 const loadUserSuccess = createAction(LOAD_USER_SUCCESS);
 const loadUserError = createAction(LOAD_USER_ERROR);
 
-export const getUserData = name => async (dispatch) => {
+export const getUserData = name => async dispatch => {
   dispatch(loadUser());
   try {
-    const { data: { data } } =
-      await UserService.getUser(name);
-    const { data: { data: collectData } } =
-      await TopicCollectService.getUserCollect({ name });
+    const {
+      data: { data },
+    } = await UserService.getUser(name);
+    const {
+      data: { data: collectData },
+    } = await TopicCollectService.getUserCollect({ name });
     data.collect = collectData;
     dispatch(loadUserSuccess(data));
   } catch (e) {
@@ -30,25 +32,20 @@ export const getUserData = name => async (dispatch) => {
   }
 };
 
-const reducer = handleActions({
-  [LOAD_USER]: state => (
-    state
-      .set('loading', true)
-      .set('error', false)
-      .set('userData', {})
-  ),
+const reducer = handleActions(
+  {
+    [LOAD_USER]: state =>
+      state
+        .set('loading', true)
+        .set('error', false)
+        .set('userData', {}),
 
-  [LOAD_USER_SUCCESS]: (state, { payload }) => (
-    state
-      .set('loading', false)
-      .set('userData', payload)
-  ),
+    [LOAD_USER_SUCCESS]: (state, { payload }) =>
+      state.set('loading', false).set('userData', payload),
 
-  [LOAD_USER_ERROR]: state => (
-    state
-      .set('loading', false)
-      .set('error', true)
-  ),
-}, initialState);
+    [LOAD_USER_ERROR]: state => state.set('loading', false).set('error', true),
+  },
+  initialState,
+);
 
 export default reducer;

@@ -44,9 +44,13 @@ export class LoginComponent extends React.Component {
     });
   };
 
-  onClickSubmit = (e) => {
+  onClickSubmit = e => {
     e.preventDefault();
-    const { form: { validateFields }, userLogin, history } = this.props;
+    const {
+      form: { validateFields },
+      userLogin,
+      history,
+    } = this.props;
     validateFields((err, values) => {
       if (!err) {
         const { token } = values;

@@ -7,9 +7,13 @@ import Markdown from 'react-markdown';
 import styles from './TopicContent.scss';
 
 const TopicContent = ({
-  loading, loadingCollect, topicData,
-  renderCollect, renderEdit,
-  onClickCollect, onClickEdit,
+  loading,
+  loadingCollect,
+  topicData,
+  renderCollect,
+  renderEdit,
+  onClickCollect,
+  onClickEdit,
 }) => {
   const author = topicData.author || {};
   const renderTag = (key, isTop, isGood) => {
@@ -32,24 +36,23 @@ const TopicContent = ({
     <Card
       className={styles.container}
       loading={loading}
-      extra={renderCollect && (
-        <div>
-          收藏：
-          <Switch
-            loading={loadingCollect}
-            checked={topicData.is_collect}
-            onChange={onClickCollect}
-            checkedChildren={<Icon type="star" />}
-            unCheckedChildren={<Icon type="star-o" />}
-          />
-        </div>
-      )}
-      title={(
+      extra={
+        renderCollect && (
+          <div>
+            收藏：
+            <Switch
+              loading={loadingCollect}
+              checked={topicData.is_collect}
+              onChange={onClickCollect}
+              checkedChildren={<Icon type="star" />}
+              unCheckedChildren={<Icon type="star-o" />}
+            />
+          </div>
+        )
+      }
+      title={
         <Card.Meta
-          avatar={<Avatar
-            src={author.avatar_url}
-            size="large"
-          />}
+          avatar={<Avatar src={author.avatar_url} size="large" />}
           title={
             <div>
               {renderTag(topicData.tab, topicData.top, topicData.good)}
@@ -72,15 +75,14 @@ const TopicContent = ({
             </div>
           }
         />
-      )}
-      actions={renderEdit && [
-        <Button
-          icon="edit"
-          onClick={onClickEdit}
-        >
-          编辑话题
-        </Button>,
-      ]}
+      }
+      actions={
+        renderEdit && [
+          <Button icon="edit" onClick={onClickEdit}>
+            编辑话题
+          </Button>,
+        ]
+      }
     >
       <Markdown className="markdown-body" source={topicData.content} />
     </Card>

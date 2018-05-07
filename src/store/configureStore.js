@@ -15,12 +15,8 @@ if (process.env.NODE_ENV === 'production') {
   middleware = composeWithDevTools(applyMiddleware(thunk));
 }
 
-const configureStore = (initialState) => {
-  const store = createStore(
-    reducer,
-    initialState,
-    middleware,
-  );
+const configureStore = initialState => {
+  const store = createStore(reducer, initialState, middleware);
   if (module.hot) {
     module.hot.accept('./reducers', () => {
       const nextRootReducer = import('./reducers').default;

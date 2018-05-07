@@ -25,7 +25,7 @@ const typeMaps = ['success', 'info', 'warning', 'error'];
  * @property error - error toast
  */
 const toastUtils = {};
-typeMaps.forEach((item) => {
+typeMaps.forEach(item => {
   toastUtils[item] = generator(item);
 });
 

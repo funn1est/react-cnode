@@ -10,14 +10,12 @@ import { PostTab, PostTitle } from './components';
 import styles from './Post.scss';
 
 @withRouter
-@connect(
-  state => ({
-    id: state.getIn(['edit', 'id']),
-    tab: state.getIn(['edit', 'tab']),
-    title: state.getIn(['edit', 'title']),
-    content: state.getIn(['edit', 'content']),
-  }),
-)
+@connect(state => ({
+  id: state.getIn(['edit', 'id']),
+  tab: state.getIn(['edit', 'tab']),
+  title: state.getIn(['edit', 'title']),
+  content: state.getIn(['edit', 'content']),
+}))
 class Post extends React.Component {
   constructor(props) {
     super(props);
@@ -58,7 +56,10 @@ class Post extends React.Component {
 
   async onClickSubmit() {
     const {
-      isPost, titleValue: title, tab, contentValue: content,
+      isPost,
+      titleValue: title,
+      tab,
+      contentValue: content,
     } = this.state;
     if (title.length === 0) {
       notificationUtils.error('请输入文章标题');
@@ -80,7 +81,9 @@ class Post extends React.Component {
         const { id } = this.props;
         data = await TopicsService.postTopics({ id, title, tab, content });
       }
-      const { data: { success, topic_id: topicId } } = data;
+      const {
+        data: { success, topic_id: topicId },
+      } = data;
       this.setState({
         loading: false,
       });
@@ -104,7 +107,9 @@ class Post extends React.Component {
   }
 
   getEditPostValue = () => {
-    const { location: { pathname } } = this.props;
+    const {
+      location: { pathname },
+    } = this.props;
     if (regexUtils.editRouteRegex.test(pathname)) {
       const { tab, title, content } = this.props;
       this.setState({
@@ -124,10 +129,7 @@ class Post extends React.Component {
           板块：
           <PostTab onTabChange={this.onTabChange} />
         </div>
-        <PostTitle
-          value={titleValue}
-          onTitleChange={this.onTitleChange}
-        />
+        <PostTitle value={titleValue} onTitleChange={this.onTitleChange} />
         <MarkdownEditor
           value={contentValue}
           onEditorChange={this.onEditorChange}

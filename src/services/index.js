@@ -3,9 +3,4 @@ import * as TopicCollectService from './TopicCollectService';
 import * as TopicsService from './TopicsService';
 import * as UserService from './UserService';
 
-export {
-  ReplyService,
-  TopicCollectService,
-  TopicsService,
-  UserService,
-};
+export { ReplyService, TopicCollectService, TopicsService, UserService };

@@ -4,52 +4,49 @@ import { Menu, Icon, Dropdown, Avatar, Button } from 'antd';
 import styles from './FloatingMenu.scss';
 
 const FloatingMenu = ({
-  renderUser, renderPost, user,
-  onClickUser, onClickUserLogin, onClickPost, onClickTop,
+  renderUser,
+  renderPost,
+  user,
+  onClickUser,
+  onClickUserLogin,
+  onClickPost,
+  onClickTop,
 }) => {
   const isLogin = user.id !== undefined;
   const userMenuOverlay = (
     <Menu onClick={onClickUser}>
-      <Menu.Item key="user"><Icon type="user" />用户中心</Menu.Item>
+      <Menu.Item key="user">
+        <Icon type="user" />用户中心
+      </Menu.Item>
       <Menu.Divider />
-      <Menu.Item key="logout"><Icon type="logout" />退出登录</Menu.Item>
+      <Menu.Item key="logout">
+        <Icon type="logout" />退出登录
+      </Menu.Item>
     </Menu>
   );
   const UserMenu = (
     <Dropdown overlay={userMenuOverlay} trigger={['click']} placement="topLeft">
-      <Avatar
-        className={styles.user}
-        size="large"
-        src={user.avatar}
-      />
+      <Avatar className={styles.user} size="large" src={user.avatar} />
     </Dropdown>
   );
   const LoginMenu = (
-    <Avatar
-      className={styles.user}
-      size="large"
-      onClick={onClickUserLogin}
-    >
+    <Avatar className={styles.user} size="large" onClick={onClickUserLogin}>
       登录
     </Avatar>
   );
   return (
     <div className={styles.container}>
-      {
-        renderUser && (isLogin ? UserMenu : LoginMenu)
-      }
-      {
-        renderPost && (
-          <Button
-            className={styles.post}
-            type="primary"
-            shape="circle"
-            size="large"
-            icon="edit"
-            onClick={onClickPost}
-          />
-        )
-      }
+      {renderUser && (isLogin ? UserMenu : LoginMenu)}
+      {renderPost && (
+        <Button
+          className={styles.post}
+          type="primary"
+          shape="circle"
+          size="large"
+          icon="edit"
+          onClick={onClickPost}
+        />
+      )}
       <Button
         type="primary"
         shape="circle"

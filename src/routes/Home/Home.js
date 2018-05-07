@@ -68,23 +68,28 @@ class Home extends React.PureComponent {
   };
 
   render() {
-    const { tab, loading, loadingMore, hasMore, topicsData, error } = this.props;
+    const {
+      tab,
+      loading,
+      loadingMore,
+      hasMore,
+      topicsData,
+      error,
+    } = this.props;
     return (
       <React.Fragment>
-        {
-          (!error) ? (
-            <HomeTopics
-              tab={tab}
-              loading={loading}
-              loadingMore={loadingMore}
-              topicsData={topicsData}
-              hasMore={hasMore}
-              handleInfiniteOnLoad={this.handleInfiniteOnLoad}
-            />
-          ) : (
-            <Exception />
-          )
-        }
+        {!error ? (
+          <HomeTopics
+            tab={tab}
+            loading={loading}
+            loadingMore={loadingMore}
+            topicsData={topicsData}
+            hasMore={hasMore}
+            handleInfiniteOnLoad={this.handleInfiniteOnLoad}
+          />
+        ) : (
+          <Exception />
+        )}
       </React.Fragment>
     );
   }

@@ -30,7 +30,9 @@ export const UserMainContent = ({ data }) => (
           avatar={<Avatar src={item.author.avatar_url} />}
           title={<Link to={`/topic/${item.id}`}>{item.title}</Link>}
           description={
-            <div>来自：<Tag color="purple">{item.author.loginname}</Tag></div>
+            <div>
+              来自：<Tag color="purple">{item.author.loginname}</Tag>
+            </div>
           }
         />
         {timeUtils.fromNow(item.last_reply_at)}
@@ -51,7 +53,7 @@ class UserTopics extends React.Component {
     key: 'topics',
   };
 
-  onTabChange = (key) => {
+  onTabChange = key => {
     this.setState({ key });
   };
 

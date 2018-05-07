@@ -36,11 +36,7 @@ const headerCls = classNames(styles.header, styles.lgContainer);
 
 const User = ({ name, avatar }) => (
   <span>
-    <Avatar
-      className={styles.avatar}
-      size="small"
-      src={avatar}
-    />
+    <Avatar className={styles.avatar} size="small" src={avatar} />
     {name}
   </span>
 );
@@ -49,18 +45,18 @@ const Account = ({ isLogin, name, avatar, onClickMenu }) => {
   if (isLogin) {
     return (
       <div className={styles.right}>
-        <Menu
-          mode="horizontal"
-          selectable={false}
-          onClick={onClickMenu}
-        >
+        <Menu mode="horizontal" selectable={false} onClick={onClickMenu}>
           <Menu.SubMenu
             className={styles.account}
             title={<User name={name} avatar={avatar} />}
           >
-            <Menu.Item key="user"><Icon type="user" />用户中心</Menu.Item>
+            <Menu.Item key="user">
+              <Icon type="user" />用户中心
+            </Menu.Item>
             <Menu.Divider />
-            <Menu.Item key="logout"><Icon type="logout" />退出登录</Menu.Item>
+            <Menu.Item key="logout">
+              <Icon type="logout" />退出登录
+            </Menu.Item>
           </Menu.SubMenu>
         </Menu>
       </div>
@@ -82,8 +78,10 @@ const Account = ({ isLogin, name, avatar, onClickMenu }) => {
 
 class Header extends React.Component {
   shouldComponentUpdate(nextProps) {
-    return nextProps.isMobile !== this.props.isMobile ||
-      nextProps.user !== this.props.user;
+    return (
+      nextProps.isMobile !== this.props.isMobile ||
+      nextProps.user !== this.props.user
+    );
   }
 
   render() {
@@ -104,16 +102,14 @@ class Header extends React.Component {
               <Menu.Item key={item.key}>{item.name}</Menu.Item>
             ))}
           </Menu>
-          {
-            !isMobile && (
-              <Account
-                isLogin={user.id !== undefined}
-                name={user.name}
-                avatar={user.avatar}
-                onClickMenu={onClickMenu}
-              />
-            )
-          }
+          {!isMobile && (
+            <Account
+              isLogin={user.id !== undefined}
+              name={user.name}
+              avatar={user.avatar}
+              onClickMenu={onClickMenu}
+            />
+          )}
         </div>
       </Layout.Header>
     );

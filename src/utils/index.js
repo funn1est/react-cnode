@@ -7,9 +7,4 @@ export { default as asyncRender } from './asyncRender';
 export { default as notificationUtils } from './notification';
 export { default as toastUtils } from './toast';
 
-export {
-  arrayUtils,
-  regexUtils,
-  timeUtils,
-  userUtils,
-};
+export { arrayUtils, regexUtils, timeUtils, userUtils };

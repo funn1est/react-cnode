@@ -7,7 +7,12 @@ import HomeTopicContent from './HomeTopicContent';
 import styles from './HomeTopics.scss';
 
 const HomeTopics = ({
-  tab, loading, loadingMore, hasMore, topicsData, handleInfiniteOnLoad,
+  tab,
+  loading,
+  loadingMore,
+  hasMore,
+  topicsData,
+  handleInfiniteOnLoad,
 }) => {
   return (
     <InfiniteScroll
@@ -24,21 +29,18 @@ const HomeTopics = ({
         loading={loading}
         renderItem={item => (
           <List.Item>
-            <Card
-              title={<HomeTopicTitle topic={item} tab={tab} />}
-            >
-              <Card.Meta
-                description={<HomeTopicContent topic={item} />}
-              />
+            <Card title={<HomeTopicTitle topic={item} tab={tab} />}>
+              <Card.Meta description={<HomeTopicContent topic={item} />} />
             </Card>
           </List.Item>
         )}
       >
-        {loadingMore && hasMore && (
-          <div className={styles.loadingMore}>
-            <Spin size="large" />
-          </div>
-        )}
+        {loadingMore &&
+          hasMore && (
+            <div className={styles.loadingMore}>
+              <Spin size="large" />
+            </div>
+          )}
         {!hasMore && <div className={styles.bottom}>我也是有底线的</div>}
       </List>
     </InfiniteScroll>

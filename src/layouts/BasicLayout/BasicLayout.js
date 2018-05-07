@@ -54,7 +54,11 @@ class BasicLayout extends React.PureComponent {
   }
 
   onClickMenu = ({ key }) => {
-    const { tab, user, location: { pathname } } = this.props;
+    const {
+      tab,
+      user,
+      location: { pathname },
+    } = this.props;
     if (key === 'login') {
       this.navigate(routesMap.login);
     } else if (key === 'logout') {
@@ -75,7 +79,9 @@ class BasicLayout extends React.PureComponent {
 
   onClickUser = ({ key }) => {
     if (key === 'user') {
-      const { user: { name } } = this.props;
+      const {
+        user: { name },
+      } = this.props;
       this.navigate(routesMap.user + name);
     } else if (key === 'logout') {
       this.renderLogoutModal();
@@ -101,14 +107,14 @@ class BasicLayout extends React.PureComponent {
   };
 
   getIsMobile = () => {
-    this.enquireHandler = enquireScreen((mobile) => {
+    this.enquireHandler = enquireScreen(mobile => {
       this.setState({
         isMobile: mobile || false,
       });
     }, quireString);
   };
 
-  navigate = (route) => {
+  navigate = route => {
     this.props.history.push(route);
   };
 
@@ -119,7 +125,7 @@ class BasicLayout extends React.PureComponent {
       content: '是否确认退出登录？',
       maskClosable: true,
       onOk() {
-        return new Promise((resolve) => {
+        return new Promise(resolve => {
           self.props.logout();
           resolve();
         });
@@ -129,12 +135,15 @@ class BasicLayout extends React.PureComponent {
 
   render() {
     const {
-      route: { routes }, location: { pathname },
+      route: { routes },
+      location: { pathname },
       user,
     } = this.props;
     const { isMobile } = this.state;
     const renderPost = Object.is(pathname, '/');
-    const renderUser = isMobile && !regexUtils.userRouteRegex.test(pathname) &&
+    const renderUser =
+      isMobile &&
+      !regexUtils.userRouteRegex.test(pathname) &&
       !regexUtils.loginRouteRegex.test(pathname);
     return (
       <Layout className={styles.container}>
@@ -143,9 +152,7 @@ class BasicLayout extends React.PureComponent {
           user={user}
           onClickMenu={this.onClickMenu}
         />
-        <Content className={contentCls}>
-          {renderRoutes(routes)}
-        </Content>
+        <Content className={contentCls}>{renderRoutes(routes)}</Content>
         <FloatingMenu
           renderUser={renderUser}
           renderPost={renderPost}
