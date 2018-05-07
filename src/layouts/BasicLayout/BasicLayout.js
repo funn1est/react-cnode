@@ -61,7 +61,8 @@ class BasicLayout extends React.PureComponent {
       this.renderLogoutModal();
     } else if (key === 'user') {
       this.navigate(routesMap.user + user.name);
-    } else {
+    } else if (key !== undefined) {
+      // TODO antd menu onClick bug
       // change tab when click a new tab
       if (key !== tab) {
         this.props.changeTab(key);
