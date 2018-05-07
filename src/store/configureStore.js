@@ -19,7 +19,8 @@ const configureStore = initialState => {
   const store = createStore(reducer, initialState, middleware);
   if (module.hot) {
     module.hot.accept('./reducers', () => {
-      const nextRootReducer = import('./reducers').default;
+      // eslint-disable-next-line global-require
+      const nextRootReducer = require('./reducers').default;
       store.replaceReducer(combineReducers({ ...nextRootReducer }));
     });
   }
