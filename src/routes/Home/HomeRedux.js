@@ -98,13 +98,11 @@ const reducer = handleActions({
       .set('error', false)
   ),
 
-  [LOAD_MORE_TOPICS_SUCCESS]: (state, { payload }) => {
-    return (
-      state
-        .set('loadingMore', false)
-        .update('topicsData', list => list.concat(payload))
-    );
-  },
+  [LOAD_MORE_TOPICS_SUCCESS]: (state, { payload }) => (
+    state
+      .set('loadingMore', false)
+      .update('topicsData', list => list.concat(payload))
+  ),
 
   [LOAD_MORE_TOPICS_ERROR]: state => (
     state
