@@ -91,7 +91,9 @@ class Topic extends React.PureComponent {
 
   onClickUp = (id, key) => {
     const { user: { token } } = this.props;
-    this.props.upReply(token, id, key);
+    if (token !== undefined) {
+      this.props.upReply(token, id, key);
+    }
   };
 
   onEditorChange(value) {
