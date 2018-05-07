@@ -12,7 +12,7 @@
     "coverage": "jest --config .jest.config.js --coverage"
   },
   "dependencies": {
-    "antd": "^3.4.3",
+    "antd": "3.5.0",
     "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",
     "classnames": "^2.2.5",
@@ -31,7 +31,8 @@
     "redux": "4.0.0",
     "redux-actions": "^2.3.0",
     "redux-immutable": "^4.0.0",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "reselect": "3.0.0"
   },
   "devDependencies": {
     "autoprefixer": "^8.1.0",
