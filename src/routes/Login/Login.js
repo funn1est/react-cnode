@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { Form } from 'antd';
 import classNames from 'classnames';
 import { LoginToken, LoginSetting, LoginSubmit } from './components';
@@ -81,9 +80,9 @@ export default withRouter(
       state => ({
         loading: state.getIn(['login', 'loading']),
       }),
-      dispatch => ({
-        userLogin: bindActionCreators(login, dispatch),
-      }),
+      {
+        userLogin: login,
+      },
     )(LoginComponent),
   ),
 );

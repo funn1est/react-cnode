@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { ReplyService } from 'services';
 import { arrayUtils, toastUtils, notificationUtils } from 'utils';
 import Exception from 'components/Exception';
@@ -21,12 +20,12 @@ import '../../styles/GithubMarkdown.scss';
     topicData: state.getIn(['topic', 'topicData']),
     user: state.getIn(['login', 'userData']),
   }),
-  dispatch => ({
-    getTopicData: bindActionCreators(getTopicData, dispatch),
-    collectTopic: bindActionCreators(collectTopic, dispatch),
-    upReply: bindActionCreators(upReply, dispatch),
-    editTopic: bindActionCreators(editTopic, dispatch),
-  }),
+  {
+    getTopicData,
+    collectTopic,
+    upReply,
+    editTopic,
+  },
 )
 class Topic extends React.PureComponent {
   static propTypes = {

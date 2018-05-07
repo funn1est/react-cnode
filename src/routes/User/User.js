@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import classNames from 'classnames';
 import Exception from 'components/Exception';
 import { getUserData } from './UserRedux';
@@ -16,9 +15,9 @@ const cls = classNames(styles.mdContainer);
     userData: state.getIn(['user', 'userData']),
     error: state.getIn(['user', 'error']),
   }),
-  dispatch => ({
-    getUserData: bindActionCreators(getUserData, dispatch),
-  }),
+  {
+    getUserData,
+  },
 )
 class User extends React.Component {
   componentDidMount() {

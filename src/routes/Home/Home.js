@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import Exception from 'components/Exception';
 import { HomeTopics } from './components';
 import { getTopicsData, getMoreTopicsData } from './HomeRedux';
@@ -15,10 +14,10 @@ import { getTopicsData, getMoreTopicsData } from './HomeRedux';
     topicsData: state.getIn(['home', 'topicsData']),
     error: state.getIn(['home', 'error']),
   }),
-  dispatch => ({
-    getTopicsData: bindActionCreators(getTopicsData, dispatch),
-    getMoreTopicsData: bindActionCreators(getMoreTopicsData, dispatch),
-  }),
+  {
+    getTopicsData,
+    getMoreTopicsData,
+  },
 )
 class Home extends React.PureComponent {
   static propTypes = {

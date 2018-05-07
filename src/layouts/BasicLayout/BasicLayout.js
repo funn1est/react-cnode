@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { withRouter } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
 import { enquireScreen, unenquireScreen } from 'enquire-js';
@@ -33,11 +32,11 @@ const routesMap = {
     user: state.getIn(['login', 'userData']),
     tab: state.getIn(['basic', 'tab']),
   }),
-  dispatch => ({
-    changeTab: bindActionCreators(changeTab, dispatch),
-    getCurrentUser: bindActionCreators(getCurrentUser, dispatch),
-    logout: bindActionCreators(logout, dispatch),
-  }),
+  {
+    changeTab,
+    getCurrentUser,
+    logout,
+  },
 )
 class BasicLayout extends React.PureComponent {
   state = {
