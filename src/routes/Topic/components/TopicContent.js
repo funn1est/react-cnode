@@ -1,22 +1,52 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { Map } from 'immutable';
 import { timeUtils } from 'utils';
 import { Card, Button, Avatar, Switch, Icon, Tag, Divider } from 'antd';
 import Markdown from 'react-markdown';
+import { collectTopic } from '../TopicRedux';
+import { editTopic } from '../../Post/PostRedux';
 import styles from './TopicContent.scss';
 
-const TopicContent = ({
-  loading,
-  loadingCollect,
-  topicData,
-  renderCollect,
-  renderEdit,
-  onClickCollect,
-  onClickEdit,
-}) => {
-  const author = topicData.author || {};
-  const renderTag = (key, isTop, isGood) => {
+@withRouter
+@connect(
+  state => ({
+    loading: state.getIn(['topic', 'loading']),
+    topicData: state.getIn(['topic', 'topicData']),
+    currentUser: state.getIn(['login', 'userData']),
+  }),
+  { collectTopic, editTopic },
+)
+class TopicContent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.onClickCollect = this.onClickCollect.bind(this);
+    this.onClickEdit = this.onClickEdit.bind(this);
+  }
+
+  onClickCollect(isCollect) {
+    const {
+      currentUser: { token },
+      match: {
+        params: { id },
+      },
+    } = this.props;
+    this.props.collectTopic(isCollect, token, id);
+  }
+
+  onClickEdit() {
+    const { topicData } = this.props;
+    const id = topicData.get('id');
+    const tab = topicData.get('tab');
+    const title = topicData.get('title');
+    const content = topicData.get('content');
+    this.props.editTopic({ id, tab, title, content });
+    this.props.history.push(`/topic/${id}/edit`);
+  }
+
+  renderTag = (key, isTop, isGood) => {
     const Tabs = {
       top: <Tag color="red">置顶</Tag>,
       good: <Tag color="green">精华</Tag>,
@@ -32,71 +62,108 @@ const TopicContent = ({
       return Tabs[key];
     }
   };
+
+  render() {
+    const { loading, topicData, currentUser } = this.props;
+
+    const renderCollect = currentUser.id !== undefined;
+    const renderEdit = currentUser.id === topicData.get('author_id');
+    const author = topicData.get('author') || Map({});
+
+    return (
+      <Card
+        className={styles.container}
+        loading={loading}
+        extra={
+          renderCollect && (
+            <TopicContentCollect onClickCollect={this.onClickCollect} />
+          )
+        }
+        title={
+          <Card.Meta
+            avatar={<Avatar src={author.get('avatar_url')} size="large" />}
+            title={
+              <div>
+                {this.renderTag(
+                  topicData.get('tab'),
+                  topicData.get('top'),
+                  topicData.get('good'),
+                )}
+                {topicData.get('title')}
+              </div>
+            }
+            description={
+              <div className={styles.description}>
+                <Link to={`/user/${author.get('loginname')}`}>
+                  <Tag color="purple">{author.get('loginname')}</Tag>
+                </Link>
+                <Divider className={styles.divider} type="vertical" />
+                <span className={styles.createTime}>
+                  发布于：{timeUtils.fromNow(topicData.get('create_at'))}
+                </span>
+                <Divider className={styles.divider} type="vertical" />
+                <span className={styles.visitCount}>
+                  浏览数：{topicData.get('visit_count')}
+                </span>
+              </div>
+            }
+          />
+        }
+        actions={
+          renderEdit && [
+            <Button icon="edit" onClick={this.onClickEdit}>
+              编辑话题
+            </Button>,
+          ]
+        }
+      >
+        <Markdown className="markdown-body" source={topicData.get('content')} />
+      </Card>
+    );
+  }
+}
+
+const Collect = ({ loadingCollect, isCollect, onClickCollect }) => {
   return (
-    <Card
-      className={styles.container}
-      loading={loading}
-      extra={
-        renderCollect && (
-          <div>
-            收藏：
-            <Switch
-              loading={loadingCollect}
-              checked={topicData.is_collect}
-              onChange={onClickCollect}
-              checkedChildren={<Icon type="star" />}
-              unCheckedChildren={<Icon type="star-o" />}
-            />
-          </div>
-        )
-      }
-      title={
-        <Card.Meta
-          avatar={<Avatar src={author.avatar_url} size="large" />}
-          title={
-            <div>
-              {renderTag(topicData.tab, topicData.top, topicData.good)}
-              {topicData.title}
-            </div>
-          }
-          description={
-            <div className={styles.description}>
-              <Link to={`/user/${author.loginname}`}>
-                <Tag color="purple">{author.loginname}</Tag>
-              </Link>
-              <Divider className={styles.divider} type="vertical" />
-              <span className={styles.createTime}>
-                发布于：{timeUtils.fromNow(topicData.create_at)}
-              </span>
-              <Divider className={styles.divider} type="vertical" />
-              <span className={styles.visitCount}>
-                浏览数：{topicData.visit_count}
-              </span>
-            </div>
-          }
-        />
-      }
-      actions={
-        renderEdit && [
-          <Button icon="edit" onClick={onClickEdit}>
-            编辑话题
-          </Button>,
-        ]
-      }
-    >
-      <Markdown className="markdown-body" source={topicData.content} />
-    </Card>
+    <div>
+      收藏：
+      <Switch
+        loading={loadingCollect}
+        checked={isCollect}
+        onChange={onClickCollect}
+        checkedChildren={<Icon type="star" />}
+        unCheckedChildren={<Icon type="star-o" />}
+      />
+    </div>
   );
 };
 
+const TopicContentCollect = connect(state => ({
+  loadingCollect: state.getIn(['topic', 'loadingCollect']),
+  isCollect: state.getIn(['topic', 'isCollect']),
+}))(Collect);
+
 TopicContent.propTypes = {
-  loading: PropTypes.bool.isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    }),
+  }),
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }),
+
+  loading: PropTypes.bool,
+  topicData: PropTypes.object,
+  currentUser: PropTypes.object,
+  collectTopic: PropTypes.func,
+  editTopic: PropTypes.func,
+};
+
+Collect.propTypes = {
   loadingCollect: PropTypes.bool.isRequired,
-  topicData: PropTypes.object.isRequired,
-  renderCollect: PropTypes.bool.isRequired,
-  renderEdit: PropTypes.bool.isRequired,
+  isCollect: PropTypes.bool.isRequired,
   onClickCollect: PropTypes.func.isRequired,
-  onClickEdit: PropTypes.func.isRequired,
 };
 
 export default TopicContent;

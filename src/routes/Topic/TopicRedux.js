@@ -1,4 +1,4 @@
-import { Map } from 'immutable';
+import { Map, List, fromJS } from 'immutable';
 import { createAction, handleActions } from 'redux-actions';
 import { TopicsService, TopicCollectService, ReplyService } from 'services';
 
@@ -23,8 +23,72 @@ const initialState = Map({
   collectError: false,
   upError: false,
 
-  topicData: {},
+  topicData: Map({}),
+  repliesData: Map({
+    entities: Map({}),
+    result: List([]),
+  }),
+  isCollect: false,
 });
+
+const reducer = handleActions(
+  {
+    [LOAD_TOPIC]: state =>
+      state
+        .set('loading', true)
+        .set('error', false)
+        .set('topicData', Map({}))
+        .set(
+          'repliesData',
+          Map({
+            entities: Map({}),
+            result: List([]),
+          }),
+        ),
+
+    [LOAD_TOPIC_SUCCESS]: (
+      state,
+      { payload: { topicData, repliesData, isCollect } },
+    ) =>
+      state
+        .set('loading', false)
+        .set('topicData', topicData)
+        .set('repliesData', repliesData)
+        .set('isCollect', isCollect),
+
+    [LOAD_TOPIC_ERROR]: state => state.set('loading', false).set('error', true),
+
+    [POST_COLLECT_TOPIC]: state =>
+      state.set('loadingCollect', true).set('collectError', false),
+
+    [POST_COLLECT_TOPIC_SUCCESS]: state =>
+      state
+        .set('loadingCollect', false)
+        .updateIn(['isCollect'], value => !value),
+
+    [POST_COLLECT_TOPIC_ERROR]: state =>
+      state.set('loadingCollect', false).set('collectError', true),
+
+    [UP_TOPIC_REPLY]: state =>
+      state.set('loadingUp', true).set('upError', false),
+
+    [UP_TOPIC_REPLY_SUCCESS]: (state, { payload: { replyId, isUp } }) =>
+      state
+        .set('loadingUp', false)
+        .updateIn(
+          ['repliesData', 'entities', replyId, 'is_uped'],
+          value => !value,
+        )
+        .updateIn(
+          ['repliesData', 'entities', replyId, 'ups'],
+          value => (isUp ? value + 1 : value - 1),
+        ),
+
+    [UP_TOPIC_REPLY_ERROR]: state =>
+      state.set('loadingUp', false).set('upError', true),
+  },
+  initialState,
+);
 
 const loadTopic = createAction(LOAD_TOPIC);
 const loadTopicSuccess = createAction(LOAD_TOPIC_SUCCESS);
@@ -44,22 +108,35 @@ export const getTopicData = (id, token, callback) => async dispatch => {
     const {
       data: { data },
     } = await TopicsService.getTopic({ id, accesstoken: token });
-    const formatData = {
-      ...data,
-      replies: data.replies.map(item => ({
+
+    const { replies: repliesArray, ...topic } = data;
+    const repliesLen = repliesArray.length;
+    const repliesResult = [];
+    const repliesEntities = {};
+    repliesArray.forEach(item => {
+      repliesResult.push(item.id);
+      repliesEntities[item.id] = {
         ...item,
         ups: item.ups.length,
-      })),
+      };
+    });
+    const replies = {
+      result: repliesResult,
+      entities: repliesEntities,
     };
-    dispatch(loadTopicSuccess(formatData));
-    callback(formatData);
+    const { is_collect: isCollect, ...topicRest } = topic;
+    const topicData = fromJS(topicRest);
+    const repliesData = fromJS(replies);
+    dispatch(loadTopicSuccess({ topicData, repliesData, isCollect }));
+    callback(repliesLen);
   } catch (e) {
     dispatch(loadTopicError());
   }
 };
 
 /**
- * topic collect
+ * collect topic when click collect button
+ *
  * @param {bool} isCollect - true: collect topic, false: cancel collect topic
  * @param {string} token
  * @param {string} id
@@ -83,75 +160,22 @@ export const collectTopic = (isCollect, token, id) => async dispatch => {
       dispatch(postCollectTopicError());
     }
   } catch (e) {
-    console.log(e);
     dispatch(postCollectTopicError());
   }
 };
 
-export const upReply = (token, replyId, itemKey) => async dispatch => {
+export const upReply = (token, replyId) => async dispatch => {
   dispatch(upTopicReply());
   try {
     const {
       data: { success, action },
     } = await ReplyService.upReply({ token, replyId });
     if (success) {
-      dispatch(upTopicReplySuccess({ key: itemKey, isUp: action === 'up' }));
+      dispatch(upTopicReplySuccess({ replyId, isUp: action === 'up' }));
     }
   } catch (e) {
     dispatch(upTopicReplyError());
   }
 };
-
-const reducer = handleActions(
-  {
-    [LOAD_TOPIC]: state =>
-      state
-        .set('loading', true)
-        .set('error', false)
-        .set('topicData', {}),
-
-    [LOAD_TOPIC_SUCCESS]: (state, { payload }) =>
-      state.set('loading', false).set('topicData', payload),
-
-    [LOAD_TOPIC_ERROR]: state => state.set('loading', false).set('error', true),
-
-    [POST_COLLECT_TOPIC]: state =>
-      state.set('loadingCollect', true).set('collectError', false),
-
-    [POST_COLLECT_TOPIC_SUCCESS]: state => {
-      const topicData = state.get('topicData');
-      return state.set('loadingCollect', false).set('topicData', {
-        ...topicData,
-        is_collect: !topicData.is_collect,
-      });
-      // .updateIn(['topicData', 'is_collect'], value => value)
-    },
-
-    [POST_COLLECT_TOPIC_ERROR]: state =>
-      state.set('loadingCollect', false).set('collectError', true),
-
-    [UP_TOPIC_REPLY]: state =>
-      state.set('loadingUp', true).set('upError', false),
-
-    [UP_TOPIC_REPLY_SUCCESS]: (state, { payload: { key, isUp } }) => {
-      const topicData = state.get('topicData');
-      const { replies } = topicData;
-      const { is_uped, ups } = replies[key];
-      replies.splice(key, 1, {
-        ...replies[key],
-        ups: isUp ? ups + 1 : ups - 1,
-        is_uped: !is_uped,
-      });
-      return state.set('loadingUp', false).set('topicData', {
-        ...topicData,
-        replies,
-      });
-    },
-
-    [UP_TOPIC_REPLY_ERROR]: state =>
-      state.set('loadingUp', false).set('upError', true),
-  },
-  initialState,
-);
 
 export default reducer;
