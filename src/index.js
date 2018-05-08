@@ -3,9 +3,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { AppContainer } from 'react-hot-loader';
+import { registerServiceWorker } from 'utils';
 import configureStore from 'store/configureStore';
 import App from './router';
-import registerServiceWorker from './registerServiceWorker';
 import './index.scss';
 
 const store = configureStore();
