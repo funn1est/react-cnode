@@ -17,8 +17,8 @@ module.exports = {
     'src/**/*.{js,jsx,ts,tsx}'
   ],
   moduleNameMapper: {
-    '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)$': '<rootDir>/mock/fileMock.js',
-    '\\.(css|less|scss|sass)$': '<rootDir>/mock/styleMock',
+    '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)$': '<rootDir>/test/fileMock.js',
+    '\\.(css|less|scss|sass)$': '<rootDir>/test/styleMock',
 
     '^common(.*)$': '<rootDir>/src/common$1',
     '^components(.*)$': '<rootDir>/src/components$1',
