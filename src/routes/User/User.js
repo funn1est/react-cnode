@@ -9,17 +9,12 @@ import styles from './User.scss';
 
 const cls = classNames(styles.mdContainer);
 
-@connect(
-  state => ({
-    loading: state.getIn(['user', 'loading']),
-    userData: state.getIn(['user', 'userData']),
-    error: state.getIn(['user', 'error']),
-  }),
-  {
-    getUserData,
-  },
-)
-class User extends React.Component {
+export class UserComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.getUser = this.getUser.bind(this);
+  }
+
   componentDidMount() {
     this.getUser();
   }
@@ -40,14 +35,14 @@ class User extends React.Component {
     }
   }
 
-  getUser = () => {
+  getUser() {
     const {
       match: {
         params: { name },
       },
     } = this.props;
     this.props.getUserData(name);
-  };
+  }
 
   render() {
     const { loading, userData, error } = this.props;
@@ -71,7 +66,7 @@ class User extends React.Component {
   }
 }
 
-User.propTypes = {
+UserComponent.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
       name: PropTypes.string,
@@ -84,4 +79,13 @@ User.propTypes = {
   getUserData: PropTypes.func,
 };
 
-export default User;
+export default connect(
+  state => ({
+    loading: state.getIn(['user', 'loading']),
+    userData: state.getIn(['user', 'userData']),
+    error: state.getIn(['user', 'error']),
+  }),
+  {
+    getUserData,
+  },
+)(UserComponent);
