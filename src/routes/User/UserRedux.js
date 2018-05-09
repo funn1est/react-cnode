@@ -12,9 +12,9 @@ const initialState = Map({
   error: false,
 });
 
-const loadUser = createAction(LOAD_USER);
-const loadUserSuccess = createAction(LOAD_USER_SUCCESS);
-const loadUserError = createAction(LOAD_USER_ERROR);
+export const loadUser = createAction(LOAD_USER);
+export const loadUserSuccess = createAction(LOAD_USER_SUCCESS);
+export const loadUserError = createAction(LOAD_USER_ERROR);
 
 export const getUserData = name => async dispatch => {
   dispatch(loadUser());

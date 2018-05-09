@@ -2,7 +2,7 @@ import axios from 'axios';
 import { notification } from 'antd';
 import { BASE_URL } from './api';
 
-const instance = axios.create({
+export const instance = axios.create({
   baseURL: BASE_URL,
   timeout: 6000,
 });
