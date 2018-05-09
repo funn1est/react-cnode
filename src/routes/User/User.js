@@ -31,25 +31,22 @@ class User extends React.Component {
 
   render() {
     const { loading, userData, error } = this.props;
+    if (error) {
+      return <Exception />;
+    }
     return (
-      <React.Fragment>
-        {!error ? (
-          <div className={cls}>
-            <UserInfo loading={loading} user={userData} />
-            {!loading && (
-              <UserTopics
-                dataList={{
-                  topics: userData.recent_topics || [],
-                  replies: userData.recent_replies || [],
-                  collect: userData.collect || [],
-                }}
-              />
-            )}
-          </div>
-        ) : (
-          <Exception />
+      <div className={cls}>
+        <UserInfo loading={loading} user={userData} />
+        {!loading && (
+          <UserTopics
+            dataList={{
+              topics: userData.recent_topics || [],
+              replies: userData.recent_replies || [],
+              collect: userData.collect || [],
+            }}
+          />
         )}
-      </React.Fragment>
+      </div>
     );
   }
 }
