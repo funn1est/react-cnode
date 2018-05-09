@@ -21,13 +21,33 @@ const cls = classNames(styles.mdContainer);
 )
 class User extends React.Component {
   componentDidMount() {
+    this.getUser();
+  }
+
+  componentDidUpdate(prevProps) {
+    const {
+      match: {
+        params: { name: prevName },
+      },
+    } = prevProps;
+    const {
+      match: {
+        params: { name },
+      },
+    } = this.props;
+    if (name !== prevName) {
+      this.getUser();
+    }
+  }
+
+  getUser = () => {
     const {
       match: {
         params: { name },
       },
     } = this.props;
     this.props.getUserData(name);
-  }
+  };
 
   render() {
     const { loading, userData, error } = this.props;
