@@ -1,0 +1,157 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TopicContent /> should render correctly 1`] = `
+<div
+  className="ant-card ant-card-bordered"
+>
+  <div
+    className="ant-card-head"
+  >
+    <div
+      className="ant-card-head-wrapper"
+    >
+      <div
+        className="ant-card-head-title"
+      >
+        <div
+          className="ant-card-meta"
+        >
+          <div
+            className="ant-card-meta-avatar"
+          >
+            <span
+              className="ant-avatar ant-avatar-lg ant-avatar-circle ant-avatar-image"
+            >
+              <img
+                onError={[Function]}
+                src="//"
+              />
+            </span>
+          </div>
+          <div
+            className="ant-card-meta-detail"
+          >
+            <div
+              className="ant-card-meta-title"
+            >
+              <div>
+                <div
+                  className="ant-tag ant-tag-red"
+                  data-show={true}
+                  style={
+                    Object {
+                      "backgroundColor": null,
+                    }
+                  }
+                >
+                  置顶
+                </div>
+                title
+              </div>
+            </div>
+            <div
+              className="ant-card-meta-description"
+            >
+              <div>
+                <a
+                  href="/user/admin"
+                  onClick={[Function]}
+                >
+                  <div
+                    className="ant-tag ant-tag-purple"
+                    data-show={true}
+                    style={
+                      Object {
+                        "backgroundColor": null,
+                      }
+                    }
+                  >
+                    admin
+                  </div>
+                </a>
+                <div
+                  className="ant-divider ant-divider-vertical"
+                />
+                <span>
+                  发布于：
+                  a day ago
+                </span>
+                <div
+                  className="ant-divider ant-divider-vertical"
+                />
+                <span>
+                  浏览数：
+                  101
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="ant-card-extra"
+      >
+        <div>
+          收藏：
+          <span
+            checked={false}
+            className="ant-switch"
+            defaultChecked={false}
+            onChange={[Function]}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onMouseUp={[Function]}
+            tabIndex={0}
+          >
+            <span
+              className="ant-switch-inner"
+            >
+              <i
+                className="anticon anticon-star-o"
+              />
+            </span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="ant-card-body"
+    style={Object {}}
+  >
+    <div
+      className="markdown-body"
+    >
+      <p>
+        content
+      </p>
+    </div>
+  </div>
+  <ul
+    className="ant-card-actions"
+  >
+    <li
+      style={
+        Object {
+          "width": "100%",
+        }
+      }
+    >
+      <span>
+        <button
+          className="ant-btn"
+          onClick={[Function]}
+          type="button"
+        >
+          <i
+            className="anticon anticon-edit"
+          />
+          <span>
+            编辑话题
+          </span>
+        </button>
+      </span>
+    </li>
+  </ul>
+</div>
+`;

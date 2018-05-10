@@ -10,16 +10,7 @@ import { collectTopic } from '../TopicRedux';
 import { editTopic } from '../../Post/PostRedux';
 import styles from './TopicContent.scss';
 
-@withRouter
-@connect(
-  state => ({
-    loading: state.getIn(['topic', 'loading']),
-    topicData: state.getIn(['topic', 'topicData']),
-    currentUser: state.getIn(['login', 'userData']),
-  }),
-  { collectTopic, editTopic },
-)
-class TopicContent extends React.Component {
+export class TopicContentComponent extends React.Component {
   constructor(props) {
     super(props);
     this.onClickCollect = this.onClickCollect.bind(this);
@@ -143,7 +134,7 @@ const TopicContentCollect = connect(state => ({
   isCollect: state.getIn(['topic', 'isCollect']),
 }))(Collect);
 
-TopicContent.propTypes = {
+TopicContentComponent.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
       id: PropTypes.string,
@@ -166,4 +157,13 @@ Collect.propTypes = {
   onClickCollect: PropTypes.func.isRequired,
 };
 
-export default TopicContent;
+export default withRouter(
+  connect(
+    state => ({
+      loading: state.getIn(['topic', 'loading']),
+      topicData: state.getIn(['topic', 'topicData']),
+      currentUser: state.getIn(['login', 'userData']),
+    }),
+    { collectTopic, editTopic },
+  )(TopicContentComponent),
+);
