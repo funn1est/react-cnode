@@ -1,5 +1,5 @@
 module.exports = {
-  setupFiles: ['<rootDir>/test/setup.js'],
+  setupFiles: ['<rootDir>/test/setup.js', 'jest-localstorage-mock'],
   testEnvironment: 'jsdom',
   moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx'],
   testPathIgnorePatterns: ['/node_modules/', '/dist/', '/test/'],
