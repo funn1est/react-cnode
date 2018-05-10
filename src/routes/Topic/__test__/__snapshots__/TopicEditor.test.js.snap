@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TopicEditor /> should render correctly 1`] = `
+<Card
+  actions={
+    Array [
+      <Button
+        ghost={false}
+        icon="forward"
+        loading={false}
+        onClick={[MockFunction]}
+        prefixCls="ant-btn"
+        type="primary"
+      >
+        回复
+      </Button>,
+    ]
+  }
+  title="添加回复"
+>
+  <MarkdownEditor
+    onEditorChange={[MockFunction]}
+    value="content"
+  />
+</Card>
+`;
