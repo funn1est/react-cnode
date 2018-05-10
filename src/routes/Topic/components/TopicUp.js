@@ -4,17 +4,7 @@ import { connect } from 'react-redux';
 import { Rate, Icon } from 'antd';
 import styles from './TopicUp.scss';
 
-@connect((state, { replyId }) => ({
-  replyUps: state.getIn(['topic', 'repliesData', 'entities', replyId, 'ups']),
-  replyIsUp: state.getIn([
-    'topic',
-    'repliesData',
-    'entities',
-    replyId,
-    'is_uped',
-  ]),
-}))
-class TopicUp extends React.Component {
+export class TopicUpComponent extends React.Component {
   onUpChange = () => {
     const { replyId } = this.props;
     this.props.onClickUp(replyId);
@@ -37,11 +27,20 @@ class TopicUp extends React.Component {
   }
 }
 
-TopicUp.propTypes = {
+TopicUpComponent.propTypes = {
   replyId: PropTypes.string.isRequired,
   replyUps: PropTypes.number,
   replyIsUp: PropTypes.bool,
   onClickUp: PropTypes.func.isRequired,
 };
 
-export default TopicUp;
+export default connect((state, { replyId }) => ({
+  replyUps: state.getIn(['topic', 'repliesData', 'entities', replyId, 'ups']),
+  replyIsUp: state.getIn([
+    'topic',
+    'repliesData',
+    'entities',
+    replyId,
+    'is_uped',
+  ]),
+}))(TopicUpComponent);

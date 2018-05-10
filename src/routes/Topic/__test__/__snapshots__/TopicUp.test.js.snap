@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TopicUp /> should render correctly 1`] = `
+<div>
+  <ul
+    className="ant-rate"
+    onBlur={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseLeave={[Function]}
+    style={Object {}}
+    tabIndex={0}
+  >
+    <li
+      className="ant-rate-star ant-rate-star-full"
+      onClick={[Function]}
+      onMouseMove={[Function]}
+    >
+      <div
+        className="ant-rate-star-first"
+      >
+        <i
+          className="anticon anticon-like"
+        />
+      </div>
+      <div
+        className="ant-rate-star-second"
+      >
+        <i
+          className="anticon anticon-like"
+        />
+      </div>
+    </li>
+  </ul>
+  2
+</div>
+`;
