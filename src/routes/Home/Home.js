@@ -5,32 +5,7 @@ import Exception from 'components/Exception';
 import { HomeTopics } from './components';
 import { getTopicsData, getMoreTopicsData } from './HomeRedux';
 
-@connect(
-  state => ({
-    tab: state.getIn(['basic', 'tab']),
-    loading: state.getIn(['home', 'loading']),
-    loadingMore: state.getIn(['home', 'loadingMore']),
-    hasMore: state.getIn(['home', 'hasMore']),
-    topicsData: state.getIn(['home', 'topicsData']),
-    error: state.getIn(['home', 'error']),
-  }),
-  {
-    getTopicsData,
-    getMoreTopicsData,
-  },
-)
-class Home extends React.PureComponent {
-  static propTypes = {
-    tab: PropTypes.string,
-    loading: PropTypes.bool.isRequired,
-    loadingMore: PropTypes.bool.isRequired,
-    hasMore: PropTypes.bool.isRequired,
-    topicsData: PropTypes.array.isRequired,
-    getTopicsData: PropTypes.func,
-    getMoreTopicsData: PropTypes.func,
-    error: PropTypes.bool.isRequired,
-  };
-
+export class HomeComponent extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -75,23 +50,44 @@ class Home extends React.PureComponent {
       topicsData,
       error,
     } = this.props;
+    if (error) {
+      return <Exception />;
+    }
     return (
-      <React.Fragment>
-        {!error ? (
-          <HomeTopics
-            tab={tab}
-            loading={loading}
-            loadingMore={loadingMore}
-            topicsData={topicsData}
-            hasMore={hasMore}
-            handleInfiniteOnLoad={this.handleInfiniteOnLoad}
-          />
-        ) : (
-          <Exception />
-        )}
-      </React.Fragment>
+      <HomeTopics
+        tab={tab}
+        loading={loading}
+        loadingMore={loadingMore}
+        topicsData={topicsData}
+        hasMore={hasMore}
+        handleInfiniteOnLoad={this.handleInfiniteOnLoad}
+      />
     );
   }
 }
 
-export default Home;
+HomeComponent.propTypes = {
+  tab: PropTypes.string,
+  loading: PropTypes.bool.isRequired,
+  loadingMore: PropTypes.bool.isRequired,
+  hasMore: PropTypes.bool.isRequired,
+  topicsData: PropTypes.array.isRequired,
+  getTopicsData: PropTypes.func,
+  getMoreTopicsData: PropTypes.func,
+  error: PropTypes.bool.isRequired,
+};
+
+export default connect(
+  state => ({
+    tab: state.getIn(['basic', 'tab']),
+    loading: state.getIn(['home', 'loading']),
+    loadingMore: state.getIn(['home', 'loadingMore']),
+    hasMore: state.getIn(['home', 'hasMore']),
+    topicsData: state.getIn(['home', 'topicsData']),
+    error: state.getIn(['home', 'error']),
+  }),
+  {
+    getTopicsData,
+    getMoreTopicsData,
+  },
+)(HomeComponent);
