@@ -37,16 +37,17 @@ const FloatingMenu = ({
   return (
     <div className={styles.container}>
       {renderUser && (isLogin ? UserMenu : LoginMenu)}
-      {renderPost && (
-        <Button
-          className={styles.post}
-          type="primary"
-          shape="circle"
-          size="large"
-          icon="edit"
-          onClick={onClickPost}
-        />
-      )}
+      {renderPost &&
+        isLogin && (
+          <Button
+            className={styles.post}
+            type="primary"
+            shape="circle"
+            size="large"
+            icon="edit"
+            onClick={onClickPost}
+          />
+        )}
       <Button
         type="primary"
         shape="circle"

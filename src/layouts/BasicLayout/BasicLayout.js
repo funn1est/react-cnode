@@ -92,12 +92,7 @@ class BasicLayout extends React.PureComponent {
   };
 
   onClickPost = () => {
-    const isLogin = userUtils.getUser() !== null;
-    if (isLogin) {
-      this.navigate(routesMap.post);
-    } else {
-      this.navigate(routesMap.login);
-    }
+    this.navigate(routesMap.post);
   };
 
   onClickTop = () => {
