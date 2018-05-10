@@ -1,4 +1,4 @@
-import { userUtils, notificationUtils } from 'utils';
+import { userUtils } from 'utils';
 import { get, post } from './instance';
 import { TopicsApi } from './api';
 
