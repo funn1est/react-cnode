@@ -1,0 +1,158 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Post /> should render correctly 1`] = `
+<Card>
+  <div>
+    板块：
+    <PostTab
+      onTabChange={[Function]}
+    />
+  </div>
+  <PostTitle
+    onTitleChange={[Function]}
+    value=""
+  />
+  <MarkdownEditor
+    onEditorChange={[Function]}
+    value=""
+  />
+  <div>
+    <Button
+      ghost={false}
+      icon="share-alt"
+      loading={false}
+      onClick={[Function]}
+      prefixCls="ant-btn"
+      type="primary"
+    >
+      发布主题
+    </Button>
+  </div>
+</Card>
+`;
+
+exports[`<PostTab /> should render correctly 1`] = `
+<div
+  className="ant-radio-group"
+>
+  <label
+    className="ant-radio-button-wrapper"
+  >
+    <span
+      className="ant-radio-button"
+      style={Object {}}
+    >
+      <input
+        checked={false}
+        className="ant-radio-button-input"
+        disabled={false}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="radio"
+        value="share"
+      />
+      <span
+        className="ant-radio-button-inner"
+      />
+    </span>
+    <span>
+      分享
+    </span>
+  </label>
+  <label
+    className="ant-radio-button-wrapper"
+  >
+    <span
+      className="ant-radio-button"
+      style={Object {}}
+    >
+      <input
+        checked={false}
+        className="ant-radio-button-input"
+        disabled={false}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="radio"
+        value="ask"
+      />
+      <span
+        className="ant-radio-button-inner"
+      />
+    </span>
+    <span>
+      问答
+    </span>
+  </label>
+  <label
+    className="ant-radio-button-wrapper"
+  >
+    <span
+      className="ant-radio-button"
+      style={Object {}}
+    >
+      <input
+        checked={false}
+        className="ant-radio-button-input"
+        disabled={false}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="radio"
+        value="job"
+      />
+      <span
+        className="ant-radio-button-inner"
+      />
+    </span>
+    <span>
+      招聘
+    </span>
+  </label>
+  <label
+    className="ant-radio-button-wrapper ant-radio-button-wrapper-checked"
+  >
+    <span
+      className="ant-radio-button ant-radio-button-checked"
+      style={Object {}}
+    >
+      <input
+        checked={true}
+        className="ant-radio-button-input"
+        disabled={false}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="radio"
+        value="dev"
+      />
+      <span
+        className="ant-radio-button-inner"
+      />
+    </span>
+    <span>
+      测试
+    </span>
+  </label>
+</div>
+`;
+
+exports[`<PostTitle /> should render correctly 1`] = `
+<textarea
+  className="ant-input"
+  maxLength="120"
+  onChange={[Function]}
+  onKeyDown={[Function]}
+  placeholder="请输入文章标题 - 最多 120 字"
+  style={
+    Object {
+      "height": 0,
+      "maxHeight": 9007199254740991,
+      "minHeight": -9007199254740991,
+      "overflowY": "hidden",
+    }
+  }
+  value="title"
+/>
+`;

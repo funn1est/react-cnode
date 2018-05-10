@@ -9,14 +9,7 @@ import MarkdownEditor from 'components/MarkdownEditor';
 import { PostTab, PostTitle } from './components';
 import styles from './Post.scss';
 
-@withRouter
-@connect(state => ({
-  id: state.getIn(['edit', 'id']),
-  tab: state.getIn(['edit', 'tab']),
-  title: state.getIn(['edit', 'title']),
-  content: state.getIn(['edit', 'content']),
-}))
-class Post extends React.Component {
+export class PostComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -94,12 +87,6 @@ class Post extends React.Component {
         notificationUtils.warning('服务器出小差了，请稍后再试');
       }
     } catch (e) {
-      // TopicsService.postTopics() interrupt
-      if (!(e instanceof TypeError)) {
-        notificationUtils.warning('网络出小差了，请稍后再试');
-      } else {
-        console.log(e);
-      }
       this.setState({
         loading: false,
       });
@@ -149,7 +136,7 @@ class Post extends React.Component {
   }
 }
 
-Post.propTypes = {
+PostComponent.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func,
   }),
@@ -163,4 +150,11 @@ Post.propTypes = {
   content: PropTypes.string,
 };
 
-export default Post;
+export default withRouter(
+  connect(state => ({
+    id: state.getIn(['edit', 'id']),
+    tab: state.getIn(['edit', 'tab']),
+    title: state.getIn(['edit', 'title']),
+    content: state.getIn(['edit', 'content']),
+  }))(PostComponent),
+);
