@@ -11,15 +11,6 @@ import styles from './Login.scss';
 const cls = classNames(styles.container, styles.xsContainer);
 
 export class LoginComponent extends React.Component {
-  static propTypes = {
-    form: PropTypes.object,
-    loading: PropTypes.bool,
-    userLogin: PropTypes.func,
-    history: PropTypes.shape({
-      push: PropTypes.func,
-    }),
-  };
-
   static childContextTypes = {
     form: PropTypes.object,
   };
@@ -73,6 +64,16 @@ export class LoginComponent extends React.Component {
     );
   }
 }
+
+LoginComponent.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }),
+
+  form: PropTypes.object,
+  loading: PropTypes.bool,
+  userLogin: PropTypes.func,
+};
 
 export default withRouter(
   Form.create()(
