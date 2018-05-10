@@ -90,17 +90,17 @@ const reducer = handleActions(
   initialState,
 );
 
-const loadTopic = createAction(LOAD_TOPIC);
-const loadTopicSuccess = createAction(LOAD_TOPIC_SUCCESS);
-const loadTopicError = createAction(LOAD_TOPIC_ERROR);
+export const loadTopic = createAction(LOAD_TOPIC);
+export const loadTopicSuccess = createAction(LOAD_TOPIC_SUCCESS);
+export const loadTopicError = createAction(LOAD_TOPIC_ERROR);
 
-const postCollectTopic = createAction(POST_COLLECT_TOPIC);
-const postCollectTopicSuccess = createAction(POST_COLLECT_TOPIC_SUCCESS);
-const postCollectTopicError = createAction(POST_COLLECT_TOPIC_ERROR);
+export const postCollectTopic = createAction(POST_COLLECT_TOPIC);
+export const postCollectTopicSuccess = createAction(POST_COLLECT_TOPIC_SUCCESS);
+export const postCollectTopicError = createAction(POST_COLLECT_TOPIC_ERROR);
 
-const upTopicReply = createAction(UP_TOPIC_REPLY);
-const upTopicReplySuccess = createAction(UP_TOPIC_REPLY_SUCCESS);
-const upTopicReplyError = createAction(UP_TOPIC_REPLY_ERROR);
+export const upTopicReply = createAction(UP_TOPIC_REPLY);
+export const upTopicReplySuccess = createAction(UP_TOPIC_REPLY_SUCCESS);
+export const upTopicReplyError = createAction(UP_TOPIC_REPLY_ERROR);
 
 export const getTopicData = (id, token, callback) => async dispatch => {
   dispatch(loadTopic());

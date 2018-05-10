@@ -10,8 +10,6 @@ const initialState = Map({
   content: '',
 });
 
-export const editTopic = createAction(EDIT_TOPIC);
-
 const reducer = handleActions(
   {
     [EDIT_TOPIC]: (state, { payload: { id, tab, title, content } }) =>
@@ -23,5 +21,7 @@ const reducer = handleActions(
   },
   initialState,
 );
+
+export const editTopic = createAction(EDIT_TOPIC);
 
 export default reducer;

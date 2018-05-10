@@ -22,15 +22,45 @@ const initialState = Map({
   topicsData: [],
 });
 
-const loadTopics = createAction(LOAD_TOPICS);
-const loadTopicsSuccess = createAction(LOAD_TOPICS_SUCCESS);
-const loadTopicsError = createAction(LOAD_TOPICS_ERROR);
+const reducer = handleActions(
+  {
+    [LOAD_TOPICS]: state =>
+      state
+        .set('loading', true)
+        .set('hasMore', true)
+        .set('error', false),
 
-const loadMoreTopics = createAction(LOAD_MORE_TOPICS);
-const loadMoreTopicsSuccess = createAction(LOAD_MORE_TOPICS_SUCCESS);
-const loadMoreTopicsError = createAction(LOAD_MORE_TOPICS_ERROR);
+    [LOAD_TOPICS_SUCCESS]: (state, { payload }) =>
+      state.set('loading', false).set('topicsData', payload),
 
-const loadTopicsFinish = createAction(LOAD_TOPICS_FINISH);
+    [LOAD_TOPICS_ERROR]: state =>
+      state.set('loading', false).set('error', true),
+
+    [LOAD_MORE_TOPICS]: state =>
+      state.set('loadingMore', true).set('error', false),
+
+    [LOAD_MORE_TOPICS_SUCCESS]: (state, { payload }) =>
+      state
+        .set('loadingMore', false)
+        .update('topicsData', list => list.concat(payload)),
+
+    [LOAD_MORE_TOPICS_ERROR]: state =>
+      state.set('loadingMore', false).set('error', true),
+
+    [LOAD_TOPICS_FINISH]: state => state.set('hasMore', false),
+  },
+  initialState,
+);
+
+export const loadTopics = createAction(LOAD_TOPICS);
+export const loadTopicsSuccess = createAction(LOAD_TOPICS_SUCCESS);
+export const loadTopicsError = createAction(LOAD_TOPICS_ERROR);
+
+export const loadMoreTopics = createAction(LOAD_MORE_TOPICS);
+export const loadMoreTopicsSuccess = createAction(LOAD_MORE_TOPICS_SUCCESS);
+export const loadMoreTopicsError = createAction(LOAD_MORE_TOPICS_ERROR);
+
+export const loadTopicsFinish = createAction(LOAD_TOPICS_FINISH);
 
 export const getTopicsData = (tab, page, callback) => async dispatch => {
   dispatch(loadTopics());
@@ -73,35 +103,5 @@ export const getMoreTopicsData = (tab, page, callback) => async dispatch => {
     dispatch(loadMoreTopicsError());
   }
 };
-
-const reducer = handleActions(
-  {
-    [LOAD_TOPICS]: state =>
-      state
-        .set('loading', true)
-        .set('hasMore', true)
-        .set('error', false),
-
-    [LOAD_TOPICS_SUCCESS]: (state, { payload }) =>
-      state.set('loading', false).set('topicsData', payload),
-
-    [LOAD_TOPICS_ERROR]: state =>
-      state.set('loading', false).set('error', true),
-
-    [LOAD_MORE_TOPICS]: state =>
-      state.set('loadingMore', true).set('error', false),
-
-    [LOAD_MORE_TOPICS_SUCCESS]: (state, { payload }) =>
-      state
-        .set('loadingMore', false)
-        .update('topicsData', list => list.concat(payload)),
-
-    [LOAD_MORE_TOPICS_ERROR]: state =>
-      state.set('loadingMore', false).set('error', true),
-
-    [LOAD_TOPICS_FINISH]: state => state.set('hasMore', false),
-  },
-  initialState,
-);
 
 export default reducer;

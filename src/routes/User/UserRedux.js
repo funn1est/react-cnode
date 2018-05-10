@@ -12,6 +12,22 @@ const initialState = Map({
   error: false,
 });
 
+const reducer = handleActions(
+  {
+    [LOAD_USER]: state =>
+      state
+        .set('loading', true)
+        .set('error', false)
+        .set('userData', {}),
+
+    [LOAD_USER_SUCCESS]: (state, { payload }) =>
+      state.set('loading', false).set('userData', payload),
+
+    [LOAD_USER_ERROR]: state => state.set('loading', false).set('error', true),
+  },
+  initialState,
+);
+
 export const loadUser = createAction(LOAD_USER);
 export const loadUserSuccess = createAction(LOAD_USER_SUCCESS);
 export const loadUserError = createAction(LOAD_USER_ERROR);
@@ -31,21 +47,5 @@ export const getUserData = name => async dispatch => {
     dispatch(loadUserError());
   }
 };
-
-const reducer = handleActions(
-  {
-    [LOAD_USER]: state =>
-      state
-        .set('loading', true)
-        .set('error', false)
-        .set('userData', {}),
-
-    [LOAD_USER_SUCCESS]: (state, { payload }) =>
-      state.set('loading', false).set('userData', payload),
-
-    [LOAD_USER_ERROR]: state => state.set('loading', false).set('error', true),
-  },
-  initialState,
-);
 
 export default reducer;
