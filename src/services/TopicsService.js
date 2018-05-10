@@ -23,15 +23,7 @@ export const postTopics = ({ id, title, tab, content } = {}) => {
     throw new TypeError('missing params');
   }
 
-  let accesstoken;
-  const user = userUtils.getUser();
-  const isLogin = user !== null;
-  if (isLogin) {
-    accesstoken = user.token;
-  } else {
-    notificationUtils.error('请登录后再发表话题');
-    return;
-  }
+  const { token: accesstoken } = userUtils.getUser();
   const params = {
     accesstoken,
     title,
