@@ -11,32 +11,32 @@ import { UserTopics } from '../components';
 
 MockDate.set(new Date('2018-05-21T16:00:00.000Z'));
 
-const userProps = {
-  loading: false,
-  userData: {
-    avatar_url: '//',
-    collect: [{}, {}],
-    create_at: '2018-05-20T16:00:00.000Z',
-    githubUsername: 'admin',
-    loginname: 'admin',
-    score: 520,
-    recent_topics: [
-      {
-        author: {
-          avatar_url: '//',
-          loginname: 'admin',
-        },
-        id: '007',
-        title: 'title',
-        last_reply_at: '2018-05-20T16:00:00.000Z',
-      },
-    ],
-    recent_replies: [],
-  },
-  error: false,
-};
-
 describe('<User />', () => {
+  const userProps = {
+    loading: false,
+    userData: {
+      avatar_url: '//',
+      collect: [{}, {}],
+      create_at: '2018-05-20T16:00:00.000Z',
+      githubUsername: 'admin',
+      loginname: 'admin',
+      score: 520,
+      recent_topics: [
+        {
+          author: {
+            avatar_url: '//',
+            loginname: 'admin',
+          },
+          id: '007',
+          title: 'title',
+          last_reply_at: '2018-05-20T16:00:00.000Z',
+        },
+      ],
+      recent_replies: [],
+    },
+    error: false,
+  };
+
   const middleware = [thunk];
   const mockStore = configureStore(middleware);
 
