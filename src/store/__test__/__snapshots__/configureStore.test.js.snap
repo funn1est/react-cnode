@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Redux store initialState should match snapshots 1`] = `
+Immutable.Map {
+  "basic": Immutable.Map {
+    "tab": "all",
+  },
+  "home": Immutable.Map {
+    "loading": false,
+    "loadingMore": false,
+    "hasMore": true,
+    "error": false,
+    "topicsData": Array [],
+  },
+  "login": Immutable.Map {
+    "loading": false,
+    "userData": Object {},
+    "error": false,
+  },
+  "topic": Immutable.Map {
+    "isCollect": false,
+    "error": false,
+    "upError": false,
+    "loadingCollect": false,
+    "repliesData": Immutable.Map {
+      "entities": Immutable.Map {},
+      "result": Immutable.List [],
+    },
+    "loadingUp": false,
+    "topicData": Immutable.Map {},
+    "loading": false,
+    "collectError": false,
+  },
+  "user": Immutable.Map {
+    "loading": false,
+    "userData": Object {},
+    "error": false,
+  },
+  "edit": Immutable.Map {
+    "id": "",
+    "tab": "dev",
+    "title": "",
+    "content": "",
+  },
+}
+`;
