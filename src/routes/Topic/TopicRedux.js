@@ -172,6 +172,8 @@ export const upReply = (token, replyId) => async dispatch => {
     } = await ReplyService.upReply({ token, replyId });
     if (success) {
       dispatch(upTopicReplySuccess({ replyId, isUp: action === 'up' }));
+    } else {
+      dispatch(upTopicReplyError());
     }
   } catch (e) {
     dispatch(upTopicReplyError());
