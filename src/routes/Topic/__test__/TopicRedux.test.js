@@ -82,7 +82,7 @@ describe('TopicRedux reducer', () => {
     expect(state).toEqual(initialState.set('loadingUp', true));
   });
 
-  it('should return UP_TOPIC_REPLY_SUCCESS status', () => {
+  it('should return UP_TOPIC_REPLY_SUCCESS status - up reply', () => {
     const ownInitialState = initialState.setIn(
       ['repliesData', 'entities'],
       fromJS({
@@ -100,6 +100,27 @@ describe('TopicRedux reducer', () => {
       ownInitialState
         .setIn(['repliesData', 'entities', '233', 'is_uped'], true)
         .setIn(['repliesData', 'entities', '233', 'ups'], 16),
+    );
+  });
+
+  it('should return UP_TOPIC_REPLY_SUCCESS status - cancel up reply', () => {
+    const ownInitialState = initialState.setIn(
+      ['repliesData', 'entities'],
+      fromJS({
+        '233': {
+          is_uped: true,
+          ups: 15,
+        },
+      }),
+    );
+    const state = reducer(
+      ownInitialState,
+      upTopicReplySuccess({ replyId: '233', isUp: false }),
+    );
+    expect(state).toEqual(
+      ownInitialState
+        .setIn(['repliesData', 'entities', '233', 'is_uped'], false)
+        .setIn(['repliesData', 'entities', '233', 'ups'], 14),
     );
   });
 
