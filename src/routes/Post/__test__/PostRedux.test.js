@@ -2,7 +2,6 @@ import { Map } from 'immutable';
 import thunk from 'redux-thunk';
 import configureStore from 'redux-mock-store';
 import reducer, { editTopic } from '../PostRedux';
-import { getUserData } from '../../User/UserRedux';
 
 describe('PostRedux reducer', () => {
   const initialState = Map({
