@@ -11,9 +11,5 @@ export const removeUser = () => {
 
 export const getUser = () => {
   const user = localStorage.getItem('user') || sessionStorage.getItem('user');
-  if (user !== undefined) {
-    return JSON.parse(user);
-  } else {
-    return null;
-  }
+  return JSON.parse(user);
 };
