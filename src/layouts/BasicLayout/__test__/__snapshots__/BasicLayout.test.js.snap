@@ -1,0 +1,254 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<BasicLayout /> should render desktop view correctly 1`] = `
+<div
+  className="ant-layout"
+>
+  <div
+    className="ant-layout-header"
+  >
+    <div
+      className=""
+    >
+      <a
+        href="/"
+        onClick={[Function]}
+      >
+        <div />
+      </a>
+      <ul
+        className="ant-menu ant-menu-light ant-menu-root ant-menu-horizontal"
+        onClick={[Function]}
+        role="menu"
+        style={Object {}}
+      >
+        <li
+          className="ant-menu-item ant-menu-item-selected"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          role="menuitem"
+          style={Object {}}
+        >
+          全部
+        </li>
+        <li
+          className="ant-menu-item"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          role="menuitem"
+          style={Object {}}
+        >
+          精华
+        </li>
+        <li
+          className="ant-menu-item"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          role="menuitem"
+          style={Object {}}
+        >
+          分享
+        </li>
+        <li
+          className="ant-menu-item"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          role="menuitem"
+          style={Object {}}
+        >
+          问答
+        </li>
+        <li
+          className="ant-menu-item"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          role="menuitem"
+          style={Object {}}
+        >
+          招聘
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div
+    className="ant-layout-content"
+  />
+  <div>
+    <span
+      className="ant-avatar ant-dropdown-trigger ant-avatar-lg ant-avatar-circle"
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      onTouchStart={[Function]}
+    >
+      <span
+        className="ant-avatar-string"
+        style={
+          Object {
+            "WebkitTransform": "scale(-Infinity)",
+            "display": "inline-block",
+            "left": "calc(50% - 0px)",
+            "msTransform": "scale(-Infinity)",
+            "position": "absolute",
+            "transform": "scale(-Infinity)",
+          }
+        }
+      />
+    </span>
+    <button
+      className="ant-btn ant-btn-primary ant-btn-circle ant-btn-lg ant-btn-icon-only"
+      onClick={[Function]}
+      type="button"
+    >
+      <i
+        className="anticon anticon-arrow-up"
+      />
+    </button>
+  </div>
+</div>
+`;
+
+exports[`<BasicLayout /> should render mobile view correctly 1`] = `
+<div
+  className="ant-layout"
+>
+  <div
+    className="ant-layout-header"
+  >
+    <div
+      className=""
+    >
+      <a
+        href="/"
+        onClick={[Function]}
+      >
+        <div />
+      </a>
+      <ul
+        className="ant-menu ant-menu-light ant-menu-root ant-menu-horizontal"
+        onClick={[Function]}
+        role="menu"
+        style={Object {}}
+      >
+        <li
+          className="ant-menu-item ant-menu-item-selected"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          role="menuitem"
+          style={Object {}}
+        >
+          全部
+        </li>
+        <li
+          className="ant-menu-item"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          role="menuitem"
+          style={Object {}}
+        >
+          精华
+        </li>
+        <li
+          className="ant-menu-item"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          role="menuitem"
+          style={Object {}}
+        >
+          分享
+        </li>
+        <li
+          className="ant-menu-item"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          role="menuitem"
+          style={Object {}}
+        >
+          问答
+        </li>
+        <li
+          className="ant-menu-item"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          role="menuitem"
+          style={Object {}}
+        >
+          招聘
+        </li>
+      </ul>
+      <div>
+        <ul
+          className="ant-menu ant-menu-light ant-menu-root ant-menu-horizontal"
+          onClick={[Function]}
+          role="menu"
+          style={Object {}}
+        >
+          <li
+            className="ant-menu-submenu ant-menu-submenu-horizontal"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            role="menuitem"
+          >
+            <div
+              aria-expanded={false}
+              aria-haspopup="true"
+              className="ant-menu-submenu-title"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              style={Object {}}
+            >
+              <span>
+                <span
+                  className="ant-avatar ant-avatar-sm ant-avatar-circle"
+                >
+                  <span
+                    className="ant-avatar-string"
+                    style={
+                      Object {
+                        "WebkitTransform": "scale(-Infinity)",
+                        "display": "inline-block",
+                        "left": "calc(50% - 0px)",
+                        "msTransform": "scale(-Infinity)",
+                        "position": "absolute",
+                        "transform": "scale(-Infinity)",
+                      }
+                    }
+                  />
+                </span>
+              </span>
+              <i
+                className="ant-menu-submenu-arrow"
+              />
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div
+    className="ant-layout-content"
+  />
+  <div>
+    <button
+      className="ant-btn ant-btn-primary ant-btn-circle ant-btn-lg ant-btn-icon-only"
+      onClick={[Function]}
+      type="button"
+    >
+      <i
+        className="anticon anticon-arrow-up"
+      />
+    </button>
+  </div>
+</div>
+`;

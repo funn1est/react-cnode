@@ -5,15 +5,13 @@ import { withRouter } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
 import { enquireScreen, unenquireScreen } from 'enquire-js';
 import { getCurrentUser, logout } from 'routes/Login/LoginRedux';
-import { userUtils, regexUtils } from 'utils';
+import { regexUtils } from 'utils';
 import { Layout, Modal } from 'antd';
 import classNames from 'classnames';
 import Header from 'components/Header';
 import { changeTab } from './BasicLayoutRedux';
 import { FloatingMenu } from './components';
 import styles from './BasicLayout.scss';
-
-const { Content } = Layout;
 
 const contentCls = classNames(styles.content, styles.lgContainer);
 
@@ -26,19 +24,7 @@ const routesMap = {
   post: '/topic/create',
 };
 
-@withRouter
-@connect(
-  state => ({
-    user: state.getIn(['login', 'userData']),
-    tab: state.getIn(['basic', 'tab']),
-  }),
-  {
-    changeTab,
-    getCurrentUser,
-    logout,
-  },
-)
-class BasicLayout extends React.PureComponent {
+export class BasicLayoutComponent extends React.PureComponent {
   state = {
     isMobile: false,
   };
@@ -146,7 +132,9 @@ class BasicLayout extends React.PureComponent {
           user={user}
           onClickMenu={this.onClickMenu}
         />
-        <Content className={contentCls}>{renderRoutes(routes)}</Content>
+        <Layout.Content className={contentCls}>
+          {renderRoutes(routes)}
+        </Layout.Content>
         <FloatingMenu
           renderUser={renderUser}
           renderPost={renderPost}
@@ -161,7 +149,7 @@ class BasicLayout extends React.PureComponent {
   }
 }
 
-BasicLayout.propTypes = {
+BasicLayoutComponent.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func,
   }),
@@ -177,4 +165,16 @@ BasicLayout.propTypes = {
   getCurrentUser: PropTypes.func,
 };
 
-export default BasicLayout;
+export default withRouter(
+  connect(
+    state => ({
+      user: state.getIn(['login', 'userData']),
+      tab: state.getIn(['basic', 'tab']),
+    }),
+    {
+      changeTab,
+      getCurrentUser,
+      logout,
+    },
+  )(BasicLayoutComponent),
+);
