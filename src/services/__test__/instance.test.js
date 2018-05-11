@@ -14,9 +14,11 @@ describe('checkStatus()', () => {
 
   it('should show error when response status not in [200,300]', async () => {
     const iconPrefix = '.ant-notification-notice-icon';
-    mockAxios
-      .withArgs('/error')
-      .resolves({ status: 404, data: { error_msg: 'error' } });
+    mockAxios.withArgs('/error').resolves({
+      status: 404,
+      config: { url: '//' },
+      data: { error_msg: 'error' },
+    });
 
     get('/error').then(() => {
       expect(document.querySelectorAll(`${iconPrefix}-error`).length).toBe(1);
