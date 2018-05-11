@@ -99,6 +99,7 @@ describe('<BasicLayout />', () => {
       // login
       wrapper.instance().onClickMenu({ key: 'login' });
       expect(navigateSpy).toHaveBeenCalledTimes(1);
+      expect(navigateSpy).toHaveBeenLastCalledWith('/login');
 
       // logout
       wrapper.instance().onClickMenu({ key: 'logout' });
@@ -107,10 +108,12 @@ describe('<BasicLayout />', () => {
       // user
       wrapper.instance().onClickMenu({ key: 'user' });
       expect(navigateSpy).toHaveBeenCalledTimes(2);
+      expect(navigateSpy).toHaveBeenLastCalledWith('/user/admin');
 
       // job - different from tab: 'dev'
       wrapper.instance().onClickMenu({ key: 'job' });
       expect(props.changeTab).toHaveBeenCalledTimes(1);
+      expect(props.changeTab).toHaveBeenLastCalledWith('job');
 
       // navigate to dev and current path is '/topic/123'
       wrapper.setProps({
@@ -121,6 +124,7 @@ describe('<BasicLayout />', () => {
       wrapper.instance().onClickMenu({ key: 'dev' });
       expect(props.changeTab).toHaveBeenCalledTimes(1);
       expect(navigateSpy).toHaveBeenCalledTimes(3);
+      expect(navigateSpy).toHaveBeenLastCalledWith('/');
 
       wrapper.instance().onClickMenu({ key: undefined });
       expect(navigateSpy).toHaveBeenCalledTimes(3);
@@ -138,6 +142,7 @@ describe('<BasicLayout />', () => {
 
       wrapper.instance().onClickUser({ key: 'user' });
       expect(navigateSpy).toHaveBeenCalledTimes(1);
+      expect(navigateSpy).toHaveBeenLastCalledWith('/user/admin');
 
       wrapper.instance().onClickUser({ key: 'logout' });
       expect(renderLogoutModalSpy).toHaveBeenCalledTimes(1);
@@ -152,9 +157,11 @@ describe('<BasicLayout />', () => {
       wrapper.instance().forceUpdate();
       wrapper.instance().onClickUserLogin();
       expect(spy).toHaveBeenCalledTimes(1);
+      expect(spy).toHaveBeenLastCalledWith('/login');
 
       wrapper.instance().onClickPost();
       expect(spy).toHaveBeenCalledTimes(2);
+      expect(spy).toHaveBeenLastCalledWith('/topic/create');
     });
 
     it('should scroll to top when call onClickTop()', () => {
