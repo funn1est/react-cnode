@@ -3,9 +3,9 @@ import { shallow, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import sinon from 'sinon';
 import { instance } from 'services/instance';
+import { TopicsApi } from 'services/api';
 import { PostComponent } from '../Post';
 import { PostTab, PostTitle } from '../components';
-import { TopicsApi } from '../../../services/api';
 
 describe('<Post />', () => {
   const postProps = {
