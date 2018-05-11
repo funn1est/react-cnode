@@ -67,12 +67,7 @@ export const getTopicsData = (tab, page, callback) => async dispatch => {
   try {
     const {
       data: { data },
-    } = await TopicsService.getTopics({
-      tab,
-      page,
-      limit: PAGE_SIZE,
-      mdrender: 'true',
-    });
+    } = await TopicsService.getTopics(tab, page, PAGE_SIZE);
     dispatch(loadTopicsSuccess(data));
     if (data.length < PAGE_SIZE) {
       dispatch(loadTopicsFinish());
@@ -88,12 +83,7 @@ export const getMoreTopicsData = (tab, page, callback) => async dispatch => {
   try {
     const {
       data: { data },
-    } = await TopicsService.getTopics({
-      tab,
-      page,
-      limit: PAGE_SIZE,
-      mdrender: 'true',
-    });
+    } = await TopicsService.getTopics(tab, page, PAGE_SIZE);
     dispatch(loadMoreTopicsSuccess(data));
     if (data.length < PAGE_SIZE) {
       dispatch(loadTopicsFinish());

@@ -2,27 +2,38 @@ import { userUtils } from 'utils';
 import { get, post } from './instance';
 import { TopicsApi } from './api';
 
-export const getTopics = ({
-  page = 1,
-  tab = 'all',
-  limit = 20,
-  mdrender = 'false',
-} = {}) => {
+/**
+ * get Topics info
+ * get: /topics
+ *
+ * @param {string} tab - topics tab
+ * @param {number} page - topics page
+ * @param {number} limit - topics page size
+ * @returns {Promise<*>}
+ */
+export const getTopics = (tab, page, limit) => {
   const params = {
-    page,
     tab,
+    page,
     limit,
-    mdrender,
+    mdrender: 'true',
   };
   return get(TopicsApi.topics, params);
 };
 
-export const postTopics = ({ id, title, tab, content } = {}) => {
+/**
+ * post Topics or update Topics
+ * post: /topics for post a new Topics
+ * post: /topics/update for update Topics
+ *
+ * @param {string} title - Topics title
+ * @param {string} tab - Topics tab
+ * @param {string} content - Topics content
+ * @param {string} [id] - if update Topics then add this id param
+ * @returns {Promise<*>}
+ */
+export const postTopics = (title, tab, content, id) => {
   const isPost = id === undefined;
-  if (title === undefined || tab === undefined || content === undefined) {
-    throw new TypeError('missing params');
-  }
-
   const { token: accesstoken } = userUtils.getUser();
   const params = {
     accesstoken,
@@ -38,10 +49,15 @@ export const postTopics = ({ id, title, tab, content } = {}) => {
   }
 };
 
-export const getTopic = ({ id, accesstoken = '', mdrender = 'false' } = {}) => {
-  if (id === undefined) {
-    throw new TypeError('missing params');
-  }
-  const params = { mdrender, accesstoken };
+/**
+ * get Topic info
+ * get: /topic/:id
+ *
+ * @param {string} id - topic ID
+ * @param {string} token - user token
+ * @returns {Promise<*>}
+ */
+export const getTopic = (id, token) => {
+  const params = { accesstoken: token, mdrender: 'false' };
   return get(TopicsApi.topic.replace(/:id/, id), params);
 };

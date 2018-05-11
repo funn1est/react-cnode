@@ -1,11 +1,17 @@
 import { post } from './instance';
 import { ReplyApi } from './api';
 
-export const addReply = ({ token, topicId, content, replyId } = {}) => {
-  if (token === undefined || topicId === undefined || content === undefined) {
-    throw new TypeError('missing params');
-  }
-
+/**
+ * add reply to Topic
+ * post: /topic/:topic_id/replies
+ *
+ * @param {string} token - user token
+ * @param {string} topicId - topic ID
+ * @param {string} content - reply content
+ * @param {string} [replyId] - if reply to another reply then add this param
+ * @returns {Promise<*>}
+ */
+export const addReply = (token, topicId, content, replyId) => {
   const params = {
     accesstoken: token,
     content,
@@ -17,11 +23,15 @@ export const addReply = ({ token, topicId, content, replyId } = {}) => {
   return post(ReplyApi.reply.replace(/:topic_id/, topicId), params);
 };
 
-export const upReply = ({ token, replyId } = {}) => {
-  if (token === undefined || replyId === undefined) {
-    throw new TypeError('missing params');
-  }
-
+/**
+ * up for Topic's reply
+ * post: /reply/:reply_id/ups
+ *
+ * @param {string} token - user token
+ * @param {string} replyId - reply to up
+ * @returns {Promise<*>}
+ */
+export const upReply = (token, replyId) => {
   const params = {
     accesstoken: token,
   };

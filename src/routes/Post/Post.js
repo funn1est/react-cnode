@@ -69,10 +69,10 @@ export class PostComponent extends React.Component {
     try {
       let data;
       if (isPost) {
-        data = await TopicsService.postTopics({ title, tab, content });
+        data = await TopicsService.postTopics(title, tab, content);
       } else {
         const { id } = this.props;
-        data = await TopicsService.postTopics({ id, title, tab, content });
+        data = await TopicsService.postTopics(title, tab, content, id);
       }
       const {
         data: { success, topic_id: topicId },

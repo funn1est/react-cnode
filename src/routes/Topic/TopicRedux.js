@@ -107,7 +107,7 @@ export const getTopicData = (id, token, callback) => async dispatch => {
   try {
     const {
       data: { data },
-    } = await TopicsService.getTopic({ id, accesstoken: token });
+    } = await TopicsService.getTopic(id, token);
 
     const { replies: repliesArray, ...topic } = data;
     const repliesLen = repliesArray.length;
@@ -147,9 +147,9 @@ export const collectTopic = (isCollect, token, id) => async dispatch => {
   try {
     let data;
     if (isCollect) {
-      data = await TopicCollectService.collectTopic({ token, id });
+      data = await TopicCollectService.collectTopic(token, id);
     } else {
-      data = await TopicCollectService.cancelTopic({ token, id });
+      data = await TopicCollectService.cancelTopic(token, id);
     }
     const {
       data: { success },
@@ -169,7 +169,7 @@ export const upReply = (token, replyId) => async dispatch => {
   try {
     const {
       data: { success, action },
-    } = await ReplyService.upReply({ token, replyId });
+    } = await ReplyService.upReply(token, replyId);
     if (success) {
       dispatch(upTopicReplySuccess({ replyId, isUp: action === 'up' }));
     } else {

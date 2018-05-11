@@ -1,17 +1,26 @@
 import { get, post } from './instance';
 import { TopicCollectApi } from './api';
 
-export const getUserCollect = ({ name } = {}) => {
-  if (name === undefined) {
-    throw new TypeError('missing params');
-  }
+/**
+ * get user's Topic collect
+ * get: /topic_collect/:name
+ *
+ * @param {string} name - username
+ * @returns {Promise<*>}
+ */
+export const getUserCollect = name => {
   return get(TopicCollectApi.userCollect.replace(/:name/, name));
 };
 
-export const collectTopic = ({ token, id } = {}) => {
-  if (token === undefined || id === undefined) {
-    throw new TypeError('missing params');
-  }
+/**
+ * collect a Topic
+ * post: /topic_collect/collect
+ *
+ * @param {string} token - user token
+ * @param {string} id - topic ID
+ * @returns {Promise<*>}
+ */
+export const collectTopic = (token, id) => {
   const params = {
     accesstoken: token,
     topic_id: id,
@@ -19,10 +28,15 @@ export const collectTopic = ({ token, id } = {}) => {
   return post(TopicCollectApi.collectTopic, params);
 };
 
-export const cancelTopic = ({ token, id } = {}) => {
-  if (token === undefined || id === undefined) {
-    throw new TypeError('missing params');
-  }
+/**
+ * cancel collect a Topic
+ * post: /topic_collect/de_collect
+ *
+ * @param {string} token - user token
+ * @param {string} id - topic ID
+ * @returns {Promise<*>}
+ */
+export const cancelTopic = (token, id) => {
   const params = {
     accesstoken: token,
     topic_id: id,

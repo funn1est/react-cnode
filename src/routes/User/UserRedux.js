@@ -40,7 +40,7 @@ export const getUserData = name => async dispatch => {
     } = await UserService.getUser(name);
     const {
       data: { data: collectData },
-    } = await TopicCollectService.getUserCollect({ name });
+    } = await TopicCollectService.getUserCollect(name);
     data.collect = collectData;
     dispatch(loadUserSuccess(data));
   } catch (e) {

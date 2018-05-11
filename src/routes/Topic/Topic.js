@@ -89,7 +89,7 @@ export class TopicComponent extends React.PureComponent {
     try {
       const {
         data: { success, reply_id: replyId },
-      } = await ReplyService.addReply({ token, topicId, content });
+      } = await ReplyService.addReply(token, topicId, content);
       if (success) {
         toastUtils.success('回复成功');
         this.setState(
