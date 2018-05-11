@@ -9,18 +9,7 @@ import { TopicContent, TopicReplies, TopicEditor } from './components';
 import { getTopicData, upReply } from './TopicRedux';
 import '../../styles/GithubMarkdown.scss';
 
-@withRouter
-@connect(
-  state => ({
-    error: state.getIn(['topic', 'error']),
-    currentUser: state.getIn(['login', 'userData']),
-  }),
-  {
-    getTopicData,
-    upReply,
-  },
-)
-class Topic extends React.PureComponent {
+export class TopicComponent extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -190,7 +179,7 @@ class Topic extends React.PureComponent {
   }
 }
 
-Topic.propTypes = {
+TopicComponent.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
       id: PropTypes.string,
@@ -206,4 +195,15 @@ Topic.propTypes = {
   error: PropTypes.bool,
 };
 
-export default Topic;
+export default withRouter(
+  connect(
+    state => ({
+      error: state.getIn(['topic', 'error']),
+      currentUser: state.getIn(['login', 'userData']),
+    }),
+    {
+      getTopicData,
+      upReply,
+    },
+  )(TopicComponent),
+);

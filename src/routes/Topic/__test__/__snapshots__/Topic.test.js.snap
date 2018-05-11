@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Topic /> should render <Exception /> 1`] = `<Exception />`;
+
+exports[`<Topic /> should render correctly 1`] = `
+<React.Fragment>
+  <withRouter(Connect(TopicContentComponent)) />
+  <Connect(Replies)
+    current={1}
+    onClickUp={[Function]}
+    onReplyPageChange={[Function]}
+    onReplySizeChange={[Function]}
+    pageSize={10}
+  />
+  <TopicEditor
+    loading={false}
+    onClickReply={[Function]}
+    onEditorChange={[Function]}
+    value=""
+  />
+</React.Fragment>
+`;
