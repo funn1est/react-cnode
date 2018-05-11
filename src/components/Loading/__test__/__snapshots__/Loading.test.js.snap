@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Loading /> should render correctly 1`] = `
+<div>
+  <div
+    className="ant-spin ant-spin-lg ant-spin-spinning ant-spin-show-text"
+  >
+    <span
+      className="ant-spin-dot ant-spin-dot-spin"
+    >
+      <i />
+      <i />
+      <i />
+      <i />
+    </span>
+  </div>
+</div>
+`;
