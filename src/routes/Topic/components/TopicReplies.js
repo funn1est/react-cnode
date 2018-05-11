@@ -80,10 +80,6 @@ const Reply = ({
   </List.Item>
 );
 
-const TopicReplies = connect(state => ({
-  repliesResult: state.getIn(['topic', 'repliesData', 'result']),
-}))(Replies);
-
 const TopicReply = connect((state, { replyId }) => ({
   username: state.getIn([
     'topic',
@@ -136,4 +132,6 @@ Reply.propTypes = {
   onClickUp: PropTypes.func.isRequired,
 };
 
-export default TopicReplies;
+export default connect(state => ({
+  repliesResult: state.getIn(['topic', 'repliesData', 'result']),
+}))(Replies);
