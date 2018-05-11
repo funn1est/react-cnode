@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Header /> should render login 1`] = `
+<div
+  className="ant-layout-header"
+>
+  <div
+    className=""
+  >
+    <a
+      href="/"
+      onClick={[Function]}
+    >
+      <div />
+    </a>
+    <ul
+      className="ant-menu ant-menu-light ant-menu-root ant-menu-horizontal"
+      onClick={[Function]}
+      role="menu"
+      style={Object {}}
+    >
+      <li
+        className="ant-menu-item ant-menu-item-selected"
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        role="menuitem"
+        style={Object {}}
+      >
+        全部
+      </li>
+      <li
+        className="ant-menu-item"
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        role="menuitem"
+        style={Object {}}
+      >
+        精华
+      </li>
+      <li
+        className="ant-menu-item"
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        role="menuitem"
+        style={Object {}}
+      >
+        分享
+      </li>
+      <li
+        className="ant-menu-item"
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        role="menuitem"
+        style={Object {}}
+      >
+        问答
+      </li>
+      <li
+        className="ant-menu-item"
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        role="menuitem"
+        style={Object {}}
+      >
+        招聘
+      </li>
+    </ul>
+    <div>
+      <ul
+        className="ant-menu ant-menu-light ant-menu-root ant-menu-horizontal"
+        onClick={[Function]}
+        role="menu"
+        style={Object {}}
+      >
+        <li
+          className="ant-menu-item"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          role="menuitem"
+          style={Object {}}
+        >
+          登录
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+`;
