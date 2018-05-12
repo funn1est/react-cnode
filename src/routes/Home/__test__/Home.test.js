@@ -8,6 +8,7 @@ import MockDate from 'mockdate';
 import configureStore from 'redux-mock-store';
 import sinon from 'sinon';
 import Home, { HomeComponent } from '../Home';
+import HomeTopics from '../components/HomeTopics';
 import HomeTopicTitle from '../components/HomeTopicTitle';
 
 MockDate.set(new Date('2018-05-21T16:00:00.000Z'));
@@ -67,7 +68,7 @@ describe('<Home />', () => {
     expect(toJson(tree, { noKey: true, mode: 'deep' })).toMatchSnapshot();
   });
 
-  it('should call getTopicsData() when tab change', () => {
+  it('should call getTopicsData() when tab change and not when tab same', () => {
     const props = {
       ...homeProps,
       tab: 'all',
@@ -76,9 +77,12 @@ describe('<Home />', () => {
     const wrapper = shallow(<HomeComponent {...props} />);
     wrapper.setProps({ tab: 'dev' });
     expect(props.getTopicsData).toHaveBeenCalledTimes(2);
+
+    wrapper.setProps({ tab: 'dev' });
+    expect(props.getTopicsData).toHaveBeenCalledTimes(2);
   });
 
-  it('should call getMoreTopicsData() when scroll end', async () => {
+  it('should call getMoreTopicsData() when scroll end and not when hasMore: false', async () => {
     const props = {
       ...homeProps,
       tab: 'all',
@@ -92,10 +96,38 @@ describe('<Home />', () => {
       .then(() => {
         expect(props.getMoreTopicsData).toHaveBeenCalledTimes(1);
       });
+
+    wrapper.setProps({ hasMore: false });
+    await wrapper
+      .instance()
+      .handleInfiniteOnLoad()
+      .then(() => {
+        expect(props.getMoreTopicsData).toHaveBeenCalledTimes(1);
+      });
   });
 });
 
 describe('<HomeTopics />', () => {
+  const homeTopicsProps = {
+    tab: 'dev',
+    loading: false,
+    loadingMore: true,
+    topicsData: [],
+    handleInfiniteOnLoad: jest.fn(),
+  };
+
+  it('should render loading', () => {
+    const tree = mount(<HomeTopics hasMore {...homeTopicsProps} />);
+    expect(toJson(tree, { noKey: true, mode: 'deep' })).toMatchSnapshot();
+  });
+
+  it('should render bottom', () => {
+    const tree = mount(<HomeTopics hasMore={false} {...homeTopicsProps} />);
+    expect(toJson(tree, { noKey: true, mode: 'deep' })).toMatchSnapshot();
+  });
+});
+
+describe('<HomeTopicTitle />', () => {
   const homeTopicTitleProps = {
     tab: 'all',
     topic: {

@@ -156,7 +156,7 @@ exports[`<Home /> should render correctly 1`] = `
 </div>
 `;
 
-exports[`<HomeTopics /> should not render tab 1`] = `
+exports[`<HomeTopicTitle /> should not render tab 1`] = `
 <div>
   <div>
     <span
@@ -195,7 +195,7 @@ exports[`<HomeTopics /> should not render tab 1`] = `
 </div>
 `;
 
-exports[`<HomeTopics /> should render Tag good 1`] = `
+exports[`<HomeTopicTitle /> should render Tag good 1`] = `
 <div>
   <div>
     <span
@@ -245,7 +245,7 @@ exports[`<HomeTopics /> should render Tag good 1`] = `
 </div>
 `;
 
-exports[`<HomeTopics /> should render its own tab ask 1`] = `
+exports[`<HomeTopicTitle /> should render its own tab ask 1`] = `
 <div>
   <div>
     <span
@@ -291,6 +291,59 @@ exports[`<HomeTopics /> should render its own tab ask 1`] = `
     >
       title
     </a>
+  </div>
+</div>
+`;
+
+exports[`<HomeTopics /> should render bottom 1`] = `
+<div>
+  <div
+    className="ant-list ant-list-lg ant-list-split ant-list-grid"
+  >
+    <div
+      className="ant-spin-nested-loading"
+      style={null}
+    >
+      <div
+        className="ant-spin-container"
+      >
+        <div>
+          我也是有底线的
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<HomeTopics /> should render loading 1`] = `
+<div>
+  <div
+    className="ant-list ant-list-lg ant-list-split ant-list-grid"
+  >
+    <div
+      className="ant-spin-nested-loading"
+      style={null}
+    >
+      <div
+        className="ant-spin-container"
+      >
+        <div>
+          <div
+            className="ant-spin ant-spin-lg ant-spin-spinning ant-spin-show-text"
+          >
+            <span
+              className="ant-spin-dot ant-spin-dot-spin"
+            >
+              <i />
+              <i />
+              <i />
+              <i />
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;
