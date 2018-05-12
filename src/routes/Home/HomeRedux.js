@@ -12,6 +12,8 @@ const LOAD_MORE_TOPICS_ERROR = 'routes/Home/LOAD_MORE_TOPICS_ERROR';
 
 const LOAD_TOPICS_FINISH = 'routes/Home/LOAD_TOPICS_FINISH';
 
+const SAVE_SCROLL_HEIGHT = 'routes/Home/SAVE_SCROLL_HEIGHT';
+
 const PAGE_SIZE = 10;
 
 const initialState = Map({
@@ -20,6 +22,7 @@ const initialState = Map({
   hasMore: true,
   error: false,
   topicsData: [],
+  scrollHeight: 0,
 });
 
 const reducer = handleActions(
@@ -48,6 +51,9 @@ const reducer = handleActions(
       state.set('loadingMore', false).set('error', true),
 
     [LOAD_TOPICS_FINISH]: state => state.set('hasMore', false),
+
+    [SAVE_SCROLL_HEIGHT]: (state, { payload }) =>
+      state.set('scrollHeight', payload),
   },
   initialState,
 );
@@ -61,6 +67,8 @@ export const loadMoreTopicsSuccess = createAction(LOAD_MORE_TOPICS_SUCCESS);
 export const loadMoreTopicsError = createAction(LOAD_MORE_TOPICS_ERROR);
 
 export const loadTopicsFinish = createAction(LOAD_TOPICS_FINISH);
+
+export const saveScrollHeight = createAction(SAVE_SCROLL_HEIGHT);
 
 export const getTopicsData = (tab, page, callback) => async dispatch => {
   dispatch(loadTopics());

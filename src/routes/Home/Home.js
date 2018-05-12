@@ -2,8 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Exception from 'components/Exception';
+import { scrollUtils } from 'utils';
 import { HomeTopics } from './components';
-import { getTopicsData, getMoreTopicsData } from './HomeRedux';
+import {
+  getTopicsData,
+  getMoreTopicsData,
+  saveScrollHeight,
+} from './HomeRedux';
 
 export class HomeComponent extends React.PureComponent {
   constructor(props) {
@@ -14,8 +19,17 @@ export class HomeComponent extends React.PureComponent {
   }
 
   componentDidMount() {
-    const { tab } = this.props;
-    this.props.getTopicsData(tab, 1, () => {});
+    const {
+      tab,
+      topicsData,
+      history: { action },
+    } = this.props;
+    if (topicsData.length === 0 || Object.is(action, 'PUSH')) {
+      this.props.getTopicsData(tab, 1, () => {});
+    } else {
+      const { scrollHeight } = this.props;
+      scrollUtils.scrollTo(scrollHeight);
+    }
   }
 
   componentDidUpdate(prevProps) {
@@ -27,6 +41,10 @@ export class HomeComponent extends React.PureComponent {
         });
       });
     }
+  }
+
+  componentWillUnmount() {
+    this.props.saveScrollHeight(scrollUtils.getScrollHeight());
   }
 
   handleInfiniteOnLoad = async () => {
@@ -67,13 +85,19 @@ export class HomeComponent extends React.PureComponent {
 }
 
 HomeComponent.propTypes = {
+  history: PropTypes.shape({
+    action: PropTypes.string,
+  }),
+
   tab: PropTypes.string,
   loading: PropTypes.bool.isRequired,
   loadingMore: PropTypes.bool.isRequired,
   hasMore: PropTypes.bool.isRequired,
   topicsData: PropTypes.array.isRequired,
+  scrollHeight: PropTypes.number.isRequired,
   getTopicsData: PropTypes.func,
   getMoreTopicsData: PropTypes.func,
+  saveScrollHeight: PropTypes.func,
   error: PropTypes.bool.isRequired,
 };
 
@@ -85,9 +109,11 @@ export default connect(
     hasMore: state.getIn(['home', 'hasMore']),
     topicsData: state.getIn(['home', 'topicsData']),
     error: state.getIn(['home', 'error']),
+    scrollHeight: state.getIn(['home', 'scrollHeight']),
   }),
   {
     getTopicsData,
     getMoreTopicsData,
+    saveScrollHeight,
   },
 )(HomeComponent);

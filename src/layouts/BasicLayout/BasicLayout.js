@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
 import { enquireScreen, unenquireScreen } from 'enquire-js';
 import { getCurrentUser, logout } from 'routes/Login/LoginRedux';
-import { regexUtils } from 'utils';
+import { scrollUtils, regexUtils } from 'utils';
 import { Layout, Modal } from 'antd';
 import classNames from 'classnames';
 import Header from 'components/Header';
@@ -82,8 +82,7 @@ export class BasicLayoutComponent extends React.PureComponent {
   };
 
   onClickTop = () => {
-    document.body.scrollTop = 0; // Chrome, Safari, Opera
-    document.documentElement.scrollTop = 0; // IE, Firefox
+    scrollUtils.scrollTo(0);
   };
 
   getIsMobile = () => {
