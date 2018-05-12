@@ -252,3 +252,80 @@ exports[`<BasicLayout /> should render mobile view correctly 1`] = `
   </div>
 </div>
 `;
+
+exports[`<FloatingMenu /> should render LoginMenu 1`] = `
+<div>
+  <span
+    className="ant-avatar ant-avatar-lg ant-avatar-circle"
+    onClick={[MockFunction]}
+  >
+    <span
+      className="ant-avatar-string"
+      style={
+        Object {
+          "WebkitTransform": "scale(-Infinity)",
+          "display": "inline-block",
+          "left": "calc(50% - 0px)",
+          "msTransform": "scale(-Infinity)",
+          "position": "absolute",
+          "transform": "scale(-Infinity)",
+        }
+      }
+    >
+      登录
+    </span>
+  </span>
+  <button
+    className="ant-btn ant-btn-primary ant-btn-circle ant-btn-lg ant-btn-icon-only"
+    onClick={[Function]}
+    type="button"
+  >
+    <i
+      className="anticon anticon-arrow-up"
+    />
+  </button>
+</div>
+`;
+
+exports[`<FloatingMenu /> should render Post 1`] = `
+<div>
+  <span
+    className="ant-avatar ant-dropdown-trigger ant-avatar-lg ant-avatar-circle"
+    onClick={[Function]}
+    onMouseDown={[Function]}
+    onTouchStart={[Function]}
+  >
+    <span
+      className="ant-avatar-string"
+      style={
+        Object {
+          "WebkitTransform": "scale(-Infinity)",
+          "display": "inline-block",
+          "left": "calc(50% - 0px)",
+          "msTransform": "scale(-Infinity)",
+          "position": "absolute",
+          "transform": "scale(-Infinity)",
+        }
+      }
+    />
+  </span>
+  <button
+    className="ant-btn ant-btn-primary ant-btn-circle ant-btn-lg ant-btn-icon-only"
+    onClick={[Function]}
+    type="button"
+  >
+    <i
+      className="anticon anticon-edit"
+    />
+  </button>
+  <button
+    className="ant-btn ant-btn-primary ant-btn-circle ant-btn-lg ant-btn-icon-only"
+    onClick={[Function]}
+    type="button"
+  >
+    <i
+      className="anticon anticon-arrow-up"
+    />
+  </button>
+</div>
+`;

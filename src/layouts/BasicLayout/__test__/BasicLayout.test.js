@@ -8,6 +8,7 @@ import * as enquire from 'enquire-js';
 import configureStore from 'redux-mock-store';
 import sinon from 'sinon';
 import BasicLayout, { BasicLayoutComponent } from '../BasicLayout';
+import FloatingMenu from '../components/FloatingMenu';
 
 describe('<BasicLayout />', () => {
   let mockEnquire;
@@ -175,5 +176,29 @@ describe('<BasicLayout />', () => {
       document.body.querySelectorAll('.ant-btn-primary')[0].click();
       expect(props.logout).toHaveBeenCalledTimes(1);
     });
+  });
+});
+
+describe('<FloatingMenu />', () => {
+  const floatingMenuProps = {
+    renderUser: true,
+    onClickUser: jest.fn(),
+    onClickUserLogin: jest.fn(),
+    onClickPost: jest.fn(),
+    onClickTop: jest.fn(),
+  };
+
+  it('should render LoginMenu', () => {
+    const tree = mount(
+      <FloatingMenu renderPost={false} user={{}} {...floatingMenuProps} />,
+    );
+    expect(toJson(tree, { noKey: true, mode: 'deep' })).toMatchSnapshot();
+  });
+
+  it('should render Post', () => {
+    const tree = mount(
+      <FloatingMenu renderPost user={{ id: '007' }} {...floatingMenuProps} />,
+    );
+    expect(toJson(tree, { noKey: true, mode: 'deep' })).toMatchSnapshot();
   });
 });
