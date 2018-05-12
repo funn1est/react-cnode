@@ -43,10 +43,7 @@ export const UserMainContent = ({ data }) => (
 
 class UserTopics extends React.Component {
   static propTypes = {
-    dataList: PropTypes.shape({
-      topics: PropTypes.array.isRequired,
-      replies: PropTypes.array.isRequired,
-    }).isRequired,
+    dataList: PropTypes.object.isRequired,
   };
 
   state = {

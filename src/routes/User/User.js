@@ -55,9 +55,9 @@ export class UserComponent extends React.Component {
         {!loading && (
           <UserTopics
             dataList={{
-              topics: userData.recent_topics || [],
-              replies: userData.recent_replies || [],
-              collect: userData.collect || [],
+              topics: userData.recent_topics,
+              replies: userData.recent_replies,
+              collect: userData.collect,
             }}
           />
         )}
