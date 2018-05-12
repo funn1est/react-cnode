@@ -109,6 +109,35 @@ exports[`<BasicLayout /> should render desktop view correctly 1`] = `
       />
     </button>
   </div>
+  <div
+    className="ant-layout-footer"
+  >
+    <span>
+      CNode 社区为国内最专业的 Node.js 开源技术社区，致力于 Node.js 的技术研究。
+    </span>
+    <div>
+      <i
+        className="anticon anticon-api"
+      />
+      <a
+        href="https://cnodejs.org/api"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        API
+      </a>
+      <i
+        className="anticon anticon-github"
+      />
+      <a
+        href="https://github.com/FuNn1esT/react-cnode"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        项目地址
+      </a>
+    </div>
+  </div>
 </div>
 `;
 
@@ -249,6 +278,35 @@ exports[`<BasicLayout /> should render mobile view correctly 1`] = `
         className="anticon anticon-arrow-up"
       />
     </button>
+  </div>
+  <div
+    className="ant-layout-footer"
+  >
+    <span>
+      CNode 社区为国内最专业的 Node.js 开源技术社区，致力于 Node.js 的技术研究。
+    </span>
+    <div>
+      <i
+        className="anticon anticon-api"
+      />
+      <a
+        href="https://cnodejs.org/api"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        API
+      </a>
+      <i
+        className="anticon anticon-github"
+      />
+      <a
+        href="https://github.com/FuNn1esT/react-cnode"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        项目地址
+      </a>
+    </div>
   </div>
 </div>
 `;
