@@ -8730,10 +8730,6 @@ requires-port@1.0.x, requires-port@^1.0.0:
   version "1.0.0"
   resolved "http://registry.npm.taobao.org/requires-port/download/requires-port-1.0.0.tgz#925d2601d39ac485e091cf0da5c6e694dc3dcaff"
 
-reselect@3.0.0:
-  version "3.0.0"
-  resolved "http://registry.npm.taobao.org/reselect/download/reselect-3.0.0.tgz#b2e35977f03048700028eaee3a8c0639e40e8f35"
-
 resize-observer-polyfill@^1.5.0:
   version "1.5.0"
   resolved "http://registry.npm.taobao.org/resize-observer-polyfill/download/resize-observer-polyfill-1.5.0.tgz#660ff1d9712a2382baa2cad450a4716209f9ca69"

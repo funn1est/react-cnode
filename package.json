@@ -37,8 +37,7 @@
     "redux": "4.0.0",
     "redux-actions": "^2.3.0",
     "redux-immutable": "^4.0.0",
-    "redux-thunk": "^2.2.0",
-    "reselect": "3.0.0"
+    "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
     "autoprefixer": "^8.1.0",
