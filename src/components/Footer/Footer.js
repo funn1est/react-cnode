@@ -19,7 +19,11 @@ const Footer = () => {
           API
         </a>
         <Icon type="github" />
-        <a target="_blank" href="//" rel="noopener noreferrer">
+        <a
+          target="_blank"
+          href="https://github.com/FuNn1esT/react-cnode"
+          rel="noopener noreferrer"
+        >
           项目地址
         </a>
       </div>
