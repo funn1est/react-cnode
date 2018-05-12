@@ -12,6 +12,7 @@ import reducer, {
   loadMoreTopicsSuccess,
   loadMoreTopicsError,
   loadTopicsFinish,
+  saveScrollHeight,
   getTopicsData,
   getMoreTopicsData,
 } from '../HomeRedux';
@@ -23,6 +24,7 @@ describe('HomeRedux reducer', () => {
     hasMore: true,
     error: false,
     topicsData: [],
+    scrollHeight: 0,
   });
 
   it('should return LOAD_TOPICS status', () => {
@@ -58,6 +60,11 @@ describe('HomeRedux reducer', () => {
   it('should return LOAD_TOPICS_FINISH status', () => {
     const state = reducer(initialState, loadTopicsFinish());
     expect(state).toEqual(initialState.set('hasMore', false));
+  });
+
+  it('should return SAVE_SCROLL_HEIGHT status', () => {
+    const state = reducer(initialState, saveScrollHeight(321));
+    expect(state).toEqual(initialState.set('scrollHeight', 321));
   });
 });
 

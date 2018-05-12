@@ -37,6 +37,13 @@ describe('<Home />', () => {
       },
     ],
     error: false,
+    scrollHeight: 0,
+  };
+
+  const routeProps = {
+    history: {
+      action: 'PUSH',
+    },
   };
 
   const middleware = [thunk];
@@ -51,7 +58,7 @@ describe('<Home />', () => {
     const store = mockStore(homeInitialState);
     const tree = mount(
       <MemoryRouter>
-        <Home store={store} />
+        <Home store={store} {...routeProps} />
       </MemoryRouter>,
     );
     expect(toJson(tree, { noKey: true, mode: 'deep' })).toMatchSnapshot();
@@ -62,7 +69,7 @@ describe('<Home />', () => {
     const store = mockStore(initialState);
     const tree = mount(
       <MemoryRouter>
-        <Home store={store} />
+        <Home store={store} {...routeProps} />
       </MemoryRouter>,
     );
     expect(toJson(tree, { noKey: true, mode: 'deep' })).toMatchSnapshot();
@@ -74,7 +81,7 @@ describe('<Home />', () => {
       tab: 'all',
       getTopicsData: jest.fn((a, b, fn) => fn()),
     };
-    const wrapper = shallow(<HomeComponent {...props} />);
+    const wrapper = shallow(<HomeComponent {...props} {...routeProps} />);
     wrapper.setProps({ tab: 'dev' });
     expect(props.getTopicsData).toHaveBeenCalledTimes(2);
 
@@ -89,7 +96,7 @@ describe('<Home />', () => {
       getTopicsData: jest.fn((a, b, fn) => fn()),
       getMoreTopicsData: jest.fn((a, b, fn) => fn()),
     };
-    const wrapper = shallow(<HomeComponent {...props} />);
+    const wrapper = shallow(<HomeComponent {...props} {...routeProps} />);
     await wrapper
       .instance()
       .handleInfiniteOnLoad()
@@ -104,6 +111,35 @@ describe('<Home />', () => {
       .then(() => {
         expect(props.getMoreTopicsData).toHaveBeenCalledTimes(1);
       });
+  });
+
+  it('should scroll to saved height when history back', () => {
+    const props = {
+      ...homeProps,
+      tab: 'all',
+      scrollHeight: 100,
+      history: {
+        action: 'POP',
+      },
+    };
+
+    shallow(<HomeComponent {...props} />);
+    expect(document.documentElement.scrollTop).toEqual(100);
+  });
+
+  it('should save scroll height when componentWillUnmount()', () => {
+    const props = {
+      ...homeProps,
+      tab: 'all',
+      history: {
+        action: 'POP',
+      },
+      saveScrollHeight: jest.fn(),
+    };
+
+    const wrapper = shallow(<HomeComponent {...props} />);
+    wrapper.unmount();
+    expect(props.saveScrollHeight).toHaveBeenCalledTimes(1);
   });
 });
 

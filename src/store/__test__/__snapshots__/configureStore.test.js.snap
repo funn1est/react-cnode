@@ -11,6 +11,7 @@ Immutable.Map {
     "hasMore": true,
     "error": false,
     "topicsData": Array [],
+    "scrollHeight": 0,
   },
   "login": Immutable.Map {
     "loading": false,
