@@ -9,69 +9,85 @@ exports[`<Home /> should render <Exception /> 1`] = `
 `;
 
 exports[`<Home /> should render correctly 1`] = `
-<div>
-  <div
-    className="ant-list ant-list-lg ant-list-split ant-list-grid"
-  >
+Array [
+  "",
+  <div>
     <div
-      className="ant-spin-nested-loading"
-      style={null}
+      className="ant-list ant-list-lg ant-list-split ant-list-grid"
     >
       <div
-        className="ant-spin-container"
+        className="ant-spin-nested-loading"
+        style={null}
       >
         <div
-          className="ant-row"
-          style={
-            Object {
-              "marginLeft": -8,
-              "marginRight": -8,
-            }
-          }
+          className="ant-spin-container"
         >
           <div
-            className="ant-col-24"
+            className="ant-row"
+            style={
+              Object {
+                "marginLeft": -8,
+                "marginRight": -8,
+              }
+            }
           >
             <div
-              className="ant-list-item"
-              style={
-                Object {
-                  "paddingLeft": 8,
-                  "paddingRight": 8,
-                }
-              }
+              className="ant-col-24"
             >
               <div
-                className="ant-list-item-content ant-list-item-content-single"
+                className="ant-list-item"
+                style={
+                  Object {
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                  }
+                }
               >
                 <div
-                  className="ant-card ant-card-bordered"
+                  className="ant-list-item-content ant-list-item-content-single"
                 >
                   <div
-                    className="ant-card-head"
+                    className="ant-card ant-card-bordered"
                   >
                     <div
-                      className="ant-card-head-wrapper"
+                      className="ant-card-head"
                     >
                       <div
-                        className="ant-card-head-title"
+                        className="ant-card-head-wrapper"
                       >
-                        <div>
+                        <div
+                          className="ant-card-head-title"
+                        >
                           <div>
-                            <span
-                              className="ant-avatar ant-avatar-sm ant-avatar-square ant-avatar-image"
-                            >
-                              <img
-                                onError={[Function]}
-                                src="//"
-                              />
-                            </span>
-                            <a
-                              href="/user/admin"
-                              onClick={[Function]}
-                            >
+                            <div>
+                              <span
+                                className="ant-avatar ant-avatar-sm ant-avatar-square ant-avatar-image"
+                              >
+                                <img
+                                  onError={[Function]}
+                                  src="//"
+                                />
+                              </span>
+                              <a
+                                href="/user/admin"
+                                onClick={[Function]}
+                              >
+                                <div
+                                  className="ant-tag ant-tag-purple"
+                                  data-show={true}
+                                  style={
+                                    Object {
+                                      "backgroundColor": null,
+                                    }
+                                  }
+                                >
+                                  admin
+                                </div>
+                              </a>
+                            </div>
+                            <div>
                               <div
-                                className="ant-tag ant-tag-purple"
+                                className="ant-tag ant-tag-red"
                                 data-show={true}
                                 style={
                                   Object {
@@ -79,66 +95,53 @@ exports[`<Home /> should render correctly 1`] = `
                                   }
                                 }
                               >
-                                admin
+                                置顶
                               </div>
-                            </a>
-                          </div>
-                          <div>
-                            <div
-                              className="ant-tag ant-tag-red"
-                              data-show={true}
-                              style={
-                                Object {
-                                  "backgroundColor": null,
-                                }
-                              }
-                            >
-                              置顶
+                              <a
+                                href="/topic/123456789012345678901234"
+                                onClick={[Function]}
+                              >
+                                title1
+                              </a>
                             </div>
-                            <a
-                              href="/topic/123456789012345678901234"
-                              onClick={[Function]}
-                            >
-                              title1
-                            </a>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div
-                    className="ant-card-body"
-                    style={Object {}}
-                  >
                     <div
-                      className="ant-card-meta"
+                      className="ant-card-body"
+                      style={Object {}}
                     >
                       <div
-                        className="ant-card-meta-detail"
+                        className="ant-card-meta"
                       >
                         <div
-                          className="ant-card-meta-description"
+                          className="ant-card-meta-detail"
                         >
-                          <div>
-                            <div
-                              className="undefined"
-                              id="ellipsis-152691840000016"
-                            >
-                              <style>
-                                #ellipsis-152691840000016{-webkit-line-clamp: 4;-webkit-box-orient: vertical;}
-                              </style>
-                              content
-                            </div>
+                          <div
+                            className="ant-card-meta-description"
+                          >
                             <div>
-                              阅读数:1000
                               <div
-                                className="ant-divider ant-divider-vertical"
-                              />
-                              100条评论
-                              <div
-                                className="ant-divider ant-divider-vertical"
-                              />
-                              a day ago
+                                className="undefined"
+                                id="ellipsis-152691840000016"
+                              >
+                                <style>
+                                  #ellipsis-152691840000016{-webkit-line-clamp: 4;-webkit-box-orient: vertical;}
+                                </style>
+                                content
+                              </div>
+                              <div>
+                                阅读数:1000
+                                <div
+                                  className="ant-divider ant-divider-vertical"
+                                />
+                                100条评论
+                                <div
+                                  className="ant-divider ant-divider-vertical"
+                                />
+                                a day ago
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -152,8 +155,8 @@ exports[`<Home /> should render correctly 1`] = `
         </div>
       </div>
     </div>
-  </div>
-</div>
+  </div>,
+]
 `;
 
 exports[`<HomeTopicTitle /> should not render tab 1`] = `

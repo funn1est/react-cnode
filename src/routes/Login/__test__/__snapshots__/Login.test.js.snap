@@ -1,154 +1,157 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Login /> should render correctly 1`] = `
-<form
-  className="ant-form ant-form-horizontal"
-  onSubmit={[Function]}
->
-  <div
-    className="ant-row ant-form-item"
+Array [
+  "",
+  <form
+    className="ant-form ant-form-horizontal"
+    onSubmit={[Function]}
   >
     <div
-      className="ant-form-item-control-wrapper"
+      className="ant-row ant-form-item"
     >
       <div
-        className="ant-form-item-control"
+        className="ant-form-item-control-wrapper"
       >
-        <span
-          className="ant-form-item-children"
+        <div
+          className="ant-form-item-control"
         >
           <span
-            className="ant-input-affix-wrapper"
+            className="ant-form-item-children"
           >
             <span
-              className="ant-input-prefix"
+              className="ant-input-affix-wrapper"
             >
-              <i
-                className="anticon anticon-key"
+              <span
+                className="ant-input-prefix"
+              >
+                <i
+                  className="anticon anticon-key"
+                />
+              </span>
+              <input
+                className="ant-input"
+                data-__field={
+                  Object {
+                    "name": "token",
+                  }
+                }
+                data-__meta={
+                  Object {
+                    "name": "token",
+                    "originalProps": Object {
+                      "disabled": false,
+                      "placeholder": "请输入 CNode 的 Access Token",
+                      "prefix": <Icon
+                        className={undefined}
+                        type="key"
+                      />,
+                      "prefixCls": "ant-input",
+                      "type": "text",
+                    },
+                    "ref": null,
+                    "rules": Array [
+                      Object {
+                        "message": "请输入 Access Token",
+                        "required": true,
+                      },
+                      Object {
+                        "message": "请输入正确的 Access Token",
+                        "pattern": /\\^\\[a-f\\\\d\\]\\{8\\}\\(-\\[a-f\\\\d\\]\\{4\\}\\)\\{3\\}-\\[a-f\\\\d\\]\\{12\\}\\$/,
+                      },
+                    ],
+                    "trigger": "onChange",
+                    "validate": Array [
+                      Object {
+                        "rules": Array [
+                          Object {
+                            "message": "请输入 Access Token",
+                            "required": true,
+                          },
+                          Object {
+                            "message": "请输入正确的 Access Token",
+                            "pattern": /\\^\\[a-f\\\\d\\]\\{8\\}\\(-\\[a-f\\\\d\\]\\{4\\}\\)\\{3\\}-\\[a-f\\\\d\\]\\{12\\}\\$/,
+                          },
+                        ],
+                        "trigger": Array [
+                          "onChange",
+                        ],
+                      },
+                    ],
+                    "valuePropName": "value",
+                  }
+                }
+                disabled={false}
+                id="token"
+                onChange={[Function]}
+                onKeyDown={[Function]}
+                placeholder="请输入 CNode 的 Access Token"
+                style={null}
+                type="text"
+                value=""
               />
             </span>
-            <input
-              className="ant-input"
-              data-__field={
-                Object {
-                  "name": "token",
-                }
-              }
-              data-__meta={
-                Object {
-                  "name": "token",
-                  "originalProps": Object {
-                    "disabled": false,
-                    "placeholder": "请输入 CNode 的 Access Token",
-                    "prefix": <Icon
-                      className={undefined}
-                      type="key"
-                    />,
-                    "prefixCls": "ant-input",
-                    "type": "text",
-                  },
-                  "ref": null,
-                  "rules": Array [
-                    Object {
-                      "message": "请输入 Access Token",
-                      "required": true,
-                    },
-                    Object {
-                      "message": "请输入正确的 Access Token",
-                      "pattern": /\\^\\[a-f\\\\d\\]\\{8\\}\\(-\\[a-f\\\\d\\]\\{4\\}\\)\\{3\\}-\\[a-f\\\\d\\]\\{12\\}\\$/,
-                    },
-                  ],
-                  "trigger": "onChange",
-                  "validate": Array [
-                    Object {
-                      "rules": Array [
-                        Object {
-                          "message": "请输入 Access Token",
-                          "required": true,
-                        },
-                        Object {
-                          "message": "请输入正确的 Access Token",
-                          "pattern": /\\^\\[a-f\\\\d\\]\\{8\\}\\(-\\[a-f\\\\d\\]\\{4\\}\\)\\{3\\}-\\[a-f\\\\d\\]\\{12\\}\\$/,
-                        },
-                      ],
-                      "trigger": Array [
-                        "onChange",
-                      ],
-                    },
-                  ],
-                  "valuePropName": "value",
-                }
-              }
-              disabled={false}
-              id="token"
-              onChange={[Function]}
-              onKeyDown={[Function]}
-              placeholder="请输入 CNode 的 Access Token"
-              style={null}
-              type="text"
-              value=""
-            />
           </span>
-        </span>
+        </div>
       </div>
     </div>
-  </div>
-  <div>
-    <label
-      className="ant-checkbox-wrapper"
-    >
-      <span
-        className="ant-checkbox"
-        style={Object {}}
+    <div>
+      <label
+        className="ant-checkbox-wrapper"
       >
-        <input
-          checked={false}
-          className="ant-checkbox-input"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          type="checkbox"
-        />
         <span
-          className="ant-checkbox-inner"
-        />
-      </span>
-      <span>
-        自动登录
-      </span>
-    </label>
-    <a
-      href="https://cnodejs.org/setting"
-      rel="noopener noreferrer"
-      target="_blank"
-    >
-      查看 Token
-    </a>
-  </div>
-  <div
-    className="ant-row ant-form-item"
-  >
+          className="ant-checkbox"
+          style={Object {}}
+        >
+          <input
+            checked={false}
+            className="ant-checkbox-input"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            type="checkbox"
+          />
+          <span
+            className="ant-checkbox-inner"
+          />
+        </span>
+        <span>
+          自动登录
+        </span>
+      </label>
+      <a
+        href="https://cnodejs.org/setting"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        查看 Token
+      </a>
+    </div>
     <div
-      className="ant-form-item-control-wrapper"
+      className="ant-row ant-form-item"
     >
       <div
-        className="ant-form-item-control"
+        className="ant-form-item-control-wrapper"
       >
-        <span
-          className="ant-form-item-children"
+        <div
+          className="ant-form-item-control"
         >
-          <button
-            className="ant-btn ant-btn-primary"
-            onClick={[Function]}
-            type="submit"
+          <span
+            className="ant-form-item-children"
           >
-            <span>
-              登 录
-            </span>
-          </button>
-        </span>
+            <button
+              className="ant-btn ant-btn-primary"
+              onClick={[Function]}
+              type="submit"
+            >
+              <span>
+                登 录
+              </span>
+            </button>
+          </span>
+        </div>
       </div>
     </div>
-  </div>
-</form>
+  </form>,
+]
 `;

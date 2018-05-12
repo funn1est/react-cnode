@@ -1,34 +1,39 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Post /> should render correctly 1`] = `
-<Card>
-  <div>
-    板块：
-    <PostTab
-      onTabChange={[Function]}
+<React.Fragment>
+  <Title
+    title="发布话题"
+  />
+  <Card>
+    <div>
+      板块：
+      <PostTab
+        onTabChange={[Function]}
+      />
+    </div>
+    <PostTitle
+      onTitleChange={[Function]}
+      value=""
     />
-  </div>
-  <PostTitle
-    onTitleChange={[Function]}
-    value=""
-  />
-  <MarkdownEditor
-    onEditorChange={[Function]}
-    value=""
-  />
-  <div>
-    <Button
-      ghost={false}
-      icon="share-alt"
-      loading={false}
-      onClick={[Function]}
-      prefixCls="ant-btn"
-      type="primary"
-    >
-      发布主题
-    </Button>
-  </div>
-</Card>
+    <MarkdownEditor
+      onEditorChange={[Function]}
+      value=""
+    />
+    <div>
+      <Button
+        ghost={false}
+        icon="share-alt"
+        loading={false}
+        onClick={[Function]}
+        prefixCls="ant-btn"
+        type="primary"
+      >
+        发布话题
+      </Button>
+    </div>
+  </Card>
+</React.Fragment>
 `;
 
 exports[`<PostTab /> should render correctly 1`] = `

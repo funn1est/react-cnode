@@ -15,7 +15,6 @@ exports[`<Header /> should re-render when isMobile or user change 1`] = `
     </a>
     <ul
       className="ant-menu ant-menu-light ant-menu-root ant-menu-horizontal"
-      onClick={[Function]}
       role="menu"
       style={Object {}}
     >
@@ -73,13 +72,11 @@ exports[`<Header /> should re-render when isMobile or user change 1`] = `
     <div>
       <ul
         className="ant-menu ant-menu-light ant-menu-root ant-menu-horizontal"
-        onClick={[Function]}
         role="menu"
         style={Object {}}
       >
         <li
           className="ant-menu-submenu ant-menu-submenu-horizontal"
-          onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           role="menuitem"
@@ -129,7 +126,6 @@ exports[`<Header /> should render login 1`] = `
     </a>
     <ul
       className="ant-menu ant-menu-light ant-menu-root ant-menu-horizontal"
-      onClick={[Function]}
       role="menu"
       style={Object {}}
     >
@@ -187,7 +183,6 @@ exports[`<Header /> should render login 1`] = `
     <div>
       <ul
         className="ant-menu ant-menu-light ant-menu-root ant-menu-horizontal"
-        onClick={[Function]}
         role="menu"
         style={Object {}}
       >

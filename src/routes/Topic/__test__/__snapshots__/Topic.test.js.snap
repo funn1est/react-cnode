@@ -4,6 +4,9 @@ exports[`<Topic /> should render <Exception /> 1`] = `<Exception />`;
 
 exports[`<Topic /> should render correctly 1`] = `
 <React.Fragment>
+  <Title
+    title="话题"
+  />
   <withRouter(Connect(TopicContentComponent)) />
   <Connect(Replies)
     current={1}
