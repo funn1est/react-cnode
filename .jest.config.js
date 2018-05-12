@@ -4,7 +4,12 @@ module.exports = {
   moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx'],
   testPathIgnorePatterns: ['/node_modules/', '/dist/', '/test/'],
   collectCoverageFrom: ['src/**/*.{js,jsx,ts,tsx}'],
-  coveragePathIgnorePatterns: ['<rootDir>/src/utils/registerServiceWorker.js'],
+  coveragePathIgnorePatterns: [
+    '<rootDir>/src/index.js',
+    '<rootDir>/src/router.js',
+    '<rootDir>/src/utils/asyncRender.js',
+    '<rootDir>/src/utils/registerServiceWorker.js',
+  ],
   moduleNameMapper: {
     '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)$':
       '<rootDir>/test/fileMock.js',
