@@ -1,5 +1,119 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<Header /> should re-render when isMobile or user change 1`] = `
+<div
+  className="ant-layout-header"
+>
+  <div
+    className=""
+  >
+    <a
+      href="/"
+      onClick={[Function]}
+    >
+      <div />
+    </a>
+    <ul
+      className="ant-menu ant-menu-light ant-menu-root ant-menu-horizontal"
+      onClick={[Function]}
+      role="menu"
+      style={Object {}}
+    >
+      <li
+        className="ant-menu-item ant-menu-item-selected"
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        role="menuitem"
+        style={Object {}}
+      >
+        全部
+      </li>
+      <li
+        className="ant-menu-item"
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        role="menuitem"
+        style={Object {}}
+      >
+        精华
+      </li>
+      <li
+        className="ant-menu-item"
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        role="menuitem"
+        style={Object {}}
+      >
+        分享
+      </li>
+      <li
+        className="ant-menu-item"
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        role="menuitem"
+        style={Object {}}
+      >
+        问答
+      </li>
+      <li
+        className="ant-menu-item"
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        role="menuitem"
+        style={Object {}}
+      >
+        招聘
+      </li>
+    </ul>
+    <div>
+      <ul
+        className="ant-menu ant-menu-light ant-menu-root ant-menu-horizontal"
+        onClick={[Function]}
+        role="menu"
+        style={Object {}}
+      >
+        <li
+          className="ant-menu-submenu ant-menu-submenu-horizontal"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          role="menuitem"
+        >
+          <div
+            aria-expanded={false}
+            aria-haspopup="true"
+            className="ant-menu-submenu-title"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            style={Object {}}
+          >
+            <span>
+              <span
+                className="ant-avatar ant-avatar-sm ant-avatar-circle"
+              >
+                <span
+                  className="ant-avatar-string"
+                />
+              </span>
+              admin
+            </span>
+            <i
+              className="ant-menu-submenu-arrow"
+            />
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`<Header /> should render login 1`] = `
 <div
   className="ant-layout-header"
