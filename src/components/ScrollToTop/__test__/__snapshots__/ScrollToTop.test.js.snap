@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ScrollToTop /> should render children 1`] = `
+<div>
+  Hi
+</div>
+`;

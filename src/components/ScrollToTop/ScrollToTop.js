@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { scrollUtils } from 'utils';
 
-@withRouter
-class ScrollToTop extends React.Component {
+export class ScrollToTopComponent extends React.Component {
   componentDidUpdate(prevProps) {
     if (
       this.props.location !== prevProps.location &&
@@ -19,8 +18,8 @@ class ScrollToTop extends React.Component {
   }
 }
 
-ScrollToTop.propTypes = {
-  location: PropTypes.string,
+ScrollToTopComponent.propTypes = {
+  location: PropTypes.object,
   history: PropTypes.shape({
     action: PropTypes.string,
   }),
@@ -28,4 +27,4 @@ ScrollToTop.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export default ScrollToTop;
+export default withRouter(ScrollToTopComponent);
