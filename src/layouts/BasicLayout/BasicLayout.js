@@ -9,6 +9,7 @@ import { scrollUtils, regexUtils } from 'utils';
 import { Layout, Modal } from 'antd';
 import classNames from 'classnames';
 import Header from 'components/Header';
+import Footer from 'components/Footer';
 import { changeTab } from './BasicLayoutRedux';
 import { FloatingMenu } from './components';
 import styles from './BasicLayout.scss';
@@ -143,6 +144,7 @@ export class BasicLayoutComponent extends React.PureComponent {
           onClickPost={this.onClickPost}
           onClickTop={this.onClickTop}
         />
+        <Footer />
       </Layout>
     );
   }
