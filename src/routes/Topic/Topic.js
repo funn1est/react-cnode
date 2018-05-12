@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { ReplyService } from 'services';
 import { toastUtils, notificationUtils } from 'utils';
+import Title from 'components/Title';
 import Exception from 'components/Exception';
 import { TopicContent, TopicReplies, TopicEditor } from './components';
 import { getTopicData, upReply } from './TopicRedux';
@@ -150,14 +151,16 @@ export class TopicComponent extends React.PureComponent {
   };
 
   render() {
-    const { currentUser, error } = this.props;
+    const { topicTitle, currentUser, error } = this.props;
     const { replyPage, replySize, contentValue, replyLoading } = this.state;
+    const title = topicTitle === undefined ? '话题' : topicTitle;
 
     if (error) {
       return <Exception />;
     }
     return (
       <React.Fragment>
+        <Title title={title} />
         <TopicContent />
         <TopicReplies
           current={replyPage}
@@ -188,6 +191,7 @@ TopicComponent.propTypes = {
 
   getTopicData: PropTypes.func,
   upReply: PropTypes.func,
+  topicTitle: PropTypes.string,
   currentUser: PropTypes.shape({
     id: PropTypes.string,
     token: PropTypes.string,
@@ -198,6 +202,7 @@ TopicComponent.propTypes = {
 export default withRouter(
   connect(
     state => ({
+      topicTitle: state.getIn(['topic', 'topicData', 'title']),
       error: state.getIn(['topic', 'error']),
       currentUser: state.getIn(['login', 'userData']),
     }),

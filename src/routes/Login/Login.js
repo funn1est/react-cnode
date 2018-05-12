@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Form } from 'antd';
 import classNames from 'classnames';
+import Title from 'components/Title';
 import { LoginToken, LoginSetting, LoginSubmit } from './components';
 import { login } from './LoginRedux';
 import styles from './Login.scss';
@@ -56,11 +57,14 @@ export class LoginComponent extends React.Component {
     const { loading } = this.props;
     const { remember } = this.state;
     return (
-      <Form className={cls} onSubmit={this.onClickSubmit}>
-        <LoginToken />
-        <LoginSetting remember={remember} onChange={this.onRememberChange} />
-        <LoginSubmit loading={loading} />
-      </Form>
+      <Fragment>
+        <Title title="用户登录" />
+        <Form className={cls} onSubmit={this.onClickSubmit}>
+          <LoginToken />
+          <LoginSetting remember={remember} onChange={this.onRememberChange} />
+          <LoginSubmit loading={loading} />
+        </Form>
+      </Fragment>
     );
   }
 }

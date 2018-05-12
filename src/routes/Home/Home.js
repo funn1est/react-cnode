@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import Title from 'components/Title';
 import Exception from 'components/Exception';
 import { scrollUtils } from 'utils';
 import { HomeTopics } from './components';
@@ -72,14 +73,17 @@ export class HomeComponent extends React.PureComponent {
       return <Exception />;
     }
     return (
-      <HomeTopics
-        tab={tab}
-        loading={loading}
-        loadingMore={loadingMore}
-        topicsData={topicsData}
-        hasMore={hasMore}
-        handleInfiniteOnLoad={this.handleInfiniteOnLoad}
-      />
+      <Fragment>
+        <Title title="React-CNode" />
+        <HomeTopics
+          tab={tab}
+          loading={loading}
+          loadingMore={loadingMore}
+          topicsData={topicsData}
+          hasMore={hasMore}
+          handleInfiniteOnLoad={this.handleInfiniteOnLoad}
+        />
+      </Fragment>
     );
   }
 }

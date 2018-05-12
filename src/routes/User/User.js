@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
+import Title from 'components/Title';
 import Exception from 'components/Exception';
 import { getUserData } from './UserRedux';
 import { UserInfo, UserTopics } from './components';
@@ -46,11 +47,15 @@ export class UserComponent extends React.Component {
 
   render() {
     const { loading, userData, error } = this.props;
+    const { loginname: username } = userData;
+    const title = username === undefined ? '用户中心' : `@${username}`;
+
     if (error) {
       return <Exception />;
     }
     return (
       <div className={cls}>
+        <Title title={title} />
         <UserInfo loading={loading} user={userData} />
         {!loading && (
           <UserTopics

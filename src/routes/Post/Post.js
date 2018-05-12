@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Card, Button } from 'antd';
 import { TopicsService } from 'services';
 import { notificationUtils, toastUtils, regexUtils } from 'utils';
+import Title from 'components/Title';
 import MarkdownEditor from 'components/MarkdownEditor';
 import { PostTab, PostTitle } from './components';
 import styles from './Post.scss';
@@ -13,6 +14,7 @@ export class PostComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      title: '发布话题',
       isPost: true,
       loading: false,
       tab: 'dev',
@@ -100,6 +102,7 @@ export class PostComponent extends React.Component {
     if (regexUtils.editRouteRegex.test(pathname)) {
       const { tab, title, content } = this.props;
       this.setState({
+        title: '编辑话题',
         isPost: false,
         tab,
         titleValue: title,
@@ -109,29 +112,32 @@ export class PostComponent extends React.Component {
   };
 
   render() {
-    const { loading, titleValue, contentValue } = this.state;
+    const { title, loading, titleValue, contentValue } = this.state;
     return (
-      <Card className={styles.container}>
-        <div className={styles.tab}>
-          板块：
-          <PostTab onTabChange={this.onTabChange} />
-        </div>
-        <PostTitle value={titleValue} onTitleChange={this.onTitleChange} />
-        <MarkdownEditor
-          value={contentValue}
-          onEditorChange={this.onEditorChange}
-        />
-        <div className={styles.button}>
-          <Button
-            type="primary"
-            icon="share-alt"
-            loading={loading}
-            onClick={this.onClickSubmit}
-          >
-            发布主题
-          </Button>
-        </div>
-      </Card>
+      <Fragment>
+        <Title title={title} />
+        <Card className={styles.container}>
+          <div className={styles.tab}>
+            板块：
+            <PostTab onTabChange={this.onTabChange} />
+          </div>
+          <PostTitle value={titleValue} onTitleChange={this.onTitleChange} />
+          <MarkdownEditor
+            value={contentValue}
+            onEditorChange={this.onEditorChange}
+          />
+          <div className={styles.button}>
+            <Button
+              type="primary"
+              icon="share-alt"
+              loading={loading}
+              onClick={this.onClickSubmit}
+            >
+              发布话题
+            </Button>
+          </div>
+        </Card>
+      </Fragment>
     );
   }
 }
