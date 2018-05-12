@@ -4,6 +4,7 @@ import { renderRoutes } from 'react-router-config';
 import { LocaleProvider } from 'antd';
 import zhCN from 'antd/lib/locale-provider/zh_CN';
 import { asyncRender } from 'utils';
+import ScrollToTop from 'components/ScrollToTop';
 
 const BasicLayout = asyncRender(() =>
   import(/* webpackChunkName: "basic-layout" */ './layouts/BasicLayout'),
@@ -65,7 +66,9 @@ const routerConfig = [
 const App = () => {
   return (
     <LocaleProvider locale={zhCN}>
-      <Router>{renderRoutes(routerConfig)}</Router>
+      <Router>
+        <ScrollToTop>{renderRoutes(routerConfig)}</ScrollToTop>
+      </Router>
     </LocaleProvider>
   );
 };
