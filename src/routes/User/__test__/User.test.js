@@ -74,13 +74,22 @@ describe('<User />', () => {
     expect(toJson(tree, { noKey: true, mode: 'deep' })).toMatchSnapshot();
   });
 
-  it('should call getUser() when name change', () => {
+  it('should call getUser() when name change and not when name same', () => {
     const props = {
       ...userProps,
       getUserData: jest.fn(),
     };
     const spy = jest.spyOn(UserComponent.prototype, 'getUser');
     const wrapper = shallow(<UserComponent {...routeProps} {...props} />);
+    wrapper.setProps({
+      match: {
+        params: {
+          name: 'guest',
+        },
+      },
+    });
+    expect(spy).toHaveBeenCalledTimes(2);
+
     wrapper.setProps({
       match: {
         params: {
