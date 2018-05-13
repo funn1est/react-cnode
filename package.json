@@ -1,7 +1,8 @@
 {
   "name": "react-cnode",
   "version": "0.0.1",
-  "description": "模仿CNode的React项目",
+  "description":
+    "A frontend project for BBS community using cnodejs.org API developed with React.js.",
   "main": "index.js",
   "author": "FuNn1esT <admin@funn1est.cn>",
   "license": "MIT",
@@ -91,18 +92,12 @@
     "webpack-merge": "^4.1.2"
   },
   "lint-staged": {
-    "src/**/*.{js,jsx}": [
-      "prettier --write",
-      "git add"
-    ],
+    "src/**/*.{js,jsx}": ["prettier --write", "git add"],
     "src/**/*.scss": [
       "stylelint --syntax scss --fix",
       "prettier --write",
       "git add"
     ],
-    "*.json": [
-      "prettier --write",
-      "git add"
-    ]
+    "*.json": ["prettier --write", "git add"]
   }
 }
