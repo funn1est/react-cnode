@@ -1,15 +1,15 @@
-# react-cnode | [中文](/README.zh-CN.md)
+# react-cnode
 
 [![Build Status](https://travis-ci.org/FuNn1esT/react-cnode.svg?branch=master)](https://travis-ci.org/FuNn1esT/react-cnode)
 [![codecov](https://codecov.io/gh/FuNn1esT/react-cnode/branch/master/graph/badge.svg)](https://codecov.io/gh/FuNn1esT/react-cnode)
 [![codebeat badge](https://codebeat.co/badges/3a41264f-cf1c-498c-90ed-8246335f091d)](https://codebeat.co/projects/github-com-funn1est-react-cnode-master)
 [![styled with: prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 
-A frontend project for BBS community using [cnodejs.org](https://cnodejs.org/) API developed with React.js.
+使用 React.js 开发的前端 BBS 社区项目，使用 [cnodejs.org](https://cnodejs.org/) API。
 
-👉 [Preview](https://cnode.funn1est.cn/)
+👉 [预览](https://cnode.funn1est.cn/)
 
-## Technology Stack
+## 技术栈
 
 - React
 - Redux
@@ -19,10 +19,10 @@ A frontend project for BBS community using [cnodejs.org](https://cnodejs.org/) A
 - webpack 4
 - Babel
 - Jest + Enzyme + Sinon
-- ESLint + Prettier + stylelint
+- ESLint + Prettier + Stylelint
 - husky + lint-staged
 
-## Getting Started
+## 快速开始
 
 ```bash
 $ git clone
@@ -34,6 +34,6 @@ $ yarn test # Test
 $ yarn test:u # Update snapshots
 ```
 
-## License
+## 开源协议
 
 [MIT](LICENSE)
