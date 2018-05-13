@@ -1,4 +1,5 @@
 module.exports = {
+  collectCoverage: true,
   setupFiles: ['<rootDir>/test/setup.js', 'jest-localstorage-mock'],
   testEnvironment: 'jsdom',
   moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx'],
