@@ -258,7 +258,6 @@ exports[`<User /> should render correctly 1`] = `
                     className="ant-list-item-meta-description"
                   >
                     <div>
-                      来自：
                       <div
                         className="ant-tag ant-tag-purple"
                         data-show={true}
@@ -270,14 +269,13 @@ exports[`<User /> should render correctly 1`] = `
                       >
                         admin
                       </div>
+                      <div
+                        className="ant-divider ant-divider-vertical"
+                      />
+                      a day ago
                     </div>
                   </div>
                 </div>
-              </div>
-              <div
-                className="ant-list-item-content"
-              >
-                a day ago
               </div>
             </div>
           </div>
