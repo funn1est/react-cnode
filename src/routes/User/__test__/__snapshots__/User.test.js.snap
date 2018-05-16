@@ -285,3 +285,279 @@ exports[`<User /> should render correctly 1`] = `
   </div>
 </div>
 `;
+
+exports[`<User /> should render default title 1`] = `
+<div
+  className=""
+>
+  <div
+    className="ant-card ant-card-bordered"
+  >
+    <div
+      className="ant-card-body"
+      style={Object {}}
+    >
+      <div
+        className="ant-card-meta"
+      >
+        <div
+          className="ant-card-meta-avatar"
+        >
+          <span
+            className="ant-avatar ant-avatar-circle ant-avatar-image"
+          >
+            <img
+              onError={[Function]}
+              src="//"
+            />
+          </span>
+        </div>
+        <div
+          className="ant-card-meta-detail"
+        >
+          <div
+            className="ant-card-meta-title"
+          >
+            <div
+              className="ant-tag ant-tag-purple"
+              data-show={true}
+              style={
+                Object {
+                  "backgroundColor": null,
+                }
+              }
+            />
+          </div>
+          <div
+            className="ant-card-meta-description"
+          >
+            <div>
+              Github：
+              <a
+                href="https://github.com/admin"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                admin
+              </a>
+            </div>
+            <div>
+              积分：
+              520
+            </div>
+            <div>
+              收藏话题：
+              2
+               个
+            </div>
+            <div>
+              注册时间：
+              a day ago
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="ant-card ant-card-bordered ant-card-contain-tabs"
+  >
+    <div
+      className="ant-card-head"
+    >
+      <div
+        className="ant-card-head-wrapper"
+      />
+      <div
+        className="ant-tabs ant-tabs-top ant-card-head-tabs ant-tabs-large ant-tabs-line"
+        style={Object {}}
+      >
+        <div
+          className="ant-tabs-bar"
+          onKeyDown={[Function]}
+          role="tablist"
+          tabIndex="0"
+        >
+          <div
+            className="ant-tabs-nav-container"
+          >
+            <span
+              className="ant-tabs-tab-prev ant-tabs-tab-btn-disabled"
+              onClick={null}
+              onTransitionEnd={[Function]}
+              unselectable="unselectable"
+            >
+              <span
+                className="ant-tabs-tab-prev-icon"
+              />
+            </span>
+            <span
+              className="ant-tabs-tab-next ant-tabs-tab-btn-disabled"
+              onClick={null}
+              unselectable="unselectable"
+            >
+              <span
+                className="ant-tabs-tab-next-icon"
+              />
+            </span>
+            <div
+              className="ant-tabs-nav-wrap"
+            >
+              <div
+                className="ant-tabs-nav-scroll"
+              >
+                <div
+                  className="ant-tabs-nav ant-tabs-nav-animated"
+                >
+                  <div
+                    className="ant-tabs-ink-bar ant-tabs-ink-bar-animated"
+                  />
+                  <div
+                    aria-disabled="false"
+                    aria-selected="true"
+                    className="ant-tabs-tab-active ant-tabs-tab"
+                    onClick={[Function]}
+                    role="tab"
+                    style={
+                      Object {
+                        "marginRight": undefined,
+                      }
+                    }
+                  >
+                    最近创建的话题
+                  </div>
+                  <div
+                    aria-disabled="false"
+                    aria-selected="false"
+                    className=" ant-tabs-tab"
+                    onClick={[Function]}
+                    role="tab"
+                    style={
+                      Object {
+                        "marginRight": undefined,
+                      }
+                    }
+                  >
+                    最近参与的话题
+                  </div>
+                  <div
+                    aria-disabled="false"
+                    aria-selected="false"
+                    className=" ant-tabs-tab"
+                    onClick={[Function]}
+                    role="tab"
+                    style={
+                      Object {
+                        "marginRight": undefined,
+                      }
+                    }
+                  >
+                    收藏的话题
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="ant-tabs-content ant-tabs-content-animated"
+          style={
+            Object {
+              "marginLeft": "0%",
+            }
+          }
+        >
+          <div
+            aria-hidden="false"
+            className="ant-tabs-tabpane ant-tabs-tabpane-active"
+            role="tabpanel"
+          />
+          <div
+            aria-hidden="true"
+            className="ant-tabs-tabpane ant-tabs-tabpane-inactive"
+            role="tabpanel"
+          />
+          <div
+            aria-hidden="true"
+            className="ant-tabs-tabpane ant-tabs-tabpane-inactive"
+            role="tabpanel"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="ant-card-body"
+      style={Object {}}
+    >
+      <div
+        className="ant-list ant-list-split"
+      >
+        <div
+          className="ant-spin-nested-loading"
+          style={null}
+        >
+          <div
+            className="ant-spin-container"
+          >
+            <div
+              className="ant-list-item"
+            >
+              <div
+                className="ant-list-item-meta"
+              >
+                <div
+                  className="ant-list-item-meta-avatar"
+                >
+                  <span
+                    className="ant-avatar ant-avatar-circle ant-avatar-image"
+                  >
+                    <img
+                      onError={[Function]}
+                      src="//"
+                    />
+                  </span>
+                </div>
+                <div
+                  className="ant-list-item-meta-content"
+                >
+                  <h4
+                    className="ant-list-item-meta-title"
+                  >
+                    <a
+                      href="/topic/007"
+                      onClick={[Function]}
+                    >
+                      title
+                    </a>
+                  </h4>
+                  <div
+                    className="ant-list-item-meta-description"
+                  >
+                    <div>
+                      <div
+                        className="ant-tag ant-tag-purple"
+                        data-show={true}
+                        style={
+                          Object {
+                            "backgroundColor": null,
+                          }
+                        }
+                      >
+                        admin
+                      </div>
+                      <div
+                        className="ant-divider ant-divider-vertical"
+                      />
+                      a day ago
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -7,6 +7,14 @@ import toJson from 'enzyme-to-json';
 import { TopicComponent } from '../Topic';
 
 describe('<Topic />', () => {
+  const topicProps = {
+    topicTitle: 'title',
+    currentUser: {
+      id: '007',
+    },
+    error: false,
+    getTopicData: jest.fn(),
+  };
   const routeProps = {
     match: {
       params: {
@@ -16,14 +24,13 @@ describe('<Topic />', () => {
   };
 
   it('should render correctly', () => {
-    const props = {
-      currentUser: {
-        id: '007',
-      },
-      error: false,
-      getTopicData: jest.fn(),
-    };
-    const tree = shallow(<TopicComponent {...props} {...routeProps} />);
+    const tree = shallow(<TopicComponent {...topicProps} {...routeProps} />);
+    expect(toJson(tree, { noKey: true })).toMatchSnapshot();
+  });
+
+  it('should render default title', () => {
+    topicProps.topicTitle = undefined;
+    const tree = shallow(<TopicComponent {...topicProps} {...routeProps} />);
     expect(toJson(tree, { noKey: true })).toMatchSnapshot();
   });
 

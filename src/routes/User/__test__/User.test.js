@@ -63,6 +63,22 @@ describe('<User />', () => {
     expect(toJson(tree, { noKey: true, mode: 'deep' })).toMatchSnapshot();
   });
 
+  it('should render default title', () => {
+    const userData = {
+      ...userProps.userData,
+      loginname: undefined,
+    };
+    const store = mockStore(
+      userInitialState.setIn(['user', 'userData'], userData),
+    );
+    const tree = mount(
+      <MemoryRouter>
+        <User store={store} {...routeProps} />
+      </MemoryRouter>,
+    );
+    expect(toJson(tree, { noKey: true, mode: 'deep' })).toMatchSnapshot();
+  });
+
   it('should render <Exception />', () => {
     const initialState = userInitialState.setIn(['user', 'error'], true);
     const store = mockStore(initialState);
