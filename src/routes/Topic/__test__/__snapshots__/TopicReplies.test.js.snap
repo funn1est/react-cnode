@@ -63,7 +63,7 @@ exports[`<TopicReplies /> should render correctly 1`] = `
                       onClick={[Function]}
                     >
                       <div
-                        className="ant-tag ant-tag-purple"
+                        className="ant-tag ant-tag-green"
                         data-show={true}
                         style={
                           Object {
@@ -133,6 +133,113 @@ exports[`<TopicReplies /> should render correctly 1`] = `
                   >
                     <p>
                       content
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="ant-list-item"
+            id="002"
+          >
+            <div
+              className="ant-list-item-meta"
+            >
+              <div
+                className="ant-list-item-meta-avatar"
+              >
+                <span
+                  className="ant-avatar ant-avatar-lg ant-avatar-circle ant-avatar-image"
+                >
+                  <img
+                    onError={[Function]}
+                    src="//"
+                  />
+                </span>
+              </div>
+              <div
+                className="ant-list-item-meta-content"
+              >
+                <h4
+                  className="ant-list-item-meta-title"
+                >
+                  <div>
+                    <a
+                      href="/user/guest"
+                      onClick={[Function]}
+                    >
+                      <div
+                        className="ant-tag ant-tag-purple"
+                        data-show={true}
+                        style={
+                          Object {
+                            "backgroundColor": null,
+                          }
+                        }
+                      >
+                        guest
+                      </div>
+                    </a>
+                    <div
+                      className="ant-divider ant-divider-vertical"
+                    />
+                    <a
+                      href="#002"
+                    >
+                      2 楼
+                    </a>
+                    <div
+                      className="ant-divider ant-divider-vertical"
+                    />
+                    <span>
+                      a day ago
+                    </span>
+                    <div
+                      className="ant-divider ant-divider-vertical"
+                    />
+                    <div>
+                      <ul
+                        className="ant-rate"
+                        onBlur={[Function]}
+                        onFocus={[Function]}
+                        onKeyDown={[Function]}
+                        onMouseLeave={[Function]}
+                        style={Object {}}
+                        tabIndex={0}
+                      >
+                        <li
+                          className="ant-rate-star ant-rate-star-zero"
+                          onClick={[Function]}
+                          onMouseMove={[Function]}
+                        >
+                          <div
+                            className="ant-rate-star-first"
+                          >
+                            <i
+                              className="anticon anticon-like"
+                            />
+                          </div>
+                          <div
+                            className="ant-rate-star-second"
+                          >
+                            <i
+                              className="anticon anticon-like"
+                            />
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </h4>
+                <div
+                  className="ant-list-item-meta-description"
+                >
+                  <div
+                    className="markdown-body"
+                  >
+                    <p>
+                      guest content
                     </p>
                   </div>
                 </div>

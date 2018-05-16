@@ -14,8 +14,13 @@ describe('<TopicReplies />', () => {
   const mockStore = configureStore();
   const initialState = fromJS({
     topic: {
+      topicData: {
+        author: {
+          loginname: 'admin',
+        },
+      },
       repliesData: {
-        result: ['001'],
+        result: ['001', '002'],
         entities: {
           '001': {
             author: {
@@ -23,6 +28,14 @@ describe('<TopicReplies />', () => {
               avatar_url: '//',
             },
             content: 'content',
+            create_at: '2018-05-20T16:00:00.000Z',
+          },
+          '002': {
+            author: {
+              loginname: 'guest',
+              avatar_url: '//',
+            },
+            content: 'guest content',
             create_at: '2018-05-20T16:00:00.000Z',
           },
         },

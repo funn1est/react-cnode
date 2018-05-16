@@ -58,7 +58,7 @@ exports[`<TopicContent /> should render correctly 1`] = `
                   onClick={[Function]}
                 >
                   <div
-                    className="ant-tag ant-tag-purple"
+                    className="ant-tag ant-tag-green"
                     data-show={true}
                     style={
                       Object {
