@@ -86,7 +86,7 @@ export class TopicContentComponent extends React.Component {
             description={
               <div className={styles.description}>
                 <Link to={`/user/${author.get('loginname')}`}>
-                  <Tag color="purple">{author.get('loginname')}</Tag>
+                  <Tag color="green">{author.get('loginname')}</Tag>
                 </Link>
                 <Divider className={styles.divider} type="vertical" />
                 <span className={styles.createTime}>

@@ -11,6 +11,7 @@ import styles from './TopicReplies.scss';
 
 const Replies = ({
   repliesResult,
+  authorName,
   current,
   pageSize,
   onReplyPageChange,
@@ -40,6 +41,7 @@ const Replies = ({
         }}
         renderItem={(item, key) => (
           <TopicReply
+            authorName={authorName}
             replyId={item}
             order={key + 1 + (current - 1) * pageSize}
             onClickUp={onClickUp}
@@ -52,6 +54,7 @@ const Replies = ({
 
 const Reply = ({
   replyId,
+  authorName,
   username,
   avatar,
   createAt,
@@ -65,7 +68,9 @@ const Reply = ({
       title={
         <div className={styles.header}>
           <Link to={`/user/${username}`}>
-            <Tag color="purple">{username}</Tag>
+            <Tag color={authorName === username ? 'green' : 'purple'}>
+              {username}
+            </Tag>
           </Link>
           <Divider type="vertical" />
           <a href={`#${replyId}`}>{`${order} 楼`}</a>
@@ -115,6 +120,7 @@ const TopicReply = connect((state, { replyId }) => ({
 
 Replies.propTypes = {
   repliesResult: PropTypes.instanceOf(ImmutableList).isRequired,
+  authorName: PropTypes.string,
   current: PropTypes.number.isRequired,
   pageSize: PropTypes.number.isRequired,
   onReplyPageChange: PropTypes.func.isRequired,
@@ -124,6 +130,7 @@ Replies.propTypes = {
 
 Reply.propTypes = {
   replyId: PropTypes.string.isRequired,
+  authorName: PropTypes.string.isRequired,
   username: PropTypes.string.isRequired,
   avatar: PropTypes.string.isRequired,
   createAt: PropTypes.string.isRequired,
@@ -134,4 +141,5 @@ Reply.propTypes = {
 
 export default connect(state => ({
   repliesResult: state.getIn(['topic', 'repliesData', 'result']),
+  authorName: state.getIn(['topic', 'topicData', 'author', 'loginname']),
 }))(Replies);
