@@ -6,6 +6,7 @@
 [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
 [![styled with: prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/FuNn1esT/react-cnode/blob/master/LICENSE)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FFuNn1esT%2Freact-cnode.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FFuNn1esT%2Freact-cnode?ref=badge_shield)
 
 A frontend project for BBS community using [cnodejs.org](https://cnodejs.org/) API developed with React.js.
 
@@ -83,3 +84,5 @@ $ yarn lint:style # Use stylelint to lint all scss file under src directory
 ## License
 
 [MIT](LICENSE)
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FFuNn1esT%2Freact-cnode.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FFuNn1esT%2Freact-cnode?ref=badge_large)
