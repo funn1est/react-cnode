@@ -7,8 +7,8 @@
   "license": "MIT",
   "scripts": {
     "precommit": "lint-staged",
-    "dev": "webpack-dev-server --config webpack.config.dev.js --progress",
-    "prod": "webpack --config webpack.config.prod.js --progress",
+    "start": "webpack-dev-server --config webpack.config.dev.js --progress",
+    "build": "webpack --config webpack.config.prod.js --progress",
     "test": "jest --config .jest.config.js",
     "test:watch": "npm run test -- --watch",
     "test:update": "npm run test -- -u",
