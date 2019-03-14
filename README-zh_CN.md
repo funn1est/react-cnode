@@ -19,8 +19,8 @@
 $ git clone
 $ cd react-cnode
 $ yarn # 安装依赖
-$ yarn dev # 开发
-$ yarn prod # 打包
+$ yarn start # 开发
+$ yarn build # 打包
 ```
 
 ## 特性
@@ -53,8 +53,8 @@ $ yarn prod # 打包
 
 ```bash
 $ yarn test # 测试
-$ yarn test:u # 升级快照
-$ yarn test:w # 交互测试模式
+$ yarn test:update # 升级快照
+$ yarn test:watch # 交互测试模式
 $ yarn coverage # 生成测试覆盖率报告
 ```
 

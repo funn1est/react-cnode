@@ -1,4 +1,4 @@
-# react-cnode | [中文](/README.zh-CN.md)
+# react-cnode | [中文](/README-zh_CN.md)
 
 [![Build Status](https://travis-ci.org/FuNn1esT/react-cnode.svg?branch=master)](https://travis-ci.org/FuNn1esT/react-cnode)
 [![codecov](https://codecov.io/gh/FuNn1esT/react-cnode/branch/master/graph/badge.svg)](https://codecov.io/gh/FuNn1esT/react-cnode)
@@ -19,8 +19,8 @@ A frontend project for BBS community using [cnodejs.org](https://cnodejs.org/) A
 $ git clone
 $ cd react-cnode
 $ yarn # Install dependencies
-$ yarn dev # Development
-$ yarn prod # Production build
+$ yarn start # Development
+$ yarn build # Production build
 ```
 
 ## Features
@@ -54,8 +54,8 @@ $ yarn prod # Production build
 
 ```bash
 $ yarn test # Test
-$ yarn test:u # Update test snapshots
-$ yarn test:w # Test interactive mode
+$ yarn test:update # Update test snapshots
+$ yarn test:watch # Test interactive mode
 $ yarn coverage # Generate test coverage
 ```
 
