@@ -1,9 +1,8 @@
 {
   "name": "react-cnode",
   "version": "0.0.1",
-  "description":
-    "A frontend project for BBS community using cnodejs.org API developed with React.js.",
-  "main": "index.js",
+  "description": "A frontend project for BBS community using cnodejs.org API developed with React.js.",
+  "main": "src/index.js",
   "author": "FuNn1esT <admin@funn1est.cn>",
   "license": "MIT",
   "scripts": {
@@ -11,23 +10,22 @@
     "dev": "webpack-dev-server --config webpack.config.dev.js --progress",
     "prod": "webpack --config webpack.config.prod.js --progress",
     "test": "jest --config .jest.config.js",
-    "test:w": "jest --config .jest.config.js --watch",
-    "test:u": "jest --config .jest.config.js --updateSnapshot",
-    "coverage": "jest --config .jest.config.js --coverage",
+    "test:watch": "npm run test -- --watch",
+    "test:update": "npm run test -- -u",
+    "coverage": "npm run test -- --coverage",
     "prettier": "prettier --write \"src/**/*.js\"",
     "lint:style": "stylelint \"src/**/*.scss\" --syntax scss"
   },
   "dependencies": {
-    "antd": "3.5.0",
+    "antd": "3.15.0",
     "axios": "^0.18.0",
-    "babel-polyfill": "^6.26.0",
     "classnames": "^2.2.5",
     "enquire-js": "^0.2.1",
     "immutable": "^3.8.2",
     "moment": "^2.22.1",
     "prop-types": "^15.6.1",
-    "react": "16.3.2",
-    "react-dom": "16.3.2",
+    "react": "16.8.4",
+    "react-dom": "16.8.4",
     "react-helmet": "^5.2.0",
     "react-infinite-scroller": "^1.1.4",
     "react-markdown": "^3.3.0",
@@ -35,20 +33,21 @@
     "react-router-config": "^1.0.0-beta.4",
     "react-router-dom": "^4.2.2",
     "react-simplemde-editor": "^3.6.14",
-    "redux": "4.0.0",
+    "redux": "4.0.1",
     "redux-actions": "^2.3.0",
     "redux-immutable": "^4.0.0",
     "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/plugin-proposal-class-properties": "^7.3.4",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/plugin-transform-runtime": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "@babel/preset-react": "^7.0.0",
     "autoprefixer": "^8.1.0",
-    "babel-eslint": "^8.2.2",
-    "babel-loader": "^7.1.4",
-    "babel-plugin-import": "^1.6.7",
-    "babel-plugin-transform-decorators-legacy": "^1.3.4",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-0": "^6.24.1",
+    "babel-loader": "^8.0.5",
+    "babel-plugin-import": "^1.11.0",
     "clean-webpack-plugin": "^0.1.19",
     "css-loader": "^0.28.10",
     "enzyme": "^3.3.0",
@@ -64,7 +63,7 @@
     "file-loader": "^1.1.11",
     "html-webpack-plugin": "^3.0.6",
     "husky": "^0.14.3",
-    "jest": "^22.4.3",
+    "jest": "^24.5.0",
     "jest-localstorage-mock": "^2.2.0",
     "less": "^3.0.1",
     "less-loader": "^4.1.0",
@@ -77,7 +76,7 @@
     "redux-devtools-extension": "^2.13.2",
     "redux-mock-store": "^1.5.1",
     "sass-loader": "7.0.1",
-    "sinon": "^5.0.7",
+    "sinon": "^7.2.7",
     "style-loader": "0.21.0",
     "stylelint": "9.2.0",
     "stylelint-config-prettier": "^3.2.0",
@@ -92,12 +91,18 @@
     "webpack-merge": "^4.1.2"
   },
   "lint-staged": {
-    "src/**/*.{js,jsx}": ["prettier --write", "git add"],
+    "src/**/*.{js,jsx}": [
+      "prettier --write",
+      "git add"
+    ],
     "src/**/*.scss": [
       "stylelint --syntax scss --fix",
       "prettier --write",
       "git add"
     ],
-    "*.json": ["prettier --write", "git add"]
+    "*.json": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }
