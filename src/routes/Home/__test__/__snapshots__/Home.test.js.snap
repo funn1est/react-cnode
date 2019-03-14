@@ -17,7 +17,6 @@ Array [
     >
       <div
         className="ant-spin-nested-loading"
-        style={null}
       >
         <div
           className="ant-spin-container"
@@ -33,115 +32,111 @@ Array [
           >
             <div
               className="ant-col-24"
+              style={
+                Object {
+                  "paddingLeft": 8,
+                  "paddingRight": 8,
+                }
+              }
             >
               <div
                 className="ant-list-item"
-                style={
-                  Object {
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                  }
-                }
               >
                 <div
-                  className="ant-list-item-content ant-list-item-content-single"
+                  className="ant-card ant-card-bordered"
                 >
                   <div
-                    className="ant-card ant-card-bordered"
+                    className="ant-card-head"
+                    style={Object {}}
                   >
                     <div
-                      className="ant-card-head"
+                      className="ant-card-head-wrapper"
                     >
                       <div
-                        className="ant-card-head-wrapper"
+                        className="ant-card-head-title"
                       >
-                        <div
-                          className="ant-card-head-title"
-                        >
+                        <div>
                           <div>
-                            <div>
-                              <span
-                                className="ant-avatar ant-avatar-sm ant-avatar-square ant-avatar-image"
-                              >
-                                <img
-                                  onError={[Function]}
-                                  src="//"
-                                />
-                              </span>
-                              <a
-                                href="/user/admin"
-                                onClick={[Function]}
-                              >
-                                <div
-                                  className="ant-tag ant-tag-purple"
-                                  data-show={true}
-                                  style={
-                                    Object {
-                                      "backgroundColor": null,
-                                    }
-                                  }
-                                >
-                                  admin
-                                </div>
-                              </a>
-                            </div>
-                            <div>
+                            <span
+                              className="ant-avatar ant-avatar-sm ant-avatar-square ant-avatar-image"
+                              style={Object {}}
+                            >
+                              <img
+                                onError={[Function]}
+                                src="//"
+                              />
+                            </span>
+                            <a
+                              href="/user/admin"
+                              onClick={[Function]}
+                            >
                               <div
-                                className="ant-tag ant-tag-red"
-                                data-show={true}
+                                className="ant-tag ant-tag-purple"
                                 style={
                                   Object {
-                                    "backgroundColor": null,
+                                    "backgroundColor": undefined,
                                   }
                                 }
                               >
-                                置顶
+                                admin
                               </div>
-                              <a
-                                href="/topic/123456789012345678901234"
-                                onClick={[Function]}
-                              >
-                                title1
-                              </a>
+                            </a>
+                          </div>
+                          <div>
+                            <div
+                              className="ant-tag ant-tag-red"
+                              style={
+                                Object {
+                                  "backgroundColor": undefined,
+                                }
+                              }
+                            >
+                              置顶
                             </div>
+                            <a
+                              href="/topic/123456789012345678901234"
+                              onClick={[Function]}
+                            >
+                              title1
+                            </a>
                           </div>
                         </div>
                       </div>
                     </div>
+                  </div>
+                  <div
+                    className="ant-card-body"
+                    style={Object {}}
+                  >
                     <div
-                      className="ant-card-body"
-                      style={Object {}}
+                      className="ant-card-meta"
                     >
                       <div
-                        className="ant-card-meta"
+                        className="ant-card-meta-detail"
                       >
                         <div
-                          className="ant-card-meta-detail"
+                          className="ant-card-meta-description"
                         >
-                          <div
-                            className="ant-card-meta-description"
-                          >
+                          <div>
+                            <div
+                              className="undefined"
+                              id="ellipsis-152691840000016"
+                            >
+                              <style>
+                                #ellipsis-152691840000016{-webkit-line-clamp: 4;-webkit-box-orient: vertical;}
+                              </style>
+                              content
+                            </div>
                             <div>
+                              阅读数:1000
                               <div
-                                className="undefined"
-                                id="ellipsis-152691840000016"
-                              >
-                                <style>
-                                  #ellipsis-152691840000016{-webkit-line-clamp: 4;-webkit-box-orient: vertical;}
-                                </style>
-                                content
-                              </div>
-                              <div>
-                                阅读数:1000
-                                <div
-                                  className="ant-divider ant-divider-vertical"
-                                />
-                                100条评论
-                                <div
-                                  className="ant-divider ant-divider-vertical"
-                                />
-                                a day ago
-                              </div>
+                                className="ant-divider ant-divider-vertical"
+                              />
+                              100条评论
+                              <div
+                                className="ant-divider ant-divider-vertical"
+                              />
+                              a day ago
                             </div>
                           </div>
                         </div>
@@ -164,6 +159,7 @@ exports[`<HomeTopicTitle /> should not render tab 1`] = `
   <div>
     <span
       className="ant-avatar ant-avatar-sm ant-avatar-square ant-avatar-image"
+      style={Object {}}
     >
       <img
         onError={[Function]}
@@ -176,10 +172,9 @@ exports[`<HomeTopicTitle /> should not render tab 1`] = `
     >
       <div
         className="ant-tag ant-tag-purple"
-        data-show={true}
         style={
           Object {
-            "backgroundColor": null,
+            "backgroundColor": undefined,
           }
         }
       >
@@ -203,6 +198,7 @@ exports[`<HomeTopicTitle /> should render Tag good 1`] = `
   <div>
     <span
       className="ant-avatar ant-avatar-sm ant-avatar-square ant-avatar-image"
+      style={Object {}}
     >
       <img
         onError={[Function]}
@@ -215,10 +211,9 @@ exports[`<HomeTopicTitle /> should render Tag good 1`] = `
     >
       <div
         className="ant-tag ant-tag-purple"
-        data-show={true}
         style={
           Object {
-            "backgroundColor": null,
+            "backgroundColor": undefined,
           }
         }
       >
@@ -229,10 +224,9 @@ exports[`<HomeTopicTitle /> should render Tag good 1`] = `
   <div>
     <div
       className="ant-tag ant-tag-green"
-      data-show={true}
       style={
         Object {
-          "backgroundColor": null,
+          "backgroundColor": undefined,
         }
       }
     >
@@ -253,6 +247,7 @@ exports[`<HomeTopicTitle /> should render its own tab ask 1`] = `
   <div>
     <span
       className="ant-avatar ant-avatar-sm ant-avatar-square ant-avatar-image"
+      style={Object {}}
     >
       <img
         onError={[Function]}
@@ -265,10 +260,9 @@ exports[`<HomeTopicTitle /> should render its own tab ask 1`] = `
     >
       <div
         className="ant-tag ant-tag-purple"
-        data-show={true}
         style={
           Object {
-            "backgroundColor": null,
+            "backgroundColor": undefined,
           }
         }
       >
@@ -279,10 +273,9 @@ exports[`<HomeTopicTitle /> should render its own tab ask 1`] = `
   <div>
     <div
       className="ant-tag ant-tag-orange"
-      data-show={true}
       style={
         Object {
-          "backgroundColor": null,
+          "backgroundColor": undefined,
         }
       }
     >
@@ -305,7 +298,6 @@ exports[`<HomeTopics /> should render bottom 1`] = `
   >
     <div
       className="ant-spin-nested-loading"
-      style={null}
     >
       <div
         className="ant-spin-container"
@@ -326,14 +318,13 @@ exports[`<HomeTopics /> should render loading 1`] = `
   >
     <div
       className="ant-spin-nested-loading"
-      style={null}
     >
       <div
         className="ant-spin-container"
       >
         <div>
           <div
-            className="ant-spin ant-spin-lg ant-spin-spinning ant-spin-show-text"
+            className="ant-spin ant-spin-lg ant-spin-spinning"
           >
             <span
               className="ant-spin-dot ant-spin-dot-spin"

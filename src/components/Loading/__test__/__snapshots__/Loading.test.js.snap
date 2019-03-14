@@ -3,7 +3,7 @@
 exports[`<Loading /> should render correctly 1`] = `
 <div>
   <div
-    className="ant-spin ant-spin-lg ant-spin-spinning ant-spin-show-text"
+    className="ant-spin ant-spin-lg ant-spin-spinning"
   >
     <span
       className="ant-spin-dot ant-spin-dot-spin"

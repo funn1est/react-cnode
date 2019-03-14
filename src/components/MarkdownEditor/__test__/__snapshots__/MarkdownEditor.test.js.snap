@@ -2,6 +2,7 @@
 
 exports[`<MarkdownEditor /> should render correctly 1`] = `
 <SimpleMDEEditor
+  events={Object {}}
   onChange={[MockFunction]}
   options={
     Object {

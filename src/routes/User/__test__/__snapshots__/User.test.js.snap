@@ -27,6 +27,7 @@ exports[`<User /> should render correctly 1`] = `
         >
           <span
             className="ant-avatar ant-avatar-circle ant-avatar-image"
+            style={Object {}}
           >
             <img
               onError={[Function]}
@@ -42,10 +43,9 @@ exports[`<User /> should render correctly 1`] = `
           >
             <div
               className="ant-tag ant-tag-purple"
-              data-show={true}
               style={
                 Object {
-                  "backgroundColor": null,
+                  "backgroundColor": undefined,
                 }
               }
             >
@@ -88,18 +88,21 @@ exports[`<User /> should render correctly 1`] = `
   >
     <div
       className="ant-card-head"
+      style={Object {}}
     >
       <div
         className="ant-card-head-wrapper"
       />
       <div
         className="ant-tabs ant-tabs-top ant-card-head-tabs ant-tabs-large ant-tabs-line"
+        onScroll={[Function]}
         style={Object {}}
       >
         <div
-          className="ant-tabs-bar"
+          className="ant-tabs-bar ant-tabs-top-bar ant-tabs-large-bar"
           onKeyDown={[Function]}
           role="tablist"
+          style={Object {}}
           tabIndex="0"
         >
           <div
@@ -113,7 +116,26 @@ exports[`<User /> should render correctly 1`] = `
             >
               <span
                 className="ant-tabs-tab-prev-icon"
-              />
+              >
+                <i
+                  aria-label="icon: left"
+                  className="anticon anticon-left ant-tabs-tab-prev-icon-target"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className=""
+                    data-icon="left"
+                    fill="currentColor"
+                    height="1em"
+                    viewBox="64 64 896 896"
+                    width="1em"
+                  >
+                    <path
+                      d="M724 218.3V141c0-6.7-7.7-10.4-12.9-6.3L260.3 486.8a31.86 31.86 0 0 0 0 50.3l450.8 352.1c5.3 4.1 12.9.4 12.9-6.3v-77.3c0-4.9-2.3-9.6-6.1-12.6l-360-281 360-281.1c3.8-3 6.1-7.7 6.1-12.6z"
+                    />
+                  </svg>
+                </i>
+              </span>
             </span>
             <span
               className="ant-tabs-tab-next ant-tabs-tab-btn-disabled"
@@ -122,7 +144,26 @@ exports[`<User /> should render correctly 1`] = `
             >
               <span
                 className="ant-tabs-tab-next-icon"
-              />
+              >
+                <i
+                  aria-label="icon: right"
+                  className="anticon anticon-right ant-tabs-tab-next-icon-target"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className=""
+                    data-icon="right"
+                    fill="currentColor"
+                    height="1em"
+                    viewBox="64 64 896 896"
+                    width="1em"
+                  >
+                    <path
+                      d="M765.7 486.8L314.9 134.7A7.97 7.97 0 0 0 302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 0 0 0-50.4z"
+                    />
+                  </svg>
+                </i>
+              </span>
             </span>
             <div
               className="ant-tabs-nav-wrap"
@@ -133,58 +174,73 @@ exports[`<User /> should render correctly 1`] = `
                 <div
                   className="ant-tabs-nav ant-tabs-nav-animated"
                 >
+                  <div>
+                    <div
+                      aria-disabled="false"
+                      aria-selected="true"
+                      className="ant-tabs-tab-active ant-tabs-tab"
+                      onClick={[Function]}
+                      role="tab"
+                      style={
+                        Object {
+                          "marginRight": null,
+                        }
+                      }
+                    >
+                      最近创建的话题
+                    </div>
+                    <div
+                      aria-disabled="false"
+                      aria-selected="false"
+                      className=" ant-tabs-tab"
+                      onClick={[Function]}
+                      role="tab"
+                      style={
+                        Object {
+                          "marginRight": null,
+                        }
+                      }
+                    >
+                      最近参与的话题
+                    </div>
+                    <div
+                      aria-disabled="false"
+                      aria-selected="false"
+                      className=" ant-tabs-tab"
+                      onClick={[Function]}
+                      role="tab"
+                      style={
+                        Object {
+                          "marginRight": null,
+                        }
+                      }
+                    >
+                      收藏的话题
+                    </div>
+                  </div>
                   <div
                     className="ant-tabs-ink-bar ant-tabs-ink-bar-animated"
                   />
-                  <div
-                    aria-disabled="false"
-                    aria-selected="true"
-                    className="ant-tabs-tab-active ant-tabs-tab"
-                    onClick={[Function]}
-                    role="tab"
-                    style={
-                      Object {
-                        "marginRight": undefined,
-                      }
-                    }
-                  >
-                    最近创建的话题
-                  </div>
-                  <div
-                    aria-disabled="false"
-                    aria-selected="false"
-                    className=" ant-tabs-tab"
-                    onClick={[Function]}
-                    role="tab"
-                    style={
-                      Object {
-                        "marginRight": undefined,
-                      }
-                    }
-                  >
-                    最近参与的话题
-                  </div>
-                  <div
-                    aria-disabled="false"
-                    aria-selected="false"
-                    className=" ant-tabs-tab"
-                    onClick={[Function]}
-                    role="tab"
-                    style={
-                      Object {
-                        "marginRight": undefined,
-                      }
-                    }
-                  >
-                    收藏的话题
-                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
         <div
-          className="ant-tabs-content ant-tabs-content-animated"
+          onKeyDown={[Function]}
+          role="presentation"
+          style={
+            Object {
+              "height": 0,
+              "overflow": "hidden",
+              "position": "absolute",
+              "width": 0,
+            }
+          }
+          tabIndex={0}
+        />
+        <div
+          className="ant-tabs-content ant-tabs-content-animated ant-tabs-top-content"
           style={
             Object {
               "marginLeft": "0%",
@@ -195,7 +251,34 @@ exports[`<User /> should render correctly 1`] = `
             aria-hidden="false"
             className="ant-tabs-tabpane ant-tabs-tabpane-active"
             role="tabpanel"
-          />
+          >
+            <div
+              onKeyDown={[Function]}
+              role="presentation"
+              style={
+                Object {
+                  "height": 0,
+                  "overflow": "hidden",
+                  "position": "absolute",
+                  "width": 0,
+                }
+              }
+              tabIndex={0}
+            />
+            <div
+              onKeyDown={[Function]}
+              role="presentation"
+              style={
+                Object {
+                  "height": 0,
+                  "overflow": "hidden",
+                  "position": "absolute",
+                  "width": 0,
+                }
+              }
+              tabIndex={0}
+            />
+          </div>
           <div
             aria-hidden="true"
             className="ant-tabs-tabpane ant-tabs-tabpane-inactive"
@@ -207,6 +290,19 @@ exports[`<User /> should render correctly 1`] = `
             role="tabpanel"
           />
         </div>
+        <div
+          onKeyDown={[Function]}
+          role="presentation"
+          style={
+            Object {
+              "height": 0,
+              "overflow": "hidden",
+              "position": "absolute",
+              "width": 0,
+            }
+          }
+          tabIndex={0}
+        />
       </div>
     </div>
     <div
@@ -218,7 +314,6 @@ exports[`<User /> should render correctly 1`] = `
       >
         <div
           className="ant-spin-nested-loading"
-          style={null}
         >
           <div
             className="ant-spin-container"
@@ -234,6 +329,7 @@ exports[`<User /> should render correctly 1`] = `
                 >
                   <span
                     className="ant-avatar ant-avatar-circle ant-avatar-image"
+                    style={Object {}}
                   >
                     <img
                       onError={[Function]}
@@ -260,10 +356,9 @@ exports[`<User /> should render correctly 1`] = `
                     <div>
                       <div
                         className="ant-tag ant-tag-purple"
-                        data-show={true}
                         style={
                           Object {
-                            "backgroundColor": null,
+                            "backgroundColor": undefined,
                           }
                         }
                       >
@@ -305,6 +400,7 @@ exports[`<User /> should render default title 1`] = `
         >
           <span
             className="ant-avatar ant-avatar-circle ant-avatar-image"
+            style={Object {}}
           >
             <img
               onError={[Function]}
@@ -320,10 +416,9 @@ exports[`<User /> should render default title 1`] = `
           >
             <div
               className="ant-tag ant-tag-purple"
-              data-show={true}
               style={
                 Object {
-                  "backgroundColor": null,
+                  "backgroundColor": undefined,
                 }
               }
             />
@@ -364,18 +459,21 @@ exports[`<User /> should render default title 1`] = `
   >
     <div
       className="ant-card-head"
+      style={Object {}}
     >
       <div
         className="ant-card-head-wrapper"
       />
       <div
         className="ant-tabs ant-tabs-top ant-card-head-tabs ant-tabs-large ant-tabs-line"
+        onScroll={[Function]}
         style={Object {}}
       >
         <div
-          className="ant-tabs-bar"
+          className="ant-tabs-bar ant-tabs-top-bar ant-tabs-large-bar"
           onKeyDown={[Function]}
           role="tablist"
+          style={Object {}}
           tabIndex="0"
         >
           <div
@@ -389,7 +487,26 @@ exports[`<User /> should render default title 1`] = `
             >
               <span
                 className="ant-tabs-tab-prev-icon"
-              />
+              >
+                <i
+                  aria-label="icon: left"
+                  className="anticon anticon-left ant-tabs-tab-prev-icon-target"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className=""
+                    data-icon="left"
+                    fill="currentColor"
+                    height="1em"
+                    viewBox="64 64 896 896"
+                    width="1em"
+                  >
+                    <path
+                      d="M724 218.3V141c0-6.7-7.7-10.4-12.9-6.3L260.3 486.8a31.86 31.86 0 0 0 0 50.3l450.8 352.1c5.3 4.1 12.9.4 12.9-6.3v-77.3c0-4.9-2.3-9.6-6.1-12.6l-360-281 360-281.1c3.8-3 6.1-7.7 6.1-12.6z"
+                    />
+                  </svg>
+                </i>
+              </span>
             </span>
             <span
               className="ant-tabs-tab-next ant-tabs-tab-btn-disabled"
@@ -398,7 +515,26 @@ exports[`<User /> should render default title 1`] = `
             >
               <span
                 className="ant-tabs-tab-next-icon"
-              />
+              >
+                <i
+                  aria-label="icon: right"
+                  className="anticon anticon-right ant-tabs-tab-next-icon-target"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className=""
+                    data-icon="right"
+                    fill="currentColor"
+                    height="1em"
+                    viewBox="64 64 896 896"
+                    width="1em"
+                  >
+                    <path
+                      d="M765.7 486.8L314.9 134.7A7.97 7.97 0 0 0 302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 0 0 0-50.4z"
+                    />
+                  </svg>
+                </i>
+              </span>
             </span>
             <div
               className="ant-tabs-nav-wrap"
@@ -409,58 +545,73 @@ exports[`<User /> should render default title 1`] = `
                 <div
                   className="ant-tabs-nav ant-tabs-nav-animated"
                 >
+                  <div>
+                    <div
+                      aria-disabled="false"
+                      aria-selected="true"
+                      className="ant-tabs-tab-active ant-tabs-tab"
+                      onClick={[Function]}
+                      role="tab"
+                      style={
+                        Object {
+                          "marginRight": null,
+                        }
+                      }
+                    >
+                      最近创建的话题
+                    </div>
+                    <div
+                      aria-disabled="false"
+                      aria-selected="false"
+                      className=" ant-tabs-tab"
+                      onClick={[Function]}
+                      role="tab"
+                      style={
+                        Object {
+                          "marginRight": null,
+                        }
+                      }
+                    >
+                      最近参与的话题
+                    </div>
+                    <div
+                      aria-disabled="false"
+                      aria-selected="false"
+                      className=" ant-tabs-tab"
+                      onClick={[Function]}
+                      role="tab"
+                      style={
+                        Object {
+                          "marginRight": null,
+                        }
+                      }
+                    >
+                      收藏的话题
+                    </div>
+                  </div>
                   <div
                     className="ant-tabs-ink-bar ant-tabs-ink-bar-animated"
                   />
-                  <div
-                    aria-disabled="false"
-                    aria-selected="true"
-                    className="ant-tabs-tab-active ant-tabs-tab"
-                    onClick={[Function]}
-                    role="tab"
-                    style={
-                      Object {
-                        "marginRight": undefined,
-                      }
-                    }
-                  >
-                    最近创建的话题
-                  </div>
-                  <div
-                    aria-disabled="false"
-                    aria-selected="false"
-                    className=" ant-tabs-tab"
-                    onClick={[Function]}
-                    role="tab"
-                    style={
-                      Object {
-                        "marginRight": undefined,
-                      }
-                    }
-                  >
-                    最近参与的话题
-                  </div>
-                  <div
-                    aria-disabled="false"
-                    aria-selected="false"
-                    className=" ant-tabs-tab"
-                    onClick={[Function]}
-                    role="tab"
-                    style={
-                      Object {
-                        "marginRight": undefined,
-                      }
-                    }
-                  >
-                    收藏的话题
-                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
         <div
-          className="ant-tabs-content ant-tabs-content-animated"
+          onKeyDown={[Function]}
+          role="presentation"
+          style={
+            Object {
+              "height": 0,
+              "overflow": "hidden",
+              "position": "absolute",
+              "width": 0,
+            }
+          }
+          tabIndex={0}
+        />
+        <div
+          className="ant-tabs-content ant-tabs-content-animated ant-tabs-top-content"
           style={
             Object {
               "marginLeft": "0%",
@@ -471,7 +622,34 @@ exports[`<User /> should render default title 1`] = `
             aria-hidden="false"
             className="ant-tabs-tabpane ant-tabs-tabpane-active"
             role="tabpanel"
-          />
+          >
+            <div
+              onKeyDown={[Function]}
+              role="presentation"
+              style={
+                Object {
+                  "height": 0,
+                  "overflow": "hidden",
+                  "position": "absolute",
+                  "width": 0,
+                }
+              }
+              tabIndex={0}
+            />
+            <div
+              onKeyDown={[Function]}
+              role="presentation"
+              style={
+                Object {
+                  "height": 0,
+                  "overflow": "hidden",
+                  "position": "absolute",
+                  "width": 0,
+                }
+              }
+              tabIndex={0}
+            />
+          </div>
           <div
             aria-hidden="true"
             className="ant-tabs-tabpane ant-tabs-tabpane-inactive"
@@ -483,6 +661,19 @@ exports[`<User /> should render default title 1`] = `
             role="tabpanel"
           />
         </div>
+        <div
+          onKeyDown={[Function]}
+          role="presentation"
+          style={
+            Object {
+              "height": 0,
+              "overflow": "hidden",
+              "position": "absolute",
+              "width": 0,
+            }
+          }
+          tabIndex={0}
+        />
       </div>
     </div>
     <div
@@ -494,7 +685,6 @@ exports[`<User /> should render default title 1`] = `
       >
         <div
           className="ant-spin-nested-loading"
-          style={null}
         >
           <div
             className="ant-spin-container"
@@ -510,6 +700,7 @@ exports[`<User /> should render default title 1`] = `
                 >
                   <span
                     className="ant-avatar ant-avatar-circle ant-avatar-image"
+                    style={Object {}}
                   >
                     <img
                       onError={[Function]}
@@ -536,10 +727,9 @@ exports[`<User /> should render default title 1`] = `
                     <div>
                       <div
                         className="ant-tag ant-tag-purple"
-                        data-show={true}
                         style={
                           Object {
-                            "backgroundColor": null,
+                            "backgroundColor": undefined,
                           }
                         }
                       >

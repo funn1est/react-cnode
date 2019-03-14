@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Header /> should re-render when isMobile or user change 1`] = `
-<div
+<header
   className="ant-layout-header"
 >
   <div
@@ -15,9 +15,39 @@ exports[`<Header /> should re-render when isMobile or user change 1`] = `
     </a>
     <ul
       className="ant-menu ant-menu-light ant-menu-root ant-menu-horizontal"
+      onMouseEnter={[Function]}
+      onTransitionEnd={[Function]}
       role="menu"
       style={Object {}}
     >
+      <li
+        className="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu"
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        role="menuitem"
+        style={
+          Object {
+            "display": "none",
+          }
+        }
+      >
+        <div
+          aria-expanded={false}
+          aria-haspopup="true"
+          className="ant-menu-submenu-title"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          style={Object {}}
+        >
+          <span>
+            ···
+          </span>
+          <i
+            className="ant-menu-submenu-arrow"
+          />
+        </div>
+      </li>
       <li
         className="ant-menu-item ant-menu-item-selected"
         onClick={[Function]}
@@ -27,6 +57,34 @@ exports[`<Header /> should re-render when isMobile or user change 1`] = `
         style={Object {}}
       >
         全部
+      </li>
+      <li
+        className="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu"
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        role="menuitem"
+        style={
+          Object {
+            "display": "none",
+          }
+        }
+      >
+        <div
+          aria-expanded={false}
+          aria-haspopup="true"
+          className="ant-menu-submenu-title"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          style={Object {}}
+        >
+          <span>
+            ···
+          </span>
+          <i
+            className="ant-menu-submenu-arrow"
+          />
+        </div>
       </li>
       <li
         className="ant-menu-item"
@@ -39,6 +97,34 @@ exports[`<Header /> should re-render when isMobile or user change 1`] = `
         精华
       </li>
       <li
+        className="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu"
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        role="menuitem"
+        style={
+          Object {
+            "display": "none",
+          }
+        }
+      >
+        <div
+          aria-expanded={false}
+          aria-haspopup="true"
+          className="ant-menu-submenu-title"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          style={Object {}}
+        >
+          <span>
+            ···
+          </span>
+          <i
+            className="ant-menu-submenu-arrow"
+          />
+        </div>
+      </li>
+      <li
         className="ant-menu-item"
         onClick={[Function]}
         onMouseEnter={[Function]}
@@ -47,6 +133,34 @@ exports[`<Header /> should re-render when isMobile or user change 1`] = `
         style={Object {}}
       >
         分享
+      </li>
+      <li
+        className="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu"
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        role="menuitem"
+        style={
+          Object {
+            "display": "none",
+          }
+        }
+      >
+        <div
+          aria-expanded={false}
+          aria-haspopup="true"
+          className="ant-menu-submenu-title"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          style={Object {}}
+        >
+          <span>
+            ···
+          </span>
+          <i
+            className="ant-menu-submenu-arrow"
+          />
+        </div>
       </li>
       <li
         className="ant-menu-item"
@@ -59,6 +173,34 @@ exports[`<Header /> should re-render when isMobile or user change 1`] = `
         问答
       </li>
       <li
+        className="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu"
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        role="menuitem"
+        style={
+          Object {
+            "display": "none",
+          }
+        }
+      >
+        <div
+          aria-expanded={false}
+          aria-haspopup="true"
+          className="ant-menu-submenu-title"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          style={Object {}}
+        >
+          <span>
+            ···
+          </span>
+          <i
+            className="ant-menu-submenu-arrow"
+          />
+        </div>
+      </li>
+      <li
         className="ant-menu-item"
         onClick={[Function]}
         onMouseEnter={[Function]}
@@ -68,13 +210,72 @@ exports[`<Header /> should re-render when isMobile or user change 1`] = `
       >
         招聘
       </li>
+      <li
+        className="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu"
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        role="menuitem"
+        style={
+          Object {
+            "position": "absolute",
+            "visibility": "hidden",
+          }
+        }
+      >
+        <div
+          aria-expanded={false}
+          aria-haspopup="true"
+          className="ant-menu-submenu-title"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          style={Object {}}
+        >
+          <span>
+            ···
+          </span>
+          <i
+            className="ant-menu-submenu-arrow"
+          />
+        </div>
+      </li>
     </ul>
     <div>
       <ul
         className="ant-menu ant-menu-light ant-menu-root ant-menu-horizontal"
+        onMouseEnter={[Function]}
+        onTransitionEnd={[Function]}
         role="menu"
         style={Object {}}
       >
+        <li
+          className="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu"
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          role="menuitem"
+          style={
+            Object {
+              "display": "none",
+            }
+          }
+        >
+          <div
+            aria-expanded={false}
+            aria-haspopup="true"
+            className="ant-menu-submenu-title"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            style={Object {}}
+          >
+            <span>
+              ···
+            </span>
+            <i
+              className="ant-menu-submenu-arrow"
+            />
+          </div>
+        </li>
         <li
           className="ant-menu-submenu ant-menu-submenu-horizontal"
           onMouseEnter={[Function]}
@@ -93,6 +294,7 @@ exports[`<Header /> should re-render when isMobile or user change 1`] = `
             <span>
               <span
                 className="ant-avatar ant-avatar-sm ant-avatar-circle"
+                style={Object {}}
               >
                 <span
                   className="ant-avatar-string"
@@ -105,14 +307,43 @@ exports[`<Header /> should re-render when isMobile or user change 1`] = `
             />
           </div>
         </li>
+        <li
+          className="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu"
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          role="menuitem"
+          style={
+            Object {
+              "position": "absolute",
+              "visibility": "hidden",
+            }
+          }
+        >
+          <div
+            aria-expanded={false}
+            aria-haspopup="true"
+            className="ant-menu-submenu-title"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            style={Object {}}
+          >
+            <span>
+              ···
+            </span>
+            <i
+              className="ant-menu-submenu-arrow"
+            />
+          </div>
+        </li>
       </ul>
     </div>
   </div>
-</div>
+</header>
 `;
 
 exports[`<Header /> should render login 1`] = `
-<div
+<header
   className="ant-layout-header"
 >
   <div
@@ -126,9 +357,39 @@ exports[`<Header /> should render login 1`] = `
     </a>
     <ul
       className="ant-menu ant-menu-light ant-menu-root ant-menu-horizontal"
+      onMouseEnter={[Function]}
+      onTransitionEnd={[Function]}
       role="menu"
       style={Object {}}
     >
+      <li
+        className="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu"
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        role="menuitem"
+        style={
+          Object {
+            "display": "none",
+          }
+        }
+      >
+        <div
+          aria-expanded={false}
+          aria-haspopup="true"
+          className="ant-menu-submenu-title"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          style={Object {}}
+        >
+          <span>
+            ···
+          </span>
+          <i
+            className="ant-menu-submenu-arrow"
+          />
+        </div>
+      </li>
       <li
         className="ant-menu-item ant-menu-item-selected"
         onClick={[Function]}
@@ -138,6 +399,34 @@ exports[`<Header /> should render login 1`] = `
         style={Object {}}
       >
         全部
+      </li>
+      <li
+        className="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu"
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        role="menuitem"
+        style={
+          Object {
+            "display": "none",
+          }
+        }
+      >
+        <div
+          aria-expanded={false}
+          aria-haspopup="true"
+          className="ant-menu-submenu-title"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          style={Object {}}
+        >
+          <span>
+            ···
+          </span>
+          <i
+            className="ant-menu-submenu-arrow"
+          />
+        </div>
       </li>
       <li
         className="ant-menu-item"
@@ -150,6 +439,34 @@ exports[`<Header /> should render login 1`] = `
         精华
       </li>
       <li
+        className="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu"
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        role="menuitem"
+        style={
+          Object {
+            "display": "none",
+          }
+        }
+      >
+        <div
+          aria-expanded={false}
+          aria-haspopup="true"
+          className="ant-menu-submenu-title"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          style={Object {}}
+        >
+          <span>
+            ···
+          </span>
+          <i
+            className="ant-menu-submenu-arrow"
+          />
+        </div>
+      </li>
+      <li
         className="ant-menu-item"
         onClick={[Function]}
         onMouseEnter={[Function]}
@@ -158,6 +475,34 @@ exports[`<Header /> should render login 1`] = `
         style={Object {}}
       >
         分享
+      </li>
+      <li
+        className="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu"
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        role="menuitem"
+        style={
+          Object {
+            "display": "none",
+          }
+        }
+      >
+        <div
+          aria-expanded={false}
+          aria-haspopup="true"
+          className="ant-menu-submenu-title"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          style={Object {}}
+        >
+          <span>
+            ···
+          </span>
+          <i
+            className="ant-menu-submenu-arrow"
+          />
+        </div>
       </li>
       <li
         className="ant-menu-item"
@@ -170,6 +515,34 @@ exports[`<Header /> should render login 1`] = `
         问答
       </li>
       <li
+        className="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu"
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        role="menuitem"
+        style={
+          Object {
+            "display": "none",
+          }
+        }
+      >
+        <div
+          aria-expanded={false}
+          aria-haspopup="true"
+          className="ant-menu-submenu-title"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          style={Object {}}
+        >
+          <span>
+            ···
+          </span>
+          <i
+            className="ant-menu-submenu-arrow"
+          />
+        </div>
+      </li>
+      <li
         className="ant-menu-item"
         onClick={[Function]}
         onMouseEnter={[Function]}
@@ -179,13 +552,72 @@ exports[`<Header /> should render login 1`] = `
       >
         招聘
       </li>
+      <li
+        className="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu"
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        role="menuitem"
+        style={
+          Object {
+            "position": "absolute",
+            "visibility": "hidden",
+          }
+        }
+      >
+        <div
+          aria-expanded={false}
+          aria-haspopup="true"
+          className="ant-menu-submenu-title"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          style={Object {}}
+        >
+          <span>
+            ···
+          </span>
+          <i
+            className="ant-menu-submenu-arrow"
+          />
+        </div>
+      </li>
     </ul>
     <div>
       <ul
         className="ant-menu ant-menu-light ant-menu-root ant-menu-horizontal"
+        onMouseEnter={[Function]}
+        onTransitionEnd={[Function]}
         role="menu"
         style={Object {}}
       >
+        <li
+          className="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu"
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          role="menuitem"
+          style={
+            Object {
+              "display": "none",
+            }
+          }
+        >
+          <div
+            aria-expanded={false}
+            aria-haspopup="true"
+            className="ant-menu-submenu-title"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            style={Object {}}
+          >
+            <span>
+              ···
+            </span>
+            <i
+              className="ant-menu-submenu-arrow"
+            />
+          </div>
+        </li>
         <li
           className="ant-menu-item"
           onClick={[Function]}
@@ -196,8 +628,37 @@ exports[`<Header /> should render login 1`] = `
         >
           登录
         </li>
+        <li
+          className="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu"
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          role="menuitem"
+          style={
+            Object {
+              "position": "absolute",
+              "visibility": "hidden",
+            }
+          }
+        >
+          <div
+            aria-expanded={false}
+            aria-haspopup="true"
+            className="ant-menu-submenu-title"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            style={Object {}}
+          >
+            <span>
+              ···
+            </span>
+            <i
+              className="ant-menu-submenu-arrow"
+            />
+          </div>
+        </li>
       </ul>
     </div>
   </div>
-</div>
+</header>
 `;

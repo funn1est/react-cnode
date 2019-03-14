@@ -3,7 +3,7 @@
 exports[`<Topic /> should render <Exception /> 1`] = `<Exception />`;
 
 exports[`<Topic /> should render correctly 1`] = `
-<React.Fragment>
+<Fragment>
   <Title
     title="title"
   />
@@ -21,11 +21,11 @@ exports[`<Topic /> should render correctly 1`] = `
     onEditorChange={[Function]}
     value=""
   />
-</React.Fragment>
+</Fragment>
 `;
 
 exports[`<Topic /> should render default title 1`] = `
-<React.Fragment>
+<Fragment>
   <Title
     title="话题"
   />
@@ -43,5 +43,5 @@ exports[`<Topic /> should render default title 1`] = `
     onEditorChange={[Function]}
     value=""
   />
-</React.Fragment>
+</Fragment>
 `;

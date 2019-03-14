@@ -5,11 +5,11 @@ exports[`<TopicEditor /> should render correctly 1`] = `
   actions={
     Array [
       <Button
+        block={false}
         ghost={false}
         icon="forward"
         loading={false}
         onClick={[MockFunction]}
-        prefixCls="ant-btn"
         type="primary"
       >
         回复
