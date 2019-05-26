@@ -42,7 +42,7 @@ describe('<BasicLayout />', () => {
     const middleware = [thunk];
     const store = configureStore(middleware)(basicInitialState);
     const tree = mount(
-      <MemoryRouter initialEntries={['/topic/123']}>
+      <MemoryRouter initialEntries={['/topic/123']} keyLength={0}>
         <BasicLayout store={store} {...routeProps} />
       </MemoryRouter>,
     );
@@ -60,7 +60,7 @@ describe('<BasicLayout />', () => {
     const middleware = [thunk];
     const store = configureStore(middleware)(basicInitialState);
     const tree = mount(
-      <MemoryRouter initialEntries={['/topic/123']}>
+      <MemoryRouter initialEntries={['/topic/123']} keyLength={0}>
         <BasicLayout store={store} {...routeProps} />
       </MemoryRouter>,
     );

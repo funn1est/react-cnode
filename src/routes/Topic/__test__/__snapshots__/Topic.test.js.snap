@@ -8,7 +8,7 @@ exports[`<Topic /> should render correctly 1`] = `
     title="title"
   />
   <withRouter(Connect(TopicContentComponent)) />
-  <Connect(Replies)
+  <ConnectFunction
     current={1}
     onClickUp={[Function]}
     onReplyPageChange={[Function]}
@@ -30,7 +30,7 @@ exports[`<Topic /> should render default title 1`] = `
     title="话题"
   />
   <withRouter(Connect(TopicContentComponent)) />
-  <Connect(Replies)
+  <ConnectFunction
     current={1}
     onClickUp={[Function]}
     onReplyPageChange={[Function]}

@@ -1,170 +1,253 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Login /> should render correctly 1`] = `
-Array [
-  "",
-  <form
-    className="ant-form ant-form-horizontal"
-    onSubmit={[Function]}
-  >
-    <div
-      className="ant-row ant-form-item"
+<ConnectFunction
+  form={
+    Object {
+      "getFieldDecorator": [Function],
+      "getFieldError": [Function],
+      "getFieldInstance": [Function],
+      "getFieldProps": [Function],
+      "getFieldValue": [Function],
+      "getFieldsError": [Function],
+      "getFieldsValue": [Function],
+      "isFieldTouched": [Function],
+      "isFieldValidating": [Function],
+      "isFieldsTouched": [Function],
+      "isFieldsValidating": [Function],
+      "isSubmitting": [Function],
+      "resetFields": [Function],
+      "setFields": [Function],
+      "setFieldsInitialValue": [Function],
+      "setFieldsValue": [Function],
+      "submit": [Function],
+      "validateFields": [Function],
+      "validateFieldsAndScroll": [Function],
+    }
+  }
+  history={
+    Object {
+      "action": "POP",
+      "block": [Function],
+      "canGo": [Function],
+      "createHref": [Function],
+      "entries": Array [
+        Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+      ],
+      "go": [Function],
+      "goBack": [Function],
+      "goForward": [Function],
+      "index": 0,
+      "length": 1,
+      "listen": [Function],
+      "location": Object {
+        "hash": "",
+        "pathname": "/",
+        "search": "",
+        "state": undefined,
+      },
+      "push": [Function],
+      "replace": [Function],
+    }
+  }
+  location={
+    Object {
+      "hash": "",
+      "pathname": "/",
+      "search": "",
+      "state": undefined,
+    }
+  }
+  match={
+    Object {
+      "isExact": true,
+      "params": Object {},
+      "path": "/",
+      "url": "/",
+    }
+  }
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  Array [
+    "",
+    <form
+      className="ant-form ant-form-horizontal"
+      onSubmit={[Function]}
     >
       <div
-        className="ant-form-item-control-wrapper"
+        className="ant-row ant-form-item"
       >
         <div
-          className="ant-form-item-control"
+          className="ant-col ant-form-item-control-wrapper"
         >
-          <span
-            className="ant-form-item-children"
+          <div
+            className="ant-form-item-control"
           >
             <span
-              className="ant-input-affix-wrapper"
+              className="ant-form-item-children"
             >
               <span
-                className="ant-input-prefix"
+                className="ant-input-affix-wrapper"
               >
-                <i
-                  aria-label="icon: key"
-                  className="anticon anticon-key"
+                <span
+                  className="ant-input-prefix"
                 >
-                  <svg
-                    aria-hidden="true"
-                    className=""
-                    data-icon="key"
-                    fill="currentColor"
-                    height="1em"
-                    viewBox="64 64 896 896"
-                    width="1em"
+                  <i
+                    aria-label="icon: key"
+                    className="anticon anticon-key"
                   >
-                    <path
-                      d="M608 112c-167.9 0-304 136.1-304 304 0 70.3 23.9 135 63.9 186.5l-41.1 41.1-62.3-62.3a8.15 8.15 0 0 0-11.4 0l-39.8 39.8a8.15 8.15 0 0 0 0 11.4l62.3 62.3-44.9 44.9-62.3-62.3a8.15 8.15 0 0 0-11.4 0l-39.8 39.8a8.15 8.15 0 0 0 0 11.4l62.3 62.3-65.3 65.3a8.03 8.03 0 0 0 0 11.3l42.3 42.3c3.1 3.1 8.2 3.1 11.3 0l253.6-253.6A304.06 304.06 0 0 0 608 720c167.9 0 304-136.1 304-304S775.9 112 608 112zm161.2 465.2C726.2 620.3 668.9 644 608 644c-60.9 0-118.2-23.7-161.2-66.8-43.1-43-66.8-100.3-66.8-161.2 0-60.9 23.7-118.2 66.8-161.2 43-43.1 100.3-66.8 161.2-66.8 60.9 0 118.2 23.7 161.2 66.8 43.1 43 66.8 100.3 66.8 161.2 0 60.9-23.7 118.2-66.8 161.2z"
-                    />
-                  </svg>
-                </i>
+                    <svg
+                      aria-hidden="true"
+                      className=""
+                      data-icon="key"
+                      fill="currentColor"
+                      focusable="false"
+                      height="1em"
+                      viewBox="64 64 896 896"
+                      width="1em"
+                    >
+                      <path
+                        d="M608 112c-167.9 0-304 136.1-304 304 0 70.3 23.9 135 63.9 186.5l-41.1 41.1-62.3-62.3a8.15 8.15 0 0 0-11.4 0l-39.8 39.8a8.15 8.15 0 0 0 0 11.4l62.3 62.3-44.9 44.9-62.3-62.3a8.15 8.15 0 0 0-11.4 0l-39.8 39.8a8.15 8.15 0 0 0 0 11.4l62.3 62.3-65.3 65.3a8.03 8.03 0 0 0 0 11.3l42.3 42.3c3.1 3.1 8.2 3.1 11.3 0l253.6-253.6A304.06 304.06 0 0 0 608 720c167.9 0 304-136.1 304-304S775.9 112 608 112zm161.2 465.2C726.2 620.3 668.9 644 608 644c-60.9 0-118.2-23.7-161.2-66.8-43.1-43-66.8-100.3-66.8-161.2 0-60.9 23.7-118.2 66.8-161.2 43-43.1 100.3-66.8 161.2-66.8 60.9 0 118.2 23.7 161.2 66.8 43.1 43 66.8 100.3 66.8 161.2 0 60.9-23.7 118.2-66.8 161.2z"
+                      />
+                    </svg>
+                  </i>
+                </span>
+                <input
+                  className="ant-input"
+                  data-__field={
+                    Object {
+                      "name": "token",
+                    }
+                  }
+                  data-__meta={
+                    Object {
+                      "name": "token",
+                      "originalProps": Object {
+                        "disabled": false,
+                        "placeholder": "请输入 CNode 的 Access Token",
+                        "prefix": <Icon
+                          type="key"
+                        />,
+                        "type": "text",
+                      },
+                      "ref": null,
+                      "rules": Array [
+                        Object {
+                          "message": "请输入 Access Token",
+                          "required": true,
+                        },
+                        Object {
+                          "message": "请输入正确的 Access Token",
+                          "pattern": /\\^\\[a-f\\\\d\\]\\{8\\}\\(-\\[a-f\\\\d\\]\\{4\\}\\)\\{3\\}-\\[a-f\\\\d\\]\\{12\\}\\$/,
+                        },
+                      ],
+                      "trigger": "onChange",
+                      "validate": Array [
+                        Object {
+                          "rules": Array [
+                            Object {
+                              "message": "请输入 Access Token",
+                              "required": true,
+                            },
+                            Object {
+                              "message": "请输入正确的 Access Token",
+                              "pattern": /\\^\\[a-f\\\\d\\]\\{8\\}\\(-\\[a-f\\\\d\\]\\{4\\}\\)\\{3\\}-\\[a-f\\\\d\\]\\{12\\}\\$/,
+                            },
+                          ],
+                          "trigger": Array [
+                            "onChange",
+                          ],
+                        },
+                      ],
+                      "valuePropName": "value",
+                    }
+                  }
+                  disabled={false}
+                  id="token"
+                  onChange={[Function]}
+                  onKeyDown={[Function]}
+                  placeholder="请输入 CNode 的 Access Token"
+                  style={null}
+                  type="text"
+                  value=""
+                />
               </span>
-              <input
-                className="ant-input"
-                data-__field={
-                  Object {
-                    "name": "token",
-                  }
-                }
-                data-__meta={
-                  Object {
-                    "name": "token",
-                    "originalProps": Object {
-                      "disabled": false,
-                      "placeholder": "请输入 CNode 的 Access Token",
-                      "prefix": <Icon
-                        type="key"
-                      />,
-                      "type": "text",
-                    },
-                    "ref": null,
-                    "rules": Array [
-                      Object {
-                        "message": "请输入 Access Token",
-                        "required": true,
-                      },
-                      Object {
-                        "message": "请输入正确的 Access Token",
-                        "pattern": /\\^\\[a-f\\\\d\\]\\{8\\}\\(-\\[a-f\\\\d\\]\\{4\\}\\)\\{3\\}-\\[a-f\\\\d\\]\\{12\\}\\$/,
-                      },
-                    ],
-                    "trigger": "onChange",
-                    "validate": Array [
-                      Object {
-                        "rules": Array [
-                          Object {
-                            "message": "请输入 Access Token",
-                            "required": true,
-                          },
-                          Object {
-                            "message": "请输入正确的 Access Token",
-                            "pattern": /\\^\\[a-f\\\\d\\]\\{8\\}\\(-\\[a-f\\\\d\\]\\{4\\}\\)\\{3\\}-\\[a-f\\\\d\\]\\{12\\}\\$/,
-                          },
-                        ],
-                        "trigger": Array [
-                          "onChange",
-                        ],
-                      },
-                    ],
-                    "valuePropName": "value",
-                  }
-                }
-                disabled={false}
-                id="token"
-                onChange={[Function]}
-                onKeyDown={[Function]}
-                placeholder="请输入 CNode 的 Access Token"
-                style={null}
-                type="text"
-                value=""
-              />
             </span>
-          </span>
+          </div>
         </div>
       </div>
-    </div>
-    <div>
-      <label
-        className="ant-checkbox-wrapper"
-      >
-        <span
-          className="ant-checkbox"
-          style={Object {}}
+      <div>
+        <label
+          className="ant-checkbox-wrapper"
         >
-          <input
-            checked={false}
-            className="ant-checkbox-input"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            type="checkbox"
-          />
           <span
-            className="ant-checkbox-inner"
-          />
-        </span>
-        <span>
-          自动登录
-        </span>
-      </label>
-      <a
-        href="https://cnodejs.org/setting"
-        rel="noopener noreferrer"
-        target="_blank"
-      >
-        查看 Token
-      </a>
-    </div>
-    <div
-      className="ant-row ant-form-item"
-    >
+            className="ant-checkbox"
+            style={Object {}}
+          >
+            <input
+              checked={false}
+              className="ant-checkbox-input"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              type="checkbox"
+            />
+            <span
+              className="ant-checkbox-inner"
+            />
+          </span>
+          <span>
+            自动登录
+          </span>
+        </label>
+        <a
+          href="https://cnodejs.org/setting"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          查看 Token
+        </a>
+      </div>
       <div
-        className="ant-form-item-control-wrapper"
+        className="ant-row ant-form-item"
       >
         <div
-          className="ant-form-item-control"
+          className="ant-col ant-form-item-control-wrapper"
         >
-          <span
-            className="ant-form-item-children"
+          <div
+            className="ant-form-item-control"
           >
-            <button
-              className="ant-btn ant-btn-primary"
-              onClick={[Function]}
-              type="submit"
+            <span
+              className="ant-form-item-children"
             >
-              <span>
-                登 录
-              </span>
-            </button>
-          </span>
+              <button
+                className="ant-btn ant-btn-primary"
+                onClick={[Function]}
+                type="submit"
+              >
+                <span>
+                  登 录
+                </span>
+              </button>
+            </span>
+          </div>
         </div>
       </div>
-    </div>
-  </form>,
-]
+    </form>,
+  ]
+</ConnectFunction>
 `;

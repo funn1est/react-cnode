@@ -8,10 +8,18 @@ exports[`<Loading /> should render correctly 1`] = `
     <span
       className="ant-spin-dot ant-spin-dot-spin"
     >
-      <i />
-      <i />
-      <i />
-      <i />
+      <i
+        className="ant-spin-dot-item"
+      />
+      <i
+        className="ant-spin-dot-item"
+      />
+      <i
+        className="ant-spin-dot-item"
+      />
+      <i
+        className="ant-spin-dot-item"
+      />
     </span>
   </div>
 </div>

@@ -7,6 +7,7 @@ exports[`<TopicEditor /> should render correctly 1`] = `
       <Button
         block={false}
         ghost={false}
+        htmlType="button"
         icon="forward"
         loading={false}
         onClick={[MockFunction]}

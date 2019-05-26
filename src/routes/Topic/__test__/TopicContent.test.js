@@ -47,7 +47,7 @@ describe('<TopicContent />', () => {
     const store = configureStore()(initialState);
     const tree = mount(
       <Provider store={store}>
-        <MemoryRouter>
+        <MemoryRouter keyLength={0}>
           <TopicContent />
         </MemoryRouter>
       </Provider>,

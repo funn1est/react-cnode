@@ -24,6 +24,7 @@ exports[`<Post /> should render correctly 1`] = `
       <Button
         block={false}
         ghost={false}
+        htmlType="button"
         icon="share-alt"
         loading={false}
         onClick={[Function]}

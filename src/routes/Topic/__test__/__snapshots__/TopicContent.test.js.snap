@@ -1,190 +1,245 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<TopicContent /> should render correctly 1`] = `
-<div
-  className="ant-card ant-card-bordered"
+<ConnectFunction
+  history={
+    Object {
+      "action": "POP",
+      "block": [Function],
+      "canGo": [Function],
+      "createHref": [Function],
+      "entries": Array [
+        Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+      ],
+      "go": [Function],
+      "goBack": [Function],
+      "goForward": [Function],
+      "index": 0,
+      "length": 1,
+      "listen": [Function],
+      "location": Object {
+        "hash": "",
+        "pathname": "/",
+        "search": "",
+        "state": undefined,
+      },
+      "push": [Function],
+      "replace": [Function],
+    }
+  }
+  location={
+    Object {
+      "hash": "",
+      "pathname": "/",
+      "search": "",
+      "state": undefined,
+    }
+  }
+  match={
+    Object {
+      "isExact": true,
+      "params": Object {},
+      "path": "/",
+      "url": "/",
+    }
+  }
 >
   <div
-    className="ant-card-head"
-    style={Object {}}
+    className="ant-card ant-card-bordered"
   >
     <div
-      className="ant-card-head-wrapper"
+      className="ant-card-head"
+      style={Object {}}
     >
       <div
-        className="ant-card-head-title"
+        className="ant-card-head-wrapper"
       >
         <div
-          className="ant-card-meta"
+          className="ant-card-head-title"
         >
           <div
-            className="ant-card-meta-avatar"
-          >
-            <span
-              className="ant-avatar ant-avatar-lg ant-avatar-circle ant-avatar-image"
-              style={Object {}}
-            >
-              <img
-                onError={[Function]}
-                src="//"
-              />
-            </span>
-          </div>
-          <div
-            className="ant-card-meta-detail"
+            className="ant-card-meta"
           >
             <div
-              className="ant-card-meta-title"
+              className="ant-card-meta-avatar"
             >
-              <div>
-                <div
-                  className="ant-tag ant-tag-red"
-                  style={
-                    Object {
-                      "backgroundColor": undefined,
-                    }
-                  }
-                >
-                  置顶
-                </div>
-                title
-              </div>
+              <span
+                className="ant-avatar ant-avatar-lg ant-avatar-circle ant-avatar-image"
+                style={Object {}}
+              >
+                <img
+                  onError={[Function]}
+                  src="//"
+                />
+              </span>
             </div>
             <div
-              className="ant-card-meta-description"
+              className="ant-card-meta-detail"
             >
-              <div>
-                <a
-                  href="/user/admin"
-                  onClick={[Function]}
-                >
+              <div
+                className="ant-card-meta-title"
+              >
+                <div>
                   <div
-                    className="ant-tag ant-tag-green"
+                    className="ant-tag ant-tag-red"
                     style={
                       Object {
                         "backgroundColor": undefined,
                       }
                     }
                   >
-                    admin
+                    置顶
                   </div>
-                </a>
-                <div
-                  className="ant-divider ant-divider-vertical"
-                />
-                <span>
-                  发布于：
-                  a day ago
-                </span>
-                <div
-                  className="ant-divider ant-divider-vertical"
-                />
-                <span>
-                  浏览数：
-                  101
-                </span>
+                  title
+                </div>
+              </div>
+              <div
+                className="ant-card-meta-description"
+              >
+                <div>
+                  <a
+                    href="/user/admin"
+                    onClick={[Function]}
+                  >
+                    <div
+                      className="ant-tag ant-tag-green"
+                      style={
+                        Object {
+                          "backgroundColor": undefined,
+                        }
+                      }
+                    >
+                      admin
+                    </div>
+                  </a>
+                  <div
+                    className="ant-divider ant-divider-vertical"
+                  />
+                  <span>
+                    发布于：
+                    a day ago
+                  </span>
+                  <div
+                    className="ant-divider ant-divider-vertical"
+                  />
+                  <span>
+                    浏览数：
+                    101
+                  </span>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div
-        className="ant-card-extra"
-      >
-        <div>
-          收藏：
-          <button
-            aria-checked={false}
-            checked={false}
-            className="ant-switch"
-            defaultChecked={false}
-            disabled={false}
-            onChange={[Function]}
-            onClick={[Function]}
-            onKeyDown={[Function]}
-            onMouseUp={[Function]}
-            role="switch"
-            type="button"
+        <div
+          className="ant-card-extra"
+        >
+          <ConnectFunction
+            onClickCollect={[Function]}
           >
-            <span
-              className="ant-switch-inner"
-            >
-              <i
-                aria-label="icon: star-o"
-                className="anticon anticon-star-o"
+            <div>
+              收藏：
+              <button
+                aria-checked={false}
+                checked={false}
+                className="ant-switch"
+                defaultChecked={false}
+                disabled={false}
+                onChange={[Function]}
+                onClick={[Function]}
+                onKeyDown={[Function]}
+                onMouseUp={[Function]}
+                role="switch"
+                type="button"
               >
-                <svg
-                  aria-hidden="true"
-                  className=""
-                  data-icon="star"
-                  fill="currentColor"
-                  height="1em"
-                  viewBox="64 64 896 896"
-                  width="1em"
+                <span
+                  className="ant-switch-inner"
                 >
-                  <path
-                    d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 0 0 .6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0 0 46.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3zM664.8 561.6l36.1 210.3L512 672.7 323.1 772l36.1-210.3-152.8-149L417.6 382 512 190.7 606.4 382l211.2 30.7-152.8 148.9z"
-                  />
-                </svg>
-              </i>
-            </span>
-          </button>
+                  <i
+                    aria-label="icon: star-o"
+                    className="anticon anticon-star-o"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className=""
+                      data-icon="star"
+                      fill="currentColor"
+                      focusable="false"
+                      height="1em"
+                      viewBox="64 64 896 896"
+                      width="1em"
+                    >
+                      <path
+                        d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 0 0 .6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0 0 46.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3zM664.8 561.6l36.1 210.3L512 672.7 323.1 772l36.1-210.3-152.8-149L417.6 382 512 190.7 606.4 382l211.2 30.7-152.8 148.9z"
+                      />
+                    </svg>
+                  </i>
+                </span>
+              </button>
+            </div>
+          </ConnectFunction>
         </div>
       </div>
     </div>
-  </div>
-  <div
-    className="ant-card-body"
-    style={Object {}}
-  >
     <div
-      className="markdown-body"
+      className="ant-card-body"
+      style={Object {}}
     >
-      <p>
-        content
-      </p>
+      <div
+        className="markdown-body"
+      >
+        <p>
+          content
+        </p>
+      </div>
     </div>
-  </div>
-  <ul
-    className="ant-card-actions"
-  >
-    <li
-      style={
-        Object {
-          "width": "100%",
-        }
-      }
+    <ul
+      className="ant-card-actions"
     >
-      <span>
-        <button
-          className="ant-btn"
-          onClick={[Function]}
-          type="button"
-        >
-          <i
-            aria-label="icon: edit"
-            className="anticon anticon-edit"
+      <li
+        style={
+          Object {
+            "width": "100%",
+          }
+        }
+      >
+        <span>
+          <button
+            className="ant-btn"
+            onClick={[Function]}
+            type="button"
           >
-            <svg
-              aria-hidden="true"
-              className=""
-              data-icon="edit"
-              fill="currentColor"
-              height="1em"
-              viewBox="64 64 896 896"
-              width="1em"
+            <i
+              aria-label="icon: edit"
+              className="anticon anticon-edit"
             >
-              <path
-                d="M257.7 752c2 0 4-.2 6-.5L431.9 722c2-.4 3.9-1.3 5.3-2.8l423.9-423.9a9.96 9.96 0 0 0 0-14.1L694.9 114.9c-1.9-1.9-4.4-2.9-7.1-2.9s-5.2 1-7.1 2.9L256.8 538.8c-1.5 1.5-2.4 3.3-2.8 5.3l-29.5 168.2a33.5 33.5 0 0 0 9.4 29.8c6.6 6.4 14.9 9.9 23.8 9.9zm67.4-174.4L687.8 215l73.3 73.3-362.7 362.6-88.9 15.7 15.6-89zM880 836H144c-17.7 0-32 14.3-32 32v36c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-36c0-17.7-14.3-32-32-32z"
-              />
-            </svg>
-          </i>
-          <span>
-            编辑话题
-          </span>
-        </button>
-      </span>
-    </li>
-  </ul>
-</div>
+              <svg
+                aria-hidden="true"
+                className=""
+                data-icon="edit"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                viewBox="64 64 896 896"
+                width="1em"
+              >
+                <path
+                  d="M257.7 752c2 0 4-.2 6-.5L431.9 722c2-.4 3.9-1.3 5.3-2.8l423.9-423.9a9.96 9.96 0 0 0 0-14.1L694.9 114.9c-1.9-1.9-4.4-2.9-7.1-2.9s-5.2 1-7.1 2.9L256.8 538.8c-1.5 1.5-2.4 3.3-2.8 5.3l-29.5 168.2a33.5 33.5 0 0 0 9.4 29.8c6.6 6.4 14.9 9.9 23.8 9.9zm67.4-174.4L687.8 215l73.3 73.3-362.7 362.6-88.9 15.7 15.6-89zM880 836H144c-17.7 0-32 14.3-32 32v36c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-36c0-17.7-14.3-32-32-32z"
+                />
+              </svg>
+            </i>
+            <span>
+              编辑话题
+            </span>
+          </button>
+        </span>
+      </li>
+    </ul>
+  </div>
+</ConnectFunction>
 `;

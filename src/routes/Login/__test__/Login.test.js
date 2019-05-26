@@ -19,7 +19,7 @@ describe('<Login />', () => {
     const store = configureStore()(loginInitialState);
 
     const tree = mount(
-      <MemoryRouter>
+      <MemoryRouter keyLength={0}>
         <Login store={store} />
       </MemoryRouter>,
     );

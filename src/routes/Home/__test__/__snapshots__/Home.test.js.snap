@@ -1,142 +1,178 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Home /> should render <Exception /> 1`] = `
-<div>
-  <span>
-    网络出小差了！请稍后再试
-  </span>
-</div>
+<ConnectFunction
+  history={
+    Object {
+      "action": "PUSH",
+    }
+  }
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <div>
+    <span>
+      网络出小差了！请稍后再试
+    </span>
+  </div>
+</ConnectFunction>
 `;
 
 exports[`<Home /> should render correctly 1`] = `
-Array [
-  "",
-  <div>
-    <div
-      className="ant-list ant-list-lg ant-list-split ant-list-grid"
-    >
+<ConnectFunction
+  history={
+    Object {
+      "action": "PUSH",
+    }
+  }
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  Array [
+    "",
+    <div>
       <div
-        className="ant-spin-nested-loading"
+        className="ant-list ant-list-lg ant-list-split ant-list-grid"
       >
         <div
-          className="ant-spin-container"
+          className="ant-spin-nested-loading"
         >
           <div
-            className="ant-row"
-            style={
-              Object {
-                "marginLeft": -8,
-                "marginRight": -8,
-              }
-            }
+            className="ant-spin-container"
           >
             <div
-              className="ant-col-24"
+              className="ant-row"
               style={
                 Object {
-                  "paddingLeft": 8,
-                  "paddingRight": 8,
+                  "marginLeft": -8,
+                  "marginRight": -8,
                 }
               }
             >
               <div
-                className="ant-list-item"
+                className="ant-col ant-col-24"
+                style={
+                  Object {
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                  }
+                }
               >
                 <div
-                  className="ant-card ant-card-bordered"
+                  className="ant-list-item"
                 >
                   <div
-                    className="ant-card-head"
-                    style={Object {}}
+                    className="ant-card ant-card-bordered"
                   >
                     <div
-                      className="ant-card-head-wrapper"
+                      className="ant-card-head"
+                      style={Object {}}
                     >
                       <div
-                        className="ant-card-head-title"
+                        className="ant-card-head-wrapper"
                       >
-                        <div>
+                        <div
+                          className="ant-card-head-title"
+                        >
                           <div>
-                            <span
-                              className="ant-avatar ant-avatar-sm ant-avatar-square ant-avatar-image"
-                              style={Object {}}
-                            >
-                              <img
-                                onError={[Function]}
-                                src="//"
-                              />
-                            </span>
-                            <a
-                              href="/user/admin"
-                              onClick={[Function]}
-                            >
+                            <div>
+                              <span
+                                className="ant-avatar ant-avatar-sm ant-avatar-square ant-avatar-image"
+                                style={Object {}}
+                              >
+                                <img
+                                  onError={[Function]}
+                                  src="//"
+                                />
+                              </span>
+                              <a
+                                href="/user/admin"
+                                onClick={[Function]}
+                              >
+                                <div
+                                  className="ant-tag ant-tag-purple"
+                                  style={
+                                    Object {
+                                      "backgroundColor": undefined,
+                                    }
+                                  }
+                                >
+                                  admin
+                                </div>
+                              </a>
+                            </div>
+                            <div>
                               <div
-                                className="ant-tag ant-tag-purple"
+                                className="ant-tag ant-tag-red"
                                 style={
                                   Object {
                                     "backgroundColor": undefined,
                                   }
                                 }
                               >
-                                admin
+                                置顶
                               </div>
-                            </a>
-                          </div>
-                          <div>
-                            <div
-                              className="ant-tag ant-tag-red"
-                              style={
-                                Object {
-                                  "backgroundColor": undefined,
-                                }
-                              }
-                            >
-                              置顶
+                              <a
+                                href="/topic/123456789012345678901234"
+                                onClick={[Function]}
+                              >
+                                title1
+                              </a>
                             </div>
-                            <a
-                              href="/topic/123456789012345678901234"
-                              onClick={[Function]}
-                            >
-                              title1
-                            </a>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div
-                    className="ant-card-body"
-                    style={Object {}}
-                  >
                     <div
-                      className="ant-card-meta"
+                      className="ant-card-body"
+                      style={Object {}}
                     >
                       <div
-                        className="ant-card-meta-detail"
+                        className="ant-card-meta"
                       >
                         <div
-                          className="ant-card-meta-description"
+                          className="ant-card-meta-detail"
                         >
-                          <div>
-                            <div
-                              className="undefined"
-                              id="ellipsis-152691840000016"
-                            >
-                              <style>
-                                #ellipsis-152691840000016{-webkit-line-clamp: 4;-webkit-box-orient: vertical;}
-                              </style>
-                              content
-                            </div>
+                          <div
+                            className="ant-card-meta-description"
+                          >
                             <div>
-                              阅读数:1000
                               <div
-                                className="ant-divider ant-divider-vertical"
-                              />
-                              100条评论
-                              <div
-                                className="ant-divider ant-divider-vertical"
-                              />
-                              a day ago
+                                className="undefined"
+                                id="ellipsis-152691840000016"
+                              >
+                                <style>
+                                  #ellipsis-152691840000016{-webkit-line-clamp: 4;-webkit-box-orient: vertical;}
+                                </style>
+                                content
+                              </div>
+                              <div>
+                                阅读数:1000
+                                <div
+                                  className="ant-divider ant-divider-vertical"
+                                />
+                                100条评论
+                                <div
+                                  className="ant-divider ant-divider-vertical"
+                                />
+                                a day ago
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -149,9 +185,9 @@ Array [
           </div>
         </div>
       </div>
-    </div>
-  </div>,
-]
+    </div>,
+  ]
+</ConnectFunction>
 `;
 
 exports[`<HomeTopicTitle /> should not render tab 1`] = `
@@ -329,10 +365,18 @@ exports[`<HomeTopics /> should render loading 1`] = `
             <span
               className="ant-spin-dot ant-spin-dot-spin"
             >
-              <i />
-              <i />
-              <i />
-              <i />
+              <i
+                className="ant-spin-dot-item"
+              />
+              <i
+                className="ant-spin-dot-item"
+              />
+              <i
+                className="ant-spin-dot-item"
+              />
+              <i
+                className="ant-spin-dot-item"
+              />
             </span>
           </div>
         </div>
