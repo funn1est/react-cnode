@@ -3,19 +3,14 @@ const path = require('path');
 module.exports = {
   resolve: {
     extensions: ['.js', '.json', '.css', '.scss', '.less'],
-    modules: [
-      path.resolve('src'),
-      path.resolve('node_modules'),
-    ],
+    modules: [path.resolve('src'), path.resolve('node_modules')],
   },
   module: {
     rules: [
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        use: [
-          { loader: 'babel-loader' },
-        ],
+        use: [{ loader: 'babel-loader' }],
       },
       {
         test: /\.css$/,
@@ -28,16 +23,12 @@ module.exports = {
       },
       {
         test: /\.(scss|sass)$/,
-        exclude: [
-          path.resolve('src', 'styles'),
-          /node_modules/,
-        ],
+        exclude: [path.resolve('src', 'styles'), /node_modules/],
         use: [
           { loader: 'style-loader' },
           {
             loader: 'css-loader',
             options: {
-              minimize: true,
               camelCase: true,
               modules: true,
               importLoaders: 1,
@@ -66,7 +57,6 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
-              minimize: true,
               camelCase: true,
               modules: true,
               importLoaders: 1,
@@ -88,12 +78,7 @@ module.exports = {
         include: /node_modules/,
         use: [
           { loader: 'style-loader' },
-          {
-            loader: 'css-loader',
-            options: {
-              minimize: true,
-            },
-          },
+          { loader: 'css-loader' },
           { loader: 'postcss-loader' },
           {
             loader: 'less-loader',

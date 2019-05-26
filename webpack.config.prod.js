@@ -11,9 +11,7 @@ const base = require('./webpack.config');
 const prod = {
   mode: 'production',
   entry: {
-    app: [
-      path.resolve('src', 'index.js'),
-    ],
+    app: [path.resolve('src', 'index.js')],
     vendor: [
       'react',
       'react-dom',
@@ -52,10 +50,7 @@ const prod = {
   plugins: [
     new webpack.HashedModuleIdsPlugin(),
     new webpack.optimize.ModuleConcatenationPlugin(),
-    new webpack.ContextReplacementPlugin(
-      /moment[/\\]locale$/,
-      /zh-cn/,
-    ),
+    new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /zh-cn/),
     new HtmlWebpackPlugin({
       template: 'public/index.html',
       inject: true,
@@ -83,10 +78,8 @@ const prod = {
       navigateFallbackWhitelist: [/^(?!\/__).*/],
       staticFileGlobsIgnorePatterns: [/\.map$/, /asset-manifest\.json$/],
     }),
-    new CleanWebpackPlugin(['dist'], {
-      root: '',
+    new CleanWebpackPlugin({
       verbose: true,
-      dry: false,
     }),
     new BundleAnalyzerPlugin(),
   ],
