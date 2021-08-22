@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
-import { LocaleProvider } from 'antd';
+import { ConfigProvider } from 'antd';
 import zhCN from 'antd/lib/locale-provider/zh_CN';
 import { asyncRender } from 'utils';
 import ScrollToTop from 'components/ScrollToTop';
@@ -65,11 +65,11 @@ const routerConfig = [
 
 const App = () => {
   return (
-    <LocaleProvider locale={zhCN}>
+    <ConfigProvider locale={zhCN}>
       <Router>
         <ScrollToTop>{renderRoutes(routerConfig)}</ScrollToTop>
       </Router>
-    </LocaleProvider>
+    </ConfigProvider>
   );
 };
 

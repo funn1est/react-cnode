@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
   resolve: {
-    extensions: ['.js', '.json', '.css', '.scss', '.less'],
+    extensions: ['.js', '.jsx', '.json', '.css', '.scss', '.less'],
     modules: [path.resolve('src'), path.resolve('node_modules')],
   },
   module: {

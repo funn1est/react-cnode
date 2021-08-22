@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom';
 import { List as ImmutableList } from 'immutable';
 import { timeUtils } from 'utils';
 import { Card, List, Avatar, Tag, Divider } from 'antd';
-import Markdown from 'react-markdown';
 import TopicUp from './TopicUp';
 import styles from './TopicReplies.scss';
+import Tiptap from '../../../components/Tiptap';
 
 const Replies = ({
   repliesResult,
@@ -80,7 +80,7 @@ const Reply = ({
           <TopicUp replyId={replyId} onClickUp={onClickUp} />
         </div>
       }
-      description={<Markdown className="markdown-body" source={content} />}
+      description={<Tiptap content={content} />}
     />
   </List.Item>
 );
@@ -139,7 +139,7 @@ Reply.propTypes = {
   onClickUp: PropTypes.func.isRequired,
 };
 
-export default connect(state => ({
+export default connect((state) => ({
   repliesResult: state.getIn(['topic', 'repliesData', 'result']),
   authorName: state.getIn(['topic', 'topicData', 'author', 'loginname']),
 }))(Replies);

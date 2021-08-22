@@ -1,11 +1,11 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const ManifestPlugin = require('webpack-manifest-plugin');
-const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
-const merge = require('webpack-merge');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
+// const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
+// const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const { merge } = require('webpack-merge');
 const base = require('./webpack.config');
 
 const prod = {
@@ -33,6 +33,7 @@ const prod = {
     chunkFilename: 'static/js/[name].[chunkhash:8].min.js',
   },
   optimization: {
+    minimize: true,
     splitChunks: {
       cacheGroups: {
         vendor: {
@@ -44,7 +45,7 @@ const prod = {
       },
     },
     runtimeChunk: {
-      name: 'manifest',
+      name: (entrypoint) => `runtime-${entrypoint.name}`,
     },
   },
   plugins: [
@@ -67,21 +68,21 @@ const prod = {
         minifyURLs: true,
       },
     }),
-    new ManifestPlugin({
+    new WebpackManifestPlugin({
       fileName: 'asset-manifest.json',
     }),
-    new SWPrecacheWebpackPlugin({
-      dontCacheBustUrlsMatching: /\.\w{8}\./,
-      filename: 'service-worker.js',
-      minify: true,
-      navigateFallback: '/index.html',
-      navigateFallbackWhitelist: [/^(?!\/__).*/],
-      staticFileGlobsIgnorePatterns: [/\.map$/, /asset-manifest\.json$/],
-    }),
+    // new SWPrecacheWebpackPlugin({
+    //   dontCacheBustUrlsMatching: /\.\w{8}\./,
+    //   filename: 'service-worker.js',
+    //   minify: true,
+    //   navigateFallback: '/index.html',
+    //   navigateFallbackWhitelist: [/^(?!\/__).*/],
+    //   staticFileGlobsIgnorePatterns: [/\.map$/, /asset-manifest\.json$/],
+    // }),
     new CleanWebpackPlugin({
       verbose: true,
     }),
-    new BundleAnalyzerPlugin(),
+    // new BundleAnalyzerPlugin(),
   ],
 };
 

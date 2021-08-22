@@ -5,10 +5,10 @@ import { connect } from 'react-redux';
 import { Map } from 'immutable';
 import { timeUtils } from 'utils';
 import { Card, Button, Avatar, Switch, Icon, Tag, Divider } from 'antd';
-import Markdown from 'react-markdown';
 import { collectTopic } from '../TopicRedux';
 import { editTopic } from '../../Post/PostRedux';
 import styles from './TopicContent.scss';
+import Tiptap from '../../../components/Tiptap';
 
 export class TopicContentComponent extends React.Component {
   constructor(props) {
@@ -108,7 +108,7 @@ export class TopicContentComponent extends React.Component {
           ]
         }
       >
-        <Markdown className="markdown-body" source={topicData.get('content')} />
+        <Tiptap content={topicData.get('content')} />
       </Card>
     );
   }
@@ -129,7 +129,7 @@ const Collect = ({ loadingCollect, isCollect, onClickCollect }) => {
   );
 };
 
-const TopicContentCollect = connect(state => ({
+const TopicContentCollect = connect((state) => ({
   loadingCollect: state.getIn(['topic', 'loadingCollect']),
   isCollect: state.getIn(['topic', 'isCollect']),
 }))(Collect);
@@ -159,7 +159,7 @@ Collect.propTypes = {
 
 export default withRouter(
   connect(
-    state => ({
+    (state) => ({
       loading: state.getIn(['topic', 'loading']),
       topicData: state.getIn(['topic', 'topicData']),
       currentUser: state.getIn(['login', 'userData']),
