@@ -11,7 +11,7 @@ A frontend project for BBS community using [cnodejs.org](https://cnodejs.org/) A
 
 ## Demo
 
-👉 Online preview: https://cnode.funn1est.cn
+👉 Online preview: https://cnode.f1t.io
 
 ## Getting Started
 
